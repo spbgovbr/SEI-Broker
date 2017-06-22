@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">	
+	
+	<persistence-unit name="sei_broker_pu" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<jta-data-source>jdbc/sei-broker</jta-data-source>
+
+		<class>br.gov.ans.integracao.sei.modelo.DocumentoSipar</class>
+		<class>br.gov.ans.integracao.sei.modelo.InclusaoDocumento</class>
+		<class>br.gov.ans.modelo.LogIntegracaoSistemica</class>
+
+		<properties> 
+			<property name="hibernate.show_sql" value="false"/>
+			<property name="hibernate.format_sql" value="false"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="sei_pu" transaction-type="JTA">
+		<jta-data-source>jdbc/sei-mysql</jta-data-source>
+
+
+		<class>br.gov.ans.integracao.sei.modelo.ProcessoResumido</class>
+		<class>br.gov.ans.integracao.sei.modelo.Contato</class>
+		<class>br.gov.ans.integracao.sei.modelo.Tarefa</class>
+		
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false"/>	
+			<property name="hibernate.connection.charSet" value="UTF-8" />
+		</properties>
+	</persistence-unit>
+	
+</persistence>
