@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>sei-broker</display-name>
+
+	<session-config>
+		<session-timeout>35</session-timeout>
+	</session-config>
+
+	<!-- define specific error code handler -->
+	<error-page>
+		<error-code>401</error-code>
+		<location>/loginExceptionHandler?code=401</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/loginExceptionHandler?code=403</location>
+	</error-page>
+
+	<context-param>
+		<param-name>PARAMETER_ENCODING</param-name>
+		<param-value>UTF-8</param-value>
+	</context-param>
+
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+
+	<security-constraint>
+		<display-name>Serviço Rest de Integração ao SEI</display-name>
+		<web-resource-collection>
+			<web-resource-name>Todos os serviços</web-resource-name>
+			<url-pattern>/service/*</url-pattern>
+			<http-method>DELETE</http-method>
+			<http-method>POST</http-method>
+			<http-method>PUT</http-method>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>RO_SEI_BROKER</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<display-name>Serviço Rest de Apoio</display-name>
+		<web-resource-collection>
+			<web-resource-name>Serviço de verificação da versão</web-resource-name>
+			<url-pattern>/service/info/*</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+	</security-constraint>
+
+	<security-role>
+		<role-name>RO_SEI_BROKER</role-name>
+	</security-role>
+
+	<!-- Declaração dos ExceptionHandlers -->
+	<context-param>
+		<param-name>resteasy.businessExceptionHandler</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.BusinessExceptionHandler</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.EJBTransactionRolledbackExceptionHandler</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.EJBTransactionRolledbackExceptionHandler</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.notAllowedExceptionHandler</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.NotAllowedExceptionHandler</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.notAcceptableExceptionHandler</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.NotAcceptableExceptionHandler</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.ejbAccessExceptionHandler</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.EJBAccessExceptionHandler</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.notFoundExceptionHandler</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.NotFoundExceptionHandler</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.exceptionHandler</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.ExceptionHandler</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.notAuthorizedExceptionHandler</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.NotAuthorizedExceptionHandler</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.forbiddenException</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.ForbiddenException</param-value>
+	</context-param>
+		<context-param>
+		<param-name>resteasy.webApplicationException</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.WebApplicationException</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.wrappedExceptionHandler</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.WrappedExceptionHandler</param-value>
+	</context-param>
+</web-app>
