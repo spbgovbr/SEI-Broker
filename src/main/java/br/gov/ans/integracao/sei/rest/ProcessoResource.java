@@ -7,6 +7,7 @@ import static br.gov.ans.integracao.sei.utils.Util.getSOuN;
 import static br.gov.ans.integracao.sei.utils.Util.parseInt;
 import static br.gov.ans.integracao.sei.utils.Util.trueOrFalse;
 
+import java.math.BigInteger;
 import java.net.URI;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.Set;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -38,6 +40,7 @@ import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.providers.jaxb.Wrapped;
 
 import br.gov.ans.exceptions.BusinessException;
+import br.gov.ans.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sei.client.Andamento;
 import br.gov.ans.integracao.sei.client.AtributoAndamento;
 import br.gov.ans.integracao.sei.client.RetornoConsultaProcedimento;
@@ -1127,7 +1130,19 @@ public class ProcessoResource {
 	@Path("/{unidade}/processos/{processo:\\d+}/documentos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public List<DocumentoResumido> listarDocumentosPorProcesso(@PathParam("unidade") String unidade, @PathParam("processo") String processo) throws RemoteException, Exception{
- 		return documentoDAO.getDocumentosProcesso(formatarNumeroProcesso(processo));
+		try{
+			BigInteger idProcedimento = processoDAO.getIdProcedimento(formatarNumeroProcesso(processo));
+			
+			List<DocumentoResumido> documentosProcesso = documentoDAO.getDocumentosProcesso(idProcedimento.toString());
+			
+			if(documentosProcesso.isEmpty()){
+				throw new ResourceNotFoundException(messages.getMessage("erro.processo.sem.documentos",formatarNumeroProcesso(processo)));
+			}
+			
+	 		return documentosProcesso;
+		}catch(NoResultException ex){
+			throw new BusinessException(messages.getMessage("erro.processo.nao.pertence.sei", formatarNumeroProcesso(processo)));
+		}
 	}
 	
 	public URI getResourcePath(String resourceId){

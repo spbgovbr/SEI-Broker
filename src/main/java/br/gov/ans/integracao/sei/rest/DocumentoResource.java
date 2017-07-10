@@ -220,7 +220,7 @@ public class DocumentoResource {
 	 * @apiParam (Request Body) {String} [protocoloProcedimento] Número do processo onde o documento deve ser inserido, visível para o usuário. Opcional se IdProcedimento informado.
 	 * @apiParam (Request Body) {String} [idTipoConferencia] Identificador do tipo de conferência associada com o documento externo
 	 * @apiParam (Request Body) {String{50}} [numero] Número do documento, passar null para documentos gerados com numeração controlada pelo SEI.Para documentos externos informar o número ou nome complementar a ser exibido na árvore de documentos do processo (o SEI não controla numeração de documentos externos). 
-	 * @apiParam (Request Body) {String} [data] Data do documento, obrigatório para documentos externos. Passar null para documentos gerados
+	 * @apiParam (Request Body) {String} [data] Data do documento (dd/MM/yyyy), obrigatório para documentos externos. Passar null para documentos gerados.
 	 * @apiParam (Request Body) {String} [descricao] Descrição do documento para documentos gerados. Passar null para documentos externos
 	 * @apiParam (Request Body) {Remetente} [remetente] Obrigatório para documentos externos, passar null para documentos gerados.
 	 * @apiParam (Request Body) {String} [remetente.nome] Nome do remetente

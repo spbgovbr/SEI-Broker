@@ -7,12 +7,15 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import org.apache.commons.lang3.StringUtils;
 
+import br.gov.ans.exceptions.BusinessException;
+import br.gov.ans.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
 
 public class DocumentoDAO {
@@ -79,7 +82,7 @@ public class DocumentoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<DocumentoResumido> getDocumentosProcesso(String processo){
+	public List<DocumentoResumido> getDocumentosProcesso(String idProcedimento){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 		
 		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipo, d.numero numeroInformado, ");
@@ -88,9 +91,9 @@ public class DocumentoDAO {
 		builder.append("FROM protocolo pr, documento d, serie s ");
 		builder.append("WHERE d.id_serie = s.id_serie ");
 		builder.append("AND pr.id_protocolo = d.id_documento ");
-		builder.append("AND d.id_procedimento = (SELECT id_protocolo FROM protocolo WHERE protocolo_formatado = :processo) ");
+		builder.append("AND d.id_procedimento = :idProcedimento ");
 		
-		parametros.put("processo", processo);
+		parametros.put("idProcedimento", idProcedimento);
 		
 		builder.append("ORDER BY pr.dta_geracao ASC");
 
@@ -100,4 +103,5 @@ public class DocumentoDAO {
 		
 		return query.getResultList();
 	}
+
 }

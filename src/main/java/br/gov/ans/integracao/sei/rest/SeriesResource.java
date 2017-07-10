@@ -9,18 +9,24 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang3.StringUtils;
 
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.client.Serie;
+import br.gov.ans.integracao.sei.modelo.InclusaoDocumento;
 import br.gov.ans.integracao.sei.modelo.Operacao;
+import br.gov.ans.integracao.sei.modelo.TipoDocumento;
 import br.gov.ans.integracao.sei.utils.Constantes;
+import br.gov.ans.utils.MessageUtils;
 
 @Path("/")
 @Stateless
@@ -31,6 +37,9 @@ public class SeriesResource {
 	
     @Inject
     private UnidadeResource unidadeResource;
+    
+    @Inject
+    private MessageUtils messages;
 	  
 	/**
 	 * @api {get} /:unidade/series Listar séries
@@ -76,4 +85,55 @@ public class SeriesResource {
 		
 		return series;
 	}
+	
+	/**
+	 * @api {get} /:unidade/tipos-documentos Listar tipos documentos
+	 * @apiName listarTiposDocumentos
+	 * @apiGroup Documento
+	 * @apiVersion 2.0.0
+	 *
+	 * @apiDescription Lista os tipos de documentos do SEI.
+	 * 
+	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
+	 * 
+	 * @apiParam (Query Parameters) {String} [filtro] Para filtrar por documentos que contenham o trecho no nome.
+	 *
+	 * @apiExample {curl} Exemplo de requisição:
+	 * 	curl -i https://<host>/sei-broker/service/COSAP/tipos-documentos
+	 *
+	 * @apiSuccess (Sucesso - 200) {List} tipos Lista com os tipos de documentos
+	 * @apiSuccess (Sucesso - 200) {String} tipos.identificador Identificador do tipo de documento
+	 * @apiSuccess (Sucesso - 200) {String} tipos.nome Nome do tipo de documento
+	 * @apiSuccess (Sucesso - 200) {String} series.aplicabilidade T = Documentos internos e externos, I = documentos internos, E = documentos externos e F = formulários
+	 *
+	 * @apiErrorExample {json} Error-Response:
+	 * 	HTTP/1.1 500 Internal Server Error
+	 * 	{
+	 *		"error":"Mensagem de erro."
+	 *		"code":"código do erro"
+	 *	}
+	 */
+	@GET
+	@Path("{unidade}/tipos-documentos")
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public Response listarTiposDocumentos(@PathParam("unidade") String unidade, @QueryParam("filtro") String filtro) throws Exception{
+		Serie[] series = listarSeries(unidade, null, filtro);
+		
+		if(series == null || series.length < 1){
+			throw new NotFoundException(messages.getMessage("erro.tipo.documento.nao.encontrado"));
+		}
+		
+		return Response.ok(new GenericEntity<List<TipoDocumento>>(getTiposDocumentos(series)){}).build();
+	}
+	
+	public List<TipoDocumento> getTiposDocumentos(Serie[] series){		
+		List<TipoDocumento> tipos = new ArrayList<TipoDocumento>(); 
+		
+		for(Serie s : series){
+			tipos.add(new TipoDocumento(s.getIdSerie(), s.getNome(), s.getAplicabilidade()));
+		}
+		
+		return tipos;
+	}
+
 }

@@ -3,6 +3,7 @@ package br.gov.ans.integracao.sei.dao;
 import static br.gov.ans.integracao.sei.utils.Util.setPaginacaoQuery;
 import static br.gov.ans.integracao.sei.utils.Util.setQueryParameters;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 
@@ -75,5 +76,19 @@ public class ProcessoDAO {
 		setQueryParameters(query, parametros);
 		
 		return Long.valueOf(query.getSingleResult().toString());
+	}
+	
+	
+	public BigInteger getIdProcedimento(String processo){
+		HashMap<String, Object> parametros = new HashMap<String, Object>();
+		String sql = "SELECT id_protocolo FROM protocolo WHERE protocolo_formatado = :processo";
+		
+		parametros.put("processo", processo);
+		
+		Query query = em.createNativeQuery(sql);
+		
+		setQueryParameters(query, parametros);
+		
+		return (BigInteger) query.getSingleResult();		
 	}
 }
