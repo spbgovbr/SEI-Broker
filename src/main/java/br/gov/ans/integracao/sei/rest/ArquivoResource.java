@@ -3,7 +3,6 @@ package br.gov.ans.integracao.sei.rest;
 import java.net.URI;
 import java.rmi.RemoteException;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -27,7 +26,6 @@ import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("/")
-@Stateless
 public class ArquivoResource {
 	
     @Inject

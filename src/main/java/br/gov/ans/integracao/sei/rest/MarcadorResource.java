@@ -5,7 +5,6 @@ import static br.gov.ans.integracao.sei.utils.Util.trueOrFalse;
 
 import java.rmi.RemoteException;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -27,7 +26,6 @@ import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("/")
-@Stateless
 public class MarcadorResource {
 
 	@Inject

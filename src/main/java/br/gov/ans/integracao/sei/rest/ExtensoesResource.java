@@ -1,6 +1,5 @@
 package br.gov.ans.integracao.sei.rest;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,7 +14,6 @@ import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 
 @Path("/")
-@Stateless
 public class ExtensoesResource {
 
     @Inject

@@ -142,5 +142,9 @@
 	<context-param>
 		<param-name>resteasy.sAXExceptionHandler</param-name>
 		<param-value>br.gov.ans.exceptions.handlers.SAXExceptionHandler</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.persistenceExceptionHandler</param-name>
+		<param-value>br.gov.ans.exceptions.handlers.PersistenceExceptionHandler</param-value>
 	</context-param>	
 </web-app>

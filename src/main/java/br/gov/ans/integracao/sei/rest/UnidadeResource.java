@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -22,7 +21,6 @@ import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("/unidades")
-@Stateless
 public class UnidadeResource {
 
 	@Inject

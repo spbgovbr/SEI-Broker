@@ -109,7 +109,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
     "groupTitle": "Arquivo"
   },
   {
@@ -215,7 +215,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
     "groupTitle": "Arquivo"
   },
   {
@@ -275,7 +275,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -478,7 +478,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -540,7 +540,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -600,7 +600,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -712,7 +712,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -789,7 +789,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -858,7 +858,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -948,7 +948,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -1030,7 +1030,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -1097,7 +1097,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -1177,7 +1177,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -1203,9 +1203,37 @@ define({ "api": [
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "branch_homologacao/src/main/webapp/api-docs/main.js",
-    "group": "C__ANS_sei_broker_Fontes_branches_branch_homologacao_src_main_webapp_api_docs_main_js",
-    "groupTitle": "C__ANS_sei_broker_Fontes_branches_branch_homologacao_src_main_webapp_api_docs_main_js",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/webapp/api-docs/main.js",
+    "group": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_src_main_webapp_api_docs_main_js",
+    "groupTitle": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_src_main_webapp_api_docs_main_js",
+    "name": ""
+  },
+  {
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "varname1",
+            "description": "<p>No type.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "varname2",
+            "description": "<p>With type.</p>"
+          }
+        ]
+      }
+    },
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "desenvolvimento_versao_3/sei-broker/target/sei-broker-2.1/api-docs/main.js",
+    "group": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_target_sei_broker_2_1_api_docs_main_js",
+    "groupTitle": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_target_sei_broker_2_1_api_docs_main_js",
     "name": ""
   },
   {
@@ -1295,7 +1323,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/CargoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/CargoResource.java",
     "groupTitle": "Cargo"
   },
   {
@@ -1582,7 +1610,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -1866,7 +1894,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -2155,7 +2183,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -2497,7 +2525,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -2550,7 +2578,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -2619,7 +2647,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -2956,7 +2984,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3103,7 +3131,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3274,7 +3302,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3334,7 +3362,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3633,7 +3661,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3716,7 +3744,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SeriesResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/SeriesResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3825,7 +3853,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -3943,7 +3971,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4055,7 +4083,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4157,7 +4185,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4238,7 +4266,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4322,7 +4350,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ExtensoesResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ExtensoesResource.java",
     "groupTitle": "Extensao"
   },
   {
@@ -4412,7 +4440,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/HipoteseLegalResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/HipoteseLegalResource.java",
     "groupTitle": "Hipotese_Legal"
   },
   {
@@ -4487,7 +4515,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4527,7 +4555,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4567,7 +4595,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4607,7 +4635,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4688,7 +4716,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
     "groupTitle": "Marcador"
   },
   {
@@ -4767,7 +4795,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
     "groupTitle": "Marcador"
   },
   {
@@ -5077,7 +5105,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -5149,7 +5177,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -5214,7 +5242,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -5289,7 +5317,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6007,7 +6035,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6136,7 +6164,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6208,7 +6236,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6264,7 +6292,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6327,7 +6355,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6337,6 +6365,11 @@ define({ "api": [
     "name": "enviarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Envia processos a outras unidades.</p>",
     "parameter": {
       "fields": {
@@ -6346,7 +6379,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "unidade",
-            "description": "<p>Sigla da Unidade cadastrada no SEI</p>"
+            "description": "<p>Sigla da Unidade cadastrada no SEI. Representa a unidade de localização atual do processo.</p>"
           }
         ],
         "Query Parameters": [
@@ -6379,14 +6412,14 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "processo",
-            "description": "<p>Numero do processo a ser enviado</p>"
+            "description": "<p>Numero do processo a ser enviado. Em caso de processo apensado, o processo a ser enviado deve ser o processo PAI. Não é possível tramitar através do processo FILHO.</p>"
           },
           {
             "group": "Request Body",
             "type": "String[]",
             "optional": false,
             "field": "unidadesDestino",
-            "description": "<p>Códigos das unidades para onde o bloco será enviado</p>"
+            "description": "<p>Lista com os identificadores das unidades de destino do processo, código ou nome da unidade.</p>"
           },
           {
             "group": "Request Body",
@@ -6394,7 +6427,7 @@ define({ "api": [
             "optional": false,
             "field": "manterAbertoOrigem",
             "defaultValue": "false",
-            "description": "<p>Informa se o processo deve continuar aberto na unidade de origem</p>"
+            "description": "<p>Informa se o processo deve continuar aberto na unidade de origem .</p>"
           },
           {
             "group": "Request Body",
@@ -6402,7 +6435,7 @@ define({ "api": [
             "optional": false,
             "field": "removerAnotacoes",
             "defaultValue": "false",
-            "description": "<p>Informa se as anotações do processo devem ser removidas</p>"
+            "description": "<p>Informa se as anotações do processo devem ser removidas.</p>"
           },
           {
             "group": "Request Body",
@@ -6410,7 +6443,7 @@ define({ "api": [
             "optional": false,
             "field": "enviarEmailNotificacao",
             "defaultValue": "false",
-            "description": "<p>Informa se deve ser enviado um e-mail de notificação</p>"
+            "description": "<p>Informa se deve ser enviado um e-mail de notificação.</p>"
           },
           {
             "group": "Request Body",
@@ -6418,7 +6451,7 @@ define({ "api": [
             "optional": false,
             "field": "dataRetornoProgramado",
             "defaultValue": "null",
-            "description": "<p>Data para retorno programado do processo a unidade (padrão ISO-8601)</p>"
+            "description": "<p>Data para retorno programado do processo a unidade (padrão ISO-8601).</p>"
           },
           {
             "group": "Request Body",
@@ -6426,7 +6459,7 @@ define({ "api": [
             "optional": false,
             "field": "qtdDiasAteRetorno",
             "defaultValue": "null",
-            "description": "<p>Quantidade de dias até o retorno do processo</p>"
+            "description": "<p>Quantidade de dias até o retorno do processo.</p>"
           },
           {
             "group": "Request Body",
@@ -6434,7 +6467,7 @@ define({ "api": [
             "optional": false,
             "field": "somenteDiasUteis",
             "defaultValue": "false",
-            "description": "<p>Informa se só serão contabilizados dias úteis</p>"
+            "description": "<p>Informa se só serão contabilizados dias úteis.</p>"
           }
         ]
       }
@@ -6468,7 +6501,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6670,7 +6703,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6877,7 +6910,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6983,7 +7016,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7045,7 +7078,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7118,7 +7151,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7190,7 +7223,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7246,7 +7279,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7325,7 +7358,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7416,7 +7449,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SeriesResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/SeriesResource.java",
     "groupTitle": "Serie"
   },
   {
@@ -7525,7 +7558,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/TarefaResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/TarefaResource.java",
     "groupTitle": "Tarefa"
   },
   {
@@ -7592,7 +7625,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/TipoConferenciaResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/TipoConferenciaResource.java",
     "groupTitle": "Tipos_Confer_ncia"
   },
   {
@@ -7645,7 +7678,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
     "groupTitle": "Unidade"
   },
   {
@@ -7706,7 +7739,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
     "groupTitle": "Unidade"
   },
   {
@@ -7773,7 +7806,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -7786,30 +7819,32 @@ define({ "api": [
     "description": "<p>Este método atribui o processo a um usuário.</p>",
     "parameter": {
       "fields": {
-        "Parameter": [
+        "Path Parameters": [
           {
-            "group": "Parameter",
+            "group": "Path Parameters",
             "type": "String",
             "optional": false,
             "field": "unidade",
             "description": "<p>Sigla da Unidade cadastrada no SEI</p>"
           },
           {
-            "group": "Parameter",
+            "group": "Path Parameters",
+            "type": "String",
+            "optional": false,
+            "field": "usuario",
+            "description": "<p>Login do usuário a quem deseja atribuir o processo</p>"
+          }
+        ],
+        "Request Body": [
+          {
+            "group": "Request Body",
             "type": "String",
             "optional": false,
             "field": "processo",
             "description": "<p>Numero do processo a ser atribuído</p>"
           },
           {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "usuario",
-            "description": "<p>Login do usuário a quem deseja atribuir o processo</p>"
-          },
-          {
-            "group": "Parameter",
+            "group": "Request Body",
             "type": "String",
             "optional": true,
             "field": "reabrir-processo",
@@ -7848,12 +7883,12 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
     "type": "get",
-    "url": "/usuarios/:usuario",
+    "url": ":unidade/usuarios/:usuario",
     "title": "Buscar usuário",
     "name": "buscarUsuario",
     "group": "Usuario",
@@ -7861,9 +7896,16 @@ define({ "api": [
     "description": "<p>Este método realiza a uma busca pelo login do usuário.</p>",
     "parameter": {
       "fields": {
-        "Parameter": [
+        "Path Parameters": [
           {
-            "group": "Parameter",
+            "group": "Path Parameters",
+            "type": "String",
+            "optional": false,
+            "field": "unidade",
+            "description": "<p>Sigla da Unidade cadastrada no SEI.</p>"
+          },
+          {
+            "group": "Path Parameters",
             "type": "String",
             "optional": false,
             "field": "usuario",
@@ -7875,7 +7917,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "curl -i http://<host>/sei-broker/service/usuarios/andre.guimaraes",
+        "content": "curl -i http://<host>/sei-broker/service/cosap/usuarios/andre.guimaraes",
         "type": "json"
       }
     ],
@@ -7901,7 +7943,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -7968,7 +8010,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -8035,36 +8077,36 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
     "type": "post",
-    "url": "/usuarios/incluir-alterar",
-    "title": "Incluir ou alterar usuário",
+    "url": "/usuarios",
+    "title": "Incluir usuário",
     "name": "incluirUsuario",
     "group": "Usuario",
     "version": "2.0.0",
     "description": "<p>Este método realiza a inclusão de novos usuários ou alterarações nos usuários existentes.</p>",
     "parameter": {
       "fields": {
-        "Parameter": [
+        "Request Body": [
           {
-            "group": "Parameter",
+            "group": "Request Body",
             "type": "String",
             "optional": false,
             "field": "codigo",
             "description": "<p>Código que deseja atribuir ao usuário</p>"
           },
           {
-            "group": "Parameter",
+            "group": "Request Body",
             "type": "String",
             "optional": false,
             "field": "nome",
             "description": "<p>Nome do usuário</p>"
           },
           {
-            "group": "Parameter",
+            "group": "Request Body",
             "type": "String",
             "optional": false,
             "field": "login",
@@ -8076,7 +8118,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "endpoint: http://<host>/sei-broker/service/usuarios/incluir-alterar\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
+        "content": "endpoint: http://<host>/sei-broker/service/usuarios\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
         "type": "json"
       }
     ],
@@ -8102,7 +8144,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -8115,16 +8157,18 @@ define({ "api": [
     "description": "<p>Este método realiza uma consulta aos usuários cadastrados que possuem o perfil &quot;Básico&quot;.</p>",
     "parameter": {
       "fields": {
-        "Parameter": [
+        "Path Parameters": [
           {
-            "group": "Parameter",
+            "group": "Path Parameters",
             "type": "String",
             "optional": false,
             "field": "unidade",
-            "description": "<p>Sigla da Unidade cadastrada no SEI</p>"
-          },
+            "description": "<p>Sigla da Unidade cadastrada no SEI.</p>"
+          }
+        ],
+        "Query Parameters": [
           {
-            "group": "Parameter",
+            "group": "Query Parameters",
             "type": "String",
             "optional": true,
             "field": "usuario",
@@ -8163,7 +8207,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "desenvolvimento_versao_3/sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   }
 ] });

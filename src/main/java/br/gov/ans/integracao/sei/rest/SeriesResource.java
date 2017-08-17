@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
@@ -22,14 +21,12 @@ import org.apache.commons.lang3.StringUtils;
 
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.client.Serie;
-import br.gov.ans.integracao.sei.modelo.InclusaoDocumento;
 import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.modelo.TipoDocumento;
 import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("/")
-@Stateless
 public class SeriesResource {
 
     @Inject
@@ -79,6 +76,10 @@ public class SeriesResource {
 			List<Serie> list = new ArrayList<Serie>(Arrays.asList(series));
 			
 			list.removeIf(serie -> !serie.getNome().toLowerCase().contains(filtro.toLowerCase()));
+			
+			if(list.isEmpty()){
+				throw new NotFoundException(messages.getMessage("erro.series.nao.encontradas"));
+			}
 			
 			return list.toArray(new Serie[list.size()]);
 		}

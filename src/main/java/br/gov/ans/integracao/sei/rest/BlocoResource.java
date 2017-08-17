@@ -6,7 +6,6 @@ import static br.gov.ans.integracao.sei.utils.Util.trueOrFalse;
 
 import java.net.URI;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -34,7 +33,6 @@ import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("")
-@Stateless
 public class BlocoResource {
 	
     @Inject

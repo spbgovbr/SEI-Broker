@@ -4,13 +4,14 @@ import static br.gov.ans.integracao.sei.utils.Util.formatarNumeroProcesso;
 import static br.gov.ans.integracao.sei.utils.Util.getSOuN;
 import static br.gov.ans.integracao.sei.utils.Util.trueOrFalse;
 
+import java.rmi.RemoteException;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -29,7 +30,6 @@ import br.gov.ans.integracao.sip.client.SIPSoapClient;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("/")
-@Stateless
 public class UsuarioResource {
 
 	@Inject
@@ -52,8 +52,9 @@ public class UsuarioResource {
 	 *
 	 * @apiDescription Este método realiza uma consulta aos usuários cadastrados que possuem o perfil "Básico".
 	 *
-	 * @apiParam {String} unidade Sigla da Unidade cadastrada no SEI
-	 * @apiParam {String} [usuario=null] Id do usuário que deseja recuperar as informações
+	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
+	 *	
+	 * @apiParam (Query Parameters) {String} [usuario=null] Id do usuário que deseja recuperar as informações
 	 *
 	 * @apiExample {curl} Exemplo de requisição:
 	 * 	curl -i http://<host>/sei-broker/service/usuarios/COSAP
@@ -70,23 +71,24 @@ public class UsuarioResource {
 	@GET
 	@Path("/{unidade}/usuarios")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public br.gov.ans.integracao.sei.client.Usuario[] listarUsuarios(@PathParam("unidade") String unidade, @QueryParam("usuario") String usuario) throws Exception{
+	public br.gov.ans.integracao.sei.client.Usuario[] listarUsuarios(@PathParam("unidade") String unidade, @QueryParam("usuario") String usuario) throws RemoteException, Exception{
 		return seiNativeService.listarUsuarios(Constantes.SEI_BROKER, Operacao.LISTAR_USUARIOS, unidadeResource.consultarCodigo(unidade), usuario);
 	}
 	
 	
 	/**
-	 * @api {get} /usuarios/:usuario Buscar usuário
+	 * @api {get} :unidade/usuarios/:usuario Buscar usuário
 	 * @apiName buscarUsuario
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 *
 	 * @apiDescription Este método realiza a uma busca pelo login do usuário.
 	 * 
-	 * @apiParam {String} usuario Login do usuário
+	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
+	 * @apiParam (Path Parameters) {String} usuario Login do usuário
 	 * 
 	 * @apiExample Exemplo de requisição:	
-	 *	curl -i http://<host>/sei-broker/service/usuarios/andre.guimaraes
+	 *	curl -i http://<host>/sei-broker/service/cosap/usuarios/andre.guimaraes
 	 *
 	 * @apiSuccess {Usuario} usuario Informações do usuário encontrado.
 	 *
@@ -112,10 +114,11 @@ public class UsuarioResource {
 	 *
 	 * @apiDescription Este método atribui o processo a um usuário.
 	 *
-	 * @apiParam {String} unidade Sigla da Unidade cadastrada no SEI
-	 * @apiParam {String} processo Numero do processo a ser atribuído
-	 * @apiParam {String} usuario Login do usuário a quem deseja atribuir o processo
-	 * @apiParam {String} [reabrir-processo=N] S ou N para reabrir o processo
+	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
+	 * @apiParam (Path Parameters) {String} usuario Login do usuário a quem deseja atribuir o processo
+	 * 
+	 * @apiParam (Request Body) {String} processo Numero do processo a ser atribuído
+	 * @apiParam (Request Body) {String} [reabrir-processo=N] S ou N para reabrir o processo
 	 *
  	 * @apiExample Exemplo de requisição:	
 	 *	endpoint: [POST] http://<host>/sei-broker/service/COSAP/usuarios/andre.guimaraes/processos
@@ -148,19 +151,19 @@ public class UsuarioResource {
 	}
 	
 	/**
-	 * @api {post} /usuarios/incluir-alterar Incluir ou alterar usuário
+	 * @api {post} /usuarios Incluir usuário
 	 * @apiName incluirUsuario
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 *
 	 * @apiDescription Este método realiza a inclusão de novos usuários ou alterarações nos usuários existentes.
 	 *
-	 * @apiParam {String} codigo Código que deseja atribuir ao usuário
-	 * @apiParam {String} nome Nome do usuário
-	 * @apiParam {String} login Login que será atribuído ao usuário
+	 * @apiParam (Request Body) {String} codigo Código que deseja atribuir ao usuário
+	 * @apiParam (Request Body) {String} nome Nome do usuário
+	 * @apiParam (Request Body) {String} login Login que será atribuído ao usuário
 	 *
 	 * @apiExample Exemplo de requisição:	
-	 *	endpoint: http://<host>/sei-broker/service/usuarios/incluir-alterar
+	 *	endpoint: http://<host>/sei-broker/service/usuarios
 	 *
 	 *	body:
 	 *	{
@@ -179,7 +182,7 @@ public class UsuarioResource {
 	 *	}
 	 */
 	@POST	
-	@Path("/usuarios/incluir-alterar")
+	@Path("/usuarios")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces(MediaType.APPLICATION_JSON)
 	public Boolean incluirUsuario(Usuario usuario) throws Exception{
@@ -311,7 +314,7 @@ public class UsuarioResource {
 		return sipClient.replicarUsuario(acao.getCodigoAcao(), usuario.getCodigo(), Constantes.CODIGO_ORGAO_ANS, usuario.getLogin(), usuario.getNome());		
 	}
 		
-	public br.gov.ans.integracao.sei.client.Usuario getUsuario(String loginUsuario, String unidade) throws Exception{
+	public br.gov.ans.integracao.sei.client.Usuario getUsuario(String loginUsuario, String unidade) throws NotFoundException,Exception{
 		br.gov.ans.integracao.sei.client.Usuario usuario = new br.gov.ans.integracao.sei.client.Usuario();
 		usuario.setSigla(loginUsuario);
 		
@@ -320,7 +323,7 @@ public class UsuarioResource {
 		int index = usuarios.indexOf(usuario);
 		
 		if(index < 0){
-			throw new Exception(messages.getMessage("erro.usuario.nao.encontrado", loginUsuario));
+			throw new NotFoundException(messages.getMessage("erro.usuario.nao.encontrado", loginUsuario));
 		}
 		
 		return usuarios.get(index);

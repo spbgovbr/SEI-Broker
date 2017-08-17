@@ -1,5 +1,8 @@
 package br.gov.ans.exceptions;
 
+import javax.ejb.ApplicationException;
+
+@ApplicationException
 public class BusinessException extends Exception{
 
 	private static final long serialVersionUID = 1L;

@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import javax.ws.rs.Consumes;
@@ -68,7 +67,6 @@ import br.gov.ans.utils.MessageUtils;
 
 
 @Path("")
-@Stateless
 public class ProcessoResource {
 	
     @Inject
@@ -315,22 +313,24 @@ public class ProcessoResource {
 	 * @apiName enviarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
+	 * 
+	 * @apiPermission RO_SEI_BROKER
 	 *
 	 * @apiDescription Envia processos a outras unidades.
 	 * 
-	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
+	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI. Representa a unidade de localização atual do processo.
 	 * 
 	 * @apiParam (Query Parameters) {String = "S (sim), N (não)"} [reabir=N] Reabrir automaticamente caso esteja concluído na unidade
 	 * @apiParam (Query Parameters) {String = "S (sim), N (não)"} [auto-formatacao=S] O broker utilizará a mascara padrão para formatar o número do processo
 	 * 
-	 * @apiParam (Request Body) {String} processo Numero do processo a ser enviado 
-	 * @apiParam (Request Body) {String[]} unidadesDestino Códigos das unidades para onde o bloco será enviado
-	 * @apiParam (Request Body) {Boolean} manterAbertoOrigem=false Informa se o processo deve continuar aberto na unidade de origem 
-	 * @apiParam (Request Body) {Boolean} removerAnotacoes=false Informa se as anotações do processo devem ser removidas
-	 * @apiParam (Request Body) {Boolean} enviarEmailNotificacao=false Informa se deve ser enviado um e-mail de notificação
-	 * @apiParam (Request Body) {Date} dataRetornoProgramado=null Data para retorno programado do processo a unidade (padrão ISO-8601)
-	 * @apiParam (Request Body) {Integer} qtdDiasAteRetorno=null Quantidade de dias até o retorno do processo
-	 * @apiParam (Request Body) {Boolean} somenteDiasUteis=false Informa se só serão contabilizados dias úteis
+	 * @apiParam (Request Body) {String} processo Numero do processo a ser enviado. Em caso de processo apensado, o processo a ser enviado deve ser o processo PAI. Não é possível tramitar através do processo FILHO.
+	 * @apiParam (Request Body) {String[]} unidadesDestino Lista com os identificadores das unidades de destino do processo, código ou nome da unidade.
+	 * @apiParam (Request Body) {Boolean} manterAbertoOrigem=false Informa se o processo deve continuar aberto na unidade de origem .
+	 * @apiParam (Request Body) {Boolean} removerAnotacoes=false Informa se as anotações do processo devem ser removidas.
+	 * @apiParam (Request Body) {Boolean} enviarEmailNotificacao=false Informa se deve ser enviado um e-mail de notificação.
+	 * @apiParam (Request Body) {Date} dataRetornoProgramado=null Data para retorno programado do processo a unidade (padrão ISO-8601).
+	 * @apiParam (Request Body) {Integer} qtdDiasAteRetorno=null Quantidade de dias até o retorno do processo.
+	 * @apiParam (Request Body) {Boolean} somenteDiasUteis=false Informa se só serão contabilizados dias úteis.
 	 * 
 	 * @apiExample Exemplo de requisição:	
 	 *	endpoint: [POST] https://<host>/sei-broker/service/COSAP/processos/enviados
@@ -369,8 +369,9 @@ public class ProcessoResource {
 		}
 		
 		String resultado = seiNativeService.enviarProcesso(Constantes.SEI_BROKER, Operacao.ENVIAR_PROCESSO, unidadeResource.consultarCodigo(unidade), processo,
-					dadosEnvio.getUnidadesDestino(), getSOuN(dadosEnvio.getManterAbertoOrigem()), getSOuN(dadosEnvio.getRemoverAnotacoes()), getSOuN(dadosEnvio.getEnviarEmailNotificacao()), 
-					formatarData(dadosEnvio.getDataRetornoProgramado()), (dadosEnvio.getQtdDiasAteRetorno() != null ? dadosEnvio.getQtdDiasAteRetorno().toString() : null), getSOuN(dadosEnvio.getSomenteDiasUteis()),
+					unidadeResource.buscarCodigoUnidades(dadosEnvio.getUnidadesDestino()), getSOuN(dadosEnvio.getManterAbertoOrigem()), getSOuN(dadosEnvio.getRemoverAnotacoes()), 
+					getSOuN(dadosEnvio.getEnviarEmailNotificacao()), formatarData(dadosEnvio.getDataRetornoProgramado()), 
+					(dadosEnvio.getQtdDiasAteRetorno() != null ? dadosEnvio.getQtdDiasAteRetorno().toString() : null), getSOuN(dadosEnvio.getSomenteDiasUteis()),
 					getSOuN(reabrir));
 		
 		return trueOrFalse(resultado) + "";
