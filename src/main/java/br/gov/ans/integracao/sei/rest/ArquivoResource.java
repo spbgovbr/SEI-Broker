@@ -45,7 +45,9 @@ public class ArquivoResource {
 	 * @apiName adicionarArquivo
 	 * @apiGroup Arquivo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription O serviço criará um arquivo no repositório de documentos e retornará seu identificador. O envio do arquivo poderá ser particionado com chamadas 
 	 * posteriores ao serviço de Adicionar Conteúdo Arquivo. Após todo o conteúdo ser transferido o arquivo será ativado e poderá ser associado com um documento externo 
 	 * no serviço de inclusão de documento. Serão excluídos em 24 horas os arquivos não completados e não associados a um documento.
@@ -105,7 +107,9 @@ public class ArquivoResource {
 	 * @apiName adicionarConteudoArquivo
 	 * @apiGroup Arquivo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Adiciona conteúdo a um arquivo criado, o sistema identificará automaticamente quando o conteúdo foi completado validando o tamanho em bytes
 	 * e o hash do conteúdo. Quando as condições forem satisfeitas o arquivo será ativado e poderá ser utilizado nas chamadas de inclusão de documento.
 	 *

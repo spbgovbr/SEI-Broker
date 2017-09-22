@@ -27,7 +27,9 @@ public class TipoConferenciaResource {
 	 * @apiName listarTiposConferencia
 	 * @apiGroup Tipos Conferência
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Lista os tipos de conferência.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI

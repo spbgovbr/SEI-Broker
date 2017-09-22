@@ -39,7 +39,9 @@ public class UnidadeResource {
 	 * @apiName listarUnidades
 	 * @apiGroup Unidade
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Retorna as Unidades cadastradas no SEI.
 	 *
 	 * @apiExample {curl} Exemplo de requisição:
@@ -84,7 +86,9 @@ public class UnidadeResource {
 	 * @apiName consultarCodigo
 	 * @apiGroup Unidade
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Retorna o código da Unidade pesquisada.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade que deseja consultar o código

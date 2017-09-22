@@ -29,7 +29,9 @@ public class CargoResource {
 	 * @apiName listarCargos
 	 * @apiGroup Cargo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Lista os cargos.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI

@@ -42,7 +42,9 @@ public class MarcadorResource {
 	 * @apiName listarMarcadores
 	 * @apiGroup Marcador
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Lista os marcadores de uma unidade.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -75,7 +77,9 @@ public class MarcadorResource {
 	 * @apiName marcarProcesso
 	 * @apiGroup Marcador
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Adiciona um processo ao marcador.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.

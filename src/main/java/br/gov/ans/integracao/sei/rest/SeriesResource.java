@@ -43,7 +43,9 @@ public class SeriesResource {
 	 * @apiName listarSeries
 	 * @apiGroup Serie
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Este método realiza uma consulta às séries.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -92,7 +94,9 @@ public class SeriesResource {
 	 * @apiName listarTiposDocumentos
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Lista os tipos de documentos do SEI.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.

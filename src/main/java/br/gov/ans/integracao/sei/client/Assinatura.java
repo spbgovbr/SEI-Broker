@@ -17,16 +17,32 @@ public class Assinatura  implements java.io.Serializable {
 
     private java.lang.String dataHora;
 
+    private java.lang.String idUsuario;
+
+    private java.lang.String idOrigem;
+
+    private java.lang.String idOrgao;
+
+    private java.lang.String sigla;
+
     public Assinatura() {
     }
 
     public Assinatura(
            java.lang.String nome,
            java.lang.String cargoFuncao,
-           java.lang.String dataHora) {
+           java.lang.String dataHora,
+           java.lang.String idUsuario,
+           java.lang.String idOrigem,
+           java.lang.String idOrgao,
+           java.lang.String sigla) {
            this.nome = nome;
            this.cargoFuncao = cargoFuncao;
            this.dataHora = dataHora;
+           this.idUsuario = idUsuario;
+           this.idOrigem = idOrigem;
+           this.idOrgao = idOrgao;
+           this.sigla = sigla;
     }
 
 
@@ -89,6 +105,30 @@ public class Assinatura  implements java.io.Serializable {
         this.dataHora = dataHora;
     }
 
+    public java.lang.String getIdUsuario() {
+        return idUsuario;
+    }
+    public void setIdUsuario(java.lang.String idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    public java.lang.String getIdOrigem() {
+        return idOrigem;
+    }
+    public void setIdOrigem(java.lang.String idOrigem) {
+        this.idOrigem = idOrigem;
+    }
+    public java.lang.String getIdOrgao() {
+        return idOrgao;
+    }
+    public void setIdOrgao(java.lang.String idOrgao) {
+        this.idOrgao = idOrgao;
+    }
+    public java.lang.String getSigla() {
+        return sigla;
+    }
+    public void setSigla(java.lang.String sigla) {
+        this.sigla = sigla;
+    }
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof Assinatura)) return false;
@@ -109,7 +149,19 @@ public class Assinatura  implements java.io.Serializable {
               this.cargoFuncao.equals(other.getCargoFuncao()))) &&
             ((this.dataHora==null && other.getDataHora()==null) || 
              (this.dataHora!=null &&
-              this.dataHora.equals(other.getDataHora())));
+              this.dataHora.equals(other.getDataHora()))) &&
+            ((this.idUsuario==null && other.getIdUsuario()==null) || 
+             (this.idUsuario!=null &&
+              this.idUsuario.equals(other.getIdUsuario()))) &&
+            ((this.idOrigem==null && other.getIdOrigem()==null) || 
+             (this.idOrigem!=null &&
+              this.idOrigem.equals(other.getIdOrigem()))) &&
+            ((this.idOrgao==null && other.getIdOrgao()==null) || 
+             (this.idOrgao!=null &&
+              this.idOrgao.equals(other.getIdOrgao()))) &&
+            ((this.sigla==null && other.getSigla()==null) || 
+             (this.sigla!=null &&
+              this.sigla.equals(other.getSigla())));
         __equalsCalc = null;
         return _equals;
     }
@@ -129,6 +181,18 @@ public class Assinatura  implements java.io.Serializable {
         }
         if (getDataHora() != null) {
             _hashCode += getDataHora().hashCode();
+        }
+        if (getIdUsuario() != null) {
+            _hashCode += getIdUsuario().hashCode();
+        }
+        if (getIdOrigem() != null) {
+            _hashCode += getIdOrigem().hashCode();
+        }
+        if (getIdOrgao() != null) {
+            _hashCode += getIdOrgao().hashCode();
+        }
+        if (getSigla() != null) {
+            _hashCode += getSigla().hashCode();
         }
         __hashCodeCalc = false;
         return _hashCode;
@@ -155,6 +219,30 @@ public class Assinatura  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("dataHora");
         elemField.setXmlName(new javax.xml.namespace.QName("", "DataHora"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("idUsuario");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "IdUsuario"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("idOrigem");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "IdOrigem"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("idOrgao");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "IdOrgao"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("sigla");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "Sigla"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

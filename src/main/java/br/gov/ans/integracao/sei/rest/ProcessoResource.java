@@ -99,6 +99,8 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 *
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Este método realiza uma consulta a processos no SEI e no SIPAR.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -270,7 +272,9 @@ public class ProcessoResource {
 	 * @apiName concluirProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Conclui o processo informado.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -383,7 +387,9 @@ public class ProcessoResource {
 	 * @apiName reabrirProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Reabre um processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -421,7 +427,9 @@ public class ProcessoResource {
 	 * @apiName listarTiposProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta os tipos de processo.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -452,7 +460,9 @@ public class ProcessoResource {
 	 * @apiName abrirProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Abre um processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -556,7 +566,9 @@ public class ProcessoResource {
 	 * @apiName consultarProcessosInteressado
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Retorna os processos de um determinado interessado.
 	 * 
 	 * @apiParam (Path Parameters) {String} interessado Identificador do interessado
@@ -607,7 +619,9 @@ public class ProcessoResource {
 	 * @apiName listarAndamentos
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Lista as andamentos do processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -665,7 +679,9 @@ public class ProcessoResource {
 	 * @apiName lancarAndamento
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Lança um andamento ao processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -726,7 +742,9 @@ public class ProcessoResource {
 	 * @apiName anexarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Anexar um processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -776,7 +794,9 @@ public class ProcessoResource {
 	 * @apiName desanexarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Remove um processo anexado.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -823,7 +843,9 @@ public class ProcessoResource {
 	 * @apiName bloquearProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Bloquear um processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -873,7 +895,9 @@ public class ProcessoResource {
 	 * @apiName desbloquearProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Desbloquear um processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -911,7 +935,9 @@ public class ProcessoResource {
 	 * @apiName relacionarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Relacionar processos.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -961,7 +987,9 @@ public class ProcessoResource {
 	 * @apiName desrelacionarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Desrelacionar processos.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -1002,7 +1030,9 @@ public class ProcessoResource {
 	 * @apiName sobrestarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Sobrestar processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -1055,7 +1085,9 @@ public class ProcessoResource {
 	 * @apiName removerSobrestamentoProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Remover sobrestamento de processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -1094,7 +1126,9 @@ public class ProcessoResource {
 	 * @apiName listarDocumentosPorProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Retorna os documentos de um determinado processo.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.

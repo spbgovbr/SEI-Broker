@@ -70,7 +70,9 @@ public class ContatoResource {
 	 * @apiName listarTipos
 	 * @apiGroup Contato
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta os tipos de contato.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -99,7 +101,9 @@ public class ContatoResource {
 	 * @apiName listarContatos
 	 * @apiGroup Contato
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta os contatos de determinado tipo, o retorno pode ser PessoaFisica ou PessoaJuridica é recomendado utilizar a ans-commons-sei.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -200,7 +204,9 @@ public class ContatoResource {
 	 * @apiName getContato
 	 * @apiGroup Contato
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta contato pela sigla(login)
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -293,7 +299,9 @@ public class ContatoResource {
 	 * @apiName criarContato
 	 * @apiGroup Contato
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Incluir contato
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -388,7 +396,9 @@ public class ContatoResource {
 	 * @apiName atualizarContato
 	 * @apiGroup Contato
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Atualizar contato
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI

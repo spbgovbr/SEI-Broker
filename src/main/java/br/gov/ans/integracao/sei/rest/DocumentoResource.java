@@ -112,7 +112,9 @@ public class DocumentoResource {
 	 * @apiName consultarDocumento
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta documento cadastrado no SEI.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -207,7 +209,9 @@ public class DocumentoResource {
 	 * @apiName incluirDocumento
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Inclui um documento no SEI, podem ser incluídos documentos internos e externos, para documentos externo o tamanho máximo é 20MB.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -234,7 +238,7 @@ public class DocumentoResource {
 	 * @apiParam (Request Body) {String} [observacao] Texto da observação da unidade, passar null se não existir
 	 * @apiParam (Request Body) {String{200}} [nomeArquivo] Nome do arquivo, obrigatório para documentos externos. Passar null para documentos gerados.
 	 * @apiParam (Request Body) {String} conteudo Conteúdo do arquivo codificado em Base64. Para documentos gerados será o conteúdo da seção principal do editor HTML e para documentos externos será o conteúdo do anexo. Para documentos com template cadastrado, enviar Base64 do JSon referente ao conteúdo a ser preenchido no template.
-	 * @apiParam (Request Body) {String = "0 (público)","1 (restrito)", "2 (sigiloso)", "null (herda do processo)"} [nivelAcesso] Nível de acesso do documento
+	 * @apiParam (Request Body) {String = "0 (público)","1 (restrito)", "2 (sigiloso)", "null (herda do tipo de processo)"} [nivelAcesso] Nível de acesso do documento
 	 * @apiParam (Request Body) {String} [idHipoteseLegal] Identificador da hipótese legal associada
 	 * @apiParam (Request Body) {String} [idArquivo] Identificador do arquivo enviado pelo serviço de Incluir Arquivo
 	 * @apiParam (Request Body) {String = "S (Sim)","N (Não)"} [sinBloqueado] Bloquear o documento, não permite excluí-lo ou alterar seu conteúdo
@@ -325,7 +329,9 @@ public class DocumentoResource {
 	 * @apiName cancelarDocumento
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Cancela um documento.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -374,7 +380,9 @@ public class DocumentoResource {
 	 * @apiName consultarDocumentosIncluidosBroker
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta documentos inclusos pelo SEI-Broker.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -444,7 +452,9 @@ public class DocumentoResource {
 	 * @apiName exportarDocumento
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Exporta documentos do SEI em PDF.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -497,7 +507,9 @@ public class DocumentoResource {
 	 * @apiName consultarDocumentoInteressado
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Retorna os documentos de um determinado interessado.
 	 * 
 	 * @apiParam (Path Parameters) {String} interessado Identificador do interessado

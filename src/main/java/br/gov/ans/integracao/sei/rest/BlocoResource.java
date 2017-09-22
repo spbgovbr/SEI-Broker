@@ -52,7 +52,9 @@ public class BlocoResource {
 	 * @apiName consultarBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Recupera as informações do bloco informado.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -105,7 +107,9 @@ public class BlocoResource {
 	 * @apiName disponibilizarBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Disponibiliza um determinado bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -142,7 +146,9 @@ public class BlocoResource {
 	 * @apiName cancelarDisponibilizacaoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Cancela a disponibilização de blocos.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -175,7 +181,9 @@ public class BlocoResource {
 	 * @apiName excluirBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Exclui um bloco criado.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -207,7 +215,9 @@ public class BlocoResource {
 	 * @apiName gerarBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Gera um novo bloco.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI 
@@ -258,7 +268,9 @@ public class BlocoResource {
 	 * @apiName incluirDocumentoNoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Inclui um documento no bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -298,7 +310,9 @@ public class BlocoResource {
 	 * @apiName incluirDocumentoComAnotacaoNoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Inclui um documento no bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -340,7 +354,9 @@ public class BlocoResource {
 	 * @apiName retirarDocumentoDoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Remove o documento do bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI	
@@ -373,7 +389,9 @@ public class BlocoResource {
 	 * @apiName incluirProcessoNoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Inclui um processo no bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -416,7 +434,9 @@ public class BlocoResource {
 	 * @apiName incluirProcessoComAnotacaoNoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Inclui um processo no bloco, junto com uma anotação.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -465,7 +485,9 @@ public class BlocoResource {
 	 * @apiName retirarProcessoDoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Este método remove o processo do bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI

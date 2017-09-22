@@ -27,7 +27,9 @@ public class ExtensoesResource {
 	 * @apiName listarExtensoesPermitidas
 	 * @apiGroup Extensao
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Este método realiza uma busca pelas extensões de arquivos permitidas.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.

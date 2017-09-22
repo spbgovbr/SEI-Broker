@@ -45,7 +45,9 @@ public class InfraResource {
 	 * @apiName getPaises
 	 * @apiGroup Endereco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta países cadastrados.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -84,7 +86,9 @@ public class InfraResource {
 	 * @apiName getEstados
 	 * @apiGroup Endereco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta estados cadastrados.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -133,7 +137,9 @@ public class InfraResource {
 	 * @apiName getEstado
 	 * @apiGroup Endereco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta o estado pela sigla.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -191,7 +197,9 @@ public class InfraResource {
 	 * @apiName getCidades
 	 * @apiGroup Endereco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta as cidades de um determinado estado.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -240,7 +248,9 @@ public class InfraResource {
 	 * @apiName getCidade
 	 * @apiGroup Endereco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta a cidade pelo código do IBGE.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI

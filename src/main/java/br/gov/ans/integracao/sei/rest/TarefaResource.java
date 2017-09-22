@@ -29,7 +29,9 @@ public class TarefaResource {
 	 * @apiName listarTarefas
 	 * @apiGroup Tarefa
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Lista os tipos de tarefas existentes no SEI. 
 	 *
 	 * @apiParam (Query Parameters) {String} [nome] Filtro para o nome da tarefa.

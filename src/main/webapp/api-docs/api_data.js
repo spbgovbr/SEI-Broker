@@ -6,6 +6,11 @@ define({ "api": [
     "name": "adicionarArquivo",
     "group": "Arquivo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>O serviço criará um arquivo no repositório de documentos e retornará seu identificador. O envio do arquivo poderá ser particionado com chamadas posteriores ao serviço de Adicionar Conteúdo Arquivo. Após todo o conteúdo ser transferido o arquivo será ativado e poderá ser associado com um documento externo no serviço de inclusão de documento. Serão excluídos em 24 horas os arquivos não completados e não associados a um documento.</p>",
     "parameter": {
       "fields": {
@@ -119,6 +124,11 @@ define({ "api": [
     "name": "adicionarConteudoArquivo",
     "group": "Arquivo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Adiciona conteúdo a um arquivo criado, o sistema identificará automaticamente quando o conteúdo foi completado validando o tamanho em bytes e o hash do conteúdo. Quando as condições forem satisfeitas o arquivo será ativado e poderá ser utilizado nas chamadas de inclusão de documento.</p>",
     "parameter": {
       "fields": {
@@ -225,6 +235,11 @@ define({ "api": [
     "name": "cancelarDisponibilizacaoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Cancela a disponibilização de blocos.</p>",
     "parameter": {
       "fields": {
@@ -285,6 +300,11 @@ define({ "api": [
     "name": "consultarBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Recupera as informações do bloco informado.</p>",
     "parameter": {
       "fields": {
@@ -488,6 +508,11 @@ define({ "api": [
     "name": "disponibilizarBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Disponibiliza um determinado bloco.</p>",
     "parameter": {
       "fields": {
@@ -550,6 +575,11 @@ define({ "api": [
     "name": "excluirBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Exclui um bloco criado.</p>",
     "parameter": {
       "fields": {
@@ -610,6 +640,11 @@ define({ "api": [
     "name": "gerarBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Gera um novo bloco.</p>",
     "parameter": {
       "fields": {
@@ -722,6 +757,11 @@ define({ "api": [
     "name": "incluirDocumentoComAnotacaoNoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Inclui um documento no bloco.</p>",
     "parameter": {
       "fields": {
@@ -799,6 +839,11 @@ define({ "api": [
     "name": "incluirDocumentoNoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Inclui um documento no bloco.</p>",
     "parameter": {
       "fields": {
@@ -868,6 +913,11 @@ define({ "api": [
     "name": "incluirProcessoComAnotacaoNoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Inclui um processo no bloco, junto com uma anotação.</p>",
     "parameter": {
       "fields": {
@@ -958,6 +1008,11 @@ define({ "api": [
     "name": "incluirProcessoNoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Inclui um processo no bloco.</p>",
     "parameter": {
       "fields": {
@@ -1040,6 +1095,11 @@ define({ "api": [
     "name": "retirarDocumentoDoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Remove o documento do bloco.</p>",
     "parameter": {
       "fields": {
@@ -1107,6 +1167,11 @@ define({ "api": [
     "name": "retirarProcessoDoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método remove o processo do bloco.</p>",
     "parameter": {
       "fields": {
@@ -1243,6 +1308,11 @@ define({ "api": [
     "name": "listarCargos",
     "group": "Cargo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista os cargos.</p>",
     "parameter": {
       "fields": {
@@ -1333,6 +1403,11 @@ define({ "api": [
     "name": "atualizarContato",
     "group": "Contato",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Atualizar contato</p>",
     "parameter": {
       "fields": {
@@ -1620,6 +1695,11 @@ define({ "api": [
     "name": "criarContato",
     "group": "Contato",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Incluir contato</p>",
     "parameter": {
       "fields": {
@@ -1904,6 +1984,11 @@ define({ "api": [
     "name": "getContato",
     "group": "Contato",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta contato pela sigla(login)</p>",
     "parameter": {
       "fields": {
@@ -2193,6 +2278,11 @@ define({ "api": [
     "name": "listarContatos",
     "group": "Contato",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta os contatos de determinado tipo, o retorno pode ser PessoaFisica ou PessoaJuridica é recomendado utilizar a ans-commons-sei.</p>",
     "parameter": {
       "fields": {
@@ -2535,6 +2625,11 @@ define({ "api": [
     "name": "listarTipos",
     "group": "Contato",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta os tipos de contato.</p>",
     "parameter": {
       "fields": {
@@ -2588,6 +2683,11 @@ define({ "api": [
     "name": "cancelarDocumento",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Cancela um documento.</p>",
     "parameter": {
       "fields": {
@@ -2657,6 +2757,11 @@ define({ "api": [
     "name": "consultarDocumento",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta documento cadastrado no SEI.</p>",
     "parameter": {
       "fields": {
@@ -2994,6 +3099,11 @@ define({ "api": [
     "name": "consultarDocumentoInteressado",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Retorna os documentos de um determinado interessado.</p>",
     "parameter": {
       "fields": {
@@ -3141,6 +3251,11 @@ define({ "api": [
     "name": "consultarDocumentosIncluidosBroker",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta documentos inclusos pelo SEI-Broker.</p>",
     "parameter": {
       "fields": {
@@ -3312,6 +3427,11 @@ define({ "api": [
     "name": "exportarDocumento",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Exporta documentos do SEI em PDF.</p>",
     "parameter": {
       "fields": {
@@ -3372,6 +3492,11 @@ define({ "api": [
     "name": "incluirDocumento",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Inclui um documento no SEI, podem ser incluídos documentos internos e externos, para documentos externo o tamanho máximo é 20MB.</p>",
     "parameter": {
       "fields": {
@@ -3671,6 +3796,11 @@ define({ "api": [
     "name": "listarTiposDocumentos",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista os tipos de documentos do SEI.</p>",
     "parameter": {
       "fields": {
@@ -3754,6 +3884,11 @@ define({ "api": [
     "name": "getCidade",
     "group": "Endereco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta a cidade pelo código do IBGE.</p>",
     "parameter": {
       "fields": {
@@ -3863,6 +3998,11 @@ define({ "api": [
     "name": "getCidades",
     "group": "Endereco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta as cidades de um determinado estado.</p>",
     "parameter": {
       "fields": {
@@ -3981,6 +4121,11 @@ define({ "api": [
     "name": "getEstado",
     "group": "Endereco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta o estado pela sigla.</p>",
     "parameter": {
       "fields": {
@@ -4093,6 +4238,11 @@ define({ "api": [
     "name": "getEstados",
     "group": "Endereco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta estados cadastrados.</p>",
     "parameter": {
       "fields": {
@@ -4195,6 +4345,11 @@ define({ "api": [
     "name": "getPaises",
     "group": "Endereco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta países cadastrados.</p>",
     "parameter": {
       "fields": {
@@ -4276,6 +4431,11 @@ define({ "api": [
     "name": "listarExtensoesPermitidas",
     "group": "Extensao",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza uma busca pelas extensões de arquivos permitidas.</p>",
     "parameter": {
       "fields": {
@@ -4360,6 +4520,11 @@ define({ "api": [
     "name": "listarHipoteses",
     "group": "Hipotese_Legal",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista as hipóteses legais.</p>",
     "parameter": {
       "fields": {
@@ -4645,6 +4810,11 @@ define({ "api": [
     "name": "listarMarcadores",
     "group": "Marcador",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista os marcadores de uma unidade.</p>",
     "parameter": {
       "fields": {
@@ -4726,6 +4896,11 @@ define({ "api": [
     "name": "marcarProcesso",
     "group": "Marcador",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Adiciona um processo ao marcador.</p>",
     "parameter": {
       "fields": {
@@ -4805,6 +4980,11 @@ define({ "api": [
     "name": "abrirProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Abre um processo.</p>",
     "parameter": {
       "fields": {
@@ -5115,6 +5295,11 @@ define({ "api": [
     "name": "anexarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Anexar um processo.</p>",
     "parameter": {
       "fields": {
@@ -5187,6 +5372,11 @@ define({ "api": [
     "name": "bloquearProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Bloquear um processo.</p>",
     "parameter": {
       "fields": {
@@ -5252,6 +5442,11 @@ define({ "api": [
     "name": "concluirProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Conclui o processo informado.</p>",
     "parameter": {
       "fields": {
@@ -5327,6 +5522,11 @@ define({ "api": [
     "name": "consultarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza uma consulta a processos no SEI e no SIPAR.</p>",
     "parameter": {
       "fields": {
@@ -6045,6 +6245,11 @@ define({ "api": [
     "name": "consultarProcessosInteressado",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Retorna os processos de um determinado interessado.</p>",
     "parameter": {
       "fields": {
@@ -6174,6 +6379,11 @@ define({ "api": [
     "name": "desanexarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Remove um processo anexado.</p>",
     "parameter": {
       "fields": {
@@ -6246,6 +6456,11 @@ define({ "api": [
     "name": "desbloquearProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Desbloquear um processo.</p>",
     "parameter": {
       "fields": {
@@ -6302,6 +6517,11 @@ define({ "api": [
     "name": "desrelacionarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Desrelacionar processos.</p>",
     "parameter": {
       "fields": {
@@ -6511,6 +6731,11 @@ define({ "api": [
     "name": "lancarAndamento",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lança um andamento ao processo.</p>",
     "parameter": {
       "fields": {
@@ -6713,6 +6938,11 @@ define({ "api": [
     "name": "listarAndamentos",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista as andamentos do processo.</p>",
     "parameter": {
       "fields": {
@@ -6920,6 +7150,11 @@ define({ "api": [
     "name": "listarDocumentosPorProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Retorna os documentos de um determinado processo.</p>",
     "parameter": {
       "fields": {
@@ -7026,6 +7261,11 @@ define({ "api": [
     "name": "listarTiposProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta os tipos de processo.</p>",
     "parameter": {
       "fields": {
@@ -7088,6 +7328,11 @@ define({ "api": [
     "name": "reabrirProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Reabre um processo.</p>",
     "parameter": {
       "fields": {
@@ -7161,6 +7406,11 @@ define({ "api": [
     "name": "relacionarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Relacionar processos.</p>",
     "parameter": {
       "fields": {
@@ -7233,6 +7483,11 @@ define({ "api": [
     "name": "removerSobrestamentoProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Remover sobrestamento de processo.</p>",
     "parameter": {
       "fields": {
@@ -7289,6 +7544,11 @@ define({ "api": [
     "name": "sobrestarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Sobrestar processo.</p>",
     "parameter": {
       "fields": {
@@ -7368,6 +7628,11 @@ define({ "api": [
     "name": "listarSeries",
     "group": "Serie",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza uma consulta às séries.</p>",
     "parameter": {
       "fields": {
@@ -7459,6 +7724,11 @@ define({ "api": [
     "name": "listarTarefas",
     "group": "Tarefa",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista os tipos de tarefas existentes no SEI.</p>",
     "parameter": {
       "fields": {
@@ -7568,6 +7838,11 @@ define({ "api": [
     "name": "listarTiposConferencia",
     "group": "Tipos_Confer_ncia",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista os tipos de conferência.</p>",
     "parameter": {
       "fields": {
@@ -7635,6 +7910,11 @@ define({ "api": [
     "name": "consultarCodigo",
     "group": "Unidade",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Retorna o código da Unidade pesquisada.</p>",
     "parameter": {
       "fields": {
@@ -7688,6 +7968,11 @@ define({ "api": [
     "name": "listarUnidades",
     "group": "Unidade",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Retorna as Unidades cadastradas no SEI.</p>",
     "examples": [
       {
@@ -7743,12 +8028,17 @@ define({ "api": [
     "groupTitle": "Unidade"
   },
   {
-    "type": "put",
-    "url": "/usuarios/ativar",
+    "type": "post",
+    "url": "/usuarios/ativos",
     "title": "Ativar usuário",
     "name": "ativarUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método reativa usuários.</p>",
     "parameter": {
       "fields": {
@@ -7780,7 +8070,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "endpoint: http://<host>/sei-broker/service/usuarios/ativar\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
+        "content": "endpoint: http://<host>/sei-broker/service/usuarios/ativos\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
         "type": "json"
       }
     ],
@@ -7816,6 +8106,11 @@ define({ "api": [
     "name": "atribuirProcesso",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método atribui o processo a um usuário.</p>",
     "parameter": {
       "fields": {
@@ -7893,6 +8188,11 @@ define({ "api": [
     "name": "buscarUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza a uma busca pelo login do usuário.</p>",
     "parameter": {
       "fields": {
@@ -7947,12 +8247,17 @@ define({ "api": [
     "groupTitle": "Usuario"
   },
   {
-    "type": "put",
-    "url": "/usuarios/desativar",
+    "type": "delete",
+    "url": "/usuarios/ativos",
     "title": "Desativar usuário",
     "name": "desativarUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método desativa usuários.</p>",
     "parameter": {
       "fields": {
@@ -7984,7 +8289,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "endpoint: http://<host>/sei-broker/service/usuarios/desativar\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
+        "content": "endpoint: [DELETE] http://<host>/sei-broker/service/usuarios/ativos/andre.guimaraes\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
         "type": "json"
       }
     ],
@@ -8014,12 +8319,17 @@ define({ "api": [
     "groupTitle": "Usuario"
   },
   {
-    "type": "post",
-    "url": "/usuarios/excluir",
+    "type": "delete",
+    "url": "/usuarios/:login",
     "title": "Excluir usuário",
     "name": "excluirUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método realiza a exclusão de usuários.</p>",
     "parameter": {
       "fields": {
@@ -8051,7 +8361,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "endpoint: http://<host>/sei-broker/service/usuarios/excluir\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
+        "content": "endpoint: [DELETE] http://<host>/sei-broker/service/usuarios/andre.guimaraes\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
         "type": "json"
       }
     ],
@@ -8087,6 +8397,11 @@ define({ "api": [
     "name": "incluirUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método realiza a inclusão de novos usuários ou alterarações nos usuários existentes.</p>",
     "parameter": {
       "fields": {
@@ -8154,6 +8469,11 @@ define({ "api": [
     "name": "listarUsuarios",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza uma consulta aos usuários cadastrados que possuem o perfil &quot;Básico&quot;.</p>",
     "parameter": {
       "fields": {
