@@ -1134,24 +1134,33 @@ public class ProcessoResource {
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
 	 * @apiParam (Path Parameters) {String} processo Número do processo.
 	 * 
+	 * @apiParam (Query Parameters) {String} [tipo=null] Identificador do tipo do documento, caso seja necessário filtrar pelo tipo
+	 * @apiParam (Query Parameters) {String = "G (gerado/interno), R (recebido/externo)"} [origem=null] Filtra os documentos por gerados ou recebidos
+	 * @apiParam (Query Parameters) {boolean} [somenteAssinados=false] Exibir somente documentos assinados
 	 * 
 	 * @apiExample Exemplo de requisição:	
 	 *	curl -i https://<host>/sei-broker/service/cosap/processos/33910003149201793/documentos
 	 *
 	 * @apiSuccess (Sucesso Response Body - 200) {List} documentos Lista com os documentos encontrados.
 	 * @apiSuccess (Sucesso Response Body - 200) {DocumentoResumido} documentos.documentoResumido Resumo do documento encontrado no SEI.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numero Número do documento.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo Tipo do documento.
-	 * @apiSuccess (Sucesso Response Body - 200) {String="GERADO","RECEBIDO"} documentos.documentoResumido.origem Origem do documento, se o mesmo é um documento "GERADO" internamente ou "RECEBIDO" de uma fonte externa.
+	 * @apiSuccess (Sucesso Response Body - 200) {boolean} documentos.documentoResumido.assinado Boolean indicando se o documento foi assinado.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.codigoTipo Identificador do tipo do documento.
 	 * @apiSuccess (Sucesso Response Body - 200) {Data} documentos.documentoResumido.dataGeracao Data de geração do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numero Número do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String="GERADO","RECEBIDO"} documentos.documentoResumido.origem Origem do documento, se o mesmo é um documento "GERADO" internamente ou "RECEBIDO" de uma fonte externa.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo Tipo do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipoConferencia Tipo de conferência do documento.
 	 * 
 	 * @apiSuccessExample {json} Success-Response:
 	 *     HTTP/1.1 200 OK
 	 *     {
+	 *       "assinado": true,
+	 *       "codigoTipo": "5",
 	 *       "dataGeracao": "2015-08-10T00:00:00-03:00",
 	 *       "numero": "0670949",
 	 *       "origem": "RECEBIDO",
 	 *       "tipo": "Despacho"
+	 *       "tipoConferencia": "4",
 	 *     }
 	 *
 	 * @apiErrorExample {json} Error-Response:
@@ -1164,11 +1173,12 @@ public class ProcessoResource {
 	@GET
 	@Path("/{unidade}/processos/{processo:\\d+}/documentos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public List<DocumentoResumido> listarDocumentosPorProcesso(@PathParam("unidade") String unidade, @PathParam("processo") String processo) throws RemoteException, Exception{
+	public List<DocumentoResumido> listarDocumentosPorProcesso(@PathParam("unidade") String unidade, @PathParam("processo") String processo, @QueryParam("tipo")String tipo,
+			@QueryParam("origem") String origem, @QueryParam("somenteAssinados") boolean somenteAssinados)	throws RemoteException, Exception{
 		try{
 			BigInteger idProcedimento = processoDAO.getIdProcedimento(formatarNumeroProcesso(processo));
 			
-			List<DocumentoResumido> documentosProcesso = documentoDAO.getDocumentosProcesso(idProcedimento.toString());
+			List<DocumentoResumido> documentosProcesso = documentoDAO.getDocumentosProcesso(idProcedimento.toString(), tipo, origem, somenteAssinados);
 			
 			if(documentosProcesso.isEmpty()){
 				throw new ResourceNotFoundException(messages.getMessage("erro.processo.sem.documentos",formatarNumeroProcesso(processo)));

@@ -82,7 +82,7 @@ public class DocumentoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<DocumentoResumido> getDocumentosProcesso(String idProcedimento){
+	public List<DocumentoResumido> getDocumentosProcessoV1(String idProcedimento){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 		
 		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipo, d.numero numeroInformado, ");
@@ -97,6 +97,47 @@ public class DocumentoDAO {
 		
 		builder.append("ORDER BY pr.dta_geracao ASC");
 
+		Query query = em.createNativeQuery(builder.toString(), DocumentoResumido.class);
+		
+		setQueryParameters(query, parametros);
+		
+		return query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<DocumentoResumido> getDocumentosProcesso(String idProcedimento, String codigoTipo, String origem, boolean somenteAssinados){
+		HashMap<String, Object> parametros = new HashMap<String, Object>();
+		
+		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipo, s.id_serie codigoTipo, d.numero numeroInformado, ");
+		builder.append("CASE pr.sta_protocolo WHEN 'G' THEN 'GERADO' ELSE 'RECEBIDO' END origem, d.id_tipo_conferencia tipoConferencia, ");
+		builder.append("pr.dta_geracao dataGeracao, null as processo, null as unidade, ");
+		builder.append("CASE WHEN a.id_assinatura is null THEN false ELSE true END assinado ");
+		builder.append("FROM documento AS d ");		
+
+		if(somenteAssinados){
+			builder.append("RIGHT JOIN assinatura AS a ON d.id_documento = a.id_documento ");			
+		}else{
+			builder.append("LEFT JOIN assinatura AS a ON d.id_documento = a.id_documento ");			
+		}
+		
+		builder.append("JOIN protocolo AS pr ON pr.id_protocolo = d.id_documento "); 
+		builder.append("JOIN serie AS s ON d.id_serie = s.id_serie ");
+		builder.append("WHERE d.id_procedimento = :idProcedimento ");
+
+		parametros.put("idProcedimento", idProcedimento);
+		
+		if(StringUtils.isNotBlank(codigoTipo)){
+			builder.append("AND s.id_serie = :codigoTipo ");
+			parametros.put("codigoTipo", codigoTipo);
+		}
+		
+		if(StringUtils.isNotBlank(origem)){
+			builder.append("AND pr.sta_protocolo = :origem ");
+			parametros.put("origem", origem);
+		}
+		
+		builder.append("GROUP BY numero ORDER BY pr.dta_geracao ASC");
+				
 		Query query = em.createNativeQuery(builder.toString(), DocumentoResumido.class);
 		
 		setQueryParameters(query, parametros);

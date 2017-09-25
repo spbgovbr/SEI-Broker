@@ -7145,6 +7145,35 @@
             "field": "processo",
             "description": "<p>Número do processo.</p>"
           }
+        ],
+        "Query Parameters": [
+          {
+            "group": "Query Parameters",
+            "type": "String",
+            "optional": true,
+            "field": "tipo",
+            "defaultValue": "null",
+            "description": "<p>Identificador do tipo do documento, caso seja necessário filtrar pelo tipo</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "String",
+            "allowedValues": [
+              "\"G (gerado/interno), R (recebido/externo)\""
+            ],
+            "optional": true,
+            "field": "origem",
+            "defaultValue": "null",
+            "description": "<p>Filtra os documentos por gerados ou recebidos</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "boolean",
+            "optional": true,
+            "field": "somenteAssinados",
+            "defaultValue": "false",
+            "description": "<p>Exibir somente documentos assinados</p>"
+          }
         ]
       }
     },
@@ -7174,17 +7203,31 @@
           },
           {
             "group": "Sucesso Response Body - 200",
-            "type": "String",
+            "type": "boolean",
             "optional": false,
-            "field": "documentos.documentoResumido.numero",
-            "description": "<p>Número do documento.</p>"
+            "field": "documentos.documentoResumido.assinado",
+            "description": "<p>Boolean indicando se o documento foi assinado.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
             "type": "String",
             "optional": false,
-            "field": "documentos.documentoResumido.tipo",
-            "description": "<p>Tipo do documento.</p>"
+            "field": "documentos.documentoResumido.codigoTipo",
+            "description": "<p>Identificador do tipo do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "Data",
+            "optional": false,
+            "field": "documentos.documentoResumido.dataGeracao",
+            "description": "<p>Data de geração do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.numero",
+            "description": "<p>Número do documento.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
@@ -7199,17 +7242,24 @@
           },
           {
             "group": "Sucesso Response Body - 200",
-            "type": "Data",
+            "type": "String",
             "optional": false,
-            "field": "documentos.documentoResumido.dataGeracao",
-            "description": "<p>Data de geração do documento.</p>"
+            "field": "documentos.documentoResumido.tipo",
+            "description": "<p>Tipo do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipoConferencia",
+            "description": "<p>Tipo de conferência do documento.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"dataGeracao\": \"2015-08-10T00:00:00-03:00\",\n  \"numero\": \"0670949\",\n  \"origem\": \"RECEBIDO\",\n  \"tipo\": \"Despacho\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"assinado\": true,\n  \"codigoTipo\": \"5\",\n  \"dataGeracao\": \"2015-08-10T00:00:00-03:00\",\n  \"numero\": \"0670949\",\n  \"origem\": \"RECEBIDO\",\n  \"tipo\": \"Despacho\"\n  \"tipoConferencia\": \"4\",\n}",
           "type": "json"
         }
       ]
