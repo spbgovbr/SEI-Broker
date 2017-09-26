@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.SqlResultSetMapping;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 @XmlRootElement
 @Entity
 @SqlResultSetMapping(name = "DocumentoResumidoMapping", entities = { @EntityResult(entityClass = DocumentoResumido.class, fields = {
@@ -17,6 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 		@FieldResult(name = "numeroInformado", column = "numeroInformado"),
 		@FieldResult(name = "origem", column = "origem"),
 		@FieldResult(name = "dataGeracao", column = "dataGeracao") }) })
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class DocumentoResumido {
 	@Id
 	private String numero;
