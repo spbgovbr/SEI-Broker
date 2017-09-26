@@ -26,6 +26,9 @@ public class DocumentoResumido {
 	private String origem;
 	private Date dataGeracao;
 	private String processo;
+	private String codigoTipo;
+	private String tipoConferencia;
+	private boolean assinado;
 
 	public DocumentoResumido(){
 		
@@ -96,6 +99,30 @@ public class DocumentoResumido {
 
 	public void setNumeroInformado(String numeroInformado) {
 		this.numeroInformado = numeroInformado;
+	}
+
+	public String getCodigoTipo() {
+		return codigoTipo;
+	}
+
+	public void setCodigoTipo(String codigoTipo) {
+		this.codigoTipo = codigoTipo;
+	}
+
+	public String getTipoConferencia() {
+		return tipoConferencia;
+	}
+
+	public void setTipoConferencia(String tipoConferencia) {
+		this.tipoConferencia = tipoConferencia;
+	}
+
+	public boolean isAssinado() {
+		return assinado;
+	}
+
+	public void setAssinado(boolean assinado) {
+		this.assinado = assinado;
 	}
 
 }
