@@ -44,7 +44,7 @@ public class ProcessoDAO {
 		}
 		
 		if(StringUtils.isNoneBlank(tipoProcesso)){
-			builder.append("AND proc.id_tipo_procedimento = :tipoProcesso");			
+			builder.append("AND proc.id_tipo_procedimento = :tipoProcesso ");			
 		}
 		
 		builder.append("AND tp.id_tipo_procedimento = proc.id_tipo_procedimento ");
@@ -73,24 +73,30 @@ public class ProcessoDAO {
 		return processos;
 	}
 
-	public Long countProcessos(String interessado, String unidade){
+	public Long countProcessos(String interessado, String unidade, String tipoProcesso){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
+
+		StringBuilder builder = new StringBuilder("SELECT count(*) "); 
+		builder.append("FROM protocolo pr, tipo_procedimento tp, participante p ");
 		
-		StringBuilder builder = new StringBuilder("SELECT ");
-		builder.append("COUNT(*) ");
-		builder.append("FROM participante p, protocolo pr, contato c, unidade u ");
-		builder.append("WHERE " );
-		builder.append("p.id_contato = c.id_contato AND p.id_protocolo = pr.id_protocolo AND p.id_unidade = u.id_unidade AND pr.sta_protocolo = 'P' ");
+		if(StringUtils.isNotBlank(interessado)){
+			builder.append("JOIN contato c ON c.id_contato = p.id_contato ");			
+		}
+		
+		builder.append("JOIN unidade u ON u.id_unidade = p.id_unidade ");
+		builder.append("JOIN procedimento proc ON proc.id_procedimento = p.id_protocolo ");
+		builder.append("WHERE pr.sta_protocolo = 'P' AND p.id_protocolo = pr.id_protocolo ");
 		
 		if(StringUtils.isNotBlank(interessado)){
 			builder.append("AND c.sigla = :interessado ");
 			parametros.put("interessado", interessado);
 		}
 		
-		if(StringUtils.isNotBlank(unidade)){
-			builder.append("AND u.sigla = :unidade ");
-			parametros.put("unidade", unidade);
+		if(StringUtils.isNoneBlank(tipoProcesso)){
+			builder.append("AND proc.id_tipo_procedimento = :tipoProcesso ");			
 		}
+		
+		builder.append("AND tp.id_tipo_procedimento = proc.id_tipo_procedimento ");
 		
 		Query query = em.createNativeQuery(builder.toString());
 		

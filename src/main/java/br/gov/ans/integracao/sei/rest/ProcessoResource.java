@@ -576,7 +576,7 @@ public class ProcessoResource {
 	 * @apiParam (Query Parameters) {String} [unidade] Unidade da qual deseja filtrar os processos
 	 * @apiParam (Query Parameters) {String} [pagina=1] Número da página
 	 * @apiParam (Query Parameters) {String} [qtdRegistros=50] Quantidade de registros retornados por página
-	 * @apiParam (Query Parameters) {String} [tipoProcesso] Identificador do tipo de processo que deseja filtrar
+	 * @apiParam (Query Parameters) {String} [tipo] Identificador do tipo de processo que deseja filtrar
 	 * 
 	 * @apiExample Exemplo de requisição:	
 	 *	curl -i https://<host>/sei-broker/service/processos
@@ -605,7 +605,7 @@ public class ProcessoResource {
 	@Path("/processos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Wrapped(element = "processos")
-	public Response consultarProcessos(@QueryParam("interessado") String interessado, @QueryParam("unidade") String unidade, @QueryParam("tipoProcesso") String tipoProcesso, 
+	public Response consultarProcessos(@QueryParam("interessado") String interessado, @QueryParam("unidade") String unidade, @QueryParam("tipo") String tipoProcesso, 
 			@QueryParam("crescente") boolean crescente, @QueryParam("pagina") String pagina, @QueryParam("qtdRegistros") String qtdRegistros) throws BusinessException{
 		
 		List<ProcessoResumido> processos = processoDAO.getProcessos(interessado, unidade, tipoProcesso, 
@@ -613,7 +613,7 @@ public class ProcessoResource {
 		
 		GenericEntity<List<ProcessoResumido>> entity = new GenericEntity<List<ProcessoResumido>>(processos){};
 		
-		Long totalRegistros = processoDAO.countProcessos(interessado, unidade);
+		Long totalRegistros = processoDAO.countProcessos(interessado, unidade, tipoProcesso);
 		
 		return Response.ok().entity(entity)
 		.header("total_registros", totalRegistros).build();			

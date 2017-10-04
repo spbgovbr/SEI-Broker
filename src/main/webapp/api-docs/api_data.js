@@ -6268,7 +6268,7 @@ define({ "api": [
             "group": "Query Parameters",
             "type": "String",
             "optional": true,
-            "field": "tipoProcesso",
+            "field": "tipo",
             "description": "<p>Identificador do tipo de processo que deseja filtrar</p>"
           }
         ]
