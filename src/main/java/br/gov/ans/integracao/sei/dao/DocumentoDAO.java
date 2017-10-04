@@ -7,15 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import org.apache.commons.lang3.StringUtils;
 
-import br.gov.ans.exceptions.BusinessException;
-import br.gov.ans.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
 
 public class DocumentoDAO {
@@ -127,7 +124,7 @@ public class DocumentoDAO {
 		parametros.put("idProcedimento", idProcedimento);
 		
 		if(StringUtils.isNotBlank(codigoTipo)){
-			builder.append("AND s.id_serie = :codigoTipo ");
+			builder.append("AND s.id_serie in (:codigoTipo) ");
 			parametros.put("codigoTipo", codigoTipo);
 		}
 		

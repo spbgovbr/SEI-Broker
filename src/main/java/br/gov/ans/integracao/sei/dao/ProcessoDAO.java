@@ -4,6 +4,7 @@ import static br.gov.ans.integracao.sei.utils.Util.setPaginacaoQuery;
 import static br.gov.ans.integracao.sei.utils.Util.setQueryParameters;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,26 +23,37 @@ public class ProcessoDAO {
 	private EntityManager em;
 	
 	@SuppressWarnings("unchecked")
-	public List<ProcessoResumido> getProcessos(String interessado, String unidade, Integer pagina, Integer qtdRegistros){
+	public List<ProcessoResumido> getProcessos(String interessado, String unidade, String tipoProcesso, Integer pagina, Integer qtdRegistros, boolean crescente){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
+
+		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, pr.protocolo_formatado numeroFormatado, pr.descricao, proc.id_tipo_procedimento tipoCodigo, ");
+		builder.append("tp.nome tipoNome, u.sigla as unidade, pr.dta_geracao dataGeracao "); 
+		builder.append("FROM protocolo pr, tipo_procedimento tp, participante p ");
 		
-		StringBuilder builder = new StringBuilder("SELECT ");
-		builder.append("pr.descricao, u.sigla as unidade, pr.protocolo_formatado_pesquisa protocolo, pr.protocolo_formatado, pr.dta_geracao data_geracao ");
-		builder.append("FROM participante p, protocolo pr, contato c, unidade u ");
-		builder.append("WHERE " );
-		builder.append("p.id_contato = c.id_contato AND p.id_protocolo = pr.id_protocolo AND p.id_unidade = u.id_unidade AND pr.sta_protocolo = 'P' ");
+		if(StringUtils.isNotBlank(interessado)){
+			builder.append("JOIN contato c ON c.id_contato = p.id_contato ");			
+		}
+		
+		builder.append("JOIN unidade u ON u.id_unidade = p.id_unidade ");
+		builder.append("JOIN procedimento proc ON proc.id_procedimento = p.id_protocolo ");
+		builder.append("WHERE pr.sta_protocolo = 'P' AND p.id_protocolo = pr.id_protocolo ");
 		
 		if(StringUtils.isNotBlank(interessado)){
 			builder.append("AND c.sigla = :interessado ");
 			parametros.put("interessado", interessado);
 		}
 		
-		if(StringUtils.isNotBlank(unidade)){
-			builder.append("AND u.sigla = :unidade ");
-			parametros.put("unidade", unidade);
+		if(StringUtils.isNoneBlank(tipoProcesso)){
+			builder.append("AND proc.id_tipo_procedimento = :tipoProcesso");			
 		}
 		
-		builder.append("order by pr.dta_geracao asc");
+		builder.append("AND tp.id_tipo_procedimento = proc.id_tipo_procedimento ");
+		
+		if(crescente){
+			builder.append("order by pr.dta_geracao asc");
+		}else{
+			builder.append("order by pr.dta_geracao desc");			
+		}
 
 		Query query = em.createNativeQuery(builder.toString(), "ProcessoResumidoMapping");
 		
@@ -49,7 +61,16 @@ public class ProcessoDAO {
 		
 		setPaginacaoQuery(query, pagina, qtdRegistros);
 				
-		return query.getResultList();
+		List<Object[]> results = query.getResultList();
+		
+		List<ProcessoResumido> processos = new ArrayList<ProcessoResumido>();
+		
+		results.stream().forEach((record) -> {
+		    ProcessoResumido processo = (ProcessoResumido) record[0];
+		    processos.add(processo);
+		});
+		
+		return processos;
 	}
 
 	public Long countProcessos(String interessado, String unidade){

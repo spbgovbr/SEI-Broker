@@ -562,23 +562,24 @@ public class ProcessoResource {
 	}
 	
 	/**
-	 * @api {get} /:interessado/processos Consultar por interessados
-	 * @apiName consultarProcessosInteressado
+	 * @api {get} /processos Listar processos
+	 * @apiName consultarProcessos
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER
 	 * 
-	 * @apiDescription Retorna os processos de um determinado interessado.
+	 * @apiDescription Lista os processos conforme os filtros informados.
 	 * 
-	 * @apiParam (Path Parameters) {String} interessado Identificador do interessado
-	 * 
+	 * @apiParam (Query Parameters) {Boolean} [crescente=false] Ordenar em ordem crescente, processos mais antigos primeiro
+	 * @apiParam (Query Parameters) {String} [interessado] Identificador do interessado
 	 * @apiParam (Query Parameters) {String} [unidade] Unidade da qual deseja filtrar os processos
 	 * @apiParam (Query Parameters) {String} [pagina=1] Número da página
 	 * @apiParam (Query Parameters) {String} [qtdRegistros=50] Quantidade de registros retornados por página
+	 * @apiParam (Query Parameters) {String} [tipoProcesso] Identificador do tipo de processo que deseja filtrar
 	 * 
 	 * @apiExample Exemplo de requisição:	
-	 *	curl -i https://<host>/sei-broker/service/414247/processos
+	 *	curl -i https://<host>/sei-broker/service/processos
 	 *
 	 * @apiSuccess (Sucesso Response Body - 200) {List} processos Lista com os processos encontrados
 	 * @apiSuccess (Sucesso Response Body - 200) {ProcessoResumido} processos.processoResumido Resumo do processo encontrado no SEI
@@ -587,6 +588,9 @@ public class ProcessoResource {
 	 * @apiSuccess (Sucesso Response Body - 200) {String} processos.processoResumido.descricao Descrição do processo
 	 * @apiSuccess (Sucesso Response Body - 200) {String} processos.processoResumido.unidade Unidade responsável pelo processo
 	 * @apiSuccess (Sucesso Response Body - 200) {Data} processos.processoResumido.dataGeracao Data de geração do processo
+	 * @apiSuccess (Sucesso Response Body - 200) {Tipo} processos.processoResumido.tipo Objeto com os dados do tipo de processo
+	 * @apiSuccess (Sucesso Response Body - 200) {String} processos.processoResumido.tipo.codigo Código do tipo
+	 * @apiSuccess (Sucesso Response Body - 200) {String} processos.processoResumido.tipo.nome Nome do tipo
 	 * 
 	 * @apiSuccess (Sucesso Response Header - 200) {header} total_registros quantidade de registros que existem para essa consulta.
 	 *
@@ -598,13 +602,14 @@ public class ProcessoResource {
 	 *	}
 	 */
 	@GET
-	@Path("/{interessado}/processos")
+	@Path("/processos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Wrapped(element = "processos")
-	public Response consultarProcessos(@PathParam("interessado") String interessado, @QueryParam("unidade") String unidade, @QueryParam("pagina") String pagina, 
-			@QueryParam("qtdRegistros") String qtdRegistros) throws BusinessException{
+	public Response consultarProcessos(@QueryParam("interessado") String interessado, @QueryParam("unidade") String unidade, @QueryParam("tipoProcesso") String tipoProcesso, 
+			@QueryParam("crescente") boolean crescente, @QueryParam("pagina") String pagina, @QueryParam("qtdRegistros") String qtdRegistros) throws BusinessException{
 		
-		List<ProcessoResumido> processos = processoDAO.getProcessos(interessado, unidade, pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros));
+		List<ProcessoResumido> processos = processoDAO.getProcessos(interessado, unidade, tipoProcesso, 
+				pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros), crescente);
 		
 		GenericEntity<List<ProcessoResumido>> entity = new GenericEntity<List<ProcessoResumido>>(processos){};
 		
