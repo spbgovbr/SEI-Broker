@@ -3,6 +3,7 @@ package br.gov.ans.integracao.sei.dao;
 import static br.gov.ans.integracao.sei.utils.Util.setPaginacaoQuery;
 import static br.gov.ans.integracao.sei.utils.Util.setQueryParameters;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import javax.persistence.Query;
 import org.apache.commons.lang3.StringUtils;
 
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
+import br.gov.ans.integracao.sei.modelo.ProcessoResumido;
 
 public class DocumentoDAO {
 	@PersistenceContext(unitName = "sei_pu", type = PersistenceContextType.EXTENDED)
@@ -43,7 +45,7 @@ public class DocumentoDAO {
 		
 		builder.append("order by pr.dta_geracao asc");
 
-		Query query = em.createNativeQuery(builder.toString(), DocumentoResumido.class);
+		Query query = em.createNativeQuery(builder.toString(), "DocumentoResumidoMapping");
 		
 		setQueryParameters(query, parametros);
 		
@@ -79,33 +81,10 @@ public class DocumentoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<DocumentoResumido> getDocumentosProcessoV1(String idProcedimento){
-		HashMap<String, Object> parametros = new HashMap<String, Object>();
-		
-		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipo, d.numero numeroInformado, ");
-		builder.append("CASE pr.sta_protocolo WHEN 'G' THEN 'GERADO' ELSE 'RECEBIDO' END origem, ");
-		builder.append("pr.dta_geracao dataGeracao, null as processo, null as unidade ");
-		builder.append("FROM protocolo pr, documento d, serie s ");
-		builder.append("WHERE d.id_serie = s.id_serie ");
-		builder.append("AND pr.id_protocolo = d.id_documento ");
-		builder.append("AND d.id_procedimento = :idProcedimento ");
-		
-		parametros.put("idProcedimento", idProcedimento);
-		
-		builder.append("ORDER BY pr.dta_geracao ASC");
-
-		Query query = em.createNativeQuery(builder.toString(), DocumentoResumido.class);
-		
-		setQueryParameters(query, parametros);
-		
-		return query.getResultList();
-	}
-	
-	@SuppressWarnings("unchecked")
 	public List<DocumentoResumido> getDocumentosProcesso(String idProcedimento, String codigoTipo, String origem, boolean somenteAssinados){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 		
-		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipo, s.id_serie codigoTipo, d.numero numeroInformado, ");
+		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, d.numero numeroInformado, ");
 		builder.append("CASE pr.sta_protocolo WHEN 'G' THEN 'GERADO' ELSE 'RECEBIDO' END origem, d.id_tipo_conferencia tipoConferencia, ");
 		builder.append("pr.dta_geracao dataGeracao, null as processo, null as unidade, ");
 		builder.append("CASE WHEN a.id_assinatura is null THEN false ELSE true END assinado ");
@@ -135,11 +114,20 @@ public class DocumentoDAO {
 		
 		builder.append("GROUP BY numero ORDER BY pr.dta_geracao ASC");
 				
-		Query query = em.createNativeQuery(builder.toString(), DocumentoResumido.class);
+		Query query = em.createNativeQuery(builder.toString(), "DocumentoResumidoMapping");
 		
 		setQueryParameters(query, parametros);
 		
-		return query.getResultList();
+		List<Object[]> results = query.getResultList();
+		
+		List<DocumentoResumido> documentos = new ArrayList<DocumentoResumido>();
+		
+		results.stream().forEach((record) -> {
+			DocumentoResumido documento = (DocumentoResumido) record[0];
+			documentos.add(documento);
+		});
+		
+		return documentos;
 	}
 
 }

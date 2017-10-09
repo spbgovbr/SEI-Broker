@@ -1127,7 +1127,7 @@ public class ProcessoResource {
 	}
 	
 	/**
-	 * @api {get} /:unidade/processos/:processo/documentos Listar documentos
+	 * @api {get} /processos/:processo/documentos Listar documentos
 	 * @apiName listarDocumentosPorProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
@@ -1136,7 +1136,6 @@ public class ProcessoResource {
 	 * 
 	 * @apiDescription Retorna os documentos de um determinado processo.
 	 * 
-	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
 	 * @apiParam (Path Parameters) {String} processo Número do processo.
 	 * 
 	 * @apiParam (Query Parameters) {String} [tipo=null] Identificador do tipo do documento, caso seja necessário filtrar pelo tipo
@@ -1144,7 +1143,7 @@ public class ProcessoResource {
 	 * @apiParam (Query Parameters) {boolean} [somenteAssinados=false] Exibir somente documentos assinados
 	 * 
 	 * @apiExample Exemplo de requisição:	
-	 *	curl -i https://<host>/sei-broker/service/cosap/processos/33910003149201793/documentos
+	 *	curl -i https://<host>/sei-broker/service/processos/33910003149201793/documentos
 	 *
 	 * @apiSuccess (Sucesso Response Body - 200) {List} documentos Lista com os documentos encontrados.
 	 * @apiSuccess (Sucesso Response Body - 200) {DocumentoResumido} documentos.documentoResumido Resumo do documento encontrado no SEI.
@@ -1176,9 +1175,9 @@ public class ProcessoResource {
 	 *	}
 	 */
 	@GET
-	@Path("/{unidade}/processos/{processo:\\d+}/documentos")
+	@Path("/processos/{processo:\\d+}/documentos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public List<DocumentoResumido> listarDocumentosPorProcesso(@PathParam("unidade") String unidade, @PathParam("processo") String processo, @QueryParam("tipo")String tipo,
+	public List<DocumentoResumido> listarDocumentosPorProcesso(@PathParam("processo") String processo, @QueryParam("tipo")String tipo,
 			@QueryParam("origem") String origem, @QueryParam("somenteAssinados") boolean somenteAssinados)	throws RemoteException, Exception{
 		try{
 			BigInteger idProcedimento = processoDAO.getIdProcedimento(formatarNumeroProcesso(processo));

@@ -21,10 +21,11 @@
 	<persistence-unit name="sei_pu" transaction-type="JTA">
 		<jta-data-source>jdbc/sei-mysql</jta-data-source>
 
-
-		<class>br.gov.ans.integracao.sei.modelo.ProcessoResumido</class>
 		<class>br.gov.ans.integracao.sei.modelo.Contato</class>
+		<class>br.gov.ans.integracao.sei.modelo.DocumentoResumido</class>
+		<class>br.gov.ans.integracao.sei.modelo.ProcessoResumido</class>
 		<class>br.gov.ans.integracao.sei.modelo.Tarefa</class>
+		<class>br.gov.ans.integracao.sei.modelo.Tipo</class>
 		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />

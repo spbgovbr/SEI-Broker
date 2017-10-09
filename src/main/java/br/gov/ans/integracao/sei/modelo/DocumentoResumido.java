@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.EntityResult;
 import javax.persistence.FieldResult;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SqlResultSetMapping;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -15,39 +16,36 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @Entity
 @SqlResultSetMapping(name = "DocumentoResumidoMapping", entities = { @EntityResult(entityClass = DocumentoResumido.class, fields = {
 		@FieldResult(name = "numero", column = "numero"),
-		@FieldResult(name = "tipo", column = "tipo"),
 		@FieldResult(name = "numeroInformado", column = "numeroInformado"),
+		@FieldResult(name = "unidade", column = "unidade"),
 		@FieldResult(name = "origem", column = "origem"),
-		@FieldResult(name = "dataGeracao", column = "dataGeracao") }) })
+		@FieldResult(name = "processo", column = "processo"),
+		@FieldResult(name = "tipoConferencia", column = "tipoConferencia"),
+		@FieldResult(name = "assinado", column = "assinado"),
+		@FieldResult(name = "dataGeracao", column = "dataGeracao"),
+		@FieldResult(name = "tipo", column = "tipoCodigo")
+		}),
+		@EntityResult(
+                entityClass = Tipo.class,
+                fields = {
+                    @FieldResult(name = "codigo", column = "tipoCodigo"),
+                    @FieldResult(name = "nome", column = "tipoNome")})
+		})
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class DocumentoResumido {
 	@Id
 	private String numero;
 	private String numeroInformado;
-	private String tipo;
 	private String unidade;
 	private String origem;
 	private Date dataGeracao;
 	private String processo;
-	private String codigoTipo;
+	
+	@OneToOne
+	private Tipo tipo;
 	private String tipoConferencia;
 	private boolean assinado;
 
-	public DocumentoResumido(){
-		
-	}
-	
-	public DocumentoResumido(String numero, String tipo, String numeroInformado, String origem, Date dataGeracao){
-		this.numero = numero;
-		this.tipo = tipo;
-		this.numeroInformado = numeroInformado;
-		this.origem = origem;
-		this.dataGeracao = dataGeracao;
-	}
-	
-	
-	
-	@Id
 	public String getNumero() {
 		return numero;
 	}
@@ -56,11 +54,11 @@ public class DocumentoResumido {
 		this.numero = numero;
 	}
 
-	public String getTipo() {
+	public Tipo getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
 
@@ -102,14 +100,6 @@ public class DocumentoResumido {
 
 	public void setNumeroInformado(String numeroInformado) {
 		this.numeroInformado = numeroInformado;
-	}
-
-	public String getCodigoTipo() {
-		return codigoTipo;
-	}
-
-	public void setCodigoTipo(String codigoTipo) {
-		this.codigoTipo = codigoTipo;
 	}
 
 	public String getTipoConferencia() {

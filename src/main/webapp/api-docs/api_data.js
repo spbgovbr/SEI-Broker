@@ -7151,7 +7151,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/:unidade/processos/:processo/documentos",
+    "url": "/processos/:processo/documentos",
     "title": "Listar documentos",
     "name": "listarDocumentosPorProcesso",
     "group": "Processo",
@@ -7165,13 +7165,6 @@ define({ "api": [
     "parameter": {
       "fields": {
         "Path Parameters": [
-          {
-            "group": "Path Parameters",
-            "type": "String",
-            "optional": false,
-            "field": "unidade",
-            "description": "<p>Sigla da Unidade cadastrada no SEI.</p>"
-          },
           {
             "group": "Path Parameters",
             "type": "String",
@@ -7214,7 +7207,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "curl -i https://<host>/sei-broker/service/cosap/processos/33910003149201793/documentos",
+        "content": "curl -i https://<host>/sei-broker/service/processos/33910003149201793/documentos",
         "type": "json"
       }
     ],
