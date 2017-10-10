@@ -3066,7 +3066,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "interessados/:interessado/documentos",
+    "url": "/interessados/:interessado/documentos",
     "title": "Consultar por interessado",
     "name": "consultarDocumentoInteressado",
     "group": "Documento",

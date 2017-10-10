@@ -503,7 +503,7 @@ public class DocumentoResource {
 	}
 	
 	/**
-	 * @api {get} interessados/:interessado/documentos Consultar por interessado
+	 * @api {get} /interessados/:interessado/documentos Consultar por interessado
 	 * @apiName consultarDocumentoInteressado
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
