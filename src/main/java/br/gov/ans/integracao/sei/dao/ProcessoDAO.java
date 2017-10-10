@@ -84,7 +84,7 @@ public class ProcessoDAO {
 	public Long countProcessos(String interessado, String unidade, String tipoProcesso){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 
-		StringBuilder builder = new StringBuilder("SELECT count(*) "); 
+		StringBuilder builder = new StringBuilder("SELECT count(DISTINCT pr.protocolo_formatado_pesquisa) "); 
 		builder.append("FROM protocolo pr, tipo_procedimento tp, participante p ");
 		
 		if(StringUtils.isNotBlank(interessado)){
@@ -111,8 +111,6 @@ public class ProcessoDAO {
 			builder.append("AND p.id_unidade = :unidade ");
 			parametros.put("unidade", unidade);
 		}
-		
-		builder.append("group by pr.protocolo_formatado_pesquisa ");
 		
 		Query query = em.createNativeQuery(builder.toString());
 		
