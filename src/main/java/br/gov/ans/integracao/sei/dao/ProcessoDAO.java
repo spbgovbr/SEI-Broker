@@ -44,10 +44,18 @@ public class ProcessoDAO {
 		}
 		
 		if(StringUtils.isNoneBlank(tipoProcesso)){
-			builder.append("AND proc.id_tipo_procedimento = :tipoProcesso ");			
+			builder.append("AND proc.id_tipo_procedimento = :tipoProcesso ");
+			parametros.put("tipoProcesso", tipoProcesso);
+		}
+
+		builder.append("AND tp.id_tipo_procedimento = proc.id_tipo_procedimento ");
+		
+		if(StringUtils.isNoneBlank(unidade)){
+			builder.append("AND p.id_unidade = :unidade ");
+			parametros.put("unidade", unidade);
 		}
 		
-		builder.append("AND tp.id_tipo_procedimento = proc.id_tipo_procedimento ");
+		builder.append("group by pr.protocolo_formatado_pesquisa ");
 		
 		if(crescente){
 			builder.append("order by pr.dta_geracao asc");
@@ -93,10 +101,18 @@ public class ProcessoDAO {
 		}
 		
 		if(StringUtils.isNoneBlank(tipoProcesso)){
-			builder.append("AND proc.id_tipo_procedimento = :tipoProcesso ");			
+			builder.append("AND proc.id_tipo_procedimento = :tipoProcesso ");
+			parametros.put("tipoProcesso", tipoProcesso);
 		}
 		
 		builder.append("AND tp.id_tipo_procedimento = proc.id_tipo_procedimento ");
+		
+		if(StringUtils.isNoneBlank(unidade)){
+			builder.append("AND p.id_unidade = :unidade ");
+			parametros.put("unidade", unidade);
+		}
+		
+		builder.append("group by pr.protocolo_formatado_pesquisa ");
 		
 		Query query = em.createNativeQuery(builder.toString());
 		

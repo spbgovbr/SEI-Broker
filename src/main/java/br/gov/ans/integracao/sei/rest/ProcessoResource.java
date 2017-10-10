@@ -620,7 +620,11 @@ public class ProcessoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Wrapped(element = "processos")
 	public Response consultarProcessos(@QueryParam("interessado") String interessado, @QueryParam("unidade") String unidade, @QueryParam("tipo") String tipoProcesso, 
-			@QueryParam("crescente") boolean crescente, @QueryParam("pagina") String pagina, @QueryParam("qtdRegistros") String qtdRegistros) throws BusinessException{
+			@QueryParam("crescente") boolean crescente, @QueryParam("pagina") String pagina, @QueryParam("qtdRegistros") String qtdRegistros) throws Exception{
+		
+		if(StringUtils.isNotBlank(unidade)){
+			unidade = unidadeResource.consultarCodigo(unidade);
+		}
 		
 		List<ProcessoResumido> processos = processoDAO.getProcessos(interessado, unidade, tipoProcesso, 
 				pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros), crescente);
