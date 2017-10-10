@@ -503,7 +503,7 @@ public class DocumentoResource {
 	}
 	
 	/**
-	 * @api {get} /:interessado/documentos Consultar por interessados
+	 * @api {get} interessados/:interessado/documentos Consultar por interessado
 	 * @apiName consultarDocumentoInteressado
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
@@ -514,33 +514,47 @@ public class DocumentoResource {
 	 * 
 	 * @apiParam (Path Parameters) {String} interessado Identificador do interessado
 	 * 
-	 * @apiParam (Query Parameters) {String} [unidade] Unidade da qual deseja filtrar os documentos
+	 * @apiParam (Query Parameters) {String} [tipo] Tipo/Série do documento
+	 * @apiParam (Query Parameters) {boolean} [somenteAssinados=false] Exibir somente documentos assinados
+	 * @apiParam (Query Parameters) {boolean} [orderByProcesso=false] Ordenar pelo número do processo, por padrão o retorno é ordenado pela dataGeracao
+	 * @apiParam (Query Parameters) {boolean} [crescente=false] Ordenar em ordem crescente
 	 * @apiParam (Query Parameters) {String} [pagina=1] Número da página
 	 * @apiParam (Query Parameters) {String} [qtdRegistros=50] Quantidade de registros retornados por página
 	 * 
 	 * @apiExample Exemplo de requisição:	
-	 *	curl -i https://<host>/sei-broker/service/363022/documentos
+	 *	curl -i https://<host>/sei-broker/service/interessados/005711/documentos
 	 *
-	 * @apiSuccess (Sucesso Response Body - 200) {List} documentos Lista com os documentos encontrados
-	 * @apiSuccess (Sucesso Response Body - 200) {DocumentoResumido} documentos.documentoResumido Resumo do documento encontrado no SEI
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numero Número do documento
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo Tipo do documento
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.processo Processo ao qual o documento pertence
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.unidade Unidade responsável pelo processo
-	 * @apiSuccess (Sucesso Response Body - 200) {String="GERADO","RECEBIDO"} documentos.documentoResumido.origem Origem do documento, se o mesmo é um documento "GERADO" internamente ou "RECEBIDO" de uma fonte externa
-	 * @apiSuccess (Sucesso Response Body - 200) {Data} documentos.documentoResumido.dataGeracao Data de geração do documento
+	 * @apiSuccess (Sucesso Response Body - 200) {List} documentos Lista com os documentos encontrados.
+	 * @apiSuccess (Sucesso Response Body - 200) {DocumentoResumido} documentos.documentoResumido Resumo do documento encontrado no SEI.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numero Número do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numeroInformado Número informado na inclusão do documento, também conhecido como número de árvore.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.unidade Unidade responsável pelo documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String="GERADO","RECEBIDO"} documentos.documentoResumido.origem Origem do documento, se o mesmo é um documento "GERADO" internamente ou "RECEBIDO" de uma fonte externa.
+	 * @apiSuccess (Sucesso Response Body - 200) {Data} documentos.documentoResumido.dataGeracao Data de geração do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.processo Processo onde o documento está incluído.
+	 * @apiSuccess (Sucesso Response Body - 200) {Tipo} documentos.documentoResumido.tipo Objeto representando o tipo do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo.codigo Identificados do tipo do documento, também conhecido como série.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo.nome Nome do tipo do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipoConferencia Tipo de conferência do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {boolean} documentos.documentoResumido.assinado Boolean indicando se o documento foi assinado.
 	 * 
 	 * @apiSuccess (Sucesso Response Header - 200) {header} total_registros Quantidade de registros que existem para essa consulta
 	 *
 	 * @apiSuccessExample {json} Success-Response:
 	 *     HTTP/1.1 200 OK
 	 *     {
-	 *       "dataGeracao": "2015-08-25T00:00:00-03:00",
-	 *       "numero": "0057646",
+	 *       "numero": "0670949",
+	 *       "numeroInformado": "594",
+	 *       "unidade": "COSAP",
 	 *       "origem": "RECEBIDO",
-	 *       "processo": "33902.554351/2015-16",
-	 *       "tipo": "Contrato",
-	 *       "unidade": "COAI"
+	 *       "dataGeracao": "2015-08-10T00:00:00-03:00",
+	 *       "processo": "33910.000002/2017-41",
+	 *       "tipo": {
+	 *       	"codigo": "629",
+	 *       	"nome": "Relatório de Arquivamento-SIF"
+	 *       }
+	 *       "tipoConferencia": "4",
+	 *       "assinado": true
 	 *     }
 	 *
 	 * @apiErrorExample {json} Error-Response:
@@ -551,16 +565,18 @@ public class DocumentoResource {
 	 *	}
 	 */
 	@GET
-	@Path("{interessado}/documentos")
+	@Path("interessados/{interessado}/documentos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})	
-	public Response consultarDocumentos(@PathParam("interessado") String interessado, @QueryParam("unidade") String unidade, @QueryParam("pagina") String pagina, 
-			@QueryParam("qtdRegistros") String qtdRegistros) throws BusinessException{
+	public Response consultarDocumentos(@PathParam("interessado") String interessado, @QueryParam("tipo") String tipo, @QueryParam("pagina") String pagina, 
+			@QueryParam("qtdRegistros") String qtdRegistros, @QueryParam("somenteAssinados") boolean somenteAssinados, @QueryParam("crescente") boolean ordemCrescente, 
+			@QueryParam("orderByProcesso") boolean orderByProcesso) throws BusinessException{
 		
-		List<DocumentoResumido> documentos = daoDocumento.getDocumentos(interessado, unidade, pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros));
+		List<DocumentoResumido> documentos = daoDocumento.getDocumentos(interessado, tipo, pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros),
+				somenteAssinados, ordemCrescente, orderByProcesso);
 		
 		GenericEntity<List<DocumentoResumido>> entity = new GenericEntity<List<DocumentoResumido>>(documentos){};
 		
-		Long totalRegistros = daoDocumento.countDocumentos(interessado, unidade);
+		Long totalRegistros = daoDocumento.countDocumentos(interessado, tipo, somenteAssinados);
 		
 		return Response.ok().entity(entity)
 		.header("total_registros", totalRegistros).build();

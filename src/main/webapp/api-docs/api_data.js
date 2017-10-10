@@ -3066,8 +3066,8 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/:interessado/documentos",
-    "title": "Consultar por interessados",
+    "url": "interessados/:interessado/documentos",
+    "title": "Consultar por interessado",
     "name": "consultarDocumentoInteressado",
     "group": "Documento",
     "version": "2.0.0",
@@ -3093,8 +3093,32 @@ define({ "api": [
             "group": "Query Parameters",
             "type": "String",
             "optional": true,
-            "field": "unidade",
-            "description": "<p>Unidade da qual deseja filtrar os documentos</p>"
+            "field": "tipo",
+            "description": "<p>Tipo/Série do documento</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "boolean",
+            "optional": true,
+            "field": "somenteAssinados",
+            "defaultValue": "false",
+            "description": "<p>Exibir somente documentos assinados</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "boolean",
+            "optional": true,
+            "field": "orderByProcesso",
+            "defaultValue": "false",
+            "description": "<p>Ordenar pelo número do processo, por padrão o retorno é ordenado pela dataGeracao</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "boolean",
+            "optional": true,
+            "field": "crescente",
+            "defaultValue": "false",
+            "description": "<p>Ordenar em ordem crescente</p>"
           },
           {
             "group": "Query Parameters",
@@ -3118,7 +3142,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "curl -i https://<host>/sei-broker/service/363022/documentos",
+        "content": "curl -i https://<host>/sei-broker/service/interessados/005711/documentos",
         "type": "json"
       }
     ],
@@ -3130,42 +3154,35 @@ define({ "api": [
             "type": "List",
             "optional": false,
             "field": "documentos",
-            "description": "<p>Lista com os documentos encontrados</p>"
+            "description": "<p>Lista com os documentos encontrados.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
             "type": "DocumentoResumido",
             "optional": false,
             "field": "documentos.documentoResumido",
-            "description": "<p>Resumo do documento encontrado no SEI</p>"
+            "description": "<p>Resumo do documento encontrado no SEI.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
             "type": "String",
             "optional": false,
             "field": "documentos.documentoResumido.numero",
-            "description": "<p>Número do documento</p>"
+            "description": "<p>Número do documento.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
             "type": "String",
             "optional": false,
-            "field": "documentos.documentoResumido.tipo",
-            "description": "<p>Tipo do documento</p>"
-          },
-          {
-            "group": "Sucesso Response Body - 200",
-            "type": "String",
-            "optional": false,
-            "field": "documentos.documentoResumido.processo",
-            "description": "<p>Processo ao qual o documento pertence</p>"
+            "field": "documentos.documentoResumido.numeroInformado",
+            "description": "<p>Número informado na inclusão do documento, também conhecido como número de árvore.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
             "type": "String",
             "optional": false,
             "field": "documentos.documentoResumido.unidade",
-            "description": "<p>Unidade responsável pelo processo</p>"
+            "description": "<p>Unidade responsável pelo documento.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
@@ -3176,14 +3193,56 @@ define({ "api": [
             ],
             "optional": false,
             "field": "documentos.documentoResumido.origem",
-            "description": "<p>Origem do documento, se o mesmo é um documento &quot;GERADO&quot; internamente ou &quot;RECEBIDO&quot; de uma fonte externa</p>"
+            "description": "<p>Origem do documento, se o mesmo é um documento &quot;GERADO&quot; internamente ou &quot;RECEBIDO&quot; de uma fonte externa.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
             "type": "Data",
             "optional": false,
             "field": "documentos.documentoResumido.dataGeracao",
-            "description": "<p>Data de geração do documento</p>"
+            "description": "<p>Data de geração do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.processo",
+            "description": "<p>Processo onde o documento está incluído.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "Tipo",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipo",
+            "description": "<p>Objeto representando o tipo do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipo.codigo",
+            "description": "<p>Identificados do tipo do documento, também conhecido como série.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipo.nome",
+            "description": "<p>Nome do tipo do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipoConferencia",
+            "description": "<p>Tipo de conferência do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "boolean",
+            "optional": false,
+            "field": "documentos.documentoResumido.assinado",
+            "description": "<p>Boolean indicando se o documento foi assinado.</p>"
           }
         ],
         "Sucesso Response Header - 200": [
@@ -3199,7 +3258,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"dataGeracao\": \"2015-08-25T00:00:00-03:00\",\n  \"numero\": \"0057646\",\n  \"origem\": \"RECEBIDO\",\n  \"processo\": \"33902.554351/2015-16\",\n  \"tipo\": \"Contrato\",\n  \"unidade\": \"COAI\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"numero\": \"0670949\",\n  \"numeroInformado\": \"594\",\n  \"unidade\": \"COSAP\",\n  \"origem\": \"RECEBIDO\",\n  \"dataGeracao\": \"2015-08-10T00:00:00-03:00\",\n  \"processo\": \"33910.000002/2017-41\",\n  \"tipo\": {\n  \t\"codigo\": \"629\",\n  \t\"nome\": \"Relatório de Arquivamento-SIF\"\n  }\n  \"tipoConferencia\": \"4\",\n  \"assinado\": true\n}",
           "type": "json"
         }
       ]
@@ -6364,7 +6423,14 @@ define({ "api": [
             "description": "<p>quantidade de registros que existem para essa consulta.</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"numero\": \"33910007118201710\",\n  \"numeroFormatado\": \"33910.007118/2017-10\",\n  \"descricao\": \"D:2237021 - SUL AMÉRICA SEGURO SAÚDE S/A\",\n  \"unidade\": \"NÚCLEO-RJ\",\n  \"dataGeracao\": \"2017-10-09T03:00:00.000+0000\",\n  \"tipo\": {\n  \t\"codigo\": \"100000882\",\n  \t\"nome\": \"Fiscalização: Sancionador\"\n  }\n}",
+          "type": "json"
+        }
+      ]
     },
     "error": {
       "examples": [
@@ -7230,31 +7296,17 @@ define({ "api": [
           },
           {
             "group": "Sucesso Response Body - 200",
-            "type": "boolean",
-            "optional": false,
-            "field": "documentos.documentoResumido.assinado",
-            "description": "<p>Boolean indicando se o documento foi assinado.</p>"
-          },
-          {
-            "group": "Sucesso Response Body - 200",
-            "type": "String",
-            "optional": false,
-            "field": "documentos.documentoResumido.codigoTipo",
-            "description": "<p>Identificador do tipo do documento.</p>"
-          },
-          {
-            "group": "Sucesso Response Body - 200",
-            "type": "Data",
-            "optional": false,
-            "field": "documentos.documentoResumido.dataGeracao",
-            "description": "<p>Data de geração do documento.</p>"
-          },
-          {
-            "group": "Sucesso Response Body - 200",
             "type": "String",
             "optional": false,
             "field": "documentos.documentoResumido.numero",
             "description": "<p>Número do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.numeroInformado",
+            "description": "<p>Número informado na inclusão do documento, também conhecido como número de árvore.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
@@ -7269,10 +7321,31 @@ define({ "api": [
           },
           {
             "group": "Sucesso Response Body - 200",
-            "type": "String",
+            "type": "Data",
+            "optional": false,
+            "field": "documentos.documentoResumido.dataGeracao",
+            "description": "<p>Data de geração do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "Tipo",
             "optional": false,
             "field": "documentos.documentoResumido.tipo",
-            "description": "<p>Tipo do documento.</p>"
+            "description": "<p>Objeto representando o tipo do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipo.codigo",
+            "description": "<p>Identificados do tipo do documento, também conhecido como série.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipo.nome",
+            "description": "<p>Nome do tipo do documento.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
@@ -7280,13 +7353,20 @@ define({ "api": [
             "optional": false,
             "field": "documentos.documentoResumido.tipoConferencia",
             "description": "<p>Tipo de conferência do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "boolean",
+            "optional": false,
+            "field": "documentos.documentoResumido.assinado",
+            "description": "<p>Boolean indicando se o documento foi assinado.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"assinado\": true,\n  \"codigoTipo\": \"5\",\n  \"dataGeracao\": \"2015-08-10T00:00:00-03:00\",\n  \"numero\": \"0670949\",\n  \"origem\": \"RECEBIDO\",\n  \"tipo\": \"Despacho\"\n  \"tipoConferencia\": \"4\",\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"numero\": \"0670949\",\n  \"numeroInformado\": \"594\",\n  \"origem\": \"RECEBIDO\",\n  \"dataGeracao\": \"2015-08-10T00:00:00-03:00\",\n  \"tipo\": {\n  \t\"codigo\": \"629\",\n  \t\"nome\": \"Relatório de Arquivamento-SIF\"\n  }\n  \"tipoConferencia\": \"4\",\n  \"assinado\": true\n}",
           "type": "json"
         }
       ]

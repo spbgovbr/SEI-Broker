@@ -594,6 +594,20 @@ public class ProcessoResource {
 	 * 
 	 * @apiSuccess (Sucesso Response Header - 200) {header} total_registros quantidade de registros que existem para essa consulta.
 	 *
+	 * @apiSuccessExample {json} Success-Response:
+	 *     HTTP/1.1 200 OK
+	 *     {
+	 *       "numero": "33910007118201710",
+	 *       "numeroFormatado": "33910.007118/2017-10",
+	 *       "descricao": "D:2237021 - SUL AMÉRICA SEGURO SAÚDE S/A",
+	 *       "unidade": "NÚCLEO-RJ",
+	 *       "dataGeracao": "2017-10-09T03:00:00.000+0000",
+	 *       "tipo": {
+	 *       	"codigo": "100000882",
+	 *       	"nome": "Fiscalização: Sancionador"
+	 *       }
+	 *     }
+	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
@@ -1147,24 +1161,29 @@ public class ProcessoResource {
 	 *
 	 * @apiSuccess (Sucesso Response Body - 200) {List} documentos Lista com os documentos encontrados.
 	 * @apiSuccess (Sucesso Response Body - 200) {DocumentoResumido} documentos.documentoResumido Resumo do documento encontrado no SEI.
-	 * @apiSuccess (Sucesso Response Body - 200) {boolean} documentos.documentoResumido.assinado Boolean indicando se o documento foi assinado.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.codigoTipo Identificador do tipo do documento.
-	 * @apiSuccess (Sucesso Response Body - 200) {Data} documentos.documentoResumido.dataGeracao Data de geração do documento.
 	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numero Número do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numeroInformado Número informado na inclusão do documento, também conhecido como número de árvore.
 	 * @apiSuccess (Sucesso Response Body - 200) {String="GERADO","RECEBIDO"} documentos.documentoResumido.origem Origem do documento, se o mesmo é um documento "GERADO" internamente ou "RECEBIDO" de uma fonte externa.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo Tipo do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {Data} documentos.documentoResumido.dataGeracao Data de geração do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {Tipo} documentos.documentoResumido.tipo Objeto representando o tipo do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo.codigo Identificados do tipo do documento, também conhecido como série.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo.nome Nome do tipo do documento.
 	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipoConferencia Tipo de conferência do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {boolean} documentos.documentoResumido.assinado Boolean indicando se o documento foi assinado.
 	 * 
 	 * @apiSuccessExample {json} Success-Response:
 	 *     HTTP/1.1 200 OK
 	 *     {
-	 *       "assinado": true,
-	 *       "codigoTipo": "5",
-	 *       "dataGeracao": "2015-08-10T00:00:00-03:00",
 	 *       "numero": "0670949",
+	 *       "numeroInformado": "594",
 	 *       "origem": "RECEBIDO",
-	 *       "tipo": "Despacho"
+	 *       "dataGeracao": "2015-08-10T00:00:00-03:00",
+	 *       "tipo": {
+	 *       	"codigo": "629",
+	 *       	"nome": "Relatório de Arquivamento-SIF"
+	 *       }
 	 *       "tipoConferencia": "4",
+	 *       "assinado": true
 	 *     }
 	 *
 	 * @apiErrorExample {json} Error-Response:
