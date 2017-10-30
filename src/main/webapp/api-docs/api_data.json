@@ -7751,6 +7751,133 @@
     "groupTitle": "Processo"
   },
   {
+    "type": "delete",
+    "url": "/sipar/importados/:processo",
+    "title": "Cancelar Importação Processo",
+    "name": "cancelarImportacaoProcesso",
+    "group": "SIPAR",
+    "version": "2.0.0",
+    "description": "<p>Desmarca um processo físico (SIPAR) como importado para um processo eletrônico (SEI).</p>",
+    "parameter": {
+      "fields": {
+        "Path Parameter": [
+          {
+            "group": "Path Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "processo",
+            "description": "<p>Número do processo físico existente no SIPAR contendo 17 dígitos e iniciado com 33902. Ex. 33902111111111111</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Exemplo de requisição:",
+        "content": "curl -X DELETE http://<host>/sei-broker/service/sipar/importados/33902112492200241",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 204 No Content",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SiparResource.java",
+    "groupTitle": "SIPAR"
+  },
+  {
+    "type": "post",
+    "url": "/sipar/importados",
+    "title": "Importar Processo",
+    "name": "importarProcesso",
+    "group": "SIPAR",
+    "version": "2.0.0",
+    "description": "<p>Marca um processo físico (SIPAR) como importado para um processo eletrônico (SEI).</p>",
+    "parameter": {
+      "fields": {
+        "Header Parameters": [
+          {
+            "group": "Header Parameters",
+            "type": "String",
+            "optional": false,
+            "field": "content-type",
+            "description": "<p>Informar text/plain</p>"
+          }
+        ],
+        "Request Body": [
+          {
+            "group": "Request Body",
+            "type": "String",
+            "optional": false,
+            "field": "processo",
+            "description": "<p>Número do processo a ser importado</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Exemplo de requisição:\t",
+        "content": "endpoint: [POST] http://<host>/sei-broker/service/sipar/importados\n\nbody:\n33902112492200241",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 Created",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 409 Conflict\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SiparResource.java",
+    "groupTitle": "SIPAR"
+  },
+  {
     "type": "get",
     "url": "/:unidade/series",
     "title": "Listar séries",
@@ -8157,12 +8284,17 @@
     "groupTitle": "Unidade"
   },
   {
-    "type": "put",
-    "url": "/usuarios/ativar",
+    "type": "post",
+    "url": "/usuarios/ativos",
     "title": "Ativar usuário",
     "name": "ativarUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método reativa usuários.</p>",
     "parameter": {
       "fields": {
@@ -8194,7 +8326,7 @@
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "endpoint: http://<host>/sei-broker/service/usuarios/ativar\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
+        "content": "endpoint: http://<host>/sei-broker/service/usuarios/ativos\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
         "type": "json"
       }
     ],
@@ -8230,6 +8362,11 @@
     "name": "atribuirProcesso",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método atribui o processo a um usuário.</p>",
     "parameter": {
       "fields": {
@@ -8307,6 +8444,11 @@
     "name": "buscarUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza a uma busca pelo login do usuário.</p>",
     "parameter": {
       "fields": {
@@ -8361,12 +8503,17 @@
     "groupTitle": "Usuario"
   },
   {
-    "type": "put",
-    "url": "/usuarios/desativar",
+    "type": "delete",
+    "url": "/usuarios/ativos",
     "title": "Desativar usuário",
     "name": "desativarUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método desativa usuários.</p>",
     "parameter": {
       "fields": {
@@ -8398,7 +8545,7 @@
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "endpoint: http://<host>/sei-broker/service/usuarios/desativar\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
+        "content": "endpoint: [DELETE] http://<host>/sei-broker/service/usuarios/ativos/andre.guimaraes\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
         "type": "json"
       }
     ],
@@ -8428,12 +8575,17 @@
     "groupTitle": "Usuario"
   },
   {
-    "type": "post",
-    "url": "/usuarios/excluir",
+    "type": "delete",
+    "url": "/usuarios/:login",
     "title": "Excluir usuário",
     "name": "excluirUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método realiza a exclusão de usuários.</p>",
     "parameter": {
       "fields": {
@@ -8465,7 +8617,7 @@
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "endpoint: http://<host>/sei-broker/service/usuarios/excluir\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
+        "content": "endpoint: [DELETE] http://<host>/sei-broker/service/usuarios/andre.guimaraes\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
         "type": "json"
       }
     ],
@@ -8501,6 +8653,11 @@
     "name": "incluirUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método realiza a inclusão de novos usuários ou alterarações nos usuários existentes.</p>",
     "parameter": {
       "fields": {
@@ -8568,6 +8725,11 @@
     "name": "listarUsuarios",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza uma consulta aos usuários cadastrados que possuem o perfil &quot;Básico&quot;.</p>",
     "parameter": {
       "fields": {

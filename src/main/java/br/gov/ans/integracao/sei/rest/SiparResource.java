@@ -45,20 +45,24 @@ public class SiparResource {
 	private static int FALSE = 0;
     
 	/**
-     * @api {put} /sipar/importados Importar Processo SIPAR
+     * @api {post} /sipar/importados Importar Processo
      * @apiName importarProcesso
      * @apiGroup SIPAR
      * @apiVersion 2.0.0
      *
      * @apiDescription Marca um processo físico (SIPAR) como importado para um processo eletrônico (SEI).
-     *        
-     * @apiParam (Path Parameter) {String} processo Número do processo físico existente no SIPAR contendo 17 dígitos e iniciado com 33902. Ex. 33902111111111111
+     *    
+	 * @apiParam (Header Parameters) {String} content-type Informar text/plain
+	 * @apiParam (Request Body) {String} processo Número do processo a ser importado
      * 
-     * @apiExample {curl} Exemplo de requisição:
-     *        curl -i http://<host>/sei-broker/service/sipar/importados
+	 * @apiExample Exemplo de requisição:	
+	 *	endpoint: [POST] http://<host>/sei-broker/service/sipar/importados
+	 *
+	 *	body:
+	 *	33902112492200241
      * 
      * @apiSuccessExample {json} Success-Response:
-     *  HTTP/1.1 204 No Content
+     *  HTTP/1.1 201 Created
      *
      * @apiErrorExample {json} Error-Response:
      * HTTP/1.1 500 Internal Server Error
@@ -111,17 +115,17 @@ public class SiparResource {
 	}
 	
 	/**
-     * @api {put} /processos-fisicos/{processo}/desmigracao 2.Desmigra Processo
-     * @apiName desmigra
+     * @api {delete} /sipar/importados/:processo Cancelar Importação Processo
+     * @apiName cancelarImportacaoProcesso
      * @apiGroup SIPAR
-     * @apiVersion 1.0.0
+     * @apiVersion 2.0.0
      *
-     * @apiDescription Desmigra um processo iniciado no SIPAR e transferido para o SEI, permitindo novamente a anexação e tramitação no SIPAR.
+     * @apiDescription Desmarca um processo físico (SIPAR) como importado para um processo eletrônico (SEI).
      *        
      * @apiParam (Path Parameter) {String} processo Número do processo físico existente no SIPAR contendo 17 dígitos e iniciado com 33902. Ex. 33902111111111111
      * 
      * @apiExample {curl} Exemplo de requisição:
-     *        curl -i http://<host>/sipar-broker/service/processos-fisicos/33902111111111111/desmigracao
+     *        curl -X DELETE http://<host>/sei-broker/service/sipar/importados/33902112492200241
      * 
      * @apiSuccessExample {json} Success-Response:
      *  HTTP/1.1 204 No Content
@@ -143,7 +147,7 @@ public class SiparResource {
      * 
      *
      * @apiErrorExample {json} Error-Response:
-     * HTTP/1.1 409 Conflict
+     * HTTP/1.1 404 Not Found
      * {
      * 		"error":"Mensagem de erro."
      *		"code":"código do erro"

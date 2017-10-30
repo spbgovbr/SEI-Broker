@@ -257,8 +257,8 @@ public class BlocoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response gerarBloco(@PathParam("unidade") String unidade, NovoBloco bloco) throws Exception{		
-		String retorno = seiNativeService.gerarBloco(Constantes.SEI_BROKER, Operacao.GERAR_BLOCO, unidadeResource.consultarCodigo(unidade), bloco.getTipo().getCodigo(), bloco.getDescricao(), bloco.getUnidades(), 
-					bloco.getDocumentos(), getSOuN(bloco.isDisponibilizar()));	
+		String retorno = seiNativeService.gerarBloco(Constantes.SEI_BROKER, Operacao.GERAR_BLOCO, unidadeResource.consultarCodigo(unidade), bloco.getTipo().getCodigo(), 
+				bloco.getDescricao(), unidadeResource.buscarCodigoUnidades(bloco.getUnidades()), bloco.getDocumentos(), getSOuN(bloco.isDisponibilizar()));	
 		
 		return Response.created(getResourcePath(retorno)).entity(retorno).build();
 	}
