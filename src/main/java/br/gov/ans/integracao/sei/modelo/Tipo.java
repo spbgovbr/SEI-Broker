@@ -8,8 +8,8 @@ import javax.persistence.SqlResultSetMapping;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@SqlResultSetMapping(name = "TipoMapping", entities = { @EntityResult(entityClass = Tipo.class, fields = {
-		@FieldResult(name = "codigo", column = "tipoCodigo"), @FieldResult(name = "nome", column = "tipoNome") }) })
+//@SqlResultSetMapping(name = "TipoMapping", entities = { @EntityResult(entityClass = Tipo.class, fields = {
+//		@FieldResult(name = "codigo", column = "tipoCodigo"), @FieldResult(name = "nome", column = "tipoNome") }) })
 @XmlRootElement
 public class Tipo {
 	@Id

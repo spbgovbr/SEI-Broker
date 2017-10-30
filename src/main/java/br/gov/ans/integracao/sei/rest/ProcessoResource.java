@@ -47,10 +47,9 @@ import br.gov.ans.integracao.sei.client.RetornoGeracaoProcedimento;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.client.TipoProcedimento;
 import br.gov.ans.integracao.sei.dao.DocumentoDAO;
-import br.gov.ans.integracao.sei.dao.DocumentoSiparDAO;
+import br.gov.ans.integracao.sei.dao.SiparDAO;
 import br.gov.ans.integracao.sei.dao.ProcessoDAO;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
-import br.gov.ans.integracao.sei.modelo.DocumentoSipar;
 import br.gov.ans.integracao.sei.modelo.EnvioDeProcesso;
 import br.gov.ans.integracao.sei.modelo.Motivo;
 import br.gov.ans.integracao.sei.modelo.NovoAndamento;
@@ -63,6 +62,7 @@ import br.gov.ans.integracao.sei.modelo.ProcessoResumido;
 import br.gov.ans.integracao.sei.modelo.ResultadoConsultaProcesso;
 import br.gov.ans.integracao.sei.modelo.SobrestamentoProcesso;
 import br.gov.ans.integracao.sei.utils.Constantes;
+import br.gov.ans.integracao.sipar.dao.DocumentoSipar;
 import br.gov.ans.utils.MessageUtils;
 
 
@@ -70,7 +70,7 @@ import br.gov.ans.utils.MessageUtils;
 public class ProcessoResource {
 	
     @Inject
-    private DocumentoSiparDAO documentoSiparDAO;
+    private SiparDAO documentoSiparDAO;
     
     @Inject
     private ProcessoDAO processoDAO;

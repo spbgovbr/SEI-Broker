@@ -10,10 +10,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -49,7 +49,9 @@ public class UsuarioResource {
 	 * @apiName listarUsuarios
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Este método realiza uma consulta aos usuários cadastrados que possuem o perfil "Básico".
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -81,7 +83,9 @@ public class UsuarioResource {
 	 * @apiName buscarUsuario
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Este método realiza a uma busca pelo login do usuário.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -111,7 +115,9 @@ public class UsuarioResource {
 	 * @apiName atribuirProcesso
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Este método atribui o processo a um usuário.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -155,7 +161,9 @@ public class UsuarioResource {
 	 * @apiName incluirUsuario
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER_ADM
+	 * 
 	 * @apiDescription Este método realiza a inclusão de novos usuários ou alterarações nos usuários existentes.
 	 *
 	 * @apiParam (Request Body) {String} codigo Código que deseja atribuir ao usuário
@@ -191,11 +199,13 @@ public class UsuarioResource {
 
 		
 	/**
-	 * @api {post} /usuarios/excluir Excluir usuário
+	 * @api {delete} /usuarios/:login Excluir usuário
 	 * @apiName excluirUsuario
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER_ADM
+	 * 
 	 * @apiDescription Este método realiza a exclusão de usuários.
 	 * 
 	 * @apiParam {String} codigo Código que deseja atribuir ao usuário
@@ -203,7 +213,91 @@ public class UsuarioResource {
 	 * @apiParam {String} login Login que será atribuído ao usuário
 	 * 
 	 * @apiExample Exemplo de requisição:	
-	 *	endpoint: http://<host>/sei-broker/service/usuarios/excluir
+	 *	endpoint: [DELETE] http://<host>/sei-broker/service/usuarios/andre.guimaraes
+	 *
+	 *	body:
+	 *	{
+	 *		"codigo":"1234",
+	 *		"nome":"André Luís Fernandes Guimarães",
+	 *		"login":"andre.guimaraes"
+	 *	}
+	 *
+	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisição
+	 *
+	 * @apiErrorExample {json} Error-Response:
+	 * 	HTTP/1.1 500 Internal Server Error
+	 * 	{
+	 *		"error":"Mensagem de erro."
+	 *		"code":"código do erro"
+	 *	}
+	 */
+	@DELETE
+	@Path("/usuarios/{login}")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces(MediaType.APPLICATION_JSON)
+	public Boolean excluirUsuario(@PathParam("login") String login,Usuario usuario) throws Exception{
+		return manterUsuario(Acao.EXCLUIR, usuario);
+	}
+	
+	
+	/**
+	 * @api {delete} /usuarios/ativos Desativar usuário
+	 * @apiName desativarUsuario
+	 * @apiGroup Usuario
+	 * @apiVersion 2.0.0
+	 * 
+	 * @apiPermission RO_SEI_BROKER_ADM
+	 * 
+	 * @apiDescription Este método desativa usuários.
+	 *
+	 * @apiParam {String} codigo Código que deseja atribuir ao usuário
+	 * @apiParam {String} nome Nome do usuário
+	 * @apiParam {String} login Login que será atribuído ao usuário
+	 *
+	 * @apiExample Exemplo de requisição:	
+	 *	endpoint: [DELETE] http://<host>/sei-broker/service/usuarios/ativos/andre.guimaraes
+	 *
+	 *	body:
+	 *	{
+	 *		"codigo":"1234",
+	 *		"nome":"André Luís Fernandes Guimarães",
+	 *		"login":"andre.guimaraes"
+	 *	}
+	 *
+	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisição
+	 *
+	 * @apiErrorExample {json} Error-Response:
+	 * 	HTTP/1.1 500 Internal Server Error
+	 * 	{
+	 *		"error":"Mensagem de erro."
+	 *		"code":"código do erro"
+	 *	}
+	 */
+	@DELETE
+	@Path("/usuarios/ativos/{login}")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces(MediaType.APPLICATION_JSON)
+	public Boolean desativarUsuario(@PathParam("login") String login,Usuario usuario) throws Exception{
+		return manterUsuario(Acao.DESATIVAR, usuario);
+	}
+	
+	
+	/**
+	 * @api {post} /usuarios/ativos Ativar usuário
+	 * @apiName ativarUsuario
+	 * @apiGroup Usuario
+	 * @apiVersion 2.0.0
+	 * 
+	 * @apiPermission RO_SEI_BROKER_ADM
+	 * 
+	 * @apiDescription Este método reativa usuários.
+	 *
+	 * @apiParam {String} codigo Código que deseja atribuir ao usuário
+	 * @apiParam {String} nome Nome do usuário
+	 * @apiParam {String} login Login que será atribuído ao usuário
+	 *
+	 * @apiExample Exemplo de requisição:	
+	 *	endpoint: http://<host>/sei-broker/service/usuarios/ativos
 	 *
 	 *	body:
 	 *	{
@@ -222,87 +316,7 @@ public class UsuarioResource {
 	 *	}
 	 */
 	@POST
-	@Path("/usuarios/excluir")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces(MediaType.APPLICATION_JSON)
-	public Boolean excluirUsuario(Usuario usuario) throws Exception{
-		return manterUsuario(Acao.EXCLUIR, usuario);
-	}
-	
-	
-	/**
-	 * @api {put} /usuarios/desativar Desativar usuário
-	 * @apiName desativarUsuario
-	 * @apiGroup Usuario
-	 * @apiVersion 2.0.0
-	 *
-	 * @apiDescription Este método desativa usuários.
-	 *
-	 * @apiParam {String} codigo Código que deseja atribuir ao usuário
-	 * @apiParam {String} nome Nome do usuário
-	 * @apiParam {String} login Login que será atribuído ao usuário
-	 *
-	 * @apiExample Exemplo de requisição:	
-	 *	endpoint: http://<host>/sei-broker/service/usuarios/desativar
-	 *
-	 *	body:
-	 *	{
-	 *		"codigo":"1234",
-	 *		"nome":"André Luís Fernandes Guimarães",
-	 *		"login":"andre.guimaraes"
-	 *	}
-	 *
-	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisição
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
-	@PUT
-	@Path("/usuarios/desativar")
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces(MediaType.APPLICATION_JSON)
-	public Boolean desativarUsuario(Usuario usuario) throws Exception{
-		return manterUsuario(Acao.DESATIVAR, usuario);
-	}
-	
-	
-	/**
-	 * @api {put} /usuarios/ativar Ativar usuário
-	 * @apiName ativarUsuario
-	 * @apiGroup Usuario
-	 * @apiVersion 2.0.0
-	 *
-	 * @apiDescription Este método reativa usuários.
-	 *
-	 * @apiParam {String} codigo Código que deseja atribuir ao usuário
-	 * @apiParam {String} nome Nome do usuário
-	 * @apiParam {String} login Login que será atribuído ao usuário
-	 *
-	 * @apiExample Exemplo de requisição:	
-	 *	endpoint: http://<host>/sei-broker/service/usuarios/ativar
-	 *
-	 *	body:
-	 *	{
-	 *		"codigo":"1234",
-	 *		"nome":"André Luís Fernandes Guimarães",
-	 *		"login":"andre.guimaraes"
-	 *	}
-	 *
-	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisição
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
-	@PUT
-	@Path("/usuarios/ativar")
+	@Path("/usuarios/ativos")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces(MediaType.APPLICATION_JSON)
 	public Boolean ativarUsuario(Usuario usuario) throws Exception{

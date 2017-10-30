@@ -14,6 +14,7 @@ import br.gov.ans.integracao.sei.client.TipoConferencia;
 import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 
+@Path("/")
 public class TipoConferenciaResource {
 
 	@Inject

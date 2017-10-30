@@ -3,6 +3,7 @@ package br.gov.ans.integracao.sei.modelo;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import br.gov.ans.integracao.sei.client.RetornoConsultaDocumento;
+import br.gov.ans.integracao.sipar.dao.DocumentoSipar;
 
 @XmlRootElement
 public class ResultadoConsultaDocumento {

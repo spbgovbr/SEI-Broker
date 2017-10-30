@@ -336,25 +336,17 @@ public class SeiPortTypeProxy implements br.gov.ans.integracao.sei.client.SeiPor
 				identificacaoServico, idUnidade, idArquivoExtensao);
 	}
 
-	public java.lang.String enviarProcesso(java.lang.String siglaSistema,
-			java.lang.String identificacaoServico, java.lang.String idUnidade,
-			java.lang.String protocoloProcedimento,
-			java.lang.String[] unidadesDestino,
-			java.lang.String sinManterAbertoUnidade,
-			java.lang.String sinRemoverAnotacao,
-			java.lang.String sinEnviarEmailNotificacao,
-			java.lang.String dataRetornoProgramado,
-			java.lang.String diasRetornoProgramado,
-			java.lang.String sinDiasUteisRetornoProgramado,
+	public java.lang.String enviarProcesso(java.lang.String siglaSistema, java.lang.String identificacaoServico,
+			java.lang.String idUnidade, java.lang.String protocoloProcedimento, java.lang.String[] unidadesDestino,
+			java.lang.String sinManterAbertoUnidade, java.lang.String sinRemoverAnotacao,
+			java.lang.String sinEnviarEmailNotificacao, java.lang.String dataRetornoProgramado,
+			java.lang.String diasRetornoProgramado, java.lang.String sinDiasUteisRetornoProgramado,
 			java.lang.String sinReabrir) throws java.rmi.RemoteException {
 		if (seiPortType == null)
 			_initSeiPortTypeProxy();
-		return seiPortType.enviarProcesso(siglaSistema, identificacaoServico,
-				idUnidade, protocoloProcedimento, unidadesDestino,
-				sinManterAbertoUnidade, sinRemoverAnotacao,
-				sinEnviarEmailNotificacao, dataRetornoProgramado,
-				diasRetornoProgramado, sinDiasUteisRetornoProgramado,
-				sinReabrir);
+		return seiPortType.enviarProcesso(siglaSistema, identificacaoServico, idUnidade, protocoloProcedimento,
+				unidadesDestino, sinManterAbertoUnidade, sinRemoverAnotacao, sinEnviarEmailNotificacao,
+				dataRetornoProgramado, diasRetornoProgramado, sinDiasUteisRetornoProgramado, sinReabrir);
 	}
 
 	public br.gov.ans.integracao.sei.client.Usuario[] listarUsuarios(
