@@ -223,7 +223,7 @@ public class SiparResource {
 	
 	public void isProcessoSipar(String numeroDocumento, String anoDocumento, String digitoDocumento) throws ResourceNotFoundException{
 		if(dao.getDocumento(numeroDocumento, anoDocumento, digitoDocumento) == null){
-			throw new ResourceNotFoundException(messages.getMessage("erro.processo.nao.pertence.sipar"));
+			throw new ResourceNotFoundException(messages.getMessage("erro.processo.nao.pertence.sipar",(numeroDocumento+anoDocumento+digitoDocumento)));
 		}
 	}
 	
