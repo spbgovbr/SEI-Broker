@@ -111,6 +111,10 @@ public class UnidadeResource {
 	public String consultarCodigo(@PathParam("chave") String chave) throws Exception{
 		logger.debug(messages.getMessage("consultando.unidade",chave));
 
+		if(isInteger(chave)){
+			return chave;
+		}
+		
 		if(!getUnidades().containsKey(chave.toUpperCase())){
 			throw new BusinessException(messages.getMessage("erro.unidade.nao.encontrada", chave));
 		}

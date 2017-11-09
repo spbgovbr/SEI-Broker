@@ -96,8 +96,8 @@ public class ArquivoResource {
 	public Response adicionarArquivo(@PathParam("unidade") String unidade, Arquivo arquivo) throws RemoteException, Exception{
 		validarTamanhoArquivo(arquivo);
 		
-		String identificador = seiNativeService.adicionarArquivo(Constantes.SEI_BROKER, Operacao.ADICIONAR_ARQUIVO, unidadeResource.consultarCodigo(unidade), arquivo.getNome(), arquivo.getTamanho(), 
-				arquivo.getHash(), arquivo.getConteudo());
+		String identificador = seiNativeService.adicionarArquivo(Constantes.SEI_BROKER, Operacao.ADICIONAR_ARQUIVO, 
+				unidadeResource.consultarCodigo(unidade), arquivo.getNome(), arquivo.getTamanho(), arquivo.getHash(), arquivo.getConteudo());
 		
 		return Response.created(getResourcePath(identificador)).entity(new ArquivoCriado(identificador)).build();
 	}

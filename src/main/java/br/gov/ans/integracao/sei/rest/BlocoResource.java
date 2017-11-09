@@ -170,7 +170,8 @@ public class BlocoResource {
 	@Path("{unidade}/blocos/disponibilizados/{bloco}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String cancelarDisponibilizacaoBloco(@PathParam("unidade") String unidade, @PathParam("bloco") String bloco) throws Exception{
-		String resultado = seiNativeService.cancelarDisponibilizacaoBloco(Constantes.SEI_BROKER, Operacao.CANCELAR_DISPONIBILIZACAO_BLOCO, unidadeResource.consultarCodigo(unidade), bloco);
+		String resultado = seiNativeService.cancelarDisponibilizacaoBloco(Constantes.SEI_BROKER, Operacao.CANCELAR_DISPONIBILIZACAO_BLOCO, 
+				unidadeResource.consultarCodigo(unidade), bloco);
 				
 		return trueOrFalse(resultado) + "";
 	}
