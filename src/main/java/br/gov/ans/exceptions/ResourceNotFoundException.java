@@ -1,5 +1,8 @@
 package br.gov.ans.exceptions;
 
+import javax.ejb.ApplicationException;
+
+@ApplicationException
 public class ResourceNotFoundException extends Exception {
 
 	private static final long serialVersionUID = 1L;

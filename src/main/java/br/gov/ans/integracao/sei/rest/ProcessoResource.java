@@ -7,6 +7,7 @@ import static br.gov.ans.integracao.sei.utils.Util.getSOuN;
 import static br.gov.ans.integracao.sei.utils.Util.parseInt;
 import static br.gov.ans.integracao.sei.utils.Util.trueOrFalse;
 
+import java.math.BigInteger;
 import java.net.URI;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -14,8 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -38,6 +39,7 @@ import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.providers.jaxb.Wrapped;
 
 import br.gov.ans.exceptions.BusinessException;
+import br.gov.ans.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sei.client.Andamento;
 import br.gov.ans.integracao.sei.client.AtributoAndamento;
 import br.gov.ans.integracao.sei.client.RetornoConsultaProcedimento;
@@ -45,10 +47,9 @@ import br.gov.ans.integracao.sei.client.RetornoGeracaoProcedimento;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.client.TipoProcedimento;
 import br.gov.ans.integracao.sei.dao.DocumentoDAO;
-import br.gov.ans.integracao.sei.dao.DocumentoSiparDAO;
+import br.gov.ans.integracao.sei.dao.SiparDAO;
 import br.gov.ans.integracao.sei.dao.ProcessoDAO;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
-import br.gov.ans.integracao.sei.modelo.DocumentoSipar;
 import br.gov.ans.integracao.sei.modelo.EnvioDeProcesso;
 import br.gov.ans.integracao.sei.modelo.Motivo;
 import br.gov.ans.integracao.sei.modelo.NovoAndamento;
@@ -61,15 +62,15 @@ import br.gov.ans.integracao.sei.modelo.ProcessoResumido;
 import br.gov.ans.integracao.sei.modelo.ResultadoConsultaProcesso;
 import br.gov.ans.integracao.sei.modelo.SobrestamentoProcesso;
 import br.gov.ans.integracao.sei.utils.Constantes;
+import br.gov.ans.integracao.sipar.dao.DocumentoSipar;
 import br.gov.ans.utils.MessageUtils;
 
 
 @Path("")
-@Stateless
 public class ProcessoResource {
 	
     @Inject
-    private DocumentoSiparDAO documentoSiparDAO;
+    private SiparDAO documentoSiparDAO;
     
     @Inject
     private ProcessoDAO processoDAO;
@@ -98,6 +99,8 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 *
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Este método realiza uma consulta a processos no SEI e no SIPAR.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -269,7 +272,9 @@ public class ProcessoResource {
 	 * @apiName concluirProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Conclui o processo informado.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -312,22 +317,24 @@ public class ProcessoResource {
 	 * @apiName enviarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
+	 * 
+	 * @apiPermission RO_SEI_BROKER
 	 *
 	 * @apiDescription Envia processos a outras unidades.
 	 * 
-	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
+	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI. Representa a unidade de localização atual do processo.
 	 * 
 	 * @apiParam (Query Parameters) {String = "S (sim), N (não)"} [reabir=N] Reabrir automaticamente caso esteja concluído na unidade
 	 * @apiParam (Query Parameters) {String = "S (sim), N (não)"} [auto-formatacao=S] O broker utilizará a mascara padrão para formatar o número do processo
 	 * 
-	 * @apiParam (Request Body) {String} processo Numero do processo a ser enviado 
-	 * @apiParam (Request Body) {String[]} unidadesDestino Códigos das unidades para onde o bloco será enviado
-	 * @apiParam (Request Body) {Boolean} manterAbertoOrigem=false Informa se o processo deve continuar aberto na unidade de origem 
-	 * @apiParam (Request Body) {Boolean} removerAnotacoes=false Informa se as anotações do processo devem ser removidas
-	 * @apiParam (Request Body) {Boolean} enviarEmailNotificacao=false Informa se deve ser enviado um e-mail de notificação
-	 * @apiParam (Request Body) {Date} dataRetornoProgramado=null Data para retorno programado do processo a unidade (padrão ISO-8601)
-	 * @apiParam (Request Body) {Integer} qtdDiasAteRetorno=null Quantidade de dias até o retorno do processo
-	 * @apiParam (Request Body) {Boolean} somenteDiasUteis=false Informa se só serão contabilizados dias úteis
+	 * @apiParam (Request Body) {String} processo Numero do processo a ser enviado. Em caso de processo apensado, o processo a ser enviado deve ser o processo PAI. Não é possível tramitar através do processo FILHO.
+	 * @apiParam (Request Body) {String[]} unidadesDestino Lista com os identificadores das unidades de destino do processo, código ou nome da unidade.
+	 * @apiParam (Request Body) {Boolean} manterAbertoOrigem=false Informa se o processo deve continuar aberto na unidade de origem .
+	 * @apiParam (Request Body) {Boolean} removerAnotacoes=false Informa se as anotações do processo devem ser removidas.
+	 * @apiParam (Request Body) {Boolean} enviarEmailNotificacao=false Informa se deve ser enviado um e-mail de notificação.
+	 * @apiParam (Request Body) {Date} dataRetornoProgramado=null Data para retorno programado do processo a unidade (padrão ISO-8601).
+	 * @apiParam (Request Body) {Integer} qtdDiasAteRetorno=null Quantidade de dias até o retorno do processo.
+	 * @apiParam (Request Body) {Boolean} somenteDiasUteis=false Informa se só serão contabilizados dias úteis.
 	 * 
 	 * @apiExample Exemplo de requisição:	
 	 *	endpoint: [POST] https://<host>/sei-broker/service/COSAP/processos/enviados
@@ -366,8 +373,9 @@ public class ProcessoResource {
 		}
 		
 		String resultado = seiNativeService.enviarProcesso(Constantes.SEI_BROKER, Operacao.ENVIAR_PROCESSO, unidadeResource.consultarCodigo(unidade), processo,
-					dadosEnvio.getUnidadesDestino(), getSOuN(dadosEnvio.getManterAbertoOrigem()), getSOuN(dadosEnvio.getRemoverAnotacoes()), getSOuN(dadosEnvio.getEnviarEmailNotificacao()), 
-					formatarData(dadosEnvio.getDataRetornoProgramado()), (dadosEnvio.getQtdDiasAteRetorno() != null ? dadosEnvio.getQtdDiasAteRetorno().toString() : null), getSOuN(dadosEnvio.getSomenteDiasUteis()),
+					unidadeResource.buscarCodigoUnidades(dadosEnvio.getUnidadesDestino()), getSOuN(dadosEnvio.getManterAbertoOrigem()), getSOuN(dadosEnvio.getRemoverAnotacoes()), 
+					getSOuN(dadosEnvio.getEnviarEmailNotificacao()), formatarData(dadosEnvio.getDataRetornoProgramado()), 
+					(dadosEnvio.getQtdDiasAteRetorno() != null ? dadosEnvio.getQtdDiasAteRetorno().toString() : null), getSOuN(dadosEnvio.getSomenteDiasUteis()),
 					getSOuN(reabrir));
 		
 		return trueOrFalse(resultado) + "";
@@ -379,7 +387,9 @@ public class ProcessoResource {
 	 * @apiName reabrirProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Reabre um processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -417,7 +427,9 @@ public class ProcessoResource {
 	 * @apiName listarTiposProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Consulta os tipos de processo.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -448,7 +460,9 @@ public class ProcessoResource {
 	 * @apiName abrirProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Abre um processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -548,21 +562,24 @@ public class ProcessoResource {
 	}
 	
 	/**
-	 * @api {get} /:interessado/processos Consultar por interessados
-	 * @apiName consultarProcessosInteressado
+	 * @api {get} /processos Listar processos
+	 * @apiName consultarProcessos
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
-	 * @apiDescription Retorna os processos de um determinado interessado.
 	 * 
-	 * @apiParam (Path Parameters) {String} interessado Identificador do interessado
+	 * @apiPermission RO_SEI_BROKER
 	 * 
+	 * @apiDescription Lista os processos conforme os filtros informados.
+	 * 
+	 * @apiParam (Query Parameters) {Boolean} [crescente=false] Ordenar em ordem crescente, processos mais antigos primeiro
+	 * @apiParam (Query Parameters) {String} [interessado] Identificador do interessado
 	 * @apiParam (Query Parameters) {String} [unidade] Unidade da qual deseja filtrar os processos
 	 * @apiParam (Query Parameters) {String} [pagina=1] Número da página
 	 * @apiParam (Query Parameters) {String} [qtdRegistros=50] Quantidade de registros retornados por página
+	 * @apiParam (Query Parameters) {String} [tipo] Identificador do tipo de processo que deseja filtrar
 	 * 
 	 * @apiExample Exemplo de requisição:	
-	 *	curl -i https://<host>/sei-broker/service/414247/processos
+	 *	curl -i https://<host>/sei-broker/service/processos
 	 *
 	 * @apiSuccess (Sucesso Response Body - 200) {List} processos Lista com os processos encontrados
 	 * @apiSuccess (Sucesso Response Body - 200) {ProcessoResumido} processos.processoResumido Resumo do processo encontrado no SEI
@@ -571,8 +588,25 @@ public class ProcessoResource {
 	 * @apiSuccess (Sucesso Response Body - 200) {String} processos.processoResumido.descricao Descrição do processo
 	 * @apiSuccess (Sucesso Response Body - 200) {String} processos.processoResumido.unidade Unidade responsável pelo processo
 	 * @apiSuccess (Sucesso Response Body - 200) {Data} processos.processoResumido.dataGeracao Data de geração do processo
+	 * @apiSuccess (Sucesso Response Body - 200) {Tipo} processos.processoResumido.tipo Objeto com os dados do tipo de processo
+	 * @apiSuccess (Sucesso Response Body - 200) {String} processos.processoResumido.tipo.codigo Código do tipo
+	 * @apiSuccess (Sucesso Response Body - 200) {String} processos.processoResumido.tipo.nome Nome do tipo
 	 * 
 	 * @apiSuccess (Sucesso Response Header - 200) {header} total_registros quantidade de registros que existem para essa consulta.
+	 *
+	 * @apiSuccessExample {json} Success-Response:
+	 *     HTTP/1.1 200 OK
+	 *     {
+	 *       "numero": "33910007118201710",
+	 *       "numeroFormatado": "33910.007118/2017-10",
+	 *       "descricao": "D:2237021 - SUL AMÉRICA SEGURO SAÚDE S/A",
+	 *       "unidade": "NÚCLEO-RJ",
+	 *       "dataGeracao": "2017-10-09T03:00:00.000+0000",
+	 *       "tipo": {
+	 *       	"codigo": "100000882",
+	 *       	"nome": "Fiscalização: Sancionador"
+	 *       }
+	 *     }
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
@@ -582,17 +616,22 @@ public class ProcessoResource {
 	 *	}
 	 */
 	@GET
-	@Path("/{interessado}/processos")
+	@Path("/processos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Wrapped(element = "processos")
-	public Response consultarProcessos(@PathParam("interessado") String interessado, @QueryParam("unidade") String unidade, @QueryParam("pagina") String pagina, 
-			@QueryParam("qtdRegistros") String qtdRegistros) throws BusinessException{
+	public Response consultarProcessos(@QueryParam("interessado") String interessado, @QueryParam("unidade") String unidade, @QueryParam("tipo") String tipoProcesso, 
+			@QueryParam("crescente") boolean crescente, @QueryParam("pagina") String pagina, @QueryParam("qtdRegistros") String qtdRegistros) throws Exception{
 		
-		List<ProcessoResumido> processos = processoDAO.getProcessos(interessado, unidade, pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros));
+		if(StringUtils.isNotBlank(unidade)){
+			unidade = unidadeResource.consultarCodigo(unidade);
+		}
+		
+		List<ProcessoResumido> processos = processoDAO.getProcessos(interessado, unidade, tipoProcesso, 
+				pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros), crescente);
 		
 		GenericEntity<List<ProcessoResumido>> entity = new GenericEntity<List<ProcessoResumido>>(processos){};
 		
-		Long totalRegistros = processoDAO.countProcessos(interessado, unidade);
+		Long totalRegistros = processoDAO.countProcessos(interessado, unidade, tipoProcesso);
 		
 		return Response.ok().entity(entity)
 		.header("total_registros", totalRegistros).build();			
@@ -603,7 +642,9 @@ public class ProcessoResource {
 	 * @apiName listarAndamentos
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Lista as andamentos do processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -661,7 +702,9 @@ public class ProcessoResource {
 	 * @apiName lancarAndamento
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Lança um andamento ao processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -722,7 +765,9 @@ public class ProcessoResource {
 	 * @apiName anexarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Anexar um processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -772,7 +817,9 @@ public class ProcessoResource {
 	 * @apiName desanexarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Remove um processo anexado.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -819,7 +866,9 @@ public class ProcessoResource {
 	 * @apiName bloquearProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Bloquear um processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -869,7 +918,9 @@ public class ProcessoResource {
 	 * @apiName desbloquearProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Desbloquear um processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -907,7 +958,9 @@ public class ProcessoResource {
 	 * @apiName relacionarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Relacionar processos.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -957,7 +1010,9 @@ public class ProcessoResource {
 	 * @apiName desrelacionarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Desrelacionar processos.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -998,7 +1053,9 @@ public class ProcessoResource {
 	 * @apiName sobrestarProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Sobrestar processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -1051,7 +1108,9 @@ public class ProcessoResource {
 	 * @apiName removerSobrestamentoProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Remover sobrestamento de processo.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
@@ -1086,34 +1145,49 @@ public class ProcessoResource {
 	}
 	
 	/**
-	 * @api {get} /:unidade/processos/:processo/documentos Listar documentos
+	 * @api {get} /processos/:processo/documentos Listar documentos
 	 * @apiName listarDocumentosPorProcesso
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Retorna os documentos de um determinado processo.
 	 * 
-	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
 	 * @apiParam (Path Parameters) {String} processo Número do processo.
 	 * 
+	 * @apiParam (Query Parameters) {String} [tipo=null] Identificador do tipo do documento, caso seja necessário filtrar pelo tipo
+	 * @apiParam (Query Parameters) {String = "G (gerado/interno), R (recebido/externo)"} [origem=null] Filtra os documentos por gerados ou recebidos
+	 * @apiParam (Query Parameters) {boolean} [somenteAssinados=false] Exibir somente documentos assinados
 	 * 
 	 * @apiExample Exemplo de requisição:	
-	 *	curl -i https://<host>/sei-broker/service/cosap/processos/33910003149201793/documentos
+	 *	curl -i https://<host>/sei-broker/service/processos/33910003149201793/documentos
 	 *
 	 * @apiSuccess (Sucesso Response Body - 200) {List} documentos Lista com os documentos encontrados.
 	 * @apiSuccess (Sucesso Response Body - 200) {DocumentoResumido} documentos.documentoResumido Resumo do documento encontrado no SEI.
 	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numero Número do documento.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo Tipo do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numeroInformado Número informado na inclusão do documento, também conhecido como número de árvore.
 	 * @apiSuccess (Sucesso Response Body - 200) {String="GERADO","RECEBIDO"} documentos.documentoResumido.origem Origem do documento, se o mesmo é um documento "GERADO" internamente ou "RECEBIDO" de uma fonte externa.
 	 * @apiSuccess (Sucesso Response Body - 200) {Data} documentos.documentoResumido.dataGeracao Data de geração do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {Tipo} documentos.documentoResumido.tipo Objeto representando o tipo do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo.codigo Identificados do tipo do documento, também conhecido como série.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo.nome Nome do tipo do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipoConferencia Tipo de conferência do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {boolean} documentos.documentoResumido.assinado Boolean indicando se o documento foi assinado.
 	 * 
 	 * @apiSuccessExample {json} Success-Response:
 	 *     HTTP/1.1 200 OK
 	 *     {
-	 *       "dataGeracao": "2015-08-10T00:00:00-03:00",
 	 *       "numero": "0670949",
+	 *       "numeroInformado": "594",
 	 *       "origem": "RECEBIDO",
-	 *       "tipo": "Despacho"
+	 *       "dataGeracao": "2015-08-10T00:00:00-03:00",
+	 *       "tipo": {
+	 *       	"codigo": "629",
+	 *       	"nome": "Relatório de Arquivamento-SIF"
+	 *       }
+	 *       "tipoConferencia": "4",
+	 *       "assinado": true
 	 *     }
 	 *
 	 * @apiErrorExample {json} Error-Response:
@@ -1124,10 +1198,23 @@ public class ProcessoResource {
 	 *	}
 	 */
 	@GET
-	@Path("/{unidade}/processos/{processo:\\d+}/documentos")
+	@Path("/processos/{processo:\\d+}/documentos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public List<DocumentoResumido> listarDocumentosPorProcesso(@PathParam("unidade") String unidade, @PathParam("processo") String processo) throws RemoteException, Exception{
- 		return documentoDAO.getDocumentosProcesso(formatarNumeroProcesso(processo));
+	public List<DocumentoResumido> listarDocumentosPorProcesso(@PathParam("processo") String processo, @QueryParam("tipo")String tipo,
+			@QueryParam("origem") String origem, @QueryParam("somenteAssinados") boolean somenteAssinados)	throws RemoteException, Exception{
+		try{
+			BigInteger idProcedimento = processoDAO.getIdProcedimento(formatarNumeroProcesso(processo));
+			
+			List<DocumentoResumido> documentosProcesso = documentoDAO.getDocumentosProcesso(idProcedimento.toString(), tipo, origem, somenteAssinados);
+			
+			if(documentosProcesso.isEmpty()){
+				throw new ResourceNotFoundException(messages.getMessage("erro.processo.sem.documentos",formatarNumeroProcesso(processo)));
+			}
+			
+	 		return documentosProcesso;
+		}catch(NoResultException ex){
+			throw new BusinessException(messages.getMessage("erro.processo.nao.pertence.sei", formatarNumeroProcesso(processo)));
+		}
 	}
 	
 	public URI getResourcePath(String resourceId){

@@ -89,30 +89,19 @@ public class Usuario  implements java.io.Serializable {
         this.nome = nome;
     }
 
-    private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Usuario)) return false;
-        Usuario other = (Usuario) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
-        }
-        __equalsCalc = obj;
-        boolean _equals;
-        _equals = true && 
-            ((this.idUsuario==null && other.getIdUsuario()==null) || 
-             (this.idUsuario!=null &&
-              this.idUsuario.equals(other.getIdUsuario()))) &&
-            ((this.sigla==null && other.getSigla()==null) || 
-             (this.sigla!=null &&
-              this.sigla.equals(other.getSigla()))) &&
-            ((this.nome==null && other.getNome()==null) || 
-             (this.nome!=null &&
-              this.nome.equals(other.getNome())));
-        __equalsCalc = null;
-        return _equals;
-    }
+	public synchronized boolean equals(java.lang.Object obj) {
+		if (!(obj instanceof Usuario)){
+			return false;
+		}
+			
+		Usuario other = (Usuario) obj;
+
+		if(this.getSigla().equals(other.getSigla())){
+			return true;
+		}
+		
+		return false;
+	}
 
     private boolean __hashCodeCalc = false;
     public synchronized int hashCode() {

@@ -30,7 +30,9 @@ public class HipoteseLegalResource {
 	 * @apiName listarHipoteses
 	 * @apiGroup Hipotese Legal
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Lista as hipóteses legais.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI

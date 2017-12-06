@@ -6,7 +6,6 @@ import static br.gov.ans.integracao.sei.utils.Util.trueOrFalse;
 
 import java.net.URI;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -34,7 +33,6 @@ import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("")
-@Stateless
 public class BlocoResource {
 	
     @Inject
@@ -54,7 +52,9 @@ public class BlocoResource {
 	 * @apiName consultarBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Recupera as informações do bloco informado.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -107,7 +107,9 @@ public class BlocoResource {
 	 * @apiName disponibilizarBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Disponibiliza um determinado bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -144,7 +146,9 @@ public class BlocoResource {
 	 * @apiName cancelarDisponibilizacaoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Cancela a disponibilização de blocos.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -166,7 +170,8 @@ public class BlocoResource {
 	@Path("{unidade}/blocos/disponibilizados/{bloco}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String cancelarDisponibilizacaoBloco(@PathParam("unidade") String unidade, @PathParam("bloco") String bloco) throws Exception{
-		String resultado = seiNativeService.cancelarDisponibilizacaoBloco(Constantes.SEI_BROKER, Operacao.CANCELAR_DISPONIBILIZACAO_BLOCO, unidadeResource.consultarCodigo(unidade), bloco);
+		String resultado = seiNativeService.cancelarDisponibilizacaoBloco(Constantes.SEI_BROKER, Operacao.CANCELAR_DISPONIBILIZACAO_BLOCO, 
+				unidadeResource.consultarCodigo(unidade), bloco);
 				
 		return trueOrFalse(resultado) + "";
 	}
@@ -177,7 +182,9 @@ public class BlocoResource {
 	 * @apiName excluirBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Exclui um bloco criado.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -209,7 +216,9 @@ public class BlocoResource {
 	 * @apiName gerarBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Gera um novo bloco.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI 
@@ -249,8 +258,8 @@ public class BlocoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response gerarBloco(@PathParam("unidade") String unidade, NovoBloco bloco) throws Exception{		
-		String retorno = seiNativeService.gerarBloco(Constantes.SEI_BROKER, Operacao.GERAR_BLOCO, unidadeResource.consultarCodigo(unidade), bloco.getTipo().getCodigo(), bloco.getDescricao(), bloco.getUnidades(), 
-					bloco.getDocumentos(), getSOuN(bloco.isDisponibilizar()));	
+		String retorno = seiNativeService.gerarBloco(Constantes.SEI_BROKER, Operacao.GERAR_BLOCO, unidadeResource.consultarCodigo(unidade), bloco.getTipo().getCodigo(), 
+				bloco.getDescricao(), unidadeResource.buscarCodigoUnidades(bloco.getUnidades()), bloco.getDocumentos(), getSOuN(bloco.isDisponibilizar()));	
 		
 		return Response.created(getResourcePath(retorno)).entity(retorno).build();
 	}
@@ -260,7 +269,9 @@ public class BlocoResource {
 	 * @apiName incluirDocumentoNoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Inclui um documento no bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -300,7 +311,9 @@ public class BlocoResource {
 	 * @apiName incluirDocumentoComAnotacaoNoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Inclui um documento no bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -342,7 +355,9 @@ public class BlocoResource {
 	 * @apiName retirarDocumentoDoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Remove o documento do bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI	
@@ -375,7 +390,9 @@ public class BlocoResource {
 	 * @apiName incluirProcessoNoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Inclui um processo no bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -418,7 +435,9 @@ public class BlocoResource {
 	 * @apiName incluirProcessoComAnotacaoNoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Inclui um processo no bloco, junto com uma anotação.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -467,7 +486,9 @@ public class BlocoResource {
 	 * @apiName retirarProcessoDoBloco
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Este método remove o processo do bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI

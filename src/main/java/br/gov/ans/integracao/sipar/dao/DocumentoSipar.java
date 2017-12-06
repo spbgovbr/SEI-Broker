@@ -1,4 +1,4 @@
-package br.gov.ans.integracao.sei.modelo;
+package br.gov.ans.integracao.sipar.dao;
 
 import java.util.Date;
 

@@ -5,7 +5,6 @@ import static br.gov.ans.integracao.sei.utils.Util.trueOrFalse;
 
 import java.rmi.RemoteException;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -27,7 +26,6 @@ import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("/")
-@Stateless
 public class MarcadorResource {
 
 	@Inject
@@ -44,7 +42,9 @@ public class MarcadorResource {
 	 * @apiName listarMarcadores
 	 * @apiGroup Marcador
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Lista os marcadores de uma unidade.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
@@ -77,7 +77,9 @@ public class MarcadorResource {
 	 * @apiName marcarProcesso
 	 * @apiGroup Marcador
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Adiciona um processo ao marcador.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.

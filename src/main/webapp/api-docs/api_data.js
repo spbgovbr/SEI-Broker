@@ -6,6 +6,11 @@ define({ "api": [
     "name": "adicionarArquivo",
     "group": "Arquivo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>O serviço criará um arquivo no repositório de documentos e retornará seu identificador. O envio do arquivo poderá ser particionado com chamadas posteriores ao serviço de Adicionar Conteúdo Arquivo. Após todo o conteúdo ser transferido o arquivo será ativado e poderá ser associado com um documento externo no serviço de inclusão de documento. Serão excluídos em 24 horas os arquivos não completados e não associados a um documento.</p>",
     "parameter": {
       "fields": {
@@ -109,7 +114,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
     "groupTitle": "Arquivo"
   },
   {
@@ -119,6 +124,11 @@ define({ "api": [
     "name": "adicionarConteudoArquivo",
     "group": "Arquivo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Adiciona conteúdo a um arquivo criado, o sistema identificará automaticamente quando o conteúdo foi completado validando o tamanho em bytes e o hash do conteúdo. Quando as condições forem satisfeitas o arquivo será ativado e poderá ser utilizado nas chamadas de inclusão de documento.</p>",
     "parameter": {
       "fields": {
@@ -215,7 +225,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
     "groupTitle": "Arquivo"
   },
   {
@@ -225,6 +235,11 @@ define({ "api": [
     "name": "cancelarDisponibilizacaoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Cancela a disponibilização de blocos.</p>",
     "parameter": {
       "fields": {
@@ -275,7 +290,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -285,6 +300,11 @@ define({ "api": [
     "name": "consultarBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Recupera as informações do bloco informado.</p>",
     "parameter": {
       "fields": {
@@ -478,7 +498,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -488,6 +508,11 @@ define({ "api": [
     "name": "disponibilizarBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Disponibiliza um determinado bloco.</p>",
     "parameter": {
       "fields": {
@@ -540,7 +565,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -550,6 +575,11 @@ define({ "api": [
     "name": "excluirBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Exclui um bloco criado.</p>",
     "parameter": {
       "fields": {
@@ -600,7 +630,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -610,6 +640,11 @@ define({ "api": [
     "name": "gerarBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Gera um novo bloco.</p>",
     "parameter": {
       "fields": {
@@ -712,7 +747,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -722,6 +757,11 @@ define({ "api": [
     "name": "incluirDocumentoComAnotacaoNoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Inclui um documento no bloco.</p>",
     "parameter": {
       "fields": {
@@ -789,7 +829,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -799,6 +839,11 @@ define({ "api": [
     "name": "incluirDocumentoNoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Inclui um documento no bloco.</p>",
     "parameter": {
       "fields": {
@@ -858,7 +903,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -868,6 +913,11 @@ define({ "api": [
     "name": "incluirProcessoComAnotacaoNoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Inclui um processo no bloco, junto com uma anotação.</p>",
     "parameter": {
       "fields": {
@@ -948,7 +998,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -958,6 +1008,11 @@ define({ "api": [
     "name": "incluirProcessoNoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Inclui um processo no bloco.</p>",
     "parameter": {
       "fields": {
@@ -1030,7 +1085,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -1040,6 +1095,11 @@ define({ "api": [
     "name": "retirarDocumentoDoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Remove o documento do bloco.</p>",
     "parameter": {
       "fields": {
@@ -1097,7 +1157,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -1107,6 +1167,11 @@ define({ "api": [
     "name": "retirarProcessoDoBloco",
     "group": "Bloco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método remove o processo do bloco.</p>",
     "parameter": {
       "fields": {
@@ -1177,7 +1242,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -1203,37 +1268,9 @@ define({ "api": [
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "sei-broker/src/main/webapp/api-docs/main.js",
-    "group": "C__ANS_sei_broker_branches_desenvolvimento_versao_3_sei_broker_src_main_webapp_api_docs_main_js",
-    "groupTitle": "C__ANS_sei_broker_branches_desenvolvimento_versao_3_sei_broker_src_main_webapp_api_docs_main_js",
-    "name": ""
-  },
-  {
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "optional": false,
-            "field": "varname1",
-            "description": "<p>No type.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "varname2",
-            "description": "<p>With type.</p>"
-          }
-        ]
-      }
-    },
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "sei-broker/target/sei-broker-2.1/api-docs/main.js",
-    "group": "C__ANS_sei_broker_branches_desenvolvimento_versao_3_sei_broker_target_sei_broker_2_1_api_docs_main_js",
-    "groupTitle": "C__ANS_sei_broker_branches_desenvolvimento_versao_3_sei_broker_target_sei_broker_2_1_api_docs_main_js",
+    "filename": "branch_homologacao/src/main/webapp/api-docs/main.js",
+    "group": "C__ANS_sei_broker_Fontes_branches_branch_homologacao_src_main_webapp_api_docs_main_js",
+    "groupTitle": "C__ANS_sei_broker_Fontes_branches_branch_homologacao_src_main_webapp_api_docs_main_js",
     "name": ""
   },
   {
@@ -1243,6 +1280,11 @@ define({ "api": [
     "name": "listarCargos",
     "group": "Cargo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista os cargos.</p>",
     "parameter": {
       "fields": {
@@ -1323,7 +1365,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/CargoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/CargoResource.java",
     "groupTitle": "Cargo"
   },
   {
@@ -1333,6 +1375,11 @@ define({ "api": [
     "name": "atualizarContato",
     "group": "Contato",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Atualizar contato</p>",
     "parameter": {
       "fields": {
@@ -1610,7 +1657,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -1620,6 +1667,11 @@ define({ "api": [
     "name": "criarContato",
     "group": "Contato",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Incluir contato</p>",
     "parameter": {
       "fields": {
@@ -1894,7 +1946,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -1904,6 +1956,11 @@ define({ "api": [
     "name": "getContato",
     "group": "Contato",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta contato pela sigla(login)</p>",
     "parameter": {
       "fields": {
@@ -2183,7 +2240,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -2193,6 +2250,11 @@ define({ "api": [
     "name": "listarContatos",
     "group": "Contato",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta os contatos de determinado tipo, o retorno pode ser PessoaFisica ou PessoaJuridica é recomendado utilizar a ans-commons-sei.</p>",
     "parameter": {
       "fields": {
@@ -2525,7 +2587,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -2535,6 +2597,11 @@ define({ "api": [
     "name": "listarTipos",
     "group": "Contato",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta os tipos de contato.</p>",
     "parameter": {
       "fields": {
@@ -2578,7 +2645,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -2588,6 +2655,11 @@ define({ "api": [
     "name": "cancelarDocumento",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Cancela um documento.</p>",
     "parameter": {
       "fields": {
@@ -2647,7 +2719,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -2657,6 +2729,11 @@ define({ "api": [
     "name": "consultarDocumento",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta documento cadastrado no SEI.</p>",
     "parameter": {
       "fields": {
@@ -2984,16 +3061,21 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
     "type": "get",
-    "url": "/:interessado/documentos",
-    "title": "Consultar por interessados",
+    "url": "/interessados/:interessado/documentos",
+    "title": "Consultar por interessado",
     "name": "consultarDocumentoInteressado",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Retorna os documentos de um determinado interessado.</p>",
     "parameter": {
       "fields": {
@@ -3011,8 +3093,32 @@ define({ "api": [
             "group": "Query Parameters",
             "type": "String",
             "optional": true,
-            "field": "unidade",
-            "description": "<p>Unidade da qual deseja filtrar os documentos</p>"
+            "field": "tipo",
+            "description": "<p>Tipo/Série do documento</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "boolean",
+            "optional": true,
+            "field": "somenteAssinados",
+            "defaultValue": "false",
+            "description": "<p>Exibir somente documentos assinados</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "boolean",
+            "optional": true,
+            "field": "orderByProcesso",
+            "defaultValue": "false",
+            "description": "<p>Ordenar pelo número do processo, por padrão o retorno é ordenado pela dataGeracao</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "boolean",
+            "optional": true,
+            "field": "crescente",
+            "defaultValue": "false",
+            "description": "<p>Ordenar em ordem crescente</p>"
           },
           {
             "group": "Query Parameters",
@@ -3036,7 +3142,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "curl -i https://<host>/sei-broker/service/363022/documentos",
+        "content": "curl -i https://<host>/sei-broker/service/interessados/005711/documentos",
         "type": "json"
       }
     ],
@@ -3048,42 +3154,35 @@ define({ "api": [
             "type": "List",
             "optional": false,
             "field": "documentos",
-            "description": "<p>Lista com os documentos encontrados</p>"
+            "description": "<p>Lista com os documentos encontrados.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
             "type": "DocumentoResumido",
             "optional": false,
             "field": "documentos.documentoResumido",
-            "description": "<p>Resumo do documento encontrado no SEI</p>"
+            "description": "<p>Resumo do documento encontrado no SEI.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
             "type": "String",
             "optional": false,
             "field": "documentos.documentoResumido.numero",
-            "description": "<p>Número do documento</p>"
+            "description": "<p>Número do documento.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
             "type": "String",
             "optional": false,
-            "field": "documentos.documentoResumido.tipo",
-            "description": "<p>Tipo do documento</p>"
-          },
-          {
-            "group": "Sucesso Response Body - 200",
-            "type": "String",
-            "optional": false,
-            "field": "documentos.documentoResumido.processo",
-            "description": "<p>Processo ao qual o documento pertence</p>"
+            "field": "documentos.documentoResumido.numeroInformado",
+            "description": "<p>Número informado na inclusão do documento, também conhecido como número de árvore.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
             "type": "String",
             "optional": false,
             "field": "documentos.documentoResumido.unidade",
-            "description": "<p>Unidade responsável pelo processo</p>"
+            "description": "<p>Unidade responsável pelo documento.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
@@ -3094,14 +3193,56 @@ define({ "api": [
             ],
             "optional": false,
             "field": "documentos.documentoResumido.origem",
-            "description": "<p>Origem do documento, se o mesmo é um documento &quot;GERADO&quot; internamente ou &quot;RECEBIDO&quot; de uma fonte externa</p>"
+            "description": "<p>Origem do documento, se o mesmo é um documento &quot;GERADO&quot; internamente ou &quot;RECEBIDO&quot; de uma fonte externa.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
             "type": "Data",
             "optional": false,
             "field": "documentos.documentoResumido.dataGeracao",
-            "description": "<p>Data de geração do documento</p>"
+            "description": "<p>Data de geração do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.processo",
+            "description": "<p>Processo onde o documento está incluído.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "Tipo",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipo",
+            "description": "<p>Objeto representando o tipo do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipo.codigo",
+            "description": "<p>Identificados do tipo do documento, também conhecido como série.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipo.nome",
+            "description": "<p>Nome do tipo do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipoConferencia",
+            "description": "<p>Tipo de conferência do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "boolean",
+            "optional": false,
+            "field": "documentos.documentoResumido.assinado",
+            "description": "<p>Boolean indicando se o documento foi assinado.</p>"
           }
         ],
         "Sucesso Response Header - 200": [
@@ -3117,7 +3258,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"dataGeracao\": \"2015-08-25T00:00:00-03:00\",\n  \"numero\": \"0057646\",\n  \"origem\": \"RECEBIDO\",\n  \"processo\": \"33902.554351/2015-16\",\n  \"tipo\": \"Contrato\",\n  \"unidade\": \"COAI\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"numero\": \"0670949\",\n  \"numeroInformado\": \"594\",\n  \"unidade\": \"COSAP\",\n  \"origem\": \"RECEBIDO\",\n  \"dataGeracao\": \"2015-08-10T00:00:00-03:00\",\n  \"processo\": \"33910.000002/2017-41\",\n  \"tipo\": {\n  \t\"codigo\": \"629\",\n  \t\"nome\": \"Relatório de Arquivamento-SIF\"\n  }\n  \"tipoConferencia\": \"4\",\n  \"assinado\": true\n}",
           "type": "json"
         }
       ]
@@ -3131,7 +3272,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3141,6 +3282,11 @@ define({ "api": [
     "name": "consultarDocumentosIncluidosBroker",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta documentos inclusos pelo SEI-Broker.</p>",
     "parameter": {
       "fields": {
@@ -3302,7 +3448,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3312,6 +3458,11 @@ define({ "api": [
     "name": "exportarDocumento",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Exporta documentos do SEI em PDF.</p>",
     "parameter": {
       "fields": {
@@ -3362,7 +3513,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3372,6 +3523,11 @@ define({ "api": [
     "name": "incluirDocumento",
     "group": "Documento",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Inclui um documento no SEI, podem ser incluídos documentos internos e externos, para documentos externo o tamanho máximo é 20MB.</p>",
     "parameter": {
       "fields": {
@@ -3446,7 +3602,7 @@ define({ "api": [
             "type": "String",
             "optional": true,
             "field": "data",
-            "description": "<p>Data do documento, obrigatório para documentos externos. Passar null para documentos gerados</p>"
+            "description": "<p>Data do documento (dd/MM/yyyy), obrigatório para documentos externos. Passar null para documentos gerados.</p>"
           },
           {
             "group": "Request Body",
@@ -3547,7 +3703,7 @@ define({ "api": [
               "\"0 (público)\"",
               "\"1 (restrito)\"",
               "\"2 (sigiloso)\"",
-              "\"null (herda do processo)\""
+              "\"null (herda do tipo de processo)\""
             ],
             "optional": true,
             "field": "nivelAcesso",
@@ -3661,7 +3817,95 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "groupTitle": "Documento"
+  },
+  {
+    "type": "get",
+    "url": "/:unidade/tipos-documentos",
+    "title": "Listar tipos documentos",
+    "name": "listarTiposDocumentos",
+    "group": "Documento",
+    "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
+    "description": "<p>Lista os tipos de documentos do SEI.</p>",
+    "parameter": {
+      "fields": {
+        "Path Parameters": [
+          {
+            "group": "Path Parameters",
+            "type": "String",
+            "optional": false,
+            "field": "unidade",
+            "description": "<p>Sigla da Unidade cadastrada no SEI.</p>"
+          }
+        ],
+        "Query Parameters": [
+          {
+            "group": "Query Parameters",
+            "type": "String",
+            "optional": true,
+            "field": "filtro",
+            "description": "<p>Para filtrar por documentos que contenham o trecho no nome.</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Exemplo de requisição:",
+        "content": "curl -i https://<host>/sei-broker/service/COSAP/tipos-documentos",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Sucesso - 200": [
+          {
+            "group": "Sucesso - 200",
+            "type": "List",
+            "optional": false,
+            "field": "tipos",
+            "description": "<p>Lista com os tipos de documentos</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "tipos.identificador",
+            "description": "<p>Identificador do tipo de documento</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "tipos.nome",
+            "description": "<p>Nome do tipo de documento</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "series.aplicabilidade",
+            "description": "<p>T = Documentos internos e externos, I = documentos internos, E = documentos externos e F = formulários</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n\t\"error\":\"Mensagem de erro.\"\n\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SeriesResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3671,6 +3915,11 @@ define({ "api": [
     "name": "getCidade",
     "group": "Endereco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta a cidade pelo código do IBGE.</p>",
     "parameter": {
       "fields": {
@@ -3770,7 +4019,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -3780,6 +4029,11 @@ define({ "api": [
     "name": "getCidades",
     "group": "Endereco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta as cidades de um determinado estado.</p>",
     "parameter": {
       "fields": {
@@ -3888,7 +4142,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -3898,6 +4152,11 @@ define({ "api": [
     "name": "getEstado",
     "group": "Endereco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta o estado pela sigla.</p>",
     "parameter": {
       "fields": {
@@ -4000,7 +4259,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4010,6 +4269,11 @@ define({ "api": [
     "name": "getEstados",
     "group": "Endereco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta estados cadastrados.</p>",
     "parameter": {
       "fields": {
@@ -4102,7 +4366,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4112,6 +4376,11 @@ define({ "api": [
     "name": "getPaises",
     "group": "Endereco",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta países cadastrados.</p>",
     "parameter": {
       "fields": {
@@ -4183,7 +4452,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4193,6 +4462,11 @@ define({ "api": [
     "name": "listarExtensoesPermitidas",
     "group": "Extensao",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza uma busca pelas extensões de arquivos permitidas.</p>",
     "parameter": {
       "fields": {
@@ -4267,7 +4541,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ExtensoesResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ExtensoesResource.java",
     "groupTitle": "Extensao"
   },
   {
@@ -4277,6 +4551,11 @@ define({ "api": [
     "name": "listarHipoteses",
     "group": "Hipotese_Legal",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista as hipóteses legais.</p>",
     "parameter": {
       "fields": {
@@ -4357,7 +4636,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/HipoteseLegalResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/HipoteseLegalResource.java",
     "groupTitle": "Hipotese_Legal"
   },
   {
@@ -4432,7 +4711,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4472,7 +4751,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4512,7 +4791,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4552,7 +4831,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4562,6 +4841,11 @@ define({ "api": [
     "name": "listarMarcadores",
     "group": "Marcador",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista os marcadores de uma unidade.</p>",
     "parameter": {
       "fields": {
@@ -4633,7 +4917,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
     "groupTitle": "Marcador"
   },
   {
@@ -4643,6 +4927,11 @@ define({ "api": [
     "name": "marcarProcesso",
     "group": "Marcador",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Adiciona um processo ao marcador.</p>",
     "parameter": {
       "fields": {
@@ -4712,7 +5001,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
     "groupTitle": "Marcador"
   },
   {
@@ -4722,6 +5011,11 @@ define({ "api": [
     "name": "abrirProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Abre um processo.</p>",
     "parameter": {
       "fields": {
@@ -5022,7 +5316,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -5032,6 +5326,11 @@ define({ "api": [
     "name": "anexarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Anexar um processo.</p>",
     "parameter": {
       "fields": {
@@ -5094,7 +5393,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -5104,6 +5403,11 @@ define({ "api": [
     "name": "bloquearProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Bloquear um processo.</p>",
     "parameter": {
       "fields": {
@@ -5159,7 +5463,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -5169,6 +5473,11 @@ define({ "api": [
     "name": "concluirProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Conclui o processo informado.</p>",
     "parameter": {
       "fields": {
@@ -5234,7 +5543,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -5244,6 +5553,11 @@ define({ "api": [
     "name": "consultarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza uma consulta a processos no SEI e no SIPAR.</p>",
     "parameter": {
       "fields": {
@@ -5952,29 +6266,40 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
     "type": "get",
-    "url": "/:interessado/processos",
-    "title": "Consultar por interessados",
-    "name": "consultarProcessosInteressado",
+    "url": "/processos",
+    "title": "Listar processos",
+    "name": "consultarProcessos",
     "group": "Processo",
     "version": "2.0.0",
-    "description": "<p>Retorna os processos de um determinado interessado.</p>",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
+    "description": "<p>Lista os processos conforme os filtros informados.</p>",
     "parameter": {
       "fields": {
-        "Path Parameters": [
+        "Query Parameters": [
           {
-            "group": "Path Parameters",
+            "group": "Query Parameters",
+            "type": "Boolean",
+            "optional": true,
+            "field": "crescente",
+            "defaultValue": "false",
+            "description": "<p>Ordenar em ordem crescente, processos mais antigos primeiro</p>"
+          },
+          {
+            "group": "Query Parameters",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "interessado",
             "description": "<p>Identificador do interessado</p>"
-          }
-        ],
-        "Query Parameters": [
+          },
           {
             "group": "Query Parameters",
             "type": "String",
@@ -5997,6 +6322,13 @@ define({ "api": [
             "field": "qtdRegistros",
             "defaultValue": "50",
             "description": "<p>Quantidade de registros retornados por página</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "String",
+            "optional": true,
+            "field": "tipo",
+            "description": "<p>Identificador do tipo de processo que deseja filtrar</p>"
           }
         ]
       }
@@ -6004,7 +6336,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "curl -i https://<host>/sei-broker/service/414247/processos",
+        "content": "curl -i https://<host>/sei-broker/service/processos",
         "type": "json"
       }
     ],
@@ -6059,6 +6391,27 @@ define({ "api": [
             "optional": false,
             "field": "processos.processoResumido.dataGeracao",
             "description": "<p>Data de geração do processo</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "Tipo",
+            "optional": false,
+            "field": "processos.processoResumido.tipo",
+            "description": "<p>Objeto com os dados do tipo de processo</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "processos.processoResumido.tipo.codigo",
+            "description": "<p>Código do tipo</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "processos.processoResumido.tipo.nome",
+            "description": "<p>Nome do tipo</p>"
           }
         ],
         "Sucesso Response Header - 200": [
@@ -6070,7 +6423,14 @@ define({ "api": [
             "description": "<p>quantidade de registros que existem para essa consulta.</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"numero\": \"33910007118201710\",\n  \"numeroFormatado\": \"33910.007118/2017-10\",\n  \"descricao\": \"D:2237021 - SUL AMÉRICA SEGURO SAÚDE S/A\",\n  \"unidade\": \"NÚCLEO-RJ\",\n  \"dataGeracao\": \"2017-10-09T03:00:00.000+0000\",\n  \"tipo\": {\n  \t\"codigo\": \"100000882\",\n  \t\"nome\": \"Fiscalização: Sancionador\"\n  }\n}",
+          "type": "json"
+        }
+      ]
     },
     "error": {
       "examples": [
@@ -6081,7 +6441,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6091,6 +6451,11 @@ define({ "api": [
     "name": "desanexarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Remove um processo anexado.</p>",
     "parameter": {
       "fields": {
@@ -6153,7 +6518,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6163,6 +6528,11 @@ define({ "api": [
     "name": "desbloquearProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Desbloquear um processo.</p>",
     "parameter": {
       "fields": {
@@ -6209,7 +6579,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6219,6 +6589,11 @@ define({ "api": [
     "name": "desrelacionarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Desrelacionar processos.</p>",
     "parameter": {
       "fields": {
@@ -6272,7 +6647,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6282,6 +6657,11 @@ define({ "api": [
     "name": "enviarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Envia processos a outras unidades.</p>",
     "parameter": {
       "fields": {
@@ -6291,7 +6671,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "unidade",
-            "description": "<p>Sigla da Unidade cadastrada no SEI</p>"
+            "description": "<p>Sigla da Unidade cadastrada no SEI. Representa a unidade de localização atual do processo.</p>"
           }
         ],
         "Query Parameters": [
@@ -6324,14 +6704,14 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "processo",
-            "description": "<p>Numero do processo a ser enviado</p>"
+            "description": "<p>Numero do processo a ser enviado. Em caso de processo apensado, o processo a ser enviado deve ser o processo PAI. Não é possível tramitar através do processo FILHO.</p>"
           },
           {
             "group": "Request Body",
             "type": "String[]",
             "optional": false,
             "field": "unidadesDestino",
-            "description": "<p>Códigos das unidades para onde o bloco será enviado</p>"
+            "description": "<p>Lista com os identificadores das unidades de destino do processo, código ou nome da unidade.</p>"
           },
           {
             "group": "Request Body",
@@ -6339,7 +6719,7 @@ define({ "api": [
             "optional": false,
             "field": "manterAbertoOrigem",
             "defaultValue": "false",
-            "description": "<p>Informa se o processo deve continuar aberto na unidade de origem</p>"
+            "description": "<p>Informa se o processo deve continuar aberto na unidade de origem .</p>"
           },
           {
             "group": "Request Body",
@@ -6347,7 +6727,7 @@ define({ "api": [
             "optional": false,
             "field": "removerAnotacoes",
             "defaultValue": "false",
-            "description": "<p>Informa se as anotações do processo devem ser removidas</p>"
+            "description": "<p>Informa se as anotações do processo devem ser removidas.</p>"
           },
           {
             "group": "Request Body",
@@ -6355,7 +6735,7 @@ define({ "api": [
             "optional": false,
             "field": "enviarEmailNotificacao",
             "defaultValue": "false",
-            "description": "<p>Informa se deve ser enviado um e-mail de notificação</p>"
+            "description": "<p>Informa se deve ser enviado um e-mail de notificação.</p>"
           },
           {
             "group": "Request Body",
@@ -6363,7 +6743,7 @@ define({ "api": [
             "optional": false,
             "field": "dataRetornoProgramado",
             "defaultValue": "null",
-            "description": "<p>Data para retorno programado do processo a unidade (padrão ISO-8601)</p>"
+            "description": "<p>Data para retorno programado do processo a unidade (padrão ISO-8601).</p>"
           },
           {
             "group": "Request Body",
@@ -6371,7 +6751,7 @@ define({ "api": [
             "optional": false,
             "field": "qtdDiasAteRetorno",
             "defaultValue": "null",
-            "description": "<p>Quantidade de dias até o retorno do processo</p>"
+            "description": "<p>Quantidade de dias até o retorno do processo.</p>"
           },
           {
             "group": "Request Body",
@@ -6379,7 +6759,7 @@ define({ "api": [
             "optional": false,
             "field": "somenteDiasUteis",
             "defaultValue": "false",
-            "description": "<p>Informa se só serão contabilizados dias úteis</p>"
+            "description": "<p>Informa se só serão contabilizados dias úteis.</p>"
           }
         ]
       }
@@ -6413,7 +6793,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6423,6 +6803,11 @@ define({ "api": [
     "name": "lancarAndamento",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lança um andamento ao processo.</p>",
     "parameter": {
       "fields": {
@@ -6615,7 +7000,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6625,6 +7010,11 @@ define({ "api": [
     "name": "listarAndamentos",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista as andamentos do processo.</p>",
     "parameter": {
       "fields": {
@@ -6822,16 +7212,21 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
     "type": "get",
-    "url": "/:unidade/processos/:processo/documentos",
+    "url": "/processos/:processo/documentos",
     "title": "Listar documentos",
     "name": "listarDocumentosPorProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Retorna os documentos de um determinado processo.</p>",
     "parameter": {
       "fields": {
@@ -6840,15 +7235,37 @@ define({ "api": [
             "group": "Path Parameters",
             "type": "String",
             "optional": false,
-            "field": "unidade",
-            "description": "<p>Sigla da Unidade cadastrada no SEI.</p>"
-          },
-          {
-            "group": "Path Parameters",
-            "type": "String",
-            "optional": false,
             "field": "processo",
             "description": "<p>Número do processo.</p>"
+          }
+        ],
+        "Query Parameters": [
+          {
+            "group": "Query Parameters",
+            "type": "String",
+            "optional": true,
+            "field": "tipo",
+            "defaultValue": "null",
+            "description": "<p>Identificador do tipo do documento, caso seja necessário filtrar pelo tipo</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "String",
+            "allowedValues": [
+              "\"G (gerado/interno), R (recebido/externo)\""
+            ],
+            "optional": true,
+            "field": "origem",
+            "defaultValue": "null",
+            "description": "<p>Filtra os documentos por gerados ou recebidos</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "boolean",
+            "optional": true,
+            "field": "somenteAssinados",
+            "defaultValue": "false",
+            "description": "<p>Exibir somente documentos assinados</p>"
           }
         ]
       }
@@ -6856,7 +7273,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "curl -i https://<host>/sei-broker/service/cosap/processos/33910003149201793/documentos",
+        "content": "curl -i https://<host>/sei-broker/service/processos/33910003149201793/documentos",
         "type": "json"
       }
     ],
@@ -6888,8 +7305,8 @@ define({ "api": [
             "group": "Sucesso Response Body - 200",
             "type": "String",
             "optional": false,
-            "field": "documentos.documentoResumido.tipo",
-            "description": "<p>Tipo do documento.</p>"
+            "field": "documentos.documentoResumido.numeroInformado",
+            "description": "<p>Número informado na inclusão do documento, também conhecido como número de árvore.</p>"
           },
           {
             "group": "Sucesso Response Body - 200",
@@ -6908,13 +7325,48 @@ define({ "api": [
             "optional": false,
             "field": "documentos.documentoResumido.dataGeracao",
             "description": "<p>Data de geração do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "Tipo",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipo",
+            "description": "<p>Objeto representando o tipo do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipo.codigo",
+            "description": "<p>Identificados do tipo do documento, também conhecido como série.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipo.nome",
+            "description": "<p>Nome do tipo do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentos.documentoResumido.tipoConferencia",
+            "description": "<p>Tipo de conferência do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "boolean",
+            "optional": false,
+            "field": "documentos.documentoResumido.assinado",
+            "description": "<p>Boolean indicando se o documento foi assinado.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"dataGeracao\": \"2015-08-10T00:00:00-03:00\",\n  \"numero\": \"0670949\",\n  \"origem\": \"RECEBIDO\",\n  \"tipo\": \"Despacho\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"numero\": \"0670949\",\n  \"numeroInformado\": \"594\",\n  \"origem\": \"RECEBIDO\",\n  \"dataGeracao\": \"2015-08-10T00:00:00-03:00\",\n  \"tipo\": {\n  \t\"codigo\": \"629\",\n  \t\"nome\": \"Relatório de Arquivamento-SIF\"\n  }\n  \"tipoConferencia\": \"4\",\n  \"assinado\": true\n}",
           "type": "json"
         }
       ]
@@ -6928,7 +7380,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6938,6 +7390,11 @@ define({ "api": [
     "name": "listarTiposProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Consulta os tipos de processo.</p>",
     "parameter": {
       "fields": {
@@ -6990,7 +7447,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7000,6 +7457,11 @@ define({ "api": [
     "name": "reabrirProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Reabre um processo.</p>",
     "parameter": {
       "fields": {
@@ -7063,7 +7525,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7073,6 +7535,11 @@ define({ "api": [
     "name": "relacionarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Relacionar processos.</p>",
     "parameter": {
       "fields": {
@@ -7135,7 +7602,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7145,6 +7612,11 @@ define({ "api": [
     "name": "removerSobrestamentoProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Remover sobrestamento de processo.</p>",
     "parameter": {
       "fields": {
@@ -7191,7 +7663,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7201,6 +7673,11 @@ define({ "api": [
     "name": "sobrestarProcesso",
     "group": "Processo",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Sobrestar processo.</p>",
     "parameter": {
       "fields": {
@@ -7270,8 +7747,135 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
+  },
+  {
+    "type": "delete",
+    "url": "/sipar/importados/:processo",
+    "title": "Cancelar Importação Processo",
+    "name": "cancelarImportacaoProcesso",
+    "group": "SIPAR",
+    "version": "2.0.0",
+    "description": "<p>Desmarca um processo físico (SIPAR) como importado para um processo eletrônico (SEI).</p>",
+    "parameter": {
+      "fields": {
+        "Path Parameter": [
+          {
+            "group": "Path Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "processo",
+            "description": "<p>Número do processo físico existente no SIPAR contendo 17 dígitos e iniciado com 33902. Ex. 33902111111111111</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Exemplo de requisição:",
+        "content": "curl -X DELETE http://<host>/sei-broker/service/sipar/importados/33902112492200241",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 204 No Content",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SiparResource.java",
+    "groupTitle": "SIPAR"
+  },
+  {
+    "type": "post",
+    "url": "/sipar/importados",
+    "title": "Importar Processo",
+    "name": "importarProcesso",
+    "group": "SIPAR",
+    "version": "2.0.0",
+    "description": "<p>Marca um processo físico (SIPAR) como importado para um processo eletrônico (SEI).</p>",
+    "parameter": {
+      "fields": {
+        "Header Parameters": [
+          {
+            "group": "Header Parameters",
+            "type": "String",
+            "optional": false,
+            "field": "content-type",
+            "description": "<p>Informar text/plain</p>"
+          }
+        ],
+        "Request Body": [
+          {
+            "group": "Request Body",
+            "type": "String",
+            "optional": false,
+            "field": "processo",
+            "description": "<p>Número do processo a ser importado</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Exemplo de requisição:\t",
+        "content": "endpoint: [POST] http://<host>/sei-broker/service/sipar/importados\n\nbody:\n33902112492200241",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 Created",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 409 Conflict\n{\n\t\t\"error\":\"Mensagem de erro.\"\n\t\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SiparResource.java",
+    "groupTitle": "SIPAR"
   },
   {
     "type": "get",
@@ -7280,6 +7884,11 @@ define({ "api": [
     "name": "listarSeries",
     "group": "Serie",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza uma consulta às séries.</p>",
     "parameter": {
       "fields": {
@@ -7361,7 +7970,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/SeriesResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SeriesResource.java",
     "groupTitle": "Serie"
   },
   {
@@ -7371,6 +7980,11 @@ define({ "api": [
     "name": "listarTarefas",
     "group": "Tarefa",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista os tipos de tarefas existentes no SEI.</p>",
     "parameter": {
       "fields": {
@@ -7470,7 +8084,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/TarefaResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/TarefaResource.java",
     "groupTitle": "Tarefa"
   },
   {
@@ -7480,6 +8094,11 @@ define({ "api": [
     "name": "listarTiposConferencia",
     "group": "Tipos_Confer_ncia",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Lista os tipos de conferência.</p>",
     "parameter": {
       "fields": {
@@ -7537,7 +8156,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/TipoConferenciaResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/TipoConferenciaResource.java",
     "groupTitle": "Tipos_Confer_ncia"
   },
   {
@@ -7547,6 +8166,11 @@ define({ "api": [
     "name": "consultarCodigo",
     "group": "Unidade",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Retorna o código da Unidade pesquisada.</p>",
     "parameter": {
       "fields": {
@@ -7590,7 +8214,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
     "groupTitle": "Unidade"
   },
   {
@@ -7600,6 +8224,11 @@ define({ "api": [
     "name": "listarUnidades",
     "group": "Unidade",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Retorna as Unidades cadastradas no SEI.</p>",
     "examples": [
       {
@@ -7651,16 +8280,21 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
     "groupTitle": "Unidade"
   },
   {
-    "type": "put",
-    "url": "/usuarios/ativar",
+    "type": "post",
+    "url": "/usuarios/ativos",
     "title": "Ativar usuário",
     "name": "ativarUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método reativa usuários.</p>",
     "parameter": {
       "fields": {
@@ -7692,7 +8326,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "endpoint: http://<host>/sei-broker/service/usuarios/ativar\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
+        "content": "endpoint: http://<host>/sei-broker/service/usuarios/ativos\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
         "type": "json"
       }
     ],
@@ -7718,7 +8352,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -7728,33 +8362,40 @@ define({ "api": [
     "name": "atribuirProcesso",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método atribui o processo a um usuário.</p>",
     "parameter": {
       "fields": {
-        "Parameter": [
+        "Path Parameters": [
           {
-            "group": "Parameter",
+            "group": "Path Parameters",
             "type": "String",
             "optional": false,
             "field": "unidade",
             "description": "<p>Sigla da Unidade cadastrada no SEI</p>"
           },
           {
-            "group": "Parameter",
+            "group": "Path Parameters",
+            "type": "String",
+            "optional": false,
+            "field": "usuario",
+            "description": "<p>Login do usuário a quem deseja atribuir o processo</p>"
+          }
+        ],
+        "Request Body": [
+          {
+            "group": "Request Body",
             "type": "String",
             "optional": false,
             "field": "processo",
             "description": "<p>Numero do processo a ser atribuído</p>"
           },
           {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "usuario",
-            "description": "<p>Login do usuário a quem deseja atribuir o processo</p>"
-          },
-          {
-            "group": "Parameter",
+            "group": "Request Body",
             "type": "String",
             "optional": true,
             "field": "reabrir-processo",
@@ -7793,22 +8434,34 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
     "type": "get",
-    "url": "/usuarios/:usuario",
+    "url": ":unidade/usuarios/:usuario",
     "title": "Buscar usuário",
     "name": "buscarUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza a uma busca pelo login do usuário.</p>",
     "parameter": {
       "fields": {
-        "Parameter": [
+        "Path Parameters": [
           {
-            "group": "Parameter",
+            "group": "Path Parameters",
+            "type": "String",
+            "optional": false,
+            "field": "unidade",
+            "description": "<p>Sigla da Unidade cadastrada no SEI.</p>"
+          },
+          {
+            "group": "Path Parameters",
             "type": "String",
             "optional": false,
             "field": "usuario",
@@ -7820,7 +8473,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "curl -i http://<host>/sei-broker/service/usuarios/andre.guimaraes",
+        "content": "curl -i http://<host>/sei-broker/service/cosap/usuarios/andre.guimaraes",
         "type": "json"
       }
     ],
@@ -7846,16 +8499,21 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
-    "type": "put",
-    "url": "/usuarios/desativar",
+    "type": "delete",
+    "url": "/usuarios/ativos",
     "title": "Desativar usuário",
     "name": "desativarUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método desativa usuários.</p>",
     "parameter": {
       "fields": {
@@ -7887,7 +8545,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "endpoint: http://<host>/sei-broker/service/usuarios/desativar\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
+        "content": "endpoint: [DELETE] http://<host>/sei-broker/service/usuarios/ativos/andre.guimaraes\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
         "type": "json"
       }
     ],
@@ -7913,16 +8571,21 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
-    "type": "post",
-    "url": "/usuarios/excluir",
+    "type": "delete",
+    "url": "/usuarios/:login",
     "title": "Excluir usuário",
     "name": "excluirUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método realiza a exclusão de usuários.</p>",
     "parameter": {
       "fields": {
@@ -7954,7 +8617,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "endpoint: http://<host>/sei-broker/service/usuarios/excluir\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
+        "content": "endpoint: [DELETE] http://<host>/sei-broker/service/usuarios/andre.guimaraes\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
         "type": "json"
       }
     ],
@@ -7980,36 +8643,41 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
     "type": "post",
-    "url": "/usuarios/incluir-alterar",
-    "title": "Incluir ou alterar usuário",
+    "url": "/usuarios",
+    "title": "Incluir usuário",
     "name": "incluirUsuario",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER_ADM"
+      }
+    ],
     "description": "<p>Este método realiza a inclusão de novos usuários ou alterarações nos usuários existentes.</p>",
     "parameter": {
       "fields": {
-        "Parameter": [
+        "Request Body": [
           {
-            "group": "Parameter",
+            "group": "Request Body",
             "type": "String",
             "optional": false,
             "field": "codigo",
             "description": "<p>Código que deseja atribuir ao usuário</p>"
           },
           {
-            "group": "Parameter",
+            "group": "Request Body",
             "type": "String",
             "optional": false,
             "field": "nome",
             "description": "<p>Nome do usuário</p>"
           },
           {
-            "group": "Parameter",
+            "group": "Request Body",
             "type": "String",
             "optional": false,
             "field": "login",
@@ -8021,7 +8689,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Exemplo de requisição:\t",
-        "content": "endpoint: http://<host>/sei-broker/service/usuarios/incluir-alterar\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
+        "content": "endpoint: http://<host>/sei-broker/service/usuarios\n\nbody:\n{\n\t\"codigo\":\"1234\",\n\t\"nome\":\"André Luís Fernandes Guimarães\",\n\t\"login\":\"andre.guimaraes\"\n}",
         "type": "json"
       }
     ],
@@ -8047,7 +8715,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -8057,19 +8725,26 @@ define({ "api": [
     "name": "listarUsuarios",
     "group": "Usuario",
     "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER"
+      }
+    ],
     "description": "<p>Este método realiza uma consulta aos usuários cadastrados que possuem o perfil &quot;Básico&quot;.</p>",
     "parameter": {
       "fields": {
-        "Parameter": [
+        "Path Parameters": [
           {
-            "group": "Parameter",
+            "group": "Path Parameters",
             "type": "String",
             "optional": false,
             "field": "unidade",
-            "description": "<p>Sigla da Unidade cadastrada no SEI</p>"
-          },
+            "description": "<p>Sigla da Unidade cadastrada no SEI.</p>"
+          }
+        ],
+        "Query Parameters": [
           {
-            "group": "Parameter",
+            "group": "Query Parameters",
             "type": "String",
             "optional": true,
             "field": "usuario",
@@ -8108,7 +8783,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   }
 ] });

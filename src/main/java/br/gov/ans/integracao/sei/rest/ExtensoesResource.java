@@ -1,6 +1,5 @@
 package br.gov.ans.integracao.sei.rest;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,7 +14,6 @@ import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 
 @Path("/")
-@Stateless
 public class ExtensoesResource {
 
     @Inject
@@ -29,7 +27,9 @@ public class ExtensoesResource {
 	 * @apiName listarExtensoesPermitidas
 	 * @apiGroup Extensao
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Este método realiza uma busca pelas extensões de arquivos permitidas.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.

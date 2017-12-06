@@ -3,7 +3,6 @@ package br.gov.ans.integracao.sei.rest;
 import java.net.URI;
 import java.rmi.RemoteException;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -27,7 +26,6 @@ import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("/")
-@Stateless
 public class ArquivoResource {
 	
     @Inject
@@ -47,7 +45,9 @@ public class ArquivoResource {
 	 * @apiName adicionarArquivo
 	 * @apiGroup Arquivo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription O serviço criará um arquivo no repositório de documentos e retornará seu identificador. O envio do arquivo poderá ser particionado com chamadas 
 	 * posteriores ao serviço de Adicionar Conteúdo Arquivo. Após todo o conteúdo ser transferido o arquivo será ativado e poderá ser associado com um documento externo 
 	 * no serviço de inclusão de documento. Serão excluídos em 24 horas os arquivos não completados e não associados a um documento.
@@ -96,8 +96,8 @@ public class ArquivoResource {
 	public Response adicionarArquivo(@PathParam("unidade") String unidade, Arquivo arquivo) throws RemoteException, Exception{
 		validarTamanhoArquivo(arquivo);
 		
-		String identificador = seiNativeService.adicionarArquivo(Constantes.SEI_BROKER, Operacao.ADICIONAR_ARQUIVO, unidadeResource.consultarCodigo(unidade), arquivo.getNome(), arquivo.getTamanho(), 
-				arquivo.getHash(), arquivo.getConteudo());
+		String identificador = seiNativeService.adicionarArquivo(Constantes.SEI_BROKER, Operacao.ADICIONAR_ARQUIVO, 
+				unidadeResource.consultarCodigo(unidade), arquivo.getNome(), arquivo.getTamanho(), arquivo.getHash(), arquivo.getConteudo());
 		
 		return Response.created(getResourcePath(identificador)).entity(new ArquivoCriado(identificador)).build();
 	}
@@ -107,7 +107,9 @@ public class ArquivoResource {
 	 * @apiName adicionarConteudoArquivo
 	 * @apiGroup Arquivo
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Adiciona conteúdo a um arquivo criado, o sistema identificará automaticamente quando o conteúdo foi completado validando o tamanho em bytes
 	 * e o hash do conteúdo. Quando as condições forem satisfeitas o arquivo será ativado e poderá ser utilizado nas chamadas de inclusão de documento.
 	 *

@@ -105,12 +105,12 @@ public class SeiBrokerTest extends FunctionalTest{
 	
 	@Test
 	public void AG_consultarDocumentosPorInteressadosTest(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/363022/documentos").then().statusCode(200);
+		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/interessados/363022/documentos").then().statusCode(200);
 	}
 	
 	@Test
-	public void AH_consultarProcessosPorInteressadosTest(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/363022/processos").then().statusCode(200);
+	public void AH_consultarProcessos(){
+		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/processos").then().statusCode(200);
 	}
 	
 	@Test
@@ -561,8 +561,10 @@ public class SeiBrokerTest extends FunctionalTest{
 		i.setNome("BRADESCO SAUDE E ASSISTENCIA S.A");
 		i.setSigla("363022");		
 		documento.setInteressados(new Interessado[]{i});
-				
-		documento.setConteudo(Base64.encodeBase64String("<BR><BR>Tendo em vista que o processo foi criado indevidamente pelo sistema de integração do ressarcimento ao SUS, considera-se encerrado o processo eletrônico, sendo vedada qualquer juntada de novos documentos eletrônicos por meio do SEI.<BR>".getBytes()));		
+
+		documento.setConteudo("PGh0bWw+PGhlYWQ+PC9oZWFkPjxib2R5PlRFU1RFVEVTVEU8L2JvZHk+PC9odG1sPg==");
+		
+//		documento.setConteudo(Base64.encodeBase64String("<BR><BR>Tendo em vista que o processo foi criado indevidamente pelo sistema de integração do ressarcimento ao SUS, considera-se encerrado o processo eletrônico, sendo vedada qualquer juntada de novos documentos eletrônicos por meio do SEI.<BR>".getBytes()));		
 		
 		return documento;
 	}

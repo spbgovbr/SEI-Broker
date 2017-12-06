@@ -53,6 +53,10 @@ public class DAO<T> implements Serializable{
         em.remove(em.merge(t));
     }
 	
+    public T findById(Serializable id){
+        return (T)em.find(classe, id);
+    }
+	
 	@Transactional
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public Long count() {

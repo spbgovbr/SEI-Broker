@@ -6,17 +6,29 @@ import javax.persistence.Entity;
 import javax.persistence.EntityResult;
 import javax.persistence.FieldResult;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SqlResultSetMapping;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @XmlRootElement
 @Entity
 @SqlResultSetMapping(name = "ProcessoResumidoMapping", entities = { @EntityResult(entityClass = ProcessoResumido.class, fields = {
-		@FieldResult(name = "numero", column = "protocolo"),
-		@FieldResult(name = "numeroFormatado", column = "protocolo_formatado"),
+		@FieldResult(name = "numero", column = "numero"),
+		@FieldResult(name = "numeroFormatado", column = "numeroFormatado"),
 		@FieldResult(name = "descricao", column = "descricao"),
 		@FieldResult(name = "unidade", column = "unidade"),
-		@FieldResult(name = "dataGeracao", column = "data_geracao") }) })
+		@FieldResult(name = "dataGeracao", column = "dataGeracao"),
+		@FieldResult(name = "tipo", column = "tipoCodigo") 
+		}),
+		@EntityResult(
+                entityClass = Tipo.class,
+                fields = {
+                    @FieldResult(name = "codigo", column = "tipoCodigo"),
+                    @FieldResult(name = "nome", column = "tipoNome")})
+		})
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class ProcessoResumido {
 
 	@Id
@@ -25,6 +37,8 @@ public class ProcessoResumido {
 	private String descricao;
 	private String unidade;
 	private Date dataGeracao;
+	@OneToOne
+	private Tipo tipo;
 
 	public String getNumero() {
 		return numero;
@@ -66,4 +80,11 @@ public class ProcessoResumido {
 		this.dataGeracao = dataGeracao;
 	}
 
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
 }

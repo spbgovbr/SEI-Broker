@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -22,7 +21,6 @@ import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("/unidades")
-@Stateless
 public class UnidadeResource {
 
 	@Inject
@@ -41,7 +39,9 @@ public class UnidadeResource {
 	 * @apiName listarUnidades
 	 * @apiGroup Unidade
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Retorna as Unidades cadastradas no SEI.
 	 *
 	 * @apiExample {curl} Exemplo de requisição:
@@ -61,11 +61,11 @@ public class UnidadeResource {
 	 */
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public br.gov.ans.integracao.sei.client.Unidade[] listarUnidades() throws RemoteException{
+	public br.gov.ans.integracao.sei.client.Unidade[] listarUnidades() throws Exception{
 		return seiNativeService.listarUnidades(Constantes.SEI_BROKER, Operacao.LISTAR_UNIDADES, null, null);
 	}
 		
-	public HashMap<String,String> getUnidades() throws RemoteException {
+	public HashMap<String,String> getUnidades() throws Exception {
 		if(unidades == null){
 			logger.info(messages.getMessage("carregando.unidades"));
 
@@ -86,7 +86,9 @@ public class UnidadeResource {
 	 * @apiName consultarCodigo
 	 * @apiGroup Unidade
 	 * @apiVersion 2.0.0
-	 *
+	 * 
+	 * @apiPermission RO_SEI_BROKER
+	 * 
 	 * @apiDescription Retorna o código da Unidade pesquisada.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade que deseja consultar o código
@@ -109,6 +111,10 @@ public class UnidadeResource {
 	public String consultarCodigo(@PathParam("chave") String chave) throws Exception{
 		logger.debug(messages.getMessage("consultando.unidade",chave));
 
+		if(isInteger(chave)){
+			return chave;
+		}
+		
 		if(!getUnidades().containsKey(chave.toUpperCase())){
 			throw new BusinessException(messages.getMessage("erro.unidade.nao.encontrada", chave));
 		}
