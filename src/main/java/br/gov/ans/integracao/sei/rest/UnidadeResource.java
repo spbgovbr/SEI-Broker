@@ -61,11 +61,11 @@ public class UnidadeResource {
 	 */
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public br.gov.ans.integracao.sei.client.Unidade[] listarUnidades() throws RemoteException{
+	public br.gov.ans.integracao.sei.client.Unidade[] listarUnidades() throws Exception{
 		return seiNativeService.listarUnidades(Constantes.SEI_BROKER, Operacao.LISTAR_UNIDADES, null, null);
 	}
 		
-	public HashMap<String,String> getUnidades() throws RemoteException {
+	public HashMap<String,String> getUnidades() throws Exception {
 		if(unidades == null){
 			logger.info(messages.getMessage("carregando.unidades"));
 

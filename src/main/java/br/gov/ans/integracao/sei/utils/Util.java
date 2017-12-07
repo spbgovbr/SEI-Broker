@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import javax.swing.text.MaskFormatter;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -24,7 +25,7 @@ public class Util {
 	
 	private static final String REGEX_SOMENTE_NUMEROS = "\\D+";
 	
-	private static Pattern pattern = Pattern.compile(Constantes.REGEX_MASCARA_PROCESSO, Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+	private static Pattern pattern_ = Pattern.compile(Constantes.REGEX_MASCARA_PROCESSO, Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
 		
 	public static String getSOuN(String valor){			
 		if("S".equals(valor) || "s".equals(valor)){
@@ -51,10 +52,6 @@ public class Util {
 	}
 	
     public static String formatarString(String texto, String mascara) throws Exception {
-    	if(texto.length() != 17){
-    		throw new BusinessException("Número de processo inválido");
-    	}
-    	
         MaskFormatter mf = new MaskFormatter(mascara);
         mf.setValueContainsLiteralCharacters(false);
         return mf.valueToString(texto);
@@ -62,17 +59,24 @@ public class Util {
 	
     public static String formatarNumeroProcesso(String numero) throws Exception{
     	if(numero == null){
-    		return null;
+    		throw new BusinessException("Número de processo inválido.");
     	}
-    	
-    	if(validarNumeroProcesso(numero)){
+
+    	if(!StringUtils.isNumeric(numero)){
     		return numero;
     	}
     		
     	try {
-			return formatarString(numero, Constantes.MASCARA_PROCESSO);
+    		switch (numero.length()){
+    			case 17:
+    				return formatarString(numero, Constantes.MASCARA_PROCESSO_17);
+    			case 21:
+    				return formatarString(numero, Constantes.MASCARA_PROCESSO_21);
+    			default:
+    				throw new BusinessException("Número de processo inválido.");
+    		}    		
 		} catch (ParseException ex) {
-			throw new BusinessException("Número de processo inválido");
+			throw new BusinessException("Número de processo inválido.");
 		}
     }
     
@@ -91,10 +95,6 @@ public class Util {
     	
     	return processos;
     }
-    
-	public static boolean validarNumeroProcesso(String processo){
-		return pattern.matcher(processo).matches();
-	}
 	
 	public static boolean trueOrFalse(String valor){	
 		if(valor != null && valor.length() > 1){
