@@ -59,7 +59,7 @@ public class Util {
 	
     public static String formatarNumeroProcesso(String numero) throws Exception{
     	if(numero == null){
-    		throw new BusinessException("Número de processo inválido.");
+    		return null;
     	}
 
     	if(!StringUtils.isNumeric(numero)){
