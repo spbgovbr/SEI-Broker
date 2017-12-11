@@ -230,6 +230,8 @@ public class ProcessoResource {
 			resultado = new ResultadoConsultaProcesso();
 			resultado.setSei(processoSEI);
 			resultado.setSipar(processoSIPAR);
+		}else{
+			throw new ResourceNotFoundException(messages.getMessage("erro.processo.nao.encontrado", processo));
 		}
 		
 		return resultado;

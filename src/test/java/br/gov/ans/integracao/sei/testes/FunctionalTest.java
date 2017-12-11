@@ -8,7 +8,7 @@ public class FunctionalTest {
 
 	protected final String USUARIO = "andre.guimaraes";
 	protected final String SENHA = "Merda de senha!";
-	protected static final Boolean DESENVOLVIMENTO = false;
+	protected static final Boolean DESENVOLVIMENTO = true;
 	
     @BeforeClass
     public static void setup() {

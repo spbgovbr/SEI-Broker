@@ -31,25 +31,7 @@ public class Contato  implements java.io.Serializable {
 
     private java.lang.String sinEnderecoAssociado;
 
-    private java.lang.String enderecoAssociado;
-
-    private java.lang.String complementoAssociado;
-
-    private java.lang.String bairroAssociado;
-
-    private java.lang.String idCidadeAssociado;
-
-    private java.lang.String nomeCidadeAssociado;
-
-    private java.lang.String idEstadoAssociado;
-
-    private java.lang.String siglaEstadoAssociado;
-
-    private java.lang.String idPaisAssociado;
-
-    private java.lang.String nomePaisAssociado;
-
-    private java.lang.String cepAssociado;
+    private java.lang.String cnpjAssociado;
 
     private java.lang.String endereco;
 
@@ -130,7 +112,7 @@ public class Contato  implements java.io.Serializable {
            java.lang.String siglaEstadoAssociado,
            java.lang.String idPaisAssociado,
            java.lang.String nomePaisAssociado,
-           java.lang.String cepAssociado,
+           java.lang.String cnpjAssociado,
            java.lang.String endereco,
            java.lang.String complemento,
            java.lang.String bairro,
@@ -169,16 +151,7 @@ public class Contato  implements java.io.Serializable {
            this.idContatoAssociado = idContatoAssociado;
            this.nomeContatoAssociado = nomeContatoAssociado;
            this.sinEnderecoAssociado = sinEnderecoAssociado;
-           this.enderecoAssociado = enderecoAssociado;
-           this.complementoAssociado = complementoAssociado;
-           this.bairroAssociado = bairroAssociado;
-           this.idCidadeAssociado = idCidadeAssociado;
-           this.nomeCidadeAssociado = nomeCidadeAssociado;
-           this.idEstadoAssociado = idEstadoAssociado;
-           this.siglaEstadoAssociado = siglaEstadoAssociado;
-           this.idPaisAssociado = idPaisAssociado;
-           this.nomePaisAssociado = nomePaisAssociado;
-           this.cepAssociado = cepAssociado;
+           this.cnpjAssociado = cnpjAssociado;
            this.endereco = endereco;
            this.complemento = complemento;
            this.bairro = bairro;
@@ -411,202 +384,22 @@ public class Contato  implements java.io.Serializable {
 
 
     /**
-     * Gets the enderecoAssociado value for this Contato.
+     * Gets the cnpjAssociado value for this Contato.
      * 
-     * @return enderecoAssociado
+     * @return cnpjAssociado
      */
-    public java.lang.String getEnderecoAssociado() {
-        return enderecoAssociado;
+    public java.lang.String getCnpjAssociado() {
+        return cnpjAssociado;
     }
 
 
     /**
-     * Sets the enderecoAssociado value for this Contato.
+     * Sets the cnpjAssociado value for this Contato.
      * 
-     * @param enderecoAssociado
+     * @param cnpjAssociado
      */
-    public void setEnderecoAssociado(java.lang.String enderecoAssociado) {
-        this.enderecoAssociado = enderecoAssociado;
-    }
-
-
-    /**
-     * Gets the complementoAssociado value for this Contato.
-     * 
-     * @return complementoAssociado
-     */
-    public java.lang.String getComplementoAssociado() {
-        return complementoAssociado;
-    }
-
-
-    /**
-     * Sets the complementoAssociado value for this Contato.
-     * 
-     * @param complementoAssociado
-     */
-    public void setComplementoAssociado(java.lang.String complementoAssociado) {
-        this.complementoAssociado = complementoAssociado;
-    }
-
-
-    /**
-     * Gets the bairroAssociado value for this Contato.
-     * 
-     * @return bairroAssociado
-     */
-    public java.lang.String getBairroAssociado() {
-        return bairroAssociado;
-    }
-
-
-    /**
-     * Sets the bairroAssociado value for this Contato.
-     * 
-     * @param bairroAssociado
-     */
-    public void setBairroAssociado(java.lang.String bairroAssociado) {
-        this.bairroAssociado = bairroAssociado;
-    }
-
-
-    /**
-     * Gets the idCidadeAssociado value for this Contato.
-     * 
-     * @return idCidadeAssociado
-     */
-    public java.lang.String getIdCidadeAssociado() {
-        return idCidadeAssociado;
-    }
-
-
-    /**
-     * Sets the idCidadeAssociado value for this Contato.
-     * 
-     * @param idCidadeAssociado
-     */
-    public void setIdCidadeAssociado(java.lang.String idCidadeAssociado) {
-        this.idCidadeAssociado = idCidadeAssociado;
-    }
-
-
-    /**
-     * Gets the nomeCidadeAssociado value for this Contato.
-     * 
-     * @return nomeCidadeAssociado
-     */
-    public java.lang.String getNomeCidadeAssociado() {
-        return nomeCidadeAssociado;
-    }
-
-
-    /**
-     * Sets the nomeCidadeAssociado value for this Contato.
-     * 
-     * @param nomeCidadeAssociado
-     */
-    public void setNomeCidadeAssociado(java.lang.String nomeCidadeAssociado) {
-        this.nomeCidadeAssociado = nomeCidadeAssociado;
-    }
-
-
-    /**
-     * Gets the idEstadoAssociado value for this Contato.
-     * 
-     * @return idEstadoAssociado
-     */
-    public java.lang.String getIdEstadoAssociado() {
-        return idEstadoAssociado;
-    }
-
-
-    /**
-     * Sets the idEstadoAssociado value for this Contato.
-     * 
-     * @param idEstadoAssociado
-     */
-    public void setIdEstadoAssociado(java.lang.String idEstadoAssociado) {
-        this.idEstadoAssociado = idEstadoAssociado;
-    }
-
-
-    /**
-     * Gets the siglaEstadoAssociado value for this Contato.
-     * 
-     * @return siglaEstadoAssociado
-     */
-    public java.lang.String getSiglaEstadoAssociado() {
-        return siglaEstadoAssociado;
-    }
-
-
-    /**
-     * Sets the siglaEstadoAssociado value for this Contato.
-     * 
-     * @param siglaEstadoAssociado
-     */
-    public void setSiglaEstadoAssociado(java.lang.String siglaEstadoAssociado) {
-        this.siglaEstadoAssociado = siglaEstadoAssociado;
-    }
-
-
-    /**
-     * Gets the idPaisAssociado value for this Contato.
-     * 
-     * @return idPaisAssociado
-     */
-    public java.lang.String getIdPaisAssociado() {
-        return idPaisAssociado;
-    }
-
-
-    /**
-     * Sets the idPaisAssociado value for this Contato.
-     * 
-     * @param idPaisAssociado
-     */
-    public void setIdPaisAssociado(java.lang.String idPaisAssociado) {
-        this.idPaisAssociado = idPaisAssociado;
-    }
-
-
-    /**
-     * Gets the nomePaisAssociado value for this Contato.
-     * 
-     * @return nomePaisAssociado
-     */
-    public java.lang.String getNomePaisAssociado() {
-        return nomePaisAssociado;
-    }
-
-
-    /**
-     * Sets the nomePaisAssociado value for this Contato.
-     * 
-     * @param nomePaisAssociado
-     */
-    public void setNomePaisAssociado(java.lang.String nomePaisAssociado) {
-        this.nomePaisAssociado = nomePaisAssociado;
-    }
-
-
-    /**
-     * Gets the cepAssociado value for this Contato.
-     * 
-     * @return cepAssociado
-     */
-    public java.lang.String getCepAssociado() {
-        return cepAssociado;
-    }
-
-
-    /**
-     * Sets the cepAssociado value for this Contato.
-     * 
-     * @param cepAssociado
-     */
-    public void setCepAssociado(java.lang.String cepAssociado) {
-        this.cepAssociado = cepAssociado;
+    public void setCnpjAssociado(java.lang.String cnpjAssociado) {
+        this.cnpjAssociado = cnpjAssociado;
     }
 
 
@@ -1210,36 +1003,9 @@ public class Contato  implements java.io.Serializable {
             ((this.sinEnderecoAssociado==null && other.getSinEnderecoAssociado()==null) || 
              (this.sinEnderecoAssociado!=null &&
               this.sinEnderecoAssociado.equals(other.getSinEnderecoAssociado()))) &&
-            ((this.enderecoAssociado==null && other.getEnderecoAssociado()==null) || 
-             (this.enderecoAssociado!=null &&
-              this.enderecoAssociado.equals(other.getEnderecoAssociado()))) &&
-            ((this.complementoAssociado==null && other.getComplementoAssociado()==null) || 
-             (this.complementoAssociado!=null &&
-              this.complementoAssociado.equals(other.getComplementoAssociado()))) &&
-            ((this.bairroAssociado==null && other.getBairroAssociado()==null) || 
-             (this.bairroAssociado!=null &&
-              this.bairroAssociado.equals(other.getBairroAssociado()))) &&
-            ((this.idCidadeAssociado==null && other.getIdCidadeAssociado()==null) || 
-             (this.idCidadeAssociado!=null &&
-              this.idCidadeAssociado.equals(other.getIdCidadeAssociado()))) &&
-            ((this.nomeCidadeAssociado==null && other.getNomeCidadeAssociado()==null) || 
-             (this.nomeCidadeAssociado!=null &&
-              this.nomeCidadeAssociado.equals(other.getNomeCidadeAssociado()))) &&
-            ((this.idEstadoAssociado==null && other.getIdEstadoAssociado()==null) || 
-             (this.idEstadoAssociado!=null &&
-              this.idEstadoAssociado.equals(other.getIdEstadoAssociado()))) &&
-            ((this.siglaEstadoAssociado==null && other.getSiglaEstadoAssociado()==null) || 
-             (this.siglaEstadoAssociado!=null &&
-              this.siglaEstadoAssociado.equals(other.getSiglaEstadoAssociado()))) &&
-            ((this.idPaisAssociado==null && other.getIdPaisAssociado()==null) || 
-             (this.idPaisAssociado!=null &&
-              this.idPaisAssociado.equals(other.getIdPaisAssociado()))) &&
-            ((this.nomePaisAssociado==null && other.getNomePaisAssociado()==null) || 
-             (this.nomePaisAssociado!=null &&
-              this.nomePaisAssociado.equals(other.getNomePaisAssociado()))) &&
-            ((this.cepAssociado==null && other.getCepAssociado()==null) || 
-             (this.cepAssociado!=null &&
-              this.cepAssociado.equals(other.getCepAssociado()))) &&
+            ((this.cnpjAssociado==null && other.getCnpjAssociado()==null) || 
+             (this.cnpjAssociado!=null &&
+              this.cnpjAssociado.equals(other.getCnpjAssociado()))) &&
             ((this.endereco==null && other.getEndereco()==null) || 
              (this.endereco!=null &&
               this.endereco.equals(other.getEndereco()))) &&
@@ -1365,35 +1131,8 @@ public class Contato  implements java.io.Serializable {
         if (getSinEnderecoAssociado() != null) {
             _hashCode += getSinEnderecoAssociado().hashCode();
         }
-        if (getEnderecoAssociado() != null) {
-            _hashCode += getEnderecoAssociado().hashCode();
-        }
-        if (getComplementoAssociado() != null) {
-            _hashCode += getComplementoAssociado().hashCode();
-        }
-        if (getBairroAssociado() != null) {
-            _hashCode += getBairroAssociado().hashCode();
-        }
-        if (getIdCidadeAssociado() != null) {
-            _hashCode += getIdCidadeAssociado().hashCode();
-        }
-        if (getNomeCidadeAssociado() != null) {
-            _hashCode += getNomeCidadeAssociado().hashCode();
-        }
-        if (getIdEstadoAssociado() != null) {
-            _hashCode += getIdEstadoAssociado().hashCode();
-        }
-        if (getSiglaEstadoAssociado() != null) {
-            _hashCode += getSiglaEstadoAssociado().hashCode();
-        }
-        if (getIdPaisAssociado() != null) {
-            _hashCode += getIdPaisAssociado().hashCode();
-        }
-        if (getNomePaisAssociado() != null) {
-            _hashCode += getNomePaisAssociado().hashCode();
-        }
-        if (getCepAssociado() != null) {
-            _hashCode += getCepAssociado().hashCode();
+        if (getCnpjAssociado() != null) {
+            _hashCode += getCnpjAssociado().hashCode();
         }
         if (getEndereco() != null) {
             _hashCode += getEndereco().hashCode();
@@ -1550,63 +1289,10 @@ public class Contato  implements java.io.Serializable {
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("enderecoAssociado");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EnderecoAssociado"));
+        elemField.setFieldName("cnpjAssociado");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "CnpjAssociado"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("complementoAssociado");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "ComplementoAssociado"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("bairroAssociado");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "BairroAssociado"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("idCidadeAssociado");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "IdCidadeAssociado"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("nomeCidadeAssociado");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "NomeCidadeAssociado"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("idEstadoAssociado");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "IdEstadoAssociado"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("siglaEstadoAssociado");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "SiglaEstadoAssociado"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("idPaisAssociado");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "IdPaisAssociado"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("nomePaisAssociado");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "NomePaisAssociado"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("cepAssociado");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "CepAssociado"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
