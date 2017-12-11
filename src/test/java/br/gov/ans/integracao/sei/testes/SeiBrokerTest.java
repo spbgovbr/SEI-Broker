@@ -30,7 +30,6 @@ import br.gov.ans.integracao.sei.modelo.EnvioDeProcesso;
 import br.gov.ans.integracao.sei.modelo.NovoBloco;
 import br.gov.ans.integracao.sei.modelo.NovoProcesso;
 import br.gov.ans.integracao.sei.modelo.ParteArquivo;
-import br.gov.ans.integracao.sei.modelo.SobrestamentoProcesso;
 import br.gov.ans.integracao.sei.modelo.enums.TipoBloco;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -144,7 +143,7 @@ public class SeiBrokerTest extends FunctionalTest{
 		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/unidades/cotec/codigo").then().statusCode(200);
 	}
 	
-//	@Test
+	@Test
 	public void AP_cancelarDocumentoTest(){
 		given()
 		.auth()
@@ -382,70 +381,20 @@ public class SeiBrokerTest extends FunctionalTest{
 		response.then().statusCode(200);
 	}
 	
-////	@Test
-	public void BK_incluirDocumentoPorArquivoTest() {
-		Response response = given()
-		.auth()
-		.basic(USUARIO, SENHA)
-		.contentType("application/json")
-		.accept("application/json")
-		.body(buildDocumentoPorArquivo())
-		.when().post("/COSAP/documentos");
-		
-		documentoCriadoPorArquivo = response.getBody().as(RetornoInclusaoDocumento.class).getDocumentoFormatado();
-		
-		response.then().statusCode(201);
-	}
-	
-	@Test
-	public void BL_abrirProcessoTest(){
-		Response response = given()
-				.auth()
-				.basic(USUARIO, SENHA)
-				.contentType("application/json")
-				.accept("application/json")
-				.body(buildNovoProcessoUmaUnidade())
-				.when().post("/COSAP/processos");
-		
-		processoCriado = response.getBody().as(RetornoGeracaoProcedimento.class).getProcedimentoFormatado().replaceAll("[^0-9+]", "");
-				
-		response.then().statusCode(201);
-	}
-	
-	@Test
-	public void BM_sobrestarProcessoTest(){
-		SobrestamentoProcesso s = new SobrestamentoProcesso();
-		s.setProcesso(processoCriado);
-		s.setMotivo("Teste automatizado de sobrestamento.");
-		
-		given()
-		.auth()
-		.basic(USUARIO, SENHA)
-		.contentType("application/json")
-		.accept("application/json")
-		.body(s)
-		.when().post("/cosap/processos/sobrestados").then().statusCode(200);
-	}
-	
-	@Test
-	public void BN_removerSobrestamentoProcessoTest(){
-		given()
-		.auth()
-		.basic(USUARIO, SENHA)
-		.contentType("application/json")
-		.accept("application/json")
-		.when().delete("/cosap/processos/sobrestados/"+processoCriado).then().statusCode(200);
-	}
-	
-	@Test
-	public void BO_listarContatos(){
-		given()
-		.auth()
-		.basic(USUARIO, SENHA)
-		.contentType("application/json")
-		.accept("application/json")
-		.when().get("cosap/contatos/operadoras?qtdRegistros=20").then().statusCode(200);
-	}
+//	@Test
+//	public void BL_incluirDocumentoPorArquivoTest() {
+//		Response response = given()
+//		.auth()
+//		.basic(USUARIO, SENHA)
+//		.contentType("application/json")
+//		.accept("application/json")
+//		.body(buildDocumentoPorArquivo())
+//		.when().post("/COSAP/documentos");
+//		
+//		documentoCriadoPorArquivo = response.getBody().as(RetornoInclusaoDocumento.class).getDocumentoFormatado();
+//		
+//		response.then().statusCode(201);
+//	}
 	
 	public NovoBloco buildNovoBloco(TipoBloco tipoBloco){
 		NovoBloco bloco = new NovoBloco();
@@ -485,7 +434,7 @@ public class SeiBrokerTest extends FunctionalTest{
 		NovoProcesso processo = new NovoProcesso();
 		Procedimento dadosProcesso = new Procedimento();
 		
-		dadosProcesso.setIdTipoProcedimento("100000832");
+		dadosProcesso.setIdTipoProcedimento("100000347");
 //		dadosProcesso.setIdTipoProcedimento("100000346");
 		dadosProcesso.setEspecificacao("Processo de Teste criado via teste automatizado.");
 		dadosProcesso.setAssuntos(new Assunto[]{});
@@ -501,34 +450,10 @@ public class SeiBrokerTest extends FunctionalTest{
 		processo.setDadosProcesso(dadosProcesso);
 		
 		processo.setDocumentos(new Documento[]{});
-		processo.setUnidadesDestino(new String[]{"COSAP"});
+		processo.setUnidadesDestino(new String[]{"COTEC","110000935","COSAP"});
 		
 		return processo;
 	}
-	
-	public NovoProcesso buildNovoProcessoUmaUnidade(){
-		NovoProcesso processo = new NovoProcesso();
-		Procedimento dadosProcesso = new Procedimento();
-		
-		dadosProcesso.setIdTipoProcedimento("100000832");
-//		dadosProcesso.setIdTipoProcedimento("100000346");
-		dadosProcesso.setEspecificacao("Processo de Teste criado via teste automatizado.");
-		dadosProcesso.setAssuntos(new Assunto[]{});
-		
-		Interessado i = new Interessado();
-		i.setNome("BRADESCO SAUDE E ASSISTENCIA S.A");
-		i.setSigla("363022");
-		
-		dadosProcesso.setInteressados(new Interessado[]{i});
-		dadosProcesso.setObservacao("Este processo foi inserido via ws para testar a integração.");
-		dadosProcesso.setNivelAcesso("0");
-				
-		processo.setDadosProcesso(dadosProcesso);
-		
-		processo.setDocumentos(new Documento[]{});
-		
-		return processo;
-	}	
 	
 	public Documento buildDocumento(){
 //		String nomeArquivo = "caelum.pdf";
@@ -544,7 +469,7 @@ public class SeiBrokerTest extends FunctionalTest{
 				
 		documento.setTipo("R");
 		documento.setIdProcedimento(processoCriado);
-		documento.setIdSerie("7");
+		documento.setIdSerie("5");
 		documento.setData("10/08/2015");
 						
 		Remetente remetente = new Remetente();
@@ -573,7 +498,7 @@ public class SeiBrokerTest extends FunctionalTest{
 		
 		documento.setTipo("R");
 		documento.setIdProcedimento(processoCriado);
-		documento.setIdSerie("7");
+		documento.setIdSerie("5");
 		documento.setData("10/08/2015");
 						
 		Remetente remetente = new Remetente();

@@ -88,20 +88,20 @@ public class ContatoHelper {
 		preencherDadosAssociado(pessoa, contato);
 		
 		if(pessoa.getEndereco() != null){
-			preencherEndereco(pessoa.getEndereco(), contato);
+			preencherEndereco(pessoa, contato);
 		}
 		
 		return contato;
 	}
 	
-    private void preencherEndereco(Endereco endereco, Contato contato) throws RemoteException, BusinessException, Exception{
-		contato.setEndereco(concatenarNumero(endereco.getLogradouro(), endereco.getNumero()));
-		contato.setComplemento(endereco.getComplemento());
-		contato.setBairro(endereco.getBairro());
-		contato.setCep(endereco.getCEP());
+    private void preencherEndereco(Pessoa pessoa, Contato contato) throws RemoteException, BusinessException, Exception{
+		contato.setEndereco(concatenarNumero(pessoa.getEndereco().getLogradouro(), pessoa.getEndereco().getNumero()));
+		contato.setComplemento(pessoa.getEndereco().getComplemento());
+		contato.setBairro(pessoa.getEndereco().getBairro());
+		contato.setCep(pessoa.getEndereco().getCEP());
     	
-		if(StringUtils.isNotBlank(endereco.getCidade())){
-			Cidade cidade = getCidade(endereco.getCidade());	
+		if(StringUtils.isNotBlank(pessoa.getEndereco().getCidade())){
+			Cidade cidade = getCidade(pessoa.getEndereco().getCidade());	
 			
 			contato.setIdCidade(cidade.getId().toString());
 			contato.setIdEstado(cidade.getEstado().getId().toString());  
@@ -109,22 +109,23 @@ public class ContatoHelper {
 		}
     }
     
-//    private void preencherEnderecoAssociado(Pessoa pessoa, Contato contato) throws RemoteException, BusinessException, Exception{
-//		Endereco endereco = pessoa.getAssociado().getEndereco();
-//		
-//		contato.setEnderecoAssociado(concatenarNumero(endereco.getLogradouro(), endereco.getNumero()));
-//		contato.setComplementoAssociado(endereco.getComplemento());
-//		contato.setBairroAssociado(endereco.getBairro());
-//		contato.setCep(endereco.getCEP());
-//
-//		if(StringUtils.isNotBlank(endereco.getCidade())){
-//	    	Cidade cidade = getCidade(endereco.getCidade());	
-//			
-//			contato.setIdCidadeAssociado(cidade.getId().toString());
-//	    	contato.setIdEstadoAssociado(cidade.getEstado().getId().toString());  
-//	    	contato.setIdPaisAssociado(cidade.getEstado().getIdPais());
-//		}
-//    }
+    private void preencherEnderecoAssociado(Pessoa pessoa, Contato contato) throws RemoteException, BusinessException, Exception{
+		Endereco endereco = pessoa.getAssociado().getEndereco();
+		
+		contato.setEnderecoAssociado(concatenarNumero(endereco.getLogradouro(), endereco.getNumero()));
+		contato.setComplementoAssociado(endereco.getComplemento());
+		contato.setBairroAssociado(endereco.getBairro());
+		contato.setCep(endereco.getCEP());
+
+		if(StringUtils.isNotBlank(endereco.getCidade())){
+	    	Cidade cidade = getCidade(endereco.getCidade());	
+			
+			contato.setIdCidadeAssociado(cidade.getId().toString());
+	    	contato.setIdEstadoAssociado(cidade.getEstado().getId().toString());  
+	    	contato.setIdPaisAssociado(cidade.getEstado().getIdPais());
+		}
+
+    }
     
     private void preencherDadosAssociado(Pessoa pessoa, Contato contato) throws RemoteException, BusinessException, Exception{
 		if(pessoa.getAssociado() == null){
@@ -136,7 +137,7 @@ public class ContatoHelper {
 			contato.setNomeContatoAssociado(pessoa.getAssociado().getNome());
 			
 			if(pessoa.getAssociado().getEndereco() != null){
-				preencherEndereco(pessoa.getAssociado().getEndereco(), contato);				
+				preencherEnderecoAssociado(pessoa, contato);				
 			}
 		}
     }

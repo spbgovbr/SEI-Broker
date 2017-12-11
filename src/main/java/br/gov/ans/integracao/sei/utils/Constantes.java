@@ -12,8 +12,7 @@ public class Constantes {
 	public static final String CODIGO_ORGAO_ANS = "0";
 	public static final String DOCUMENTO_GERAL = "G";
 	public static final String DOCUMENTO_RECEBIDO = "R";
-	public static final String MASCARA_PROCESSO_17 = "#####.######/####-##";
-	public static final String MASCARA_PROCESSO_21 = "#######.########/####-##";
+	public static final String MASCARA_PROCESSO = "#####.######/####-##";
 	public static final String JBOSS_HOME = System.getProperty("jboss.home.dir");
 	public static final String NOME_SISTEMA = "sei-broker";
 	public static final String REGEX_MASCARA_PROCESSO = "(\\d)(\\d)(\\d)(\\d)(\\d)(\\.)(\\d)(\\d)(\\d)(\\d)(\\d)(\\d)(\\/)(\\d)(\\d)(\\d)(\\d)(-)(\\d)(\\d)";

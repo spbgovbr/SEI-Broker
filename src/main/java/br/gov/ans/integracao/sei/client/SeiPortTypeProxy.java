@@ -139,12 +139,12 @@ public class SeiPortTypeProxy implements br.gov.ans.integracao.sei.client.SeiPor
 			java.lang.String idTipoContato, java.lang.String paginaRegistros,
 			java.lang.String paginaAtual, java.lang.String sigla,
 			java.lang.String nome, java.lang.String cpf, java.lang.String cnpj,
-			java.lang.String matricula, java.lang.String[] idContatos) throws java.rmi.RemoteException {
+			java.lang.String matricula) throws java.rmi.RemoteException {
 		if (seiPortType == null)
 			_initSeiPortTypeProxy();
 		return seiPortType.listarContatos(siglaSistema, identificacaoServico,
 				idUnidade, idTipoContato, paginaRegistros, paginaAtual, sigla,
-				nome, cpf, cnpj, matricula, idContatos);
+				nome, cpf, cnpj, matricula);
 	}
 
 	public java.lang.String atualizarContatos(java.lang.String siglaSistema,
@@ -183,21 +183,14 @@ public class SeiPortTypeProxy implements br.gov.ans.integracao.sei.client.SeiPor
 				sinRetornarProcedimentosAnexados);
 	}
 
-	public ProcedimentoResumido consultarProcedimentoIndividual(java.lang.String siglaSistema,
-			java.lang.String identificacaoServico, java.lang.String idUnidade, java.lang.String idOrgaoProcedimento,
-			java.lang.String idTipoProcedimento, java.lang.String idOrgaoUsuario, java.lang.String siglaUsuario)
-			throws java.rmi.RemoteException {
-		if (seiPortType == null)
-			_initSeiPortTypeProxy();
-		return seiPortType.consultarProcedimentoIndividual(siglaSistema, identificacaoServico, idUnidade,
-				idOrgaoProcedimento, idTipoProcedimento, idOrgaoUsuario, siglaUsuario);
-	}
-
-	public RetornoConsultaDocumento consultarDocumento(java.lang.String siglaSistema,
-			java.lang.String identificacaoServico, java.lang.String idUnidade, java.lang.String protocoloDocumento,
-			java.lang.String sinRetornarAndamentoGeracao, java.lang.String sinRetornarAssinaturas,
-			java.lang.String sinRetornarPublicacao, java.lang.String sinRetornarCampos)
-			throws java.rmi.RemoteException {
+	public br.gov.ans.integracao.sei.client.RetornoConsultaDocumento consultarDocumento(
+			java.lang.String siglaSistema,
+			java.lang.String identificacaoServico, java.lang.String idUnidade,
+			java.lang.String protocoloDocumento,
+			java.lang.String sinRetornarAndamentoGeracao,
+			java.lang.String sinRetornarAssinaturas,
+			java.lang.String sinRetornarPublicacao,
+			java.lang.String sinRetornarCampos) throws java.rmi.RemoteException {
 		if (seiPortType == null)
 			_initSeiPortTypeProxy();
 		return seiPortType.consultarDocumento(siglaSistema,
