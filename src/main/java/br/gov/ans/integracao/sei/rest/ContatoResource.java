@@ -192,7 +192,7 @@ public class ContatoResource {
 			@QueryParam("pagina") String pagina) throws RemoteException, BusinessException, Exception{
 		
     	Contato[] contatos = seiNativeService.listarContatos(Constantes.SEI_BROKER, Operacao.LISTAR_CONTATOS, unidadeResource.consultarCodigo(unidade), tipo.getCodigo(), 
-				qtdRegistros == null? null : parseInt(qtdRegistros)+"", pagina == null? null:parseInt(pagina)+"", sigla, nome, cpf, cnpj, matricula);
+				qtdRegistros == null? null : parseInt(qtdRegistros)+"", pagina == null? null:parseInt(pagina)+"", sigla, nome, cpf, cnpj, matricula, null);
     	
     	List<Pessoa> pessoas = pessoaHelper.buildPessoa(contatos);
     	
@@ -285,7 +285,7 @@ public class ContatoResource {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Pessoa getContato(@PathParam("unidade") String unidade, @PathParam("tipo") TipoContato tipo, @PathParam("sigla") String sigla) throws RemoteException, Exception{
     	Contato[] contatos = seiNativeService.listarContatos(Constantes.SEI_BROKER, Operacao.LISTAR_CONTATOS, unidadeResource.consultarCodigo(unidade), tipo.getCodigo(), 
-				null, null, sigla, null, null, null, null);
+				null, null, sigla, null, null, null, null, null);
     	
     	if(ArrayUtils.isEmpty(contatos)){
     		throw new ResourceNotFoundException(messages.getMessage("erro.contato.nao.encontrado",sigla));

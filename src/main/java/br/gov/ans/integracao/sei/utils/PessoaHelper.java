@@ -147,16 +147,16 @@ public class PessoaHelper {
 	private Endereco buildEnderecoAssociado(Contato contato){
 		Endereco endereco = new Endereco();
 		
-		endereco.setLogradouro(contato.getEnderecoAssociado());
-		endereco.setComplemento(contato.getComplementoAssociado());
-		endereco.setBairro(contato.getBairroAssociado());
-		endereco.setCEP(contato.getCepAssociado());
+		endereco.setLogradouro(contato.getEndereco());
+		endereco.setComplemento(contato.getComplemento());
+		endereco.setBairro(contato.getBairro());
+		endereco.setCEP(contato.getCep());
 		
-		if(StringUtils.isNotBlank(contato.getIdCidadeAssociado())){
-			endereco.setCidade(getCodigoIbge(contato.getIdCidadeAssociado()));			
+		if(StringUtils.isNotBlank(contato.getIdCidade())){
+			endereco.setCidade(getCodigoIbge(contato.getIdCidade()));			
 		}
-		endereco.setUf(contato.getSiglaEstadoAssociado());
-		endereco.setPais(contato.getNomePaisAssociado());		
+		endereco.setUf(contato.getSiglaEstado());
+		endereco.setPais(contato.getNomePais());		
 		
 		return endereco;
 	}
@@ -166,6 +166,7 @@ public class PessoaHelper {
 		
 		pessoa.setSigla(getSiglaContato(contato.getIdContatoAssociado()));		
 		pessoa.setNome(contato.getNomeContatoAssociado());
+		pessoa.setCnpj(contato.getCnpjAssociado());
 		
 		pessoa.setEndereco(buildEnderecoAssociado(contato));
 		

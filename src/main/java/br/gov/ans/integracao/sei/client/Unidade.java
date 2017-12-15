@@ -17,16 +17,28 @@ public class Unidade  implements java.io.Serializable {
 
     private java.lang.String descricao;
 
+    private java.lang.String sinProtocolo;
+
+    private java.lang.String sinArquivamento;
+
+    private java.lang.String sinOuvidoria;
+
     public Unidade() {
     }
 
     public Unidade(
            java.lang.String idUnidade,
            java.lang.String sigla,
-           java.lang.String descricao) {
+           java.lang.String descricao,
+           java.lang.String sinProtocolo,
+           java.lang.String sinArquivamento,
+           java.lang.String sinOuvidoria) {
            this.idUnidade = idUnidade;
            this.sigla = sigla;
            this.descricao = descricao;
+           this.sinProtocolo = sinProtocolo;
+           this.sinArquivamento = sinArquivamento;
+           this.sinOuvidoria = sinOuvidoria;
     }
 
 
@@ -89,6 +101,66 @@ public class Unidade  implements java.io.Serializable {
         this.descricao = descricao;
     }
 
+
+    /**
+     * Gets the sinProtocolo value for this Unidade.
+     * 
+     * @return sinProtocolo
+     */
+    public java.lang.String getSinProtocolo() {
+        return sinProtocolo;
+    }
+
+
+    /**
+     * Sets the sinProtocolo value for this Unidade.
+     * 
+     * @param sinProtocolo
+     */
+    public void setSinProtocolo(java.lang.String sinProtocolo) {
+        this.sinProtocolo = sinProtocolo;
+    }
+
+
+    /**
+     * Gets the sinArquivamento value for this Unidade.
+     * 
+     * @return sinArquivamento
+     */
+    public java.lang.String getSinArquivamento() {
+        return sinArquivamento;
+    }
+
+
+    /**
+     * Sets the sinArquivamento value for this Unidade.
+     * 
+     * @param sinArquivamento
+     */
+    public void setSinArquivamento(java.lang.String sinArquivamento) {
+        this.sinArquivamento = sinArquivamento;
+    }
+
+
+    /**
+     * Gets the sinOuvidoria value for this Unidade.
+     * 
+     * @return sinOuvidoria
+     */
+    public java.lang.String getSinOuvidoria() {
+        return sinOuvidoria;
+    }
+
+
+    /**
+     * Sets the sinOuvidoria value for this Unidade.
+     * 
+     * @param sinOuvidoria
+     */
+    public void setSinOuvidoria(java.lang.String sinOuvidoria) {
+        this.sinOuvidoria = sinOuvidoria;
+    }
+
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof Unidade)) return false;
@@ -109,7 +181,16 @@ public class Unidade  implements java.io.Serializable {
               this.sigla.equals(other.getSigla()))) &&
             ((this.descricao==null && other.getDescricao()==null) || 
              (this.descricao!=null &&
-              this.descricao.equals(other.getDescricao())));
+              this.descricao.equals(other.getDescricao()))) &&
+            ((this.sinProtocolo==null && other.getSinProtocolo()==null) || 
+             (this.sinProtocolo!=null &&
+              this.sinProtocolo.equals(other.getSinProtocolo()))) &&
+            ((this.sinArquivamento==null && other.getSinArquivamento()==null) || 
+             (this.sinArquivamento!=null &&
+              this.sinArquivamento.equals(other.getSinArquivamento()))) &&
+            ((this.sinOuvidoria==null && other.getSinOuvidoria()==null) || 
+             (this.sinOuvidoria!=null &&
+              this.sinOuvidoria.equals(other.getSinOuvidoria())));
         __equalsCalc = null;
         return _equals;
     }
@@ -129,6 +210,15 @@ public class Unidade  implements java.io.Serializable {
         }
         if (getDescricao() != null) {
             _hashCode += getDescricao().hashCode();
+        }
+        if (getSinProtocolo() != null) {
+            _hashCode += getSinProtocolo().hashCode();
+        }
+        if (getSinArquivamento() != null) {
+            _hashCode += getSinArquivamento().hashCode();
+        }
+        if (getSinOuvidoria() != null) {
+            _hashCode += getSinOuvidoria().hashCode();
         }
         __hashCodeCalc = false;
         return _hashCode;
@@ -156,6 +246,27 @@ public class Unidade  implements java.io.Serializable {
         elemField.setFieldName("descricao");
         elemField.setXmlName(new javax.xml.namespace.QName("", "Descricao"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("sinProtocolo");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "SinProtocolo"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("sinArquivamento");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "SinArquivamento"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("sinOuvidoria");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "SinOuvidoria"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
     }
