@@ -1,7 +1,7 @@
 package br.gov.ans.integracao.sei.rest;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.inject.Inject;
@@ -12,10 +12,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.jboss.logging.Logger;
 
 import br.gov.ans.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
+import br.gov.ans.integracao.sei.client.Unidade;
 import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
@@ -33,6 +35,8 @@ public class UnidadeResource {
     private MessageUtils messages;
 	
 	private static HashMap<String,String> unidades;
+	
+	private static Date dataCarregamentoUnidades = new Date();
 	
 	/**
 	 * @api {get} /unidades Listar unidades
@@ -62,23 +66,11 @@ public class UnidadeResource {
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public br.gov.ans.integracao.sei.client.Unidade[] listarUnidades() throws Exception{
-		return seiNativeService.listarUnidades(Constantes.SEI_BROKER, Operacao.LISTAR_UNIDADES, null, null);
-	}
+		Unidade[] lista = seiNativeService.listarUnidades(Constantes.SEI_BROKER, Operacao.LISTAR_UNIDADES, null, null);
 		
-	public HashMap<String,String> getUnidades() throws Exception {
-		if(unidades == null){
-			logger.info(messages.getMessage("carregando.unidades"));
-
-			br.gov.ans.integracao.sei.client.Unidade[] lista = listarUnidades();
-			
-			unidades = new HashMap<String,String>();
-						
-			for(br.gov.ans.integracao.sei.client.Unidade u : lista){
-				unidades.put(u.getSigla(), u.getIdUnidade());
-			}
-		}
+		carregarMapUnidades(lista);
 		
-		return unidades;
+		return lista;
 	}
 	
 	/**
@@ -139,6 +131,36 @@ public class UnidadeResource {
 		
 		return unidades;
 	}
+	
+	public HashMap<String,String> getUnidades() throws Exception {
+		if(unidades == null || isMapUnidadesExpirado()){
+			carregarMapUnidades(listarUnidades());
+		}
+		
+		return unidades;
+	}
+	
+	public void carregarMapUnidades(Unidade[] lista) throws Exception{
+		logger.info(messages.getMessage("carregando.unidades"));
+
+		unidades = new HashMap<String,String>();
+		
+		for(br.gov.ans.integracao.sei.client.Unidade u : lista){
+			unidades.put(u.getSigla(), u.getIdUnidade());
+		}
+		
+		dataCarregamentoUnidades = new Date();
+	}
+	
+	public boolean isMapUnidadesExpirado(){
+		Date dataExpiracao = DateUtils.addDays(dataCarregamentoUnidades, 1);
+		
+		if(dataExpiracao.before(new Date())){
+			return true;
+		}
+		
+		return false;
+	}	
 	
 	public boolean isInteger(String valor){		
 		try{
