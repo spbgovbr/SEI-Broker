@@ -197,14 +197,15 @@ public class DocumentoDAO {
 		
 		try{
 			results = query.getResultList();			
+				
+			results.stream().forEach((record) -> {
+				DocumentoResumido documento = (DocumentoResumido) record[0];
+				documentos.add(documento);
+			});
+			
 		}catch(NoResultException ex){
 			return documentos;
 		}
-				
-		results.stream().forEach((record) -> {
-			DocumentoResumido documento = (DocumentoResumido) record[0];
-			documentos.add(documento);
-		});
 		
 		return documentos;
 	}
