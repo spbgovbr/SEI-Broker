@@ -192,10 +192,15 @@ public class DocumentoDAO {
 		
 		setQueryParameters(query, parametros);
 		
-		List<Object[]> results = query.getResultList();
-		
+		List<Object[]> results = null;
 		List<DocumentoResumido> documentos = new ArrayList<DocumentoResumido>();
 		
+		try{
+			results = query.getResultList();			
+		}catch(NoResultException ex){
+			return documentos;
+		}
+				
 		results.stream().forEach((record) -> {
 			DocumentoResumido documento = (DocumentoResumido) record[0];
 			documentos.add(documento);
