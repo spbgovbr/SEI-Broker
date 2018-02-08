@@ -249,7 +249,7 @@ public class ProcessoResource {
 					getSOuN(exibirInteressados), getSOuN(exibirObservacoes), getSOuN(exibirAndamento), getSOuN(exibirAndamentoConclusao), getSOuN(exibirUltimoAndamento), getSOuN(exibirUnidadesAberto), 
 					getSOuN(exibirProcessosRelacionados), getSOuN(exibirProcessosAnexados));
 		}catch(AxisFault ex){
-			logger.error(ex);
+			logger.error(ex, ex);
 			return null;
 		}
 	}
