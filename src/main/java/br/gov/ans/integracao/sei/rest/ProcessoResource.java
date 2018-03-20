@@ -47,8 +47,8 @@ import br.gov.ans.integracao.sei.client.RetornoGeracaoProcedimento;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.client.TipoProcedimento;
 import br.gov.ans.integracao.sei.dao.DocumentoDAO;
-import br.gov.ans.integracao.sei.dao.SiparDAO;
 import br.gov.ans.integracao.sei.dao.ProcessoDAO;
+import br.gov.ans.integracao.sei.dao.SiparDAO;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
 import br.gov.ans.integracao.sei.modelo.EnvioDeProcesso;
 import br.gov.ans.integracao.sei.modelo.Motivo;
@@ -1210,7 +1210,7 @@ public class ProcessoResource {
 			List<DocumentoResumido> documentosProcesso = documentoDAO.getDocumentosProcesso(idProcedimento.toString(), tipo, origem, somenteAssinados);
 			
 			if(documentosProcesso.isEmpty()){
-				throw new ResourceNotFoundException(messages.getMessage("erro.processo.sem.documentos",formatarNumeroProcesso(processo)));
+				throw new ResourceNotFoundException(messages.getMessage("erro.processo.sem.documentos", formatarNumeroProcesso(processo)));
 			}
 			
 	 		return documentosProcesso;

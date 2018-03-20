@@ -16,7 +16,6 @@ import javax.persistence.Query;
 import org.apache.commons.lang3.StringUtils;
 
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
-import br.gov.ans.integracao.sei.modelo.ProcessoResumido;
 
 public class DocumentoDAO {
 	@PersistenceContext(unitName = "sei_pu", type = PersistenceContextType.EXTENDED)
@@ -201,8 +200,7 @@ public class DocumentoDAO {
 			results.stream().forEach((record) -> {
 				DocumentoResumido documento = (DocumentoResumido) record[0];
 				documentos.add(documento);
-			});
-			
+			});			
 		}catch(NoResultException ex){
 			return documentos;
 		}

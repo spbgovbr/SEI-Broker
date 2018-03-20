@@ -102,10 +102,16 @@ public class SiparResource {
 			throw new BusinessException(messages.getMessage("erro.numero.sipar",processo));
 		}
 		
-		isProcessoSipar(numero, ano, digito);
+		if(!isProcessoSipar(numero, ano, digito)){
+			throw new ResourceNotFoundException(messages.getMessage("erro.processo.nao.pertence.sipar", processo));			
+		}
+		
+		if(isProcessoEmTramitacao(numero, ano)){
+			throw new BusinessException(messages.getMessage("erro.processo.em.tramitacao.sipar", processo));
+		}
 		
 		if(isProcessoImportado(numero, ano)){
-			throw new ResourceConflictException(messages.getMessage("erro.processo.sipar.importado",processo));			
+			throw new ResourceConflictException(messages.getMessage("erro.processo.sipar.importado", processo));			
 		}
 		
 		importarProcesso(numero, ano);
@@ -221,10 +227,16 @@ public class SiparResource {
 		return false;
 	}
 	
-	public void isProcessoSipar(String numeroDocumento, String anoDocumento, String digitoDocumento) throws ResourceNotFoundException{
+	public boolean isProcessoSipar(String numeroDocumento, String anoDocumento, String digitoDocumento) throws ResourceNotFoundException{
 		if(dao.getDocumento(numeroDocumento, anoDocumento, digitoDocumento) == null){
-			throw new ResourceNotFoundException(messages.getMessage("erro.processo.nao.pertence.sipar",(numeroDocumento+anoDocumento+digitoDocumento)));
+			return false;
 		}
+		
+		return true;
+	}
+	
+	public boolean isProcessoEmTramitacao(String numero, String ano){
+		return dao.isProcessoEmTramitacao(numero, ano);
 	}
 	
 	public URI getResourcePath(String resourceId){
