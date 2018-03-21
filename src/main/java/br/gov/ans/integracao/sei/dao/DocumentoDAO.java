@@ -140,7 +140,7 @@ public class DocumentoDAO {
 			parametros.put("codigoTipo", codigoTipo);
 		}
 				
-		builder.append("GROUP BY pr.protocolo_formatado_pesquisa "); 
+		//builder.append("GROUP BY pr.protocolo_formatado_pesquisa "); 
 		
 		Query query = em.createNativeQuery(builder.toString());
 		
