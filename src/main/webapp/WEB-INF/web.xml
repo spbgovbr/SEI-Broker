@@ -72,6 +72,18 @@
 			<role-name>RO_SEI_BROKER</role-name>
 		</auth-constraint>
 	</security-constraint>
+	
+	<security-constraint>
+		<display-name>Serviço Rest de Integração ao SEI</display-name>
+		<web-resource-collection>
+			<web-resource-name>Todos os serviços de consulta</web-resource-name>
+			<url-pattern>/service/*</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>RO_SEI_BROKER_CONSULTA</role-name>
+		</auth-constraint>
+	</security-constraint>
 
 	<security-constraint>
 		<display-name>Serviço Rest de Integração ao SEI</display-name>
@@ -104,6 +116,10 @@
 	
 	<security-role>
 		<role-name>RO_SEI_BROKER_ADM</role-name>
+	</security-role>
+	
+	<security-role>
+		<role-name>RO_SEI_BROKER_CONSULTA</role-name>
 	</security-role>
 
 	<!-- Declaração dos ExceptionHandlers -->
