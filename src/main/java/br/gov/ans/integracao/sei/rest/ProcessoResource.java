@@ -631,6 +631,10 @@ public class ProcessoResource {
 		List<ProcessoResumido> processos = processoDAO.getProcessos(interessado, unidade, tipoProcesso, 
 				pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros), crescente);
 		
+		if(processos.isEmpty()){
+			throw new ResourceNotFoundException(messages.getMessage("erro.nenhum.processo.encontrado.filtros"));
+		}
+		
 		GenericEntity<List<ProcessoResumido>> entity = new GenericEntity<List<ProcessoResumido>>(processos){};
 		
 		Long totalRegistros = processoDAO.countProcessos(interessado, unidade, tipoProcesso);

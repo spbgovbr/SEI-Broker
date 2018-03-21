@@ -48,6 +48,7 @@ import com.github.mustachejava.Mustache;
 import br.gov.ans.commons.security.crypt.HashUtils;
 import br.gov.ans.dao.DAO;
 import br.gov.ans.exceptions.BusinessException;
+import br.gov.ans.exceptions.ResourceNotFoundException;
 import br.gov.ans.exceptions.WrappedException;
 import br.gov.ans.integracao.sei.client.Documento;
 import br.gov.ans.integracao.sei.client.RetornoConsultaDocumento;
@@ -569,10 +570,14 @@ public class DocumentoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})	
 	public Response consultarDocumentos(@PathParam("interessado") String interessado, @QueryParam("tipo") String tipo, @QueryParam("pagina") String pagina, 
 			@QueryParam("qtdRegistros") String qtdRegistros, @QueryParam("somenteAssinados") boolean somenteAssinados, @QueryParam("crescente") boolean ordemCrescente, 
-			@QueryParam("orderByProcesso") boolean orderByProcesso) throws BusinessException{
+			@QueryParam("orderByProcesso") boolean orderByProcesso) throws BusinessException, ResourceNotFoundException{
 		
 		List<DocumentoResumido> documentos = daoDocumento.getDocumentos(interessado, tipo, pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros),
 				somenteAssinados, ordemCrescente, orderByProcesso);
+		
+		if(documentos.isEmpty()){
+			throw new ResourceNotFoundException(messages.getMessage("erro.nenhum.documento.encontrado.interessado", interessado));
+		}
 		
 		GenericEntity<List<DocumentoResumido>> entity = new GenericEntity<List<DocumentoResumido>>(documentos){};
 		
