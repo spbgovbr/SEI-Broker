@@ -117,7 +117,7 @@ public class DocumentoDAO {
 	public Long countDocumentos(String interessado, String codigoTipo, boolean somenteAssinados){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 		
-		StringBuilder builder = new StringBuilder("SELECT count(*) ");
+		StringBuilder builder = new StringBuilder("SELECT count(distinct pr.protocolo_formatado_pesquisa) ");
 		builder.append("FROM documento AS d ");
 
 		
@@ -139,8 +139,6 @@ public class DocumentoDAO {
 			builder.append("AND s.id_serie in (:codigoTipo)");
 			parametros.put("codigoTipo", codigoTipo);
 		}
-				
-		//builder.append("GROUP BY pr.protocolo_formatado_pesquisa "); 
 		
 		Query query = em.createNativeQuery(builder.toString());
 		
