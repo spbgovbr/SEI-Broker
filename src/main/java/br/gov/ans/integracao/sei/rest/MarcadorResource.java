@@ -43,7 +43,7 @@ public class MarcadorResource {
 	 * @apiGroup Marcador
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Lista os marcadores de uma unidade.
 	 *

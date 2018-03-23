@@ -44,7 +44,7 @@ public class UnidadeResource {
 	 * @apiGroup Unidade
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Retorna as Unidades cadastradas no SEI.
 	 *
@@ -79,7 +79,7 @@ public class UnidadeResource {
 	 * @apiGroup Unidade
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Retorna o código da Unidade pesquisada.
 	 *

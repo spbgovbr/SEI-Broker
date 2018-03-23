@@ -99,7 +99,7 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 *
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Este método realiza uma consulta a processos no SEI e no SIPAR.
 	 *
@@ -430,7 +430,7 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta os tipos de processo.
 	 * 
@@ -569,7 +569,7 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Lista os processos conforme os filtros informados.
 	 * 
@@ -649,7 +649,7 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Lista as andamentos do processo.
 	 *
@@ -1156,7 +1156,7 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Retorna os documentos de um determinado processo.
 	 * 

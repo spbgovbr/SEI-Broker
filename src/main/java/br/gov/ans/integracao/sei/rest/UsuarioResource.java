@@ -50,7 +50,7 @@ public class UsuarioResource {
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Este método realiza uma consulta aos usuários cadastrados que possuem o perfil "Básico".
 	 *
@@ -84,7 +84,7 @@ public class UsuarioResource {
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Este método realiza a uma busca pelo login do usuário.
 	 * 

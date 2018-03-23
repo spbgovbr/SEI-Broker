@@ -44,7 +44,7 @@ public class SeriesResource {
 	 * @apiGroup Serie
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Este método realiza uma consulta às séries.
 	 * 
@@ -95,7 +95,7 @@ public class SeriesResource {
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Lista os tipos de documentos do SEI.
 	 * 

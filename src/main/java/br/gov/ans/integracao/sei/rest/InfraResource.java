@@ -46,7 +46,7 @@ public class InfraResource {
 	 * @apiGroup Endereco
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta países cadastrados.
 	 * 
@@ -87,7 +87,7 @@ public class InfraResource {
 	 * @apiGroup Endereco
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta estados cadastrados.
 	 * 
@@ -138,7 +138,7 @@ public class InfraResource {
 	 * @apiGroup Endereco
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta o estado pela sigla.
 	 * 
@@ -198,7 +198,7 @@ public class InfraResource {
 	 * @apiGroup Endereco
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta as cidades de um determinado estado.
 	 * 
@@ -249,7 +249,7 @@ public class InfraResource {
 	 * @apiGroup Endereco
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta a cidade pelo código do IBGE.
 	 * 

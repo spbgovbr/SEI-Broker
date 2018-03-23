@@ -29,7 +29,7 @@ public class TipoConferenciaResource {
 	 * @apiGroup Tipos Conferência
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Lista os tipos de conferência.
 	 *

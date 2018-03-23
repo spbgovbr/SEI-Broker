@@ -31,7 +31,7 @@ public class HipoteseLegalResource {
 	 * @apiGroup Hipotese Legal
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Lista as hipóteses legais.
 	 * 

@@ -114,7 +114,7 @@ public class DocumentoResource {
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta documento cadastrado no SEI.
 	 *
@@ -138,31 +138,54 @@ public class DocumentoResource {
 	 * @apiSuccess (Sucesso - 200) {Serie} retornoConsultaDocumento.serie Dados do tipo do documento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.serie.idSerie Identificador do tipo de documento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.serie.nome Nome do tipo de documento
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.serie.aplicabilidade :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.numero Número do documento
-	 * @apiSuccess (Sucesso - 200) {Data} retornoConsultaDocumento.data Data de geração para documentos internos e para documentos externos é a data informada na tela de cadastro
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.data Data de geração para documentos internos e para documentos externos é a data informada na tela de cadastro
 	 * @apiSuccess (Sucesso - 200) {Unidade} retornoConsultaDocumento.unidadeElaboradora Dados da unidade que gerou o documento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.descricao Nome da unidade
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.idUnidade Código da unidade
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.sigla Sigla da unidade
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.sinProtocolo :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.sinArquivamento :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.sinOuvidoria :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {Andamento} retornoConsultaDocumento.andamentoGeracao Informações do andamento de geração (opcional)
-	 * @apiSuccess (Sucesso - 200) {Data} retornoConsultaDocumento.andamentoGeracao.dataHora Data e hora do registro de andamento
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.idAndamento Identificador do andamento
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.idTarefa :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.idTarefaModulo :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.descricao Descrição do andamento
-	 * @apiSuccess (Sucesso - 200) {Unidade} retornoConsultaDocumento.andamentoGeracao.unidade Unidade responsável pelo andamento
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.unidade.descricao Nome da unidade
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.unidade.idUnidade Código da unidade
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.unidade.sigla Sigla da unidade
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.dataHora Data e hora do registro de andamento
+	 * @apiSuccess (Sucesso - 200) {Unidade} retornoConsultaDocumento.andamentoGeracao.unidade Unidade responsável pelo andamento (ver estrutura Unidade)
 	 * @apiSuccess (Sucesso - 200) {Usuario} retornoConsultaDocumento.andamentoGeracao.usuario Usuário responsável pela ação
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.usuario.idUsuario Código do usuário
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.usuario.nome Nome do usuário
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.usuario.sigla Login do usuário
-	 * @apiSuccess (Sucesso - 200) {Assinatura} retornoConsultaDocumento.assinaturas Conjunto de assinaturas do documento
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.cargoFuncao Cargo do responsável pela assinatura
-	 * @apiSuccess (Sucesso - 200) {Data} retornoConsultaDocumento.assinaturas.dataHora Data e hora da assinatura
+	 * @apiSuccess (Sucesso - 200) {AtributoAndamento[]} retornoConsultaDocumento.andamentoGeracao.atributos Lista com os atributos relacionados ao andamento
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.atributos.nome Nome do atributo
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.atributos.valor Valor do atributo
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.atributos.idOrigem :TODO pendente 
+	 * @apiSuccess (Sucesso - 200) {Assinatura[]} retornoConsultaDocumento.assinaturas Conjunto de assinaturas do documento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.nome Nome do assinante
-	 * @apiSuccess (Sucesso - 200) {Campo} retornoConsultaDocumento.campos Conjunto de campos do formulário
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.cargoFuncao Cargo ou função utilizado no momento da assinatura
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.dataHora Data/hora em que ocorreu a assinatura
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.idUsuario Identificador do usuário
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.idOrigem :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.idOrgao :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.sigla Login do usuário responsável pela assinatura
+	 * @apiSuccess (Sucesso - 200) {Publicacao} retornoConsultaDocumento.publicacao :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.nomeVeiculo :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.numero :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.dataDisponibilizacao :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.dataPublicacao :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.estado :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {PublicacaoImprensaNacional} retornoConsultaDocumento.publicacao.imprensaNacional :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.imprensaNacional.siglaVeiculo :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.imprensaNacional.descricaoVeiculo :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.imprensaNacional.pagina :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.imprensaNacional.secao :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.imprensaNacional.data :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {Campo[]} retornoConsultaDocumento.campos Conjunto de campos do formulário
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.campos.nome Nome do campo
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.campos.valor Valor do campo
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.nome Nome do assinante
 	 * 
 	 * @apiSuccessExample {json} Success-Response:
 	 *  HTTP/1.1 200 OK
@@ -382,7 +405,7 @@ public class DocumentoResource {
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta documentos inclusos pelo SEI-Broker.
 	 *
@@ -454,7 +477,7 @@ public class DocumentoResource {
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Exporta documentos do SEI em PDF.
 	 *
@@ -509,7 +532,7 @@ public class DocumentoResource {
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Retorna os documentos de um determinado interessado.
 	 * 
