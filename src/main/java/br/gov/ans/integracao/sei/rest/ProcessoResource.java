@@ -47,8 +47,8 @@ import br.gov.ans.integracao.sei.client.RetornoGeracaoProcedimento;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.client.TipoProcedimento;
 import br.gov.ans.integracao.sei.dao.DocumentoDAO;
-import br.gov.ans.integracao.sei.dao.SiparDAO;
 import br.gov.ans.integracao.sei.dao.ProcessoDAO;
+import br.gov.ans.integracao.sei.dao.SiparDAO;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
 import br.gov.ans.integracao.sei.modelo.EnvioDeProcesso;
 import br.gov.ans.integracao.sei.modelo.Motivo;
@@ -99,7 +99,7 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 *
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Este método realiza uma consulta a processos no SEI e no SIPAR.
 	 *
@@ -430,7 +430,7 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta os tipos de processo.
 	 * 
@@ -569,7 +569,7 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Lista os processos conforme os filtros informados.
 	 * 
@@ -631,6 +631,10 @@ public class ProcessoResource {
 		List<ProcessoResumido> processos = processoDAO.getProcessos(interessado, unidade, tipoProcesso, 
 				pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros), crescente);
 		
+		if(processos.isEmpty()){
+			throw new ResourceNotFoundException(messages.getMessage("erro.nenhum.processo.encontrado.filtros"));
+		}
+		
 		GenericEntity<List<ProcessoResumido>> entity = new GenericEntity<List<ProcessoResumido>>(processos){};
 		
 		Long totalRegistros = processoDAO.countProcessos(interessado, unidade, tipoProcesso);
@@ -645,7 +649,7 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Lista as andamentos do processo.
 	 *
@@ -1152,7 +1156,7 @@ public class ProcessoResource {
 	 * @apiGroup Processo
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Retorna os documentos de um determinado processo.
 	 * 
@@ -1210,7 +1214,7 @@ public class ProcessoResource {
 			List<DocumentoResumido> documentosProcesso = documentoDAO.getDocumentosProcesso(idProcedimento.toString(), tipo, origem, somenteAssinados);
 			
 			if(documentosProcesso.isEmpty()){
-				throw new ResourceNotFoundException(messages.getMessage("erro.processo.sem.documentos",formatarNumeroProcesso(processo)));
+				throw new ResourceNotFoundException(messages.getMessage("erro.processo.sem.documentos", formatarNumeroProcesso(processo)));
 			}
 			
 	 		return documentosProcesso;

@@ -50,7 +50,7 @@ public class UsuarioResource {
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Este método realiza uma consulta aos usuários cadastrados que possuem o perfil "Básico".
 	 *
@@ -84,7 +84,7 @@ public class UsuarioResource {
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Este método realiza a uma busca pelo login do usuário.
 	 * 
@@ -280,8 +280,7 @@ public class UsuarioResource {
 	public Boolean desativarUsuario(@PathParam("login") String login,Usuario usuario) throws Exception{
 		return manterUsuario(Acao.DESATIVAR, usuario);
 	}
-	
-	
+		
 	/**
 	 * @api {post} /usuarios/ativos Ativar usuário
 	 * @apiName ativarUsuario
@@ -322,8 +321,7 @@ public class UsuarioResource {
 	public Boolean ativarUsuario(Usuario usuario) throws Exception{
 		return manterUsuario(Acao.REATIVAR, usuario);
 	}
-	
-	
+		
 	public Boolean manterUsuario(Acao acao, Usuario usuario) throws Exception{
 		return sipClient.replicarUsuario(acao.getCodigoAcao(), usuario.getCodigo(), Constantes.CODIGO_ORGAO_ANS, usuario.getLogin(), usuario.getNome());		
 	}

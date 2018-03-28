@@ -1,5 +1,6 @@
 package br.gov.ans.integracao.sipar.dao;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -34,7 +35,7 @@ query = "SELECT TB.NU_DIGITO_DOCUMENTO, TB.CO_OPERADORA, TB.DT_EMISSAO_DOCUMENTO
 		+ "WHERE TB.CO_SEQ_DOCUMENTO = :numeroDocumento "
 		+ "AND TB.NU_ANO_DOCUMENTO = :anoDocumento "
 		+ "AND TB.NU_DIGITO_DOCUMENTO = :digitoDocumento")
-public class DocumentoSipar {
+public class DocumentoSipar implements Serializable{
 	@Id
 	private String digito;
 	private String operadora;

@@ -114,7 +114,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
     "groupTitle": "Arquivo"
   },
   {
@@ -225,7 +225,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ArquivoResource.java",
     "groupTitle": "Arquivo"
   },
   {
@@ -290,7 +290,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -302,7 +302,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Recupera as informações do bloco informado.</p>",
@@ -390,6 +390,27 @@ define({ "api": [
           },
           {
             "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "bloco.unidade.sinProtocolo",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "bloco.unidade.sinArquivamento",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "bloco.unidade.sinOuvidoria",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
             "type": "Usuario",
             "optional": false,
             "field": "bloco.usuario",
@@ -455,8 +476,15 @@ define({ "api": [
             "group": "Sucesso - 200",
             "type": "String",
             "optional": false,
-            "field": "bloco.protocolos.protocoloFormatado.identificacao",
-            "description": "<p>Tipo do processo ou documento</p>"
+            "field": "bloco.protocolos.protocoloFormatado",
+            "description": "<p>Número de protocolo formatado</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "bloco.protocolos.identificacao",
+            "description": "<p>:TODO pendente</p>"
           },
           {
             "group": "Sucesso - 200",
@@ -485,6 +513,34 @@ define({ "api": [
             "optional": false,
             "field": "bloco.protocolos.assinaturas.dataHora",
             "description": "<p>Data/hora em que ocorreu a assinatura</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "bloco.protocolos.assinaturas.idUsuario",
+            "description": "<p>Identificador do usuário</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "bloco.protocolos.assinaturas.idOrigem",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "bloco.protocolos.assinaturas.idOrgao",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "bloco.protocolos.assinaturas.sigla",
+            "description": "<p>Login do usuário responsável pela assinatura</p>"
           }
         ]
       }
@@ -498,7 +554,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -565,7 +621,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -630,7 +686,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -747,7 +803,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -829,7 +885,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -903,7 +959,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -998,7 +1054,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -1085,7 +1141,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -1157,7 +1213,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -1242,7 +1298,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/BlocoResource.java",
     "groupTitle": "Bloco"
   },
   {
@@ -1268,9 +1324,9 @@ define({ "api": [
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "branch_homologacao/src/main/webapp/api-docs/main.js",
-    "group": "C__ANS_sei_broker_Fontes_branches_branch_homologacao_src_main_webapp_api_docs_main_js",
-    "groupTitle": "C__ANS_sei_broker_Fontes_branches_branch_homologacao_src_main_webapp_api_docs_main_js",
+    "filename": "sei-broker/src/main/webapp/api-docs/main.js",
+    "group": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_src_main_webapp_api_docs_main_js",
+    "groupTitle": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_src_main_webapp_api_docs_main_js",
     "name": ""
   },
   {
@@ -1282,7 +1338,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Lista os cargos.</p>",
@@ -1365,7 +1421,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/CargoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/CargoResource.java",
     "groupTitle": "Cargo"
   },
   {
@@ -1657,7 +1713,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -1946,7 +2002,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -1958,7 +2014,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Consulta contato pela sigla(login)</p>",
@@ -2240,7 +2296,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -2252,7 +2308,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Consulta os contatos de determinado tipo, o retorno pode ser PessoaFisica ou PessoaJuridica é recomendado utilizar a ans-commons-sei.</p>",
@@ -2587,7 +2643,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -2599,7 +2655,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Consulta os tipos de contato.</p>",
@@ -2645,7 +2701,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ContatoResource.java",
     "groupTitle": "Contato"
   },
   {
@@ -2719,7 +2775,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -2731,7 +2787,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Consulta documento cadastrado no SEI.</p>",
@@ -2878,12 +2934,19 @@ define({ "api": [
             "group": "Sucesso - 200",
             "type": "String",
             "optional": false,
+            "field": "retornoConsultaDocumento.serie.aplicabilidade",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
             "field": "retornoConsultaDocumento.numero",
             "description": "<p>Número do documento</p>"
           },
           {
             "group": "Sucesso - 200",
-            "type": "Data",
+            "type": "String",
             "optional": false,
             "field": "retornoConsultaDocumento.data",
             "description": "<p>Data de geração para documentos internos e para documentos externos é a data informada na tela de cadastro</p>"
@@ -2918,6 +2981,27 @@ define({ "api": [
           },
           {
             "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.unidadeElaboradora.sinProtocolo",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.unidadeElaboradora.sinArquivamento",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.unidadeElaboradora.sinOuvidoria",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
             "type": "Andamento",
             "optional": false,
             "field": "retornoConsultaDocumento.andamentoGeracao",
@@ -2925,10 +3009,24 @@ define({ "api": [
           },
           {
             "group": "Sucesso - 200",
-            "type": "Data",
+            "type": "String",
             "optional": false,
-            "field": "retornoConsultaDocumento.andamentoGeracao.dataHora",
-            "description": "<p>Data e hora do registro de andamento</p>"
+            "field": "retornoConsultaDocumento.andamentoGeracao.idAndamento",
+            "description": "<p>Identificador do andamento</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.andamentoGeracao.idTarefa",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.andamentoGeracao.idTarefaModulo",
+            "description": "<p>:TODO pendente</p>"
           },
           {
             "group": "Sucesso - 200",
@@ -2939,31 +3037,17 @@ define({ "api": [
           },
           {
             "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.andamentoGeracao.dataHora",
+            "description": "<p>Data e hora do registro de andamento</p>"
+          },
+          {
+            "group": "Sucesso - 200",
             "type": "Unidade",
             "optional": false,
             "field": "retornoConsultaDocumento.andamentoGeracao.unidade",
-            "description": "<p>Unidade responsável pelo andamento</p>"
-          },
-          {
-            "group": "Sucesso - 200",
-            "type": "String",
-            "optional": false,
-            "field": "retornoConsultaDocumento.andamentoGeracao.unidade.descricao",
-            "description": "<p>Nome da unidade</p>"
-          },
-          {
-            "group": "Sucesso - 200",
-            "type": "String",
-            "optional": false,
-            "field": "retornoConsultaDocumento.andamentoGeracao.unidade.idUnidade",
-            "description": "<p>Código da unidade</p>"
-          },
-          {
-            "group": "Sucesso - 200",
-            "type": "String",
-            "optional": false,
-            "field": "retornoConsultaDocumento.andamentoGeracao.unidade.sigla",
-            "description": "<p>Sigla da unidade</p>"
+            "description": "<p>Unidade responsável pelo andamento (ver estrutura Unidade)</p>"
           },
           {
             "group": "Sucesso - 200",
@@ -2995,24 +3079,38 @@ define({ "api": [
           },
           {
             "group": "Sucesso - 200",
-            "type": "Assinatura",
+            "type": "AtributoAndamento[]",
             "optional": false,
-            "field": "retornoConsultaDocumento.assinaturas",
-            "description": "<p>Conjunto de assinaturas do documento</p>"
+            "field": "retornoConsultaDocumento.andamentoGeracao.atributos",
+            "description": "<p>Lista com os atributos relacionados ao andamento</p>"
           },
           {
             "group": "Sucesso - 200",
             "type": "String",
             "optional": false,
-            "field": "retornoConsultaDocumento.assinaturas.cargoFuncao",
-            "description": "<p>Cargo do responsável pela assinatura</p>"
+            "field": "retornoConsultaDocumento.andamentoGeracao.atributos.nome",
+            "description": "<p>Nome do atributo</p>"
           },
           {
             "group": "Sucesso - 200",
-            "type": "Data",
+            "type": "String",
             "optional": false,
-            "field": "retornoConsultaDocumento.assinaturas.dataHora",
-            "description": "<p>Data e hora da assinatura</p>"
+            "field": "retornoConsultaDocumento.andamentoGeracao.atributos.valor",
+            "description": "<p>Valor do atributo</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.andamentoGeracao.atributos.idOrigem",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "Assinatura[]",
+            "optional": false,
+            "field": "retornoConsultaDocumento.assinaturas",
+            "description": "<p>Conjunto de assinaturas do documento</p>"
           },
           {
             "group": "Sucesso - 200",
@@ -3023,7 +3121,133 @@ define({ "api": [
           },
           {
             "group": "Sucesso - 200",
-            "type": "Campo",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.assinaturas.cargoFuncao",
+            "description": "<p>Cargo ou função utilizado no momento da assinatura</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.assinaturas.dataHora",
+            "description": "<p>Data/hora em que ocorreu a assinatura</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.assinaturas.idUsuario",
+            "description": "<p>Identificador do usuário</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.assinaturas.idOrigem",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.assinaturas.idOrgao",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.assinaturas.sigla",
+            "description": "<p>Login do usuário responsável pela assinatura</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "Publicacao",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao.nomeVeiculo",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao.numero",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao.dataDisponibilizacao",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao.dataPublicacao",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao.estado",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "PublicacaoImprensaNacional",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao.imprensaNacional",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao.imprensaNacional.siglaVeiculo",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao.imprensaNacional.descricaoVeiculo",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao.imprensaNacional.pagina",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao.imprensaNacional.secao",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "String",
+            "optional": false,
+            "field": "retornoConsultaDocumento.publicacao.imprensaNacional.data",
+            "description": "<p>:TODO pendente</p>"
+          },
+          {
+            "group": "Sucesso - 200",
+            "type": "Campo[]",
             "optional": false,
             "field": "retornoConsultaDocumento.campos",
             "description": "<p>Conjunto de campos do formulário</p>"
@@ -3061,7 +3285,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3073,7 +3297,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Retorna os documentos de um determinado interessado.</p>",
@@ -3272,7 +3496,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3284,7 +3508,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Consulta documentos inclusos pelo SEI-Broker.</p>",
@@ -3448,7 +3672,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3460,7 +3684,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Exporta documentos do SEI em PDF.</p>",
@@ -3513,7 +3737,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3817,7 +4041,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/DocumentoResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3829,7 +4053,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Lista os tipos de documentos do SEI.</p>",
@@ -3905,7 +4129,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SeriesResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/SeriesResource.java",
     "groupTitle": "Documento"
   },
   {
@@ -3917,7 +4141,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Consulta a cidade pelo código do IBGE.</p>",
@@ -4019,7 +4243,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4031,7 +4255,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Consulta as cidades de um determinado estado.</p>",
@@ -4142,7 +4366,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4154,7 +4378,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Consulta o estado pela sigla.</p>",
@@ -4259,7 +4483,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4271,7 +4495,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Consulta estados cadastrados.</p>",
@@ -4366,7 +4590,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4378,7 +4602,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Consulta países cadastrados.</p>",
@@ -4452,7 +4676,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfraResource.java",
     "groupTitle": "Endereco"
   },
   {
@@ -4464,7 +4688,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Este método realiza uma busca pelas extensões de arquivos permitidas.</p>",
@@ -4541,7 +4765,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ExtensoesResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ExtensoesResource.java",
     "groupTitle": "Extensao"
   },
   {
@@ -4553,7 +4777,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Lista as hipóteses legais.</p>",
@@ -4636,7 +4860,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/HipoteseLegalResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/HipoteseLegalResource.java",
     "groupTitle": "Hipotese_Legal"
   },
   {
@@ -4711,7 +4935,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4751,7 +4975,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4791,7 +5015,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4831,7 +5055,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
     "groupTitle": "Info"
   },
   {
@@ -4843,7 +5067,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Lista os marcadores de uma unidade.</p>",
@@ -4917,7 +5141,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
     "groupTitle": "Marcador"
   },
   {
@@ -5001,7 +5225,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/MarcadorResource.java",
     "groupTitle": "Marcador"
   },
   {
@@ -5316,7 +5540,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -5393,7 +5617,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -5463,7 +5687,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -5543,7 +5767,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -5555,7 +5779,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Este método realiza uma consulta a processos no SEI e no SIPAR.</p>",
@@ -6266,7 +6490,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6278,7 +6502,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Lista os processos conforme os filtros informados.</p>",
@@ -6441,7 +6665,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6518,7 +6742,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6579,7 +6803,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6647,7 +6871,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -6793,7 +7017,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7000,7 +7224,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7012,7 +7236,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Lista as andamentos do processo.</p>",
@@ -7212,7 +7436,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7224,7 +7448,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Retorna os documentos de um determinado processo.</p>",
@@ -7380,7 +7604,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7392,7 +7616,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Consulta os tipos de processo.</p>",
@@ -7447,7 +7671,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7525,7 +7749,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7602,7 +7826,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7663,7 +7887,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7747,7 +7971,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
     "groupTitle": "Processo"
   },
   {
@@ -7806,7 +8030,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SiparResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/SiparResource.java",
     "groupTitle": "SIPAR"
   },
   {
@@ -7874,7 +8098,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SiparResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/SiparResource.java",
     "groupTitle": "SIPAR"
   },
   {
@@ -7886,7 +8110,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Este método realiza uma consulta às séries.</p>",
@@ -7970,7 +8194,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/SeriesResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/SeriesResource.java",
     "groupTitle": "Serie"
   },
   {
@@ -7982,7 +8206,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Lista os tipos de tarefas existentes no SEI.</p>",
@@ -8084,7 +8308,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/TarefaResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/TarefaResource.java",
     "groupTitle": "Tarefa"
   },
   {
@@ -8096,7 +8320,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Lista os tipos de conferência.</p>",
@@ -8156,7 +8380,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/TipoConferenciaResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/TipoConferenciaResource.java",
     "groupTitle": "Tipos_Confer_ncia"
   },
   {
@@ -8168,7 +8392,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Retorna o código da Unidade pesquisada.</p>",
@@ -8214,7 +8438,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
     "groupTitle": "Unidade"
   },
   {
@@ -8226,7 +8450,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Retorna as Unidades cadastradas no SEI.</p>",
@@ -8280,7 +8504,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UnidadeResource.java",
     "groupTitle": "Unidade"
   },
   {
@@ -8352,7 +8576,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -8434,7 +8658,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -8446,7 +8670,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Este método realiza a uma busca pelo login do usuário.</p>",
@@ -8499,7 +8723,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -8571,7 +8795,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -8643,7 +8867,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -8715,7 +8939,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   },
   {
@@ -8727,7 +8951,7 @@ define({ "api": [
     "version": "2.0.0",
     "permission": [
       {
-        "name": "RO_SEI_BROKER"
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
       }
     ],
     "description": "<p>Este método realiza uma consulta aos usuários cadastrados que possuem o perfil &quot;Básico&quot;.</p>",
@@ -8783,7 +9007,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "branch_homologacao/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/UsuarioResource.java",
     "groupTitle": "Usuario"
   }
 ] });

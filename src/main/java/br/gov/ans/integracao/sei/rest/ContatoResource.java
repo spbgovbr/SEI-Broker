@@ -71,7 +71,7 @@ public class ContatoResource {
 	 * @apiGroup Contato
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta os tipos de contato.
 	 * 
@@ -102,7 +102,7 @@ public class ContatoResource {
 	 * @apiGroup Contato
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta os contatos de determinado tipo, o retorno pode ser PessoaFisica ou PessoaJuridica é recomendado utilizar a ans-commons-sei.
 	 * 
@@ -205,7 +205,7 @@ public class ContatoResource {
 	 * @apiGroup Contato
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Consulta contato pela sigla(login)
 	 * 

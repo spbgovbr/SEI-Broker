@@ -16,7 +16,6 @@ import javax.persistence.Query;
 import org.apache.commons.lang3.StringUtils;
 
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
-import br.gov.ans.integracao.sei.modelo.ProcessoResumido;
 
 public class DocumentoDAO {
 	@PersistenceContext(unitName = "sei_pu", type = PersistenceContextType.EXTENDED)
@@ -118,7 +117,7 @@ public class DocumentoDAO {
 	public Long countDocumentos(String interessado, String codigoTipo, boolean somenteAssinados){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 		
-		StringBuilder builder = new StringBuilder("SELECT count(*) ");
+		StringBuilder builder = new StringBuilder("SELECT count(distinct pr.protocolo_formatado_pesquisa) ");
 		builder.append("FROM documento AS d ");
 
 		
@@ -140,8 +139,6 @@ public class DocumentoDAO {
 			builder.append("AND s.id_serie in (:codigoTipo)");
 			parametros.put("codigoTipo", codigoTipo);
 		}
-				
-		builder.append("GROUP BY pr.protocolo_formatado_pesquisa "); 
 		
 		Query query = em.createNativeQuery(builder.toString());
 		
@@ -201,8 +198,7 @@ public class DocumentoDAO {
 			results.stream().forEach((record) -> {
 				DocumentoResumido documento = (DocumentoResumido) record[0];
 				documentos.add(documento);
-			});
-			
+			});			
 		}catch(NoResultException ex){
 			return documentos;
 		}

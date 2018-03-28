@@ -53,7 +53,7 @@ public class BlocoResource {
 	 * @apiGroup Bloco
 	 * @apiVersion 2.0.0
 	 * 
-	 * @apiPermission RO_SEI_BROKER
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
 	 * @apiDescription Recupera as informações do bloco informado.
 	 *
@@ -71,6 +71,9 @@ public class BlocoResource {
 	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.idUnidade Identificador da Unidade
 	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.sigla Sigla da unidade
 	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.descricao Descrição do unidade
+	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.sinProtocolo :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.sinArquivamento :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.sinOuvidoria :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {Usuario} bloco.usuario Dados das unidade que gerou o bloco
 	 * @apiSuccess (Sucesso - 200) {String} bloco.usuario.idUsuario Identificador do suário
 	 * @apiSuccess (Sucesso - 200) {String} bloco.usuario.sigla Sigla do usuário
@@ -80,11 +83,16 @@ public class BlocoResource {
 	 * @apiSuccess (Sucesso - 200) {String} bloco.estado Estado do bloco (A=Aberto, D=Disponibilizado, R=Retornado ou C=Concluído)
 	 * @apiSuccess (Sucesso - 200) {Unidade[]} bloco.unidadesDisponibilizacao Dados das unidades configuradas para disponibilização (ver estrutura Unidade)
 	 * @apiSuccess (Sucesso - 200) {ProtocoloBloco[]} bloco.protocolos Processos ou documentos do bloco
-	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.protocoloFormatado.identificacao Tipo do processo ou documento
+	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.protocoloFormatado Número de protocolo formatado
+	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.identificacao :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {Assinatura[]} bloco.protocolos.assinaturas Conjunto de assinaturas dos documentos. Será um conjunto vazio caso não existam informações ou se o protocolo representa um processo
 	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.nome Nome do assinante
 	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.cargoFuncao Cargo ou função utilizado no momento da assinatura
 	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.dataHora Data/hora em que ocorreu a assinatura
+	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.idUsuario Identificador do usuário
+	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.idOrigem :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.idOrgao :TODO pendente
+	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.sigla Login do usuário responsável pela assinatura
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error

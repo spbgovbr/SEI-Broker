@@ -36,11 +36,15 @@ public class SIPSoapClient {
         "<soapenv:Header/>" +
 	    "<soapenv:Body>" +
 	    "<sip:replicarUsuario soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">" +
+	    "<Usuarios>" +
+	    "<Usuario>" +
 	    "<StaOperacao xsi:type=\"xsd:string\">" + operacao + "</StaOperacao>" +
-	    "<IdPessoa xsi:type=\"xsd:string\">" + codigoUsuario + "</IdPessoa>" +
+	    "<IdOrigem xsi:type=\"xsd:string\">" + codigoUsuario + "</IdOrigem>" +
 	    "<IdOrgao xsi:type=\"xsd:string\">" + codigoOrgao + "</IdOrgao>" +
 	    "<Sigla xsi:type=\"xsd:string\">" + login + "</Sigla>" +
 	    "<Nome xsi:type=\"xsd:string\">" + nome + "</Nome>" +
+	    "</Usuario>" +
+	    "</Usuarios>" +
 	    "</sip:replicarUsuario>" +
 	    "</soapenv:Body>" +
         "</soapenv:Envelope>";
