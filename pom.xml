@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.gov.ans</groupId>
 	<artifactId>sei-broker</artifactId>
-	<version>2.4.1</version>
+	<version>2.4.2</version>
 	<packaging>war</packaging>
 	<name>sei-broker</name>
 	<description>Projeto demonstrativo de webservice Rest</description>

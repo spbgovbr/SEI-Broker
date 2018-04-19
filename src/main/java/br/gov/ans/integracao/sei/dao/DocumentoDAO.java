@@ -84,7 +84,7 @@ public class DocumentoDAO {
 			parametros.put("codigoTipo", codigoTipo);
 		}
 				
-		builder.append("GROUP BY numero "); 
+		builder.append("GROUP BY pr.protocolo_formatado_pesquisa "); 
 
 		if(orderByProcesso){
 			builder.append("ORDER BY processo ");			
@@ -102,6 +102,7 @@ public class DocumentoDAO {
 		
 		setPaginacaoQuery(query, pagina, qtdRegistros);
 		
+		@SuppressWarnings("unchecked")
 		List<Object[]> results = query.getResultList();
 		
 		List<DocumentoResumido> documentos = new ArrayList<DocumentoResumido>();
@@ -152,7 +153,8 @@ public class DocumentoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<DocumentoResumido> getDocumentosProcesso(String idProcedimento, String codigoTipo, String origem, boolean somenteAssinados){
+	public List<DocumentoResumido> getDocumentosProcesso(String idProcedimento, String codigoTipo, String origem, boolean somenteAssinados, 
+			Integer pagina, Integer qtdRegistros){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 		
 		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, d.numero numeroInformado, ");
@@ -183,11 +185,12 @@ public class DocumentoDAO {
 			parametros.put("origem", origem);
 		}
 		
-		builder.append("GROUP BY numero ORDER BY pr.dta_geracao ASC");
+		builder.append("GROUP BY pr.protocolo_formatado_pesquisa ORDER BY pr.dta_geracao, pr.protocolo_formatado_pesquisa ASC");
 				
 		Query query = em.createNativeQuery(builder.toString(), "DocumentoResumidoMapping");
 		
 		setQueryParameters(query, parametros);
+		setPaginacaoQuery(query, pagina, qtdRegistros);
 		
 		List<Object[]> results = null;
 		List<DocumentoResumido> documentos = new ArrayList<DocumentoResumido>();
@@ -205,5 +208,69 @@ public class DocumentoDAO {
 		
 		return documentos;
 	}
+	
+	public Long countDocumentosProcesso(String idProcedimento, String codigoTipo, String origem, boolean somenteAssinados){
+		HashMap<String, Object> parametros = new HashMap<String, Object>();
+		
+		StringBuilder builder = new StringBuilder("SELECT count(pr.protocolo_formatado_pesquisa) ");
+		builder.append("FROM documento AS d ");		
 
+		if(somenteAssinados){
+			builder.append("RIGHT JOIN assinatura AS a ON d.id_documento = a.id_documento ");			
+		}else{
+			builder.append("LEFT JOIN assinatura AS a ON d.id_documento = a.id_documento ");			
+		}
+		
+		builder.append("JOIN protocolo AS pr ON pr.id_protocolo = d.id_documento "); 
+		builder.append("JOIN serie AS s ON d.id_serie = s.id_serie ");
+		builder.append("WHERE d.id_procedimento = :idProcedimento ");
+
+		parametros.put("idProcedimento", idProcedimento);
+		
+		if(StringUtils.isNotBlank(codigoTipo)){
+			builder.append("AND s.id_serie in (:codigoTipo) ");
+			parametros.put("codigoTipo", codigoTipo);
+		}
+		
+		if(StringUtils.isNotBlank(origem)){
+			builder.append("AND pr.sta_protocolo = :origem ");
+			parametros.put("origem", origem);
+		}
+				
+		Query query = em.createNativeQuery(builder.toString());
+		
+		setQueryParameters(query, parametros);
+		
+		try{
+			return Long.valueOf(query.getSingleResult().toString());
+		}catch(NoResultException ex){
+			return 0L;
+		}
+	}
+	
+	public DocumentoResumido getDocumentoProcesso(String idProcedimento, String documento){
+		HashMap<String, Object> parametros = new HashMap<String, Object>();
+		
+		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, d.numero numeroInformado, ");
+		builder.append("CASE pr.sta_protocolo WHEN 'G' THEN 'GERADO' ELSE 'RECEBIDO' END origem, d.id_tipo_conferencia tipoConferencia, ");
+		builder.append("pr.dta_geracao dataGeracao, null as processo, null as unidade, ");
+		builder.append("CASE WHEN a.id_assinatura is null THEN false ELSE true END assinado ");
+		builder.append("FROM documento AS d ");
+		builder.append("LEFT JOIN assinatura AS a ON d.id_documento = a.id_documento ");
+		builder.append("JOIN protocolo AS pr ON pr.id_protocolo = d.id_documento "); 
+		builder.append("JOIN serie AS s ON d.id_serie = s.id_serie ");
+		builder.append("WHERE d.id_procedimento = :idProcedimento ");
+		builder.append("AND pr.protocolo_formatado_pesquisa = :documento ");
+		
+		parametros.put("idProcedimento", idProcedimento);
+		parametros.put("documento", documento);
+		
+		Query query = em.createNativeQuery(builder.toString(), "DocumentoResumidoMapping");
+		
+		setQueryParameters(query, parametros);
+		
+		Object result = query.getSingleResult();
+						
+		return (DocumentoResumido) ((Object[]) result)[0];
+	}
 }

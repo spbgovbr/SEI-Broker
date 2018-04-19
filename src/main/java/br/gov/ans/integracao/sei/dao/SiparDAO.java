@@ -56,7 +56,10 @@ public class SiparDAO {
 				+ "WHERE "   
 		   + "TR.DT_RECEBIMENTO IS NULL "
 		   + "AND TR.CO_DOCUMENTO = :numero " 
-		   + "AND TR.NU_ANO_DOCUMENTO = :ano "; 
+		   + "AND TR.NU_ANO_DOCUMENTO = :ano "
+		   + "AND TR.DT_ENVIO = ("
+		   + "	SELECT MAX(TR2.DT_ENVIO) FROM DBPSIPAR.TB_TRAMITACAO TR2 WHERE TR2.CO_DOCUMENTO = :numero AND TR2.NU_ANO_DOCUMENTO = :ano"
+		   + ")"; 
 		
 		Query query = em.createNativeQuery(sql);
 		query.setParameter("numero", numero);

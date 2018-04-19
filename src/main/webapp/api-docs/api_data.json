@@ -1330,6 +1330,34 @@
     "name": ""
   },
   {
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "varname1",
+            "description": "<p>No type.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "varname2",
+            "description": "<p>With type.</p>"
+          }
+        ]
+      }
+    },
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "sei-broker/target/sei-broker-2.4.2/api-docs/main.js",
+    "group": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_target_sei_broker_2_4_2_api_docs_main_js",
+    "groupTitle": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_target_sei_broker_2_4_2_api_docs_main_js",
+    "name": ""
+  },
+  {
     "type": "get",
     "url": "/:unidade/cargos",
     "title": "Listar cargos",
@@ -5772,6 +5800,145 @@
   },
   {
     "type": "get",
+    "url": "/processos/:processo/documentos/:documento",
+    "title": "Consultar documento",
+    "name": "consultarDocumentoDoProcesso",
+    "group": "Processo",
+    "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
+      }
+    ],
+    "description": "<p>Consulta um documento de determinado processo.</p>",
+    "parameter": {
+      "fields": {
+        "Path Parameters": [
+          {
+            "group": "Path Parameters",
+            "type": "String",
+            "optional": false,
+            "field": "processo",
+            "description": "<p>Número do processo.</p>"
+          },
+          {
+            "group": "Path Parameters",
+            "type": "String",
+            "optional": false,
+            "field": "documento",
+            "description": "<p>Número do documento.</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Exemplo de requisição:\t",
+        "content": "curl -i https://<host>/sei-broker/service/processos/33910002924201874/documentos/55737058",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Sucesso Response Body - 200": [
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "DocumentoResumido",
+            "optional": false,
+            "field": "documentoResumido",
+            "description": "<p>Resumo do documento encontrado no SEI.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentoResumido.numero",
+            "description": "<p>Número do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentoResumido.numeroInformado",
+            "description": "<p>Número informado na inclusão do documento, também conhecido como número de árvore.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "allowedValues": [
+              "\"GERADO\"",
+              "\"RECEBIDO\""
+            ],
+            "optional": false,
+            "field": "documentoResumido.origem",
+            "description": "<p>Origem do documento, se o mesmo é um documento &quot;GERADO&quot; internamente ou &quot;RECEBIDO&quot; de uma fonte externa.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "Data",
+            "optional": false,
+            "field": "documentoResumido.dataGeracao",
+            "description": "<p>Data de geração do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "Tipo",
+            "optional": false,
+            "field": "documentoResumido.tipo",
+            "description": "<p>Objeto representando o tipo do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentoResumido.tipo.codigo",
+            "description": "<p>Identificados do tipo do documento, também conhecido como série.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentoResumido.tipo.nome",
+            "description": "<p>Nome do tipo do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "documentoResumido.tipoConferencia",
+            "description": "<p>Tipo de conferência do documento.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "boolean",
+            "optional": false,
+            "field": "documentoResumido.assinado",
+            "description": "<p>Boolean indicando se o documento foi assinado.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"numero\": \"0670949\",\n  \"numeroInformado\": \"594\",\n  \"origem\": \"RECEBIDO\",\n  \"dataGeracao\": \"2015-08-10T00:00:00-03:00\",\n  \"tipo\": {\n  \t\"codigo\": \"629\",\n  \t\"nome\": \"Relatório de Arquivamento-SIF\"\n  }\n  \"tipoConferencia\": \"4\",\n  \"assinado\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n\t\"error\":\"Mensagem de erro.\"\n\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "groupTitle": "Processo"
+  },
+  {
+    "type": "get",
     "url": "/:unidade/processos/:processo",
     "title": "Consultar processo",
     "name": "consultarProcesso",
@@ -7490,6 +7657,22 @@
             "field": "somenteAssinados",
             "defaultValue": "false",
             "description": "<p>Exibir somente documentos assinados</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "String",
+            "optional": true,
+            "field": "pagina",
+            "defaultValue": "1",
+            "description": "<p>Número da página</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "String",
+            "optional": true,
+            "field": "qtdRegistros",
+            "defaultValue": "50",
+            "description": "<p>Quantidade de registros que serão exibidos por página</p>"
           }
         ]
       }
@@ -7584,6 +7767,15 @@
             "optional": false,
             "field": "documentos.documentoResumido.assinado",
             "description": "<p>Boolean indicando se o documento foi assinado.</p>"
+          }
+        ],
+        "Sucesso Response Header- 200": [
+          {
+            "group": "Sucesso Response Header- 200",
+            "type": "header",
+            "optional": false,
+            "field": "total_registros",
+            "description": "<p>Quantidade de registros que existem para essa consulta</p>"
           }
         ]
       },

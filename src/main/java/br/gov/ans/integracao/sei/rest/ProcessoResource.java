@@ -51,6 +51,7 @@ import br.gov.ans.integracao.sei.dao.ProcessoDAO;
 import br.gov.ans.integracao.sei.dao.SiparDAO;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
 import br.gov.ans.integracao.sei.modelo.EnvioDeProcesso;
+import br.gov.ans.integracao.sei.modelo.InclusaoDocumento;
 import br.gov.ans.integracao.sei.modelo.Motivo;
 import br.gov.ans.integracao.sei.modelo.NovoAndamento;
 import br.gov.ans.integracao.sei.modelo.NovoProcesso;
@@ -1165,6 +1166,8 @@ public class ProcessoResource {
 	 * @apiParam (Query Parameters) {String} [tipo=null] Identificador do tipo do documento, caso seja necessário filtrar pelo tipo
 	 * @apiParam (Query Parameters) {String = "G (gerado/interno), R (recebido/externo)"} [origem=null] Filtra os documentos por gerados ou recebidos
 	 * @apiParam (Query Parameters) {boolean} [somenteAssinados=false] Exibir somente documentos assinados
+	 * @apiParam (Query Parameters) {String} [pagina=1] Número da página
+	 * @apiParam (Query Parameters) {String} [qtdRegistros = 50] Quantidade de registros que serão exibidos por página
 	 * 
 	 * @apiExample Exemplo de requisição:	
 	 *	curl -i https://<host>/sei-broker/service/processos/33910003149201793/documentos
@@ -1180,6 +1183,8 @@ public class ProcessoResource {
 	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo.nome Nome do tipo do documento.
 	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipoConferencia Tipo de conferência do documento.
 	 * @apiSuccess (Sucesso Response Body - 200) {boolean} documentos.documentoResumido.assinado Boolean indicando se o documento foi assinado.
+	 * 
+	 * @apiSuccess (Sucesso Response Header- 200) {header} total_registros Quantidade de registros que existem para essa consulta
 	 * 
 	 * @apiSuccessExample {json} Success-Response:
 	 *     HTTP/1.1 200 OK
@@ -1206,21 +1211,88 @@ public class ProcessoResource {
 	@GET
 	@Path("/processos/{processo:\\d+}/documentos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public List<DocumentoResumido> listarDocumentosPorProcesso(@PathParam("processo") String processo, @QueryParam("tipo")String tipo,
-			@QueryParam("origem") String origem, @QueryParam("somenteAssinados") boolean somenteAssinados)	throws RemoteException, Exception{
-		try{
-			BigInteger idProcedimento = processoDAO.getIdProcedimento(formatarNumeroProcesso(processo));
+	public Response listarDocumentosPorProcesso(@PathParam("processo") String processo, @QueryParam("tipo")String tipo,
+			@QueryParam("origem") String origem, @QueryParam("somenteAssinados") boolean somenteAssinados, @QueryParam("pagina") String pagina, 
+			@QueryParam("qtdRegistros") String qtdRegistros)throws RemoteException, Exception{
+		
+		Integer tamanhoPagina = (qtdRegistros == null ? null : parseInt(qtdRegistros));
+		
+		String idProcedimento = consultarIdProcedimento(processo);
 			
-			List<DocumentoResumido> documentosProcesso = documentoDAO.getDocumentosProcesso(idProcedimento.toString(), tipo, origem, somenteAssinados);
-			
-			if(documentosProcesso.isEmpty()){
-				throw new ResourceNotFoundException(messages.getMessage("erro.processo.sem.documentos", formatarNumeroProcesso(processo)));
-			}
-			
-	 		return documentosProcesso;
-		}catch(NoResultException ex){
-			throw new BusinessException(messages.getMessage("erro.processo.nao.pertence.sei", formatarNumeroProcesso(processo)));
+		Long totalDocumentosProcesso = documentoDAO.countDocumentosProcesso(idProcedimento, tipo, origem, somenteAssinados);
+
+		if(totalDocumentosProcesso < 1L){
+			throw new ResourceNotFoundException(messages.getMessage("erro.processo.sem.documentos", formatarNumeroProcesso(processo)));
 		}
+		
+		List<DocumentoResumido> documentosProcesso = documentoDAO.getDocumentosProcesso(idProcedimento, tipo, origem, somenteAssinados, 
+				pagina == null ? null : parseInt(pagina), tamanhoPagina);
+
+		return Response.status(getStatus(totalDocumentosProcesso.intValue(), tamanhoPagina)).header("total_registros", totalDocumentosProcesso)
+				.entity(new GenericEntity<List<DocumentoResumido>>(documentosProcesso){}).build();
+	}
+	
+	/**
+	 * @api {get} /processos/:processo/documentos/:documento Consultar documento
+	 * @apiName consultarDocumentoDoProcesso
+	 * @apiGroup Processo
+	 * @apiVersion 2.0.0
+	 * 
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
+	 * 
+	 * @apiDescription Consulta um documento de determinado processo.
+	 * 
+	 * @apiParam (Path Parameters) {String} processo Número do processo.
+	 * @apiParam (Path Parameters) {String} documento Número do documento.
+	 * 
+	 * @apiExample Exemplo de requisição:	
+	 *	curl -i https://<host>/sei-broker/service/processos/33910002924201874/documentos/55737058
+	 *
+	 * @apiSuccess (Sucesso Response Body - 200) {DocumentoResumido} documentoResumido Resumo do documento encontrado no SEI.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentoResumido.numero Número do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentoResumido.numeroInformado Número informado na inclusão do documento, também conhecido como número de árvore.
+	 * @apiSuccess (Sucesso Response Body - 200) {String="GERADO","RECEBIDO"} documentoResumido.origem Origem do documento, se o mesmo é um documento "GERADO" internamente ou "RECEBIDO" de uma fonte externa.
+	 * @apiSuccess (Sucesso Response Body - 200) {Data} documentoResumido.dataGeracao Data de geração do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {Tipo} documentoResumido.tipo Objeto representando o tipo do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentoResumido.tipo.codigo Identificados do tipo do documento, também conhecido como série.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentoResumido.tipo.nome Nome do tipo do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentoResumido.tipoConferencia Tipo de conferência do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {boolean} documentoResumido.assinado Boolean indicando se o documento foi assinado.
+	 * 
+	 * @apiSuccessExample {json} Success-Response:
+	 *     HTTP/1.1 200 OK
+	 *     {
+	 *       "numero": "0670949",
+	 *       "numeroInformado": "594",
+	 *       "origem": "RECEBIDO",
+	 *       "dataGeracao": "2015-08-10T00:00:00-03:00",
+	 *       "tipo": {
+	 *       	"codigo": "629",
+	 *       	"nome": "Relatório de Arquivamento-SIF"
+	 *       }
+	 *       "tipoConferencia": "4",
+	 *       "assinado": true
+	 *     }
+	 *
+	 * @apiErrorExample {json} Error-Response:
+	 * 	HTTP/1.1 500 Internal Server Error
+	 * 	{
+	 *		"error":"Mensagem de erro."
+	 *		"code":"código do erro"
+	 *	}
+	 */
+	@GET
+	@Path("/processos/{processo:\\d+}/documentos/{documento:\\d+}")
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public DocumentoResumido consultarDocumentoDoProcesso(@PathParam("processo") String processo, @PathParam("documento") String documento)throws RemoteException, Exception{
+		String idProcedimento = consultarIdProcedimento(processo);
+		try {
+			DocumentoResumido documentoProcesso = documentoDAO.getDocumentoProcesso(idProcedimento, documento);
+			
+			return documentoProcesso;
+		} catch (Exception e) {
+			throw new ResourceNotFoundException(messages.getMessage("erro.documento.nao.encontrado", documento, formatarNumeroProcesso(processo)));
+		}		
 	}
 	
 	public URI getResourcePath(String resourceId){
@@ -1252,5 +1324,21 @@ public class ProcessoResource {
 		}
 		
 		return atributos.toArray(new AtributoAndamento[atributos.size()]);
+	}
+	
+	public String consultarIdProcedimento(String processo) throws Exception{
+		try{
+			return ((BigInteger) processoDAO.getIdProcedimento(formatarNumeroProcesso(processo))).toString();			
+		}catch(NoResultException ex){
+			throw new BusinessException(messages.getMessage("erro.processo.nao.pertence.sei", formatarNumeroProcesso(processo)));
+		}
+	}
+	
+	public Status getStatus(Integer quantidadeItens, Integer tamanhoPagina){
+		if(quantidadeItens > (tamanhoPagina == null ? Constantes.TAMANHO_PAGINA_PADRAO : tamanhoPagina )){
+			return Status.PARTIAL_CONTENT;
+		}
+		
+		return Status.OK;
 	}
 }
