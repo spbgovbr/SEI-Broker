@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources>
+	<datasource jta="true" jndi-name="java:/jdbc/sei-broker" pool-name="jdbc/sei-broker" enabled="true" use-java-context="true" use-ccm="false">
+	    <connection-url>${br.gov.ans.seiBroker.db.oracle.connectionUrl}</connection-url>
+	    <driver>ans</driver>
+	    <pool>
+	        <min-pool-size>5</min-pool-size>
+	        <max-pool-size>500</max-pool-size>
+	        <prefill>true</prefill>	        
+	    </pool>
+	    <security>
+	        <user-name>USUARIO_SEI</user-name>
+	        <password>${br.gov.ans.seiBroker.db.oracle.password}</password>
+	    </security>
+	    <validation>
+	        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+	        <validate-on-match>true</validate-on-match>
+	        <background-validation>false</background-validation>
+	        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+	    </validation>
+	    <timeout>
+	        <idle-timeout-minutes>2</idle-timeout-minutes>
+	    </timeout>
+	    <statement>
+	        <share-prepared-statements>false</share-prepared-statements>
+	    </statement>
+	</datasource>
+    <datasource jta="false" jndi-name="java:/jdbc/sei-mysql" pool-name="jdbc/sei-mysql" enabled="true" use-java-context="true" use-ccm="false" statistics-enabled="true">
+        <connection-url>${br.gov.ans.seiBroker.db.mysql.connectionUrl}</connection-url>
+        <driver-class>com.mysql.jdbc.Driver</driver-class>
+        <driver>com.mysql</driver>
+        <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+        <pool>
+            <min-pool-size>1</min-pool-size>
+            <max-pool-size>30</max-pool-size>
+            <prefill>true</prefill>
+        </pool>
+        <security>
+            <user-name>${br.gov.ans.seiBroker.db.mysql.user}</user-name>
+            <password>${br.gov.ans.seiBroker.db.mysql.password}</password>
+        </security>
+        <validation>
+            <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>
+            <validate-on-match>true</validate-on-match>
+            <background-validation>false</background-validation>
+            <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
+        </validation>
+    </datasource>
+</datasources>

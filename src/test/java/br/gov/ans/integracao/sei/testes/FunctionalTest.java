@@ -7,7 +7,7 @@ import com.jayway.restassured.RestAssured;
 public class FunctionalTest {
 
 	protected final String USUARIO = "andre.guimaraes";
-	protected final String SENHA = "Merda de senha!";
+	protected final String SENHA = "*****";
 	protected static final Boolean DESENVOLVIMENTO = true;
 	
     @BeforeClass
