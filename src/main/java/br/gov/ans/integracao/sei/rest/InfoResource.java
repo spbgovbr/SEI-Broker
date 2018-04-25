@@ -5,11 +5,7 @@ import static br.gov.ans.integracao.sei.utils.Util.setPaginacaoQuery;
 
 import java.util.List;
 
-import javax.ejb.Stateful;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
@@ -31,11 +27,7 @@ import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.modelo.LogIntegracaoSistemica;
 import br.gov.ans.utils.MessageUtils;
 
-
-@Named
 @Path("/info")
-@Stateful
-@TransactionManagement(TransactionManagementType.BEAN)
 public class InfoResource {
 
 	@Inject
@@ -47,9 +39,9 @@ public class InfoResource {
     @Inject
 	private SeiPortTypeProxy seiNativeService;
     
-	@Inject
+    @Inject
 	@PropertiesInfo(file="config.properties", key="versao.sistema")
-	public String versao;
+	private String versao;
 	
 	@PersistenceContext(unitName = "sei_pu", type = PersistenceContextType.EXTENDED)	
 	private EntityManager emMySQL;
