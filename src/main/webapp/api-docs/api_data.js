@@ -1325,8 +1325,8 @@ define({ "api": [
     "url": "",
     "version": "0.0.0",
     "filename": "sei-broker/src/main/webapp/api-docs/main.js",
-    "group": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_src_main_webapp_api_docs_main_js",
-    "groupTitle": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_src_main_webapp_api_docs_main_js",
+    "group": "C__git_sei_broker_src_main_webapp_api_docs_main_js",
+    "groupTitle": "C__git_sei_broker_src_main_webapp_api_docs_main_js",
     "name": ""
   },
   {
@@ -1352,9 +1352,9 @@ define({ "api": [
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "sei-broker/target/sei-broker-2.4.2/api-docs/main.js",
-    "group": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_target_sei_broker_2_4_2_api_docs_main_js",
-    "groupTitle": "C__ANS_sei_broker_Fontes_branches_desenvolvimento_versao_3_sei_broker_target_sei_broker_2_4_2_api_docs_main_js",
+    "filename": "sei-broker/target/sei-broker-2.5/api-docs/main.js",
+    "group": "C__git_sei_broker_target_sei_broker_2_5_api_docs_main_js",
+    "groupTitle": "C__git_sei_broker_target_sei_broker_2_5_api_docs_main_js",
     "name": ""
   },
   {
@@ -4893,81 +4893,6 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/info",
-    "title": "Informações",
-    "name": "getInfo",
-    "group": "Info",
-    "version": "2.0.0",
-    "description": "<p>Retorna informações da aplicação</p>",
-    "examples": [
-      {
-        "title": "Exemplo de requisição:",
-        "content": "curl -i http://<host>/sei-broker/service/info",
-        "type": "curl"
-      }
-    ],
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Info",
-            "optional": false,
-            "field": "info",
-            "description": "<p>Informações da aplicação.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Banco",
-            "optional": false,
-            "field": "info.oracle",
-            "description": "<p>Informações da conexão Oracle.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "info.oracle.versao",
-            "description": "<p>Versão do banco.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Banco",
-            "optional": false,
-            "field": "info.mysql",
-            "description": "<p>Informações da conexão MySQL.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "info.mysql.versao",
-            "description": "<p>Versão do banco.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "info.versao",
-            "description": "<p>Versão do SEI-Broker.</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 500 Internal Server Error\n{\n\t\"error\":\"Mensagem de erro.\"\n\t\"code\":\"código do erro\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
-    "groupTitle": "Info"
-  },
-  {
-    "type": "get",
     "url": "/info/versao",
     "title": "Consultar versão",
     "name": "getNumeroVersao",
@@ -5049,7 +4974,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/info/conexoes/oracle",
-    "title": "Testar conexão MySQL",
+    "title": "Testar conexão Oracle",
     "name": "testOracleConnection",
     "group": "Info",
     "version": "2.0.0",
@@ -5070,6 +4995,46 @@ define({ "api": [
             "optional": false,
             "field": "versao",
             "description": "<p>Número de versão do Oracle.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n\t\"error\":\"Mensagem de erro.\"\n\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "groupTitle": "Info"
+  },
+  {
+    "type": "get",
+    "url": "/info/conexoes/sei",
+    "title": "Testar conexão SEI",
+    "name": "testSEIConnection",
+    "group": "Info",
+    "version": "2.0.0",
+    "description": "<p>Testa a conexão com o SEI fazendo uma consulta ao serviço listar unidades.</p>",
+    "examples": [
+      {
+        "title": "Exemplo de requisição:",
+        "content": "curl -i http://<host>/sei-broker/service/info/conexoes/sei",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "mensagem",
+            "description": "<p>Mensagem de sucesso.</p>"
           }
         ]
       }
