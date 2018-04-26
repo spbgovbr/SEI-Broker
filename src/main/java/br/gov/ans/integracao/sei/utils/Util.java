@@ -160,6 +160,14 @@ public class Util {
 		query.setMaxResults(qtdRegistros);		
 	}
 	
+	public static String andOrWhere(StringBuilder sql){
+		if(sql.toString().contains("WHERE ")){
+			return "AND ";
+		}
+		
+		return "WHERE ";
+	}
+	
 	public static String getOnlyNumbers(String string) throws Exception{
        return string.replaceAll(REGEX_SOMENTE_NUMEROS,"");
 	}

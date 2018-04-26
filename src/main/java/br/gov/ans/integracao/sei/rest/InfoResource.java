@@ -1,7 +1,6 @@
 package br.gov.ans.integracao.sei.rest;
 
 import static br.gov.ans.integracao.sei.utils.Util.parseInt;
-import static br.gov.ans.integracao.sei.utils.Util.setPaginacaoQuery;
 
 import java.util.List;
 
@@ -18,15 +17,17 @@ import javax.ws.rs.core.MediaType;
 
 import org.jboss.logging.Logger;
 
-import br.gov.ans.dao.DAO;
 import br.gov.ans.exceptions.BusinessException;
 import br.gov.ans.factories.qualifiers.PropertiesInfo;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
+import br.gov.ans.integracao.sei.dao.LogIntegracaoSistemicaDAO;
 import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.modelo.LogIntegracaoSistemica;
+import br.gov.ans.utils.LogIgnore;
 import br.gov.ans.utils.MessageUtils;
 
+@LogIgnore
 @Path("/info")
 public class InfoResource {
 
@@ -49,8 +50,8 @@ public class InfoResource {
 	@PersistenceContext(unitName = "sei_broker_pu", type = PersistenceContextType.EXTENDED)
 	private EntityManager emOracle;
 	
-	@Inject
-	private DAO<LogIntegracaoSistemica> dao;
+	@Inject	
+	private LogIntegracaoSistemicaDAO dao;
 	
 	/**
 	 * @api {get} /info/versao Consultar versão
@@ -181,16 +182,39 @@ public class InfoResource {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
+	/**
+	 * @api {get} /info/requests Listar Requests
+	 * @apiName getUltimosRequests
+	 * @apiGroup Info
+	 * @apiVersion 2.0.0
+	 *
+	 * @apiDescription Lista os requests recebidos pelo broker.
+	 * 
+	 * 
+	 * @apiParam (Query Parameters) {String} [operacao] nome do método acessado
+	 * @apiParam (Query Parameters) {String} [origem] usuário que originou a requisição
+	 * @apiParam (Query Parameters) {int} [pag=1] número da página
+	 * @apiParam (Query Parameters) {int} [itens=50] quantidade de itens listados por página
+	 * 
+	 * @apiExample {curl} Exemplo de requisição:
+	 * 	curl -i http://<host>/sei-broker/service/info/requests
+	 *
+	 * @apiSuccess {String} mensagem Mensagem de sucesso.
+	 *
+	 * @apiErrorExample {json} Error-Response:
+	 * 	HTTP/1.1 500 Internal Server Error
+	 * 	{
+	 *		"error":"Mensagem de erro."
+	 *		"code":"código do erro"
+	 *	}
+	 */
 	@GET
 	@Path("/requests")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public List<LogIntegracaoSistemica> getUltimosRequests(@QueryParam("pag") String pagina, @QueryParam("itens") String qtdRegistros) throws BusinessException{
-		Query query = dao.createNamedQuery("LogIntegracaoSistemica.ultimosRequests", null);
-		
-		setPaginacaoQuery(query, pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros));
+	public List<LogIntegracaoSistemica> getUltimosRequests(@QueryParam("pag") String pagina, @QueryParam("itens") String qtdRegistros, 
+			@QueryParam("operacao") String operacao, @QueryParam("origem") String origem) throws BusinessException{
 				
-		return query.getResultList();
+		return dao.getLogs(operacao, origem, pagina == null? null:parseInt(pagina), qtdRegistros == null? null : parseInt(qtdRegistros));
 	}
 
 }

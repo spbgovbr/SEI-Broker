@@ -25,7 +25,7 @@
 	        <share-prepared-statements>false</share-prepared-statements>
 	    </statement>
 	</datasource>
-    <datasource jta="false" jndi-name="java:/jdbc/sei-mysql" pool-name="jdbc/sei-mysql" enabled="true" use-java-context="true" use-ccm="false" statistics-enabled="true">
+    <datasource jta="true" jndi-name="java:/jdbc/sei-mysql" pool-name="jdbc/sei-mysql" enabled="true" use-java-context="true" use-ccm="false" statistics-enabled="true">
         <connection-url>${br.gov.ans.seiBroker.db.mysql.connectionUrl}</connection-url>
         <driver-class>com.mysql.jdbc.Driver</driver-class>
         <driver>com.mysql</driver>

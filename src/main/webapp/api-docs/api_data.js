@@ -4933,6 +4933,82 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/info/requests",
+    "title": "Listar Requests",
+    "name": "getUltimosRequests",
+    "group": "Info",
+    "version": "2.0.0",
+    "description": "<p>Lista os requests recebidos pelo broker.</p>",
+    "parameter": {
+      "fields": {
+        "Query Parameters": [
+          {
+            "group": "Query Parameters",
+            "type": "String",
+            "optional": true,
+            "field": "operacao",
+            "description": "<p>nome do método acessado</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "String",
+            "optional": true,
+            "field": "origem",
+            "description": "<p>usuário que originou a requisição</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "int",
+            "optional": true,
+            "field": "pag",
+            "defaultValue": "1",
+            "description": "<p>número da página</p>"
+          },
+          {
+            "group": "Query Parameters",
+            "type": "int",
+            "optional": true,
+            "field": "itens",
+            "defaultValue": "50",
+            "description": "<p>quantidade de itens listados por página</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Exemplo de requisição:",
+        "content": "curl -i http://<host>/sei-broker/service/info/requests",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "mensagem",
+            "description": "<p>Mensagem de sucesso.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n\t\"error\":\"Mensagem de erro.\"\n\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/InfoResource.java",
+    "groupTitle": "Info"
+  },
+  {
+    "type": "get",
     "url": "/info/conexoes/mysql",
     "title": "Testar conexão MySQL",
     "name": "testMySQLConnection",

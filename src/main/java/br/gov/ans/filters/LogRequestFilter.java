@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.container.ResourceInfo;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
@@ -14,6 +15,7 @@ import javax.ws.rs.ext.Provider;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.core.ResourceMethodInvoker;
 
+import br.gov.ans.utils.LogIgnore;
 import br.gov.ans.utils.LogIntegracaoUtil;
 import br.gov.ans.utils.MessageUtils;
 
@@ -30,6 +32,9 @@ public class LogRequestFilter implements ContainerRequestFilter{
 	private UriInfo uriInfo;
 	
 	@Context
+	private ResourceInfo resourceInfo;
+	
+	@Context
 	private HttpServletRequest request;
 	
 	@Context
@@ -41,8 +46,10 @@ public class LogRequestFilter implements ContainerRequestFilter{
 	@Override
 	public void filter(ContainerRequestContext context) throws IOException{
 		request.setCharacterEncoding("UTF-8");
-				
-		audit.registrarLog(getUserName(),uriInfo.getAbsolutePath().toString(), getMethodName(context));		
+		
+		if(isLoggable()){
+			audit.registrarLog(getUserName(),uriInfo.getAbsolutePath().toString(), getMethodName(context));
+		}
 	}
 	
 	public String getMethodName(ContainerRequestContext context){
@@ -60,4 +67,15 @@ public class LogRequestFilter implements ContainerRequestFilter{
 		}
 	}	
 
+	private boolean isLoggable(){
+		if(resourceInfo.getResourceClass().isAnnotationPresent(LogIgnore.class)){
+			return false;
+		}
+		
+		if(resourceInfo.getResourceMethod().isAnnotationPresent(LogIgnore.class)){
+			return false;
+		}
+		
+		return true;
+	}
 }
