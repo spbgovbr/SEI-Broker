@@ -9,6 +9,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name="contato")
 @NamedQueries({@NamedQuery(name="Contato.pesquisarPorID", query="select c from Contato c where c.id = :id"),

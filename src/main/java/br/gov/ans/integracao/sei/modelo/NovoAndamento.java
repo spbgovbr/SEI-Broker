@@ -2,6 +2,11 @@ package br.gov.ans.integracao.sei.modelo;
 
 import java.util.HashMap;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NovoAndamento {
 
 	private String tarefa;

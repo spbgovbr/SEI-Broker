@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SqlResultSetMapping;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @XmlRootElement
@@ -28,7 +29,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
                     @FieldResult(name = "codigo", column = "tipoCodigo"),
                     @FieldResult(name = "nome", column = "tipoNome")})
 		})
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ProcessoResumido {
 
 	@Id

@@ -3,10 +3,12 @@ package br.gov.ans.integracao.sei.modelo;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import br.gov.ans.integracao.sei.modelo.enums.TipoBloco;
 
 @XmlRootElement
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NovoBloco {
 

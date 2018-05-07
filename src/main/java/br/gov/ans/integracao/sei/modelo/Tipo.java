@@ -1,12 +1,14 @@
 package br.gov.ans.integracao.sei.modelo;
 
 import javax.persistence.Entity;
-import javax.persistence.EntityResult;
-import javax.persistence.FieldResult;
 import javax.persistence.Id;
-import javax.persistence.SqlResultSetMapping;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 //@SqlResultSetMapping(name = "TipoMapping", entities = { @EntityResult(entityClass = Tipo.class, fields = {
 //		@FieldResult(name = "codigo", column = "tipoCodigo"), @FieldResult(name = "nome", column = "tipoNome") }) })

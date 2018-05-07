@@ -4,9 +4,14 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import br.gov.ans.integracao.sei.client.Documento;
 import br.gov.ans.integracao.sei.client.Procedimento;
 
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class NovoProcesso {	
 	private Procedimento dadosProcesso;
