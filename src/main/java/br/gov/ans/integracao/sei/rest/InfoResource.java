@@ -18,7 +18,6 @@ import javax.ws.rs.core.MediaType;
 import org.jboss.logging.Logger;
 
 import br.gov.ans.exceptions.BusinessException;
-import br.gov.ans.factories.qualifiers.PropertiesInfo;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.dao.LogIntegracaoSistemicaDAO;
 import br.gov.ans.integracao.sei.modelo.Operacao;
@@ -73,7 +72,7 @@ public class InfoResource {
 	@Path("/versao")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getNumeroVersao(){
-		return messages.getMessage("versao.servico");
+		return messages.getMessage("sei.broker.versao");
 	}	
 	
 	/**
