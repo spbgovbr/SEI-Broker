@@ -472,7 +472,7 @@ public class DocumentoResource {
 	}
 
 	/** 
-	 * @api {get} /:unidade/documentos/:documento/pdf Exportar documento
+	 * @api {get} /:unidade/documentos/:documento Exportar documento
 	 * @apiName exportarDocumento
 	 * @apiGroup Documento
 	 * @apiVersion 2.0.0
@@ -481,11 +481,13 @@ public class DocumentoResource {
 	 * 
 	 * @apiDescription Exporta documentos do SEI em PDF.
 	 *
+	 * @apiParam (Header Parameters) {String} Accept Utilize application/pdf
+	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * @apiParam (Path Parameters) {String} documento Id do documento que deseja recuperar as informações
 	 *
 	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i https://<host>/sei-broker/service/COSIT/documentos/0003322/pdf
+	 * 	curl -i https://<host>/sei-broker/service/COSIT/documentos/0003322
 	 *
 	 * @apiSuccess (Sucesso - 200) {PDF} binario Arquivo no formato PDF.
 	 * 
@@ -496,6 +498,13 @@ public class DocumentoResource {
 	 *		"code":"código do erro"
 	 *	}
 	 */
+	@GET
+	@Path("{unidade}/documentos/{documento}")
+	@Produces("application/pdf")
+	public Response exportarDocumentoV2(@PathParam("unidade") String unidade, @PathParam("documento") String documento) throws Exception{
+		return exportarDocumento(unidade, documento);
+	}
+		
 	@GET
 	@Path("{unidade}/documentos/{documento}/pdf")
 	@Produces(MediaType.APPLICATION_OCTET_STREAM)
@@ -679,10 +688,11 @@ public class DocumentoResource {
 	public void validarAssinaturaDocumento(byte[] bytes, String documento) throws BusinessException{
 		String body = new String(bytes);
 
-		String erroDocumentoNaoAssinado = messages.getMessage("documento.nao.assinado", documento);
+		String documentoNaoAssinado = messages.getMessage("documento.nao.assinado", documento);
+		String documentoSemAssinatura = messages.getMessage("documento.sem.assinatura");
 		
-		if(body.contains(erroDocumentoNaoAssinado)){
-			throw new BusinessException(erroDocumentoNaoAssinado);
+		if(body.contains(documentoNaoAssinado) || body.contains(documentoSemAssinatura)){
+			throw new BusinessException(documentoNaoAssinado);
 		}
 	}
 	

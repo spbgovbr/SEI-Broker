@@ -39,10 +39,6 @@ public class InfoResource {
 	
     @Inject
 	private SeiPortTypeProxy seiNativeService;
-    
-    @Inject
-	@PropertiesInfo(file="config.properties", key="versao.sistema")
-	private String versao;
 	
 	@PersistenceContext(unitName = "sei_pu", type = PersistenceContextType.EXTENDED)	
 	private EntityManager emMySQL;
@@ -77,7 +73,7 @@ public class InfoResource {
 	@Path("/versao")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getNumeroVersao(){
-		return versao;
+		return messages.getMessage("versao.servico");
 	}	
 	
 	/**

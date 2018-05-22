@@ -1352,9 +1352,9 @@
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "sei-broker/target/sei-broker-2.5/api-docs/main.js",
-    "group": "C__git_sei_broker_target_sei_broker_2_5_api_docs_main_js",
-    "groupTitle": "C__git_sei_broker_target_sei_broker_2_5_api_docs_main_js",
+    "filename": "sei-broker/target/sei-broker-2.5.1/api-docs/main.js",
+    "group": "C__git_sei_broker_target_sei_broker_2_5_1_api_docs_main_js",
+    "groupTitle": "C__git_sei_broker_target_sei_broker_2_5_1_api_docs_main_js",
     "name": ""
   },
   {
@@ -3705,7 +3705,7 @@
   },
   {
     "type": "get",
-    "url": "/:unidade/documentos/:documento/pdf",
+    "url": "/:unidade/documentos/:documento",
     "title": "Exportar documento",
     "name": "exportarDocumento",
     "group": "Documento",
@@ -3718,6 +3718,15 @@
     "description": "<p>Exporta documentos do SEI em PDF.</p>",
     "parameter": {
       "fields": {
+        "Header Parameters": [
+          {
+            "group": "Header Parameters",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Utilize application/pdf</p>"
+          }
+        ],
         "Path Parameters": [
           {
             "group": "Path Parameters",
@@ -3739,7 +3748,7 @@
     "examples": [
       {
         "title": "Exemplo de requisição:",
-        "content": "curl -i https://<host>/sei-broker/service/COSIT/documentos/0003322/pdf",
+        "content": "curl -i https://<host>/sei-broker/service/COSIT/documentos/0003322",
         "type": "curl"
       }
     ],

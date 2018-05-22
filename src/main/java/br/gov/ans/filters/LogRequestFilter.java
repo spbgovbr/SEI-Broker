@@ -62,7 +62,7 @@ public class LogRequestFilter implements ContainerRequestFilter{
 		try{
 			return securityContext.getUserPrincipal().getName();
 		}catch (Exception ex) {
-			logger.error(ex, ex);
+			logger.debug("Sem informações do usuário logado: " + ex);
 			return messages.getMessage("sem.informacoes.usuario");
 		}
 	}	
