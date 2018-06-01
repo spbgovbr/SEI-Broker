@@ -7,15 +7,19 @@
 
 package br.gov.ans.integracao.sei.client;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+@Entity
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class Unidade  implements java.io.Serializable {
+	@Id
     private java.lang.String idUnidade;
 
     private java.lang.String sigla;
@@ -166,7 +170,8 @@ public class Unidade  implements java.io.Serializable {
         this.sinOuvidoria = sinOuvidoria;
     }
 
-    private java.lang.Object __equalsCalc = null;
+    private transient java.lang.Object __equalsCalc = null;
+    
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof Unidade)) return false;
         Unidade other = (Unidade) obj;
@@ -200,7 +205,8 @@ public class Unidade  implements java.io.Serializable {
         return _equals;
     }
 
-    private boolean __hashCodeCalc = false;
+    private transient boolean __hashCodeCalc = false;
+    
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;

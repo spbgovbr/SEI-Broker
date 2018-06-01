@@ -16,10 +16,10 @@ public class PDFUtil {
 		tidy.setXHTML(true);
 		
 		Document document = tidy.parseDOM(new ByteArrayInputStream(bytes), null);
-		
+				
 		ITextRenderer renderer = new ITextRenderer();
 		renderer.setDocument(document, null);
-		renderer.layout(); 
+		renderer.layout();
 		
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		renderer.createPDF(outputStream);
