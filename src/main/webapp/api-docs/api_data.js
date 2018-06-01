@@ -1352,9 +1352,9 @@ define({ "api": [
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "sei-broker/target/sei-broker-2.5.1/api-docs/main.js",
-    "group": "C__git_sei_broker_target_sei_broker_2_5_1_api_docs_main_js",
-    "groupTitle": "C__git_sei_broker_target_sei_broker_2_5_1_api_docs_main_js",
+    "filename": "sei-broker/target/sei-broker-2.6/api-docs/main.js",
+    "group": "C__git_sei_broker_target_sei_broker_2_6_api_docs_main_js",
+    "groupTitle": "C__git_sei_broker_target_sei_broker_2_6_api_docs_main_js",
     "name": ""
   },
   {
@@ -6869,6 +6869,120 @@ define({ "api": [
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n{\n  \"numero\": \"33910007118201710\",\n  \"numeroFormatado\": \"33910.007118/2017-10\",\n  \"descricao\": \"D:2237021 - SUL AMÉRICA SEGURO SAÚDE S/A\",\n  \"unidade\": \"NÚCLEO-RJ\",\n  \"dataGeracao\": \"2017-10-09T03:00:00.000+0000\",\n  \"tipo\": {\n  \t\"codigo\": \"100000882\",\n  \t\"nome\": \"Fiscalização: Sancionador\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n\t\"error\":\"Mensagem de erro.\"\n\t\"code\":\"código do erro\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "sei-broker/src/main/java/br/gov/ans/integracao/sei/rest/ProcessoResource.java",
+    "groupTitle": "Processo"
+  },
+  {
+    "type": "get",
+    "url": "/processos/:processo/unidades",
+    "title": "Consultar unidades",
+    "name": "consultarUnidadesProcesso",
+    "group": "Processo",
+    "version": "2.0.0",
+    "permission": [
+      {
+        "name": "RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA"
+      }
+    ],
+    "description": "<p>Consulta as unidades onde o processo está aberto.</p>",
+    "parameter": {
+      "fields": {
+        "Path Parameters": [
+          {
+            "group": "Path Parameters",
+            "type": "String",
+            "optional": false,
+            "field": "processo",
+            "description": "<p>Número do processo.</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Exemplo de requisição:\t",
+        "content": "curl -i https://<host>/sei-broker/service/processos/33910002924201874/unidades",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Sucesso Response Body - 200": [
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "List",
+            "optional": false,
+            "field": "unidades",
+            "description": "<p>Lista da unidades onde o processo está aberto.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "Unidade",
+            "optional": false,
+            "field": "unidades.unidade",
+            "description": "<p>Objeto Unidade.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "unidades.unidade.idUnidade",
+            "description": "<p>Identificador da unidade.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "unidades.unidade.sigla",
+            "description": "<p>Sigla de unidade.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "unidades.unidade.descricao",
+            "description": "<p>Descrição da unidade.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "unidades.unidade.sinProtocolo",
+            "description": "<p>Descrição pendente da área de negócio.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "unidades.unidade.sinArquivamento",
+            "description": "<p>Descrição pendente da área de negócio.</p>"
+          },
+          {
+            "group": "Sucesso Response Body - 200",
+            "type": "String",
+            "optional": false,
+            "field": "unidades.unidade.sinOuvidoria",
+            "description": "<p>Descrição pendente da área de negócio.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\n\t{\n \t \"idUnidade\": \"110000934\",\n \t \"sigla\": \"COSAP\",\n \t \"descricao\": \"Coordenadoria de Sistemas e Aplicativos\",\n \t \"sinProtocolo\": \"S\",\n \t \"sinArquivamento\": \"N\",\n \t \"sinOuvidoria\": \"N\"\n\t}\n]",
           "type": "json"
         }
       ]

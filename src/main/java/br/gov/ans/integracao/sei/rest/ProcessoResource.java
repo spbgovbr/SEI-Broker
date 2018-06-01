@@ -1299,6 +1299,50 @@ public class ProcessoResource {
 		}		
 	}
 	
+	/**
+	 * @api {get} /processos/:processo/unidades Consultar unidades
+	 * @apiName consultarUnidadesProcesso
+	 * @apiGroup Processo
+	 * @apiVersion 2.0.0
+	 * 
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
+	 * 
+	 * @apiDescription Consulta as unidades onde o processo está aberto.
+	 * 
+	 * @apiParam (Path Parameters) {String} processo Número do processo.
+	 * 
+	 * @apiExample Exemplo de requisição:	
+	 *	curl -i https://<host>/sei-broker/service/processos/33910002924201874/unidades
+	 *
+	 * @apiSuccess (Sucesso Response Body - 200) {List} unidades Lista da unidades onde o processo está aberto.
+	 * @apiSuccess (Sucesso Response Body - 200) {Unidade} unidades.unidade Objeto Unidade.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} unidades.unidade.idUnidade Identificador da unidade.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} unidades.unidade.sigla Sigla de unidade.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} unidades.unidade.descricao Descrição da unidade.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} unidades.unidade.sinProtocolo Descrição pendente da área de negócio.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} unidades.unidade.sinArquivamento Descrição pendente da área de negócio.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} unidades.unidade.sinOuvidoria Descrição pendente da área de negócio.
+	 * 
+	 * @apiSuccessExample {json} Success-Response:
+	 *     HTTP/1.1 200 OK
+	 *     [
+	 *     	{
+	 *      	 "idUnidade": "110000934",
+	 *      	 "sigla": "COSAP",
+	 *      	 "descricao": "Coordenadoria de Sistemas e Aplicativos",
+	 *      	 "sinProtocolo": "S",
+	 *      	 "sinArquivamento": "N",
+	 *      	 "sinOuvidoria": "N"
+	 *     	}
+	 *     ]
+	 *
+	 * @apiErrorExample {json} Error-Response:
+	 * 	HTTP/1.1 500 Internal Server Error
+	 * 	{
+	 *		"error":"Mensagem de erro."
+	 *		"code":"código do erro"
+	 *	}
+	 */
 	@GET
 	@Path("/processos/{processo:\\d+}/unidades")
 	@Produces(MediaType.APPLICATION_JSON)
