@@ -172,7 +172,7 @@ public class Unidade  implements java.io.Serializable {
 
     private transient java.lang.Object __equalsCalc = null;
     
-    public synchronized boolean equals(java.lang.Object obj) {
+    public boolean equals(java.lang.Object obj) {
         if (!(obj instanceof Unidade)) return false;
         Unidade other = (Unidade) obj;
         if (obj == null) return false;
@@ -207,7 +207,7 @@ public class Unidade  implements java.io.Serializable {
 
     private transient boolean __hashCodeCalc = false;
     
-    public synchronized int hashCode() {
+    public int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

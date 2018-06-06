@@ -135,7 +135,7 @@ public class Assinatura  implements java.io.Serializable {
         this.sigla = sigla;
     }
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    public boolean equals(java.lang.Object obj) {
         if (!(obj instanceof Assinatura)) return false;
         Assinatura other = (Assinatura) obj;
         if (obj == null) return false;
@@ -172,7 +172,7 @@ public class Assinatura  implements java.io.Serializable {
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    public int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

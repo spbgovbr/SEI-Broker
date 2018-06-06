@@ -968,7 +968,7 @@ public class Contato  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    public boolean equals(java.lang.Object obj) {
         if (!(obj instanceof Contato)) return false;
         Contato other = (Contato) obj;
         if (this == obj) return true;
@@ -1100,7 +1100,7 @@ public class Contato  implements java.io.Serializable {
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    public int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

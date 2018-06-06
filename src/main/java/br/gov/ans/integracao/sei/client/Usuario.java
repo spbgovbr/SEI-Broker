@@ -94,7 +94,7 @@ public class Usuario  implements java.io.Serializable {
         this.nome = nome;
     }
 
-	public synchronized boolean equals(java.lang.Object obj) {
+	public boolean equals(java.lang.Object obj) {
 		if (!(obj instanceof Usuario)){
 			return false;
 		}
@@ -109,7 +109,7 @@ public class Usuario  implements java.io.Serializable {
 	}
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    public int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

@@ -15,7 +15,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
-public class Andamento  implements java.io.Serializable {
+public class Andamento implements java.io.Serializable {
     private java.lang.String idAndamento;
 
     private java.lang.String idTarefa;
@@ -215,7 +215,7 @@ public class Andamento  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    public boolean equals(java.lang.Object obj) {
         if (!(obj instanceof Andamento)) return false;
         Andamento other = (Andamento) obj;
         if (obj == null) return false;
@@ -255,7 +255,7 @@ public class Andamento  implements java.io.Serializable {
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    public int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

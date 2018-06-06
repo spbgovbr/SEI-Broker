@@ -215,7 +215,7 @@ public class RetornoConsultaBloco  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    public boolean equals(java.lang.Object obj) {
         if (!(obj instanceof RetornoConsultaBloco)) return false;
         RetornoConsultaBloco other = (RetornoConsultaBloco) obj;
         if (obj == null) return false;
@@ -255,7 +255,7 @@ public class RetornoConsultaBloco  implements java.io.Serializable {
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    public int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

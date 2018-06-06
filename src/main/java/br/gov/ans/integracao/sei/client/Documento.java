@@ -412,7 +412,6 @@ public class Documento  implements java.io.Serializable {
         return conteudo;
     }
 
-
     /**
      * Sets the conteudo value for this Documento.
      * 
@@ -421,27 +420,6 @@ public class Documento  implements java.io.Serializable {
     public void setConteudo(java.lang.String conteudo) {
         this.conteudo = conteudo;
     }
-
-
-    /**
-     * Gets the conteudoMTOM value for this Documento.
-     * 
-     * @return conteudoMTOM
-     */
-//    public byte[] getConteudoMTOM() {
-//        return conteudoMTOM;
-//    }
-
-
-    /**
-     * Sets the conteudoMTOM value for this Documento.
-     * 
-     * @param conteudoMTOM
-     */
-//    public void setConteudoMTOM(byte[] conteudoMTOM) {
-//        this.conteudoMTOM = conteudoMTOM;
-//    }
-
 
     /**
      * Gets the idArquivo value for this Documento.
@@ -503,7 +481,7 @@ public class Documento  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    public boolean equals(java.lang.Object obj) {
         if (!(obj instanceof Documento)) return false;
         Documento other = (Documento) obj;
         if (obj == null) return false;
@@ -579,7 +557,7 @@ public class Documento  implements java.io.Serializable {
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    public int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }
