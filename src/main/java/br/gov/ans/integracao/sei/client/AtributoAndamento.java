@@ -36,56 +36,26 @@ public class AtributoAndamento implements java.io.Serializable {
 		this.idOrigem = idOrigem;
 	}
 
-	/**
-	 * Gets the nome value for this AtributoAndamento.
-	 * 
-	 * @return nome
-	 */
 	public java.lang.String getNome() {
 		return nome;
 	}
 
-	/**
-	 * Sets the nome value for this AtributoAndamento.
-	 * 
-	 * @param nome
-	 */
 	public void setNome(java.lang.String nome) {
 		this.nome = nome;
 	}
 
-	/**
-	 * Gets the valor value for this AtributoAndamento.
-	 * 
-	 * @return valor
-	 */
 	public java.lang.String getValor() {
 		return valor;
 	}
 
-	/**
-	 * Sets the valor value for this AtributoAndamento.
-	 * 
-	 * @param valor
-	 */
 	public void setValor(java.lang.String valor) {
 		this.valor = valor;
 	}
 
-	/**
-	 * Gets the idOrigem value for this AtributoAndamento.
-	 * 
-	 * @return idOrigem
-	 */
 	public java.lang.String getIdOrigem() {
 		return idOrigem;
 	}
 
-	/**
-	 * Sets the idOrigem value for this AtributoAndamento.
-	 * 
-	 * @param idOrigem
-	 */
 	public void setIdOrigem(java.lang.String idOrigem) {
 		this.idOrigem = idOrigem;
 	}
@@ -137,7 +107,6 @@ public class AtributoAndamento implements java.io.Serializable {
 		return _hashCode;
 	}
 
-	// Type metadata
 	private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(
 			AtributoAndamento.class, true);
 
@@ -163,24 +132,15 @@ public class AtributoAndamento implements java.io.Serializable {
 		typeDesc.addFieldDesc(elemField);
 	}
 
-	/**
-	 * Return type metadata object
-	 */
 	public static org.apache.axis.description.TypeDesc getTypeDesc() {
 		return typeDesc;
 	}
 
-	/**
-	 * Get Custom Serializer
-	 */
 	public static org.apache.axis.encoding.Serializer getSerializer(java.lang.String mechType,
 			java.lang.Class _javaType, javax.xml.namespace.QName _xmlType) {
 		return new org.apache.axis.encoding.ser.BeanSerializer(_javaType, _xmlType, typeDesc);
 	}
 
-	/**
-	 * Get Custom Deserializer
-	 */
 	public static org.apache.axis.encoding.Deserializer getDeserializer(java.lang.String mechType,
 			java.lang.Class _javaType, javax.xml.namespace.QName _xmlType) {
 		return new org.apache.axis.encoding.ser.BeanDeserializer(_javaType, _xmlType, typeDesc);

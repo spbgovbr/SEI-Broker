@@ -15,149 +15,107 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
-public class TipoProcedimento  implements java.io.Serializable {
-    private java.lang.String idTipoProcedimento;
+public class TipoProcedimento implements java.io.Serializable {
+	private java.lang.String idTipoProcedimento;
 
-    private java.lang.String nome;
+	private java.lang.String nome;
 
-    public TipoProcedimento() {
-    }
+	public TipoProcedimento() {
+	}
 
-    public TipoProcedimento(
-           java.lang.String idTipoProcedimento,
-           java.lang.String nome) {
-           this.idTipoProcedimento = idTipoProcedimento;
-           this.nome = nome;
-    }
+	public TipoProcedimento(java.lang.String idTipoProcedimento, java.lang.String nome) {
+		this.idTipoProcedimento = idTipoProcedimento;
+		this.nome = nome;
+	}
 
+	public java.lang.String getIdTipoProcedimento() {
+		return idTipoProcedimento;
+	}
 
-    /**
-     * Gets the idTipoProcedimento value for this TipoProcedimento.
-     * 
-     * @return idTipoProcedimento
-     */
-    public java.lang.String getIdTipoProcedimento() {
-        return idTipoProcedimento;
-    }
+	public void setIdTipoProcedimento(java.lang.String idTipoProcedimento) {
+		this.idTipoProcedimento = idTipoProcedimento;
+	}
 
+	public java.lang.String getNome() {
+		return nome;
+	}
 
-    /**
-     * Sets the idTipoProcedimento value for this TipoProcedimento.
-     * 
-     * @param idTipoProcedimento
-     */
-    public void setIdTipoProcedimento(java.lang.String idTipoProcedimento) {
-        this.idTipoProcedimento = idTipoProcedimento;
-    }
+	public void setNome(java.lang.String nome) {
+		this.nome = nome;
+	}
 
+	private java.lang.Object __equalsCalc = null;
 
-    /**
-     * Gets the nome value for this TipoProcedimento.
-     * 
-     * @return nome
-     */
-    public java.lang.String getNome() {
-        return nome;
-    }
+	public boolean equals(java.lang.Object obj) {
+		if (!(obj instanceof TipoProcedimento))
+			return false;
+		TipoProcedimento other = (TipoProcedimento) obj;
+		if (obj == null)
+			return false;
+		if (this == obj)
+			return true;
+		if (__equalsCalc != null) {
+			return (__equalsCalc == obj);
+		}
+		__equalsCalc = obj;
+		boolean _equals;
+		_equals = true && ((this.idTipoProcedimento == null && other.getIdTipoProcedimento() == null)
+				|| (this.idTipoProcedimento != null && this.idTipoProcedimento.equals(other.getIdTipoProcedimento())))
+				&& ((this.nome == null && other.getNome() == null)
+						|| (this.nome != null && this.nome.equals(other.getNome())));
+		__equalsCalc = null;
+		return _equals;
+	}
 
+	private boolean __hashCodeCalc = false;
 
-    /**
-     * Sets the nome value for this TipoProcedimento.
-     * 
-     * @param nome
-     */
-    public void setNome(java.lang.String nome) {
-        this.nome = nome;
-    }
+	public int hashCode() {
+		if (__hashCodeCalc) {
+			return 0;
+		}
+		__hashCodeCalc = true;
+		int _hashCode = 1;
+		if (getIdTipoProcedimento() != null) {
+			_hashCode += getIdTipoProcedimento().hashCode();
+		}
+		if (getNome() != null) {
+			_hashCode += getNome().hashCode();
+		}
+		__hashCodeCalc = false;
+		return _hashCode;
+	}
 
-    private java.lang.Object __equalsCalc = null;
-    public boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof TipoProcedimento)) return false;
-        TipoProcedimento other = (TipoProcedimento) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
-        }
-        __equalsCalc = obj;
-        boolean _equals;
-        _equals = true && 
-            ((this.idTipoProcedimento==null && other.getIdTipoProcedimento()==null) || 
-             (this.idTipoProcedimento!=null &&
-              this.idTipoProcedimento.equals(other.getIdTipoProcedimento()))) &&
-            ((this.nome==null && other.getNome()==null) || 
-             (this.nome!=null &&
-              this.nome.equals(other.getNome())));
-        __equalsCalc = null;
-        return _equals;
-    }
+	private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(
+			TipoProcedimento.class, true);
 
-    private boolean __hashCodeCalc = false;
-    public int hashCode() {
-        if (__hashCodeCalc) {
-            return 0;
-        }
-        __hashCodeCalc = true;
-        int _hashCode = 1;
-        if (getIdTipoProcedimento() != null) {
-            _hashCode += getIdTipoProcedimento().hashCode();
-        }
-        if (getNome() != null) {
-            _hashCode += getNome().hashCode();
-        }
-        __hashCodeCalc = false;
-        return _hashCode;
-    }
+	static {
+		typeDesc.setXmlType(new javax.xml.namespace.QName("Sei", "TipoProcedimento"));
+		org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+		elemField.setFieldName("idTipoProcedimento");
+		elemField.setXmlName(new javax.xml.namespace.QName("", "IdTipoProcedimento"));
+		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+		elemField.setNillable(false);
+		typeDesc.addFieldDesc(elemField);
+		elemField = new org.apache.axis.description.ElementDesc();
+		elemField.setFieldName("nome");
+		elemField.setXmlName(new javax.xml.namespace.QName("", "Nome"));
+		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+		elemField.setNillable(false);
+		typeDesc.addFieldDesc(elemField);
+	}
 
-    // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(TipoProcedimento.class, true);
+	public static org.apache.axis.description.TypeDesc getTypeDesc() {
+		return typeDesc;
+	}
 
-    static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("Sei", "TipoProcedimento"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("idTipoProcedimento");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "IdTipoProcedimento"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("nome");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "Nome"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-    }
+	public static org.apache.axis.encoding.Serializer getSerializer(java.lang.String mechType,
+			java.lang.Class _javaType, javax.xml.namespace.QName _xmlType) {
+		return new org.apache.axis.encoding.ser.BeanSerializer(_javaType, _xmlType, typeDesc);
+	}
 
-    /**
-     * Return type metadata object
-     */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
-        return typeDesc;
-    }
-
-    /**
-     * Get Custom Serializer
-     */
-    public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
-    }
-
-    /**
-     * Get Custom Deserializer
-     */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
-    }
+	public static org.apache.axis.encoding.Deserializer getDeserializer(java.lang.String mechType,
+			java.lang.Class _javaType, javax.xml.namespace.QName _xmlType) {
+		return new org.apache.axis.encoding.ser.BeanDeserializer(_javaType, _xmlType, typeDesc);
+	}
 
 }

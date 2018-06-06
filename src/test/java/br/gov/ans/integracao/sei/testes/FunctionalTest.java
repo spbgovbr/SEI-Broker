@@ -8,7 +8,7 @@ public class FunctionalTest {
 
 	protected final String USUARIO = "desenv_integracao_sei";
 	protected final String SENHA = "integra_sei_2016";
-	protected static final Boolean DESENVOLVIMENTO = true;
+	protected static final Boolean DESENVOLVIMENTO = false;
 	
     @BeforeClass
     public static void setup() {
@@ -32,7 +32,7 @@ public class FunctionalTest {
         	if(DESENVOLVIMENTO){
         		baseHost = "http://localhost";        		
         	}else{
-        		baseHost = "http://anshmjboss01a.ans.gov.br";        		
+        		baseHost = "http://ansdsjboss01.ans.gov.br";        		
         	}
         }
         RestAssured.baseURI = baseHost;
