@@ -42,10 +42,10 @@ public class ControleMigracaoId implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof ControleMigracao) {
-			ControleMigracao controleMigracao = (ControleMigracao) obj;
-			return (this.numero != null && this.numero.equals(controleMigracao.getId().getNumero()) && 
-					this.ano != null && this.ano.equals(controleMigracao.getId().getAno()));
+		if (obj instanceof ControleMigracaoId) {
+			ControleMigracaoId controleMigracao = (ControleMigracaoId) obj;
+			return (this.numero != null && this.numero.equals(controleMigracao.getNumero()) && 
+					this.ano != null && this.ano.equals(controleMigracao.getAno()));
 		}
 		return false;
 	}

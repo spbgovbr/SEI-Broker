@@ -16,10 +16,6 @@ public enum Acao {
 		return codigoAcao;
 	}
 
-	public void setCodigoAcao(String codigoAcao) {
-		this.codigoAcao = codigoAcao;
-	}	
-	
 	@Override
 	public String toString(){
 		return codigoAcao;

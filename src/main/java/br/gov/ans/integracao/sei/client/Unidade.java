@@ -19,6 +19,9 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class Unidade  implements java.io.Serializable {
+
+	private static transient final long serialVersionUID = 7447160137756886914L;
+
 	@Id
     private java.lang.String idUnidade;
 
