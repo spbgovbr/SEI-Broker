@@ -8,9 +8,11 @@
 package br.gov.ans.integracao.sei.client;
 
 public interface SeiService extends javax.xml.rpc.Service {
-    public java.lang.String getSeiPortServiceAddress();
+	public java.lang.String getSeiPortServiceAddress();
 
-    public br.gov.ans.integracao.sei.client.SeiPortType getSeiPortService(String SeiPortService_address) throws javax.xml.rpc.ServiceException;
+	public br.gov.ans.integracao.sei.client.SeiPortType getSeiPortService(String SeiPortService_address)
+			throws javax.xml.rpc.ServiceException;
 
-    public br.gov.ans.integracao.sei.client.SeiPortType getSeiPortService(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
+	public br.gov.ans.integracao.sei.client.SeiPortType getSeiPortService(java.net.URL portAddress)
+			throws javax.xml.rpc.ServiceException;
 }
