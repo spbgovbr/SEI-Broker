@@ -20,7 +20,7 @@ public class SIPSoapClient {
 
 	public Boolean replicarUsuario(String operacao, String codigoUsuario, String codigoOrgao, String login, String nome) throws IOException{
 		
-		String msgRetorno = "";
+		StringBuffer msgRetorno = new StringBuffer("");
 		
 		URL url = new URL(SERVICE_URL);
         URLConnection conn = url.openConnection();		
@@ -56,14 +56,14 @@ public class SIPSoapClient {
         
         String inputLine;
         while ((inputLine = rd.readLine()) != null){
-            msgRetorno += inputLine;
+            msgRetorno.append(inputLine);
         }
         
         wr.close();  
         rd.close(); 
         conn.getInputStream().close();
         
-        if(msgRetorno.contains("\"xsd:boolean\">true")){
+        if(msgRetorno.toString().contains("\"xsd:boolean\">true")){
         	return true;        	
         }
         

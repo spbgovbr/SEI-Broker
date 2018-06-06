@@ -1374,18 +1374,11 @@ public class ProcessoResource {
 		if(map.isEmpty()){
 			return null;
 		}
-		
+				
 		List<AtributoAndamento> atributos = new ArrayList<AtributoAndamento>();
-		Set<String> keySet = map.keySet();
 		
-		for(String key : keySet){
-			AtributoAndamento atributo = new AtributoAndamento();
-			atributo.setNome(key);
-			atributo.setValor(map.get(key));
-			
-			atributos.add(atributo);
-		}
-		
+		map.forEach((k, v) -> atributos.add(new AtributoAndamento(k, v)));
+	
 		return atributos.toArray(new AtributoAndamento[atributos.size()]);
 	}
 	

@@ -23,7 +23,7 @@ import br.gov.ans.integracao.sei.modelo.enums.TipoPessoa;
 
 public class ContatoHelper {
 	
-	private static DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	
 	@Inject
 	private ContatoDAO contatoDAO;
@@ -108,23 +108,6 @@ public class ContatoHelper {
 			contato.setIdPais(cidade.getEstado().getIdPais());			
 		}
     }
-    
-//    private void preencherEnderecoAssociado(Pessoa pessoa, Contato contato) throws RemoteException, BusinessException, Exception{
-//		Endereco endereco = pessoa.getAssociado().getEndereco();
-//		
-//		contato.setEnderecoAssociado(concatenarNumero(endereco.getLogradouro(), endereco.getNumero()));
-//		contato.setComplementoAssociado(endereco.getComplemento());
-//		contato.setBairroAssociado(endereco.getBairro());
-//		contato.setCep(endereco.getCEP());
-//
-//		if(StringUtils.isNotBlank(endereco.getCidade())){
-//	    	Cidade cidade = getCidade(endereco.getCidade());	
-//			
-//			contato.setIdCidadeAssociado(cidade.getId().toString());
-//	    	contato.setIdEstadoAssociado(cidade.getEstado().getId().toString());  
-//	    	contato.setIdPaisAssociado(cidade.getEstado().getIdPais());
-//		}
-//    }
     
     private void preencherDadosAssociado(Pessoa pessoa, Contato contato) throws RemoteException, BusinessException, Exception{
 		if(pessoa.getAssociado() == null){

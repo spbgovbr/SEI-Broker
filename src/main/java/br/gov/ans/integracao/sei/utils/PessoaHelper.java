@@ -41,7 +41,7 @@ public class PessoaHelper {
 	@Inject
 	private MessageUtils messages;
 	
-	private static DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public List<Pessoa> buildPessoa(Contato[] contatos) throws ParseException, BusinessException, IllegalAccessException, ResourceNotFoundException{
 		if(ArrayUtils.isNotEmpty(contatos)){

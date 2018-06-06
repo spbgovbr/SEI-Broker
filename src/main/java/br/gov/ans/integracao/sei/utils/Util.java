@@ -21,12 +21,8 @@ import org.codehaus.jackson.type.TypeReference;
 import br.gov.ans.exceptions.BusinessException;
 
 public class Util {
-	private static SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
-	
 	private static final String REGEX_SOMENTE_NUMEROS = "\\D+";
-	
-	private static Pattern pattern_ = Pattern.compile(Constantes.REGEX_MASCARA_PROCESSO, Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
-		
+				
 	public static String getSOuN(String valor){			
 		if("S".equals(valor) || "s".equals(valor)){
 			return "S";
@@ -44,6 +40,8 @@ public class Util {
 	}
 	
 	public static String formatarData(Date data){
+		SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+		
 		if(data != null){
 			return dateFormater.format(data);			
 		}
@@ -98,7 +96,7 @@ public class Util {
 	
 	public static boolean trueOrFalse(String valor){	
 		if(valor != null && valor.length() > 1){
-			new Boolean(valor);
+			return Boolean.valueOf(valor);
 		}
 		
 		return ("1".equals(valor));
