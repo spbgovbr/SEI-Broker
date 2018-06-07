@@ -21,7 +21,7 @@ public class UnidadeDAO {
 		sql.append("JOIN unidade u ON a.id_unidade = u.id_unidade ");
 		sql.append("JOIN tarefa t ON a.id_tarefa = t.id_tarefa ");
 		sql.append("WHERE p.id_protocolo = :protocolo ");
-		sql.append("and  t.id_tarefa in (32, 29) ");
+		sql.append("and  t.id_tarefa in (32, 29, 1) ");
 		sql.append("group by u.id_unidade order by u.idx_unidade; ");
 		
 		Query query = em.createNativeQuery(sql.toString(), Unidade.class);
