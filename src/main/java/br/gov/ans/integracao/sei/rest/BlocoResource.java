@@ -282,6 +282,8 @@ public class BlocoResource {
 	 * 
 	 * @apiDescription Inclui um documento no bloco.
 	 *
+	 * @apiParam (Header Parameters) {String} Content-Type Informar text/plain
+	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * @apiParam (Path Parameters) {String} bloco Número do bloco onde o documento será incluído
 	 * 
@@ -323,6 +325,8 @@ public class BlocoResource {
 	 * @apiPermission RO_SEI_BROKER
 	 * 
 	 * @apiDescription Inclui um documento no bloco.
+	 *
+	 * @apiParam (Header Parameters) {String} Content-Type Informar application/json
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * @apiParam (Path Parameters) {String} bloco Número do bloco onde o documento será incluído

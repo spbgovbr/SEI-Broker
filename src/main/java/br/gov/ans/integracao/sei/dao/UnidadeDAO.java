@@ -78,6 +78,6 @@ public class UnidadeDAO {
 		return unidades.stream()
 				.map(u -> (Unidade) u)
 				.distinct()
-				.collect(Collectors.toList());
+			.collect(Collectors.toList());
 	}
 }
