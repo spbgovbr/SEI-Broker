@@ -25,7 +25,9 @@ public class BusinessExceptionHandler implements ExceptionMapper<BusinessExcepti
 	private HttpHeaders headers;
 	
 	public Response toResponse(BusinessException ex) {
-		logger.error(ex, ex);		
+		logger.error(ex);
+		
+		logger.debug(ex, ex);	
 		 		
 		return Response.status(Status.BAD_REQUEST)
 				.entity(new ErrorMessage(ex.getMessage(),String.valueOf(Status.BAD_REQUEST.getStatusCode())))

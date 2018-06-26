@@ -27,7 +27,9 @@ public class WrappedExceptionHandler implements ExceptionMapper<WrappedException
 	
 	@Override
 	public Response toResponse(WrappedException ex) {
-		logger.error(ex.getEx(), ex.getEx());
+		logger.error(ex.getEx());
+		
+		logger.debug(ex.getEx(), ex.getEx());
 		
 		Status status = Status.INTERNAL_SERVER_ERROR;
 		

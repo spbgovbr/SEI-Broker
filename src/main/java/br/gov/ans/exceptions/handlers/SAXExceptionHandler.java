@@ -26,7 +26,9 @@ public class SAXExceptionHandler implements ExceptionMapper<SAXException>{
 	
 	@Override
 	public Response toResponse(SAXException ex) {
-		logger.error(ex, ex);
+		logger.error(ex);
+		
+		logger.debug(ex, ex);
 		
 		return Response.status(Status.INTERNAL_SERVER_ERROR)
 				.entity(new ErrorMessage("Não foi possível se conectar ao SEI.",String.valueOf(Status.INTERNAL_SERVER_ERROR.getStatusCode())))

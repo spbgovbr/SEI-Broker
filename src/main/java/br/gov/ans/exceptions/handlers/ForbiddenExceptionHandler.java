@@ -26,7 +26,9 @@ public class ForbiddenExceptionHandler implements ExceptionMapper<ForbiddenExcep
 
 	@Override
 	public Response toResponse(ForbiddenException ex) {
-		logger.error(ex, ex);		
+		logger.error(ex);
+		
+		logger.debug(ex, ex);		
 		 		
 		return Response.status(Status.FORBIDDEN)
 				.entity(new ErrorMessage(ex.getMessage(),String.valueOf(Status.FORBIDDEN.getStatusCode())))

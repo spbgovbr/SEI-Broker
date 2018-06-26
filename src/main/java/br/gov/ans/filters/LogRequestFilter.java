@@ -15,6 +15,7 @@ import javax.ws.rs.ext.Provider;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.core.ResourceMethodInvoker;
 
+import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.LogIgnore;
 import br.gov.ans.utils.LogIntegracaoUtil;
 import br.gov.ans.utils.MessageUtils;
@@ -45,7 +46,7 @@ public class LogRequestFilter implements ContainerRequestFilter{
 	
 	@Override
 	public void filter(ContainerRequestContext context) throws IOException{
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding(Constantes.UTF8);
 		
 		if(isLoggable()){
 			audit.registrarLog(getUserName(),uriInfo.getAbsolutePath().toString(), getMethodName(context));
@@ -53,7 +54,7 @@ public class LogRequestFilter implements ContainerRequestFilter{
 	}
 	
 	public String getMethodName(ContainerRequestContext context){
-        ResourceMethodInvoker methodInvoker = (ResourceMethodInvoker) context.getProperty("org.jboss.resteasy.core.ResourceMethodInvoker");
+        ResourceMethodInvoker methodInvoker = (ResourceMethodInvoker) context.getProperty(Constantes.RESOURCE_METHOD_INVOKER);
                
 		return methodInvoker.getMethod().getName(); 
 	}
@@ -62,7 +63,7 @@ public class LogRequestFilter implements ContainerRequestFilter{
 		try{
 			return securityContext.getUserPrincipal().getName();
 		}catch (Exception ex) {
-			logger.debug("Sem informações do usuário logado: " + ex);
+			logger.debug("Sem informações do usuário logado: ", ex);
 			return messages.getMessage("sem.informacoes.usuario");
 		}
 	}	

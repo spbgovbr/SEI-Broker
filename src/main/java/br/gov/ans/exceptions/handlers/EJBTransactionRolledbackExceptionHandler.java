@@ -30,7 +30,9 @@ public class EJBTransactionRolledbackExceptionHandler implements ExceptionMapper
 	
 	@Override
 	public Response toResponse(EJBTransactionRolledbackException ex) {
-		logger.error(ex, ex);
+		logger.error(ex);
+		
+		logger.debug(ex, ex);
 		
 		return Response.status(Status.INTERNAL_SERVER_ERROR)
 				.entity(new ErrorMessage(messages.getMessage("erro.inesperado"),String.valueOf(Status.INTERNAL_SERVER_ERROR.getStatusCode())))

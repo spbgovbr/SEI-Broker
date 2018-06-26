@@ -25,7 +25,9 @@ public class ExceptionHandler implements ExceptionMapper<Exception>{
 	
 	@Override
 	public Response toResponse(Exception ex) {
-		logger.error(ex, ex);
+		logger.error(ex);
+		
+		logger.debug(ex, ex);
 		
 		return Response.status(Status.INTERNAL_SERVER_ERROR)
 				.entity(new ErrorMessage(ex.getMessage(),String.valueOf(Status.INTERNAL_SERVER_ERROR.getStatusCode())))

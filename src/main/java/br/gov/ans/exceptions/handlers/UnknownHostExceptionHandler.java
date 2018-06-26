@@ -26,7 +26,9 @@ public class UnknownHostExceptionHandler implements ExceptionMapper<UnknownHostE
 	private HttpHeaders headers;
 	
 	public Response toResponse(UnknownHostException ex) {
-		logger.error(ex, ex);		
+		logger.error(ex);
+		
+		logger.debug(ex, ex);		
 		 		
 		return Response.status(Status.BAD_GATEWAY)
 				.entity(new ErrorMessage("Não foi possível se conectar ao SEI.",String.valueOf(Status.BAD_GATEWAY.getStatusCode())))

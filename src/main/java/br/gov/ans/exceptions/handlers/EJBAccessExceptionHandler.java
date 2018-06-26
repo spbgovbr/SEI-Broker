@@ -26,7 +26,9 @@ public class EJBAccessExceptionHandler implements ExceptionMapper<EJBAccessExcep
 	
 	@Override
 	public Response toResponse(EJBAccessException ex) {
-		logger.error(ex, ex);		
+		logger.error(ex);
+		
+		logger.debug(ex, ex);		
 		 		
 		return Response.status(Status.UNAUTHORIZED)
 				.entity(new ErrorMessage(ex.getMessage(),String.valueOf(Status.UNAUTHORIZED.getStatusCode())))

@@ -26,7 +26,9 @@ public class NotAcceptableExceptionHandler implements ExceptionMapper<NotAccepta
 	
 	@Override
 	public Response toResponse(NotAcceptableException ex) {
-		logger.error(ex, ex);		
+		logger.error(ex);
+		
+		logger.debug(ex, ex);		
 		 		
 		return Response.status(Status.NOT_ACCEPTABLE)
 				.entity(new ErrorMessage(ex.getMessage(),String.valueOf(Status.NOT_ACCEPTABLE.getStatusCode())))

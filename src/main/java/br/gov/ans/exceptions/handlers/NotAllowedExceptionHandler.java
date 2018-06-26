@@ -26,7 +26,9 @@ public class NotAllowedExceptionHandler implements ExceptionMapper<NotAllowedExc
 
 	@Override
 	public Response toResponse(NotAllowedException ex) {
-		logger.error(ex, ex);		
+		logger.error(ex);
+		
+		logger.debug(ex, ex);		
 		 		
 		return Response.status(Status.METHOD_NOT_ALLOWED)
 				.entity(new ErrorMessage(ex.getMessage(),String.valueOf(Status.METHOD_NOT_ALLOWED.getStatusCode())))

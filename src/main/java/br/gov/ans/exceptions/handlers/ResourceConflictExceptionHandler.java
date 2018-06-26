@@ -25,7 +25,9 @@ public class ResourceConflictExceptionHandler implements ExceptionMapper<Resourc
 	private HttpHeaders headers;
 	
 	public Response toResponse(ResourceConflictException ex) {
-		logger.error(ex, ex);
+		logger.error(ex);
+		
+		logger.debug(ex, ex);
 
 		return Response.status(Status.CONFLICT)
 				.entity(new ErrorMessage(ex.getMessage(),String.valueOf(Status.CONFLICT.getStatusCode())))

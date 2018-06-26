@@ -25,7 +25,9 @@ public class ResourceNotFoundExceptionHandler implements ExceptionMapper<Resourc
 	private HttpHeaders headers;
 	
 	public Response toResponse(ResourceNotFoundException ex) {
-		logger.error(ex, ex);
+		logger.error(ex);
+		
+		logger.debug(ex, ex);
 
 		return Response.status(Status.NOT_FOUND)
 				.entity(new ErrorMessage(ex.getMessage(),String.valueOf(Status.NOT_FOUND.getStatusCode())))

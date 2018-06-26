@@ -35,7 +35,9 @@ public class AxisFaultHandler implements ExceptionMapper<AxisFault>{
 	
 	@Override
 	public Response toResponse(AxisFault ex) {
-		logger.error(ex, ex);
+		logger.error(ex);
+		
+		logger.debug(ex, ex);
 		
 		Throwable cause = ex.getCause();
 		
