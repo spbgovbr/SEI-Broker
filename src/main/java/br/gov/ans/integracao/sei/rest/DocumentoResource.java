@@ -105,9 +105,7 @@ public class DocumentoResource {
 	
 	@Inject
 	private UserTransaction userTransaction;
-	
-	private static String NAO = "N";
-		
+			
 	/** 
 	 * @api {get} /:unidade/documentos/:documento Consultar documento
 	 * @apiName consultarDocumento
@@ -510,7 +508,7 @@ public class DocumentoResource {
 	@Produces(MediaType.APPLICATION_OCTET_STREAM)
 	public Response exportarDocumento(@PathParam("unidade") String unidade, @PathParam("documento") String documento) throws Exception{
 		RetornoConsultaDocumento retorno = seiNativeService.consultarDocumento(Constantes.SEI_BROKER, Operacao.CONSULTAR_DOCUMENTO, unidadeResource.consultarCodigo(unidade), documento, 
-				NAO, NAO, NAO, NAO);
+				Constantes.NAO, Constantes.NAO, Constantes.NAO, Constantes.NAO);
 				
 		String linkAcesso = retorno.getLinkAcesso();
 		
@@ -723,7 +721,7 @@ public class DocumentoResource {
 			
 			return encodeBase64(html);
 		}catch(JsonParseException ex){
-			logger.warn(conteudo);
+			logger.debug(conteudo);
 			throw new BusinessException(messages.getMessage("erro.processar.conteudo.json"));
 		}
 	}	

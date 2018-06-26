@@ -1,9 +1,7 @@
 package br.gov.ans.integracao.sei.utils;
 
 import java.lang.reflect.Field;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +10,7 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
+import org.apache.commons.lang3.time.FastDateFormat;
 import org.jboss.logging.Logger;
 
 import br.gov.ans.exceptions.BusinessException;
@@ -41,7 +40,7 @@ public class PessoaHelper {
 	@Inject
 	private MessageUtils messages;
 	
-	private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	private static final FastDateFormat formatter = FastDateFormat.getInstance(Constantes.DATE_PATTERN);
 	
 	public List<Pessoa> buildPessoa(Contato[] contatos) throws ParseException, BusinessException, IllegalAccessException, ResourceNotFoundException{
 		if(ArrayUtils.isNotEmpty(contatos)){

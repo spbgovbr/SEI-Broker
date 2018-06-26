@@ -3,12 +3,11 @@ package br.gov.ans.integracao.sei.utils;
 import static br.gov.ans.integracao.sei.utils.Util.getSOuN;
 
 import java.rmi.RemoteException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.FastDateFormat;
 
 import br.gov.ans.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.client.Contato;
@@ -23,7 +22,7 @@ import br.gov.ans.integracao.sei.modelo.enums.TipoPessoa;
 
 public class ContatoHelper {
 	
-	private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	private static final FastDateFormat formatter = FastDateFormat.getInstance(Constantes.DATE_PATTERN);
 	
 	@Inject
 	private ContatoDAO contatoDAO;

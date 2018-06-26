@@ -2,17 +2,16 @@ package br.gov.ans.integracao.sei.utils;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import javax.persistence.Query;
 import javax.swing.text.MaskFormatter;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.FastDateFormat;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -21,7 +20,7 @@ import org.codehaus.jackson.type.TypeReference;
 import br.gov.ans.exceptions.BusinessException;
 
 public class Util {
-	private static final String REGEX_SOMENTE_NUMEROS = "\\D+";
+	private static final FastDateFormat dateFormater = FastDateFormat.getInstance(Constantes.DATE_PATTERN);
 				
 	public static String getSOuN(String valor){			
 		if("S".equals(valor) || "s".equals(valor)){
@@ -40,8 +39,6 @@ public class Util {
 	}
 	
 	public static String formatarData(Date data){
-		SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
-		
 		if(data != null){
 			return dateFormater.format(data);			
 		}
@@ -167,6 +164,6 @@ public class Util {
 	}
 	
 	public static String getOnlyNumbers(String string) throws Exception{
-       return string.replaceAll(REGEX_SOMENTE_NUMEROS,"");
+       return string.replaceAll(Constantes.REGEX_SOMENTE_NUMEROS,"");
 	}
 }
