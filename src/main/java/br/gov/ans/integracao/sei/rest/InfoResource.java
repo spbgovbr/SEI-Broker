@@ -99,7 +99,7 @@ public class InfoResource {
 	@Path("/conexoes/mysql")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String testMySQLConnection() throws Exception{
-		Query query = emMySQL.createNativeQuery("SELECT version()");
+		Query query = emMySQL.createNativeQuery(Constantes.MYSQL_SQL_TEST_CONECTION);
 		
 		try{
 			return((String) query.getSingleResult());
@@ -133,7 +133,7 @@ public class InfoResource {
 	@Path("/conexoes/oracle")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String testOracleConnection() throws Exception{
-		Query query = emOracle.createNativeQuery("SELECT BANNER FROM V$VERSION WHERE ROWNUM = 1");
+		Query query = emOracle.createNativeQuery(Constantes.ORACLE_SQL_TEST_CONECTION);
 		
 		try{
 			return ((String) query.getSingleResult());
@@ -170,7 +170,7 @@ public class InfoResource {
 		try{
 			seiNativeService.listarUnidades(Constantes.SEI_BROKER, Operacao.LISTAR_UNIDADES, null, null);
 			
-			return "SEI respondeu com sucesso.";
+			return Constantes.SEI_RESPONDEU_COM_SUCESSO;
 		}catch(Exception ex){
 			logger.error(messages.getMessage("erro.testar.sei"),ex);
 			throw new Exception(messages.getMessage("erro.testar.sei"));

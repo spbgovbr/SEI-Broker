@@ -329,9 +329,11 @@ public class DocumentoResource {
 				documento.setConteudo(conteudoHTML);
 			}
 
-			logger.debug(messages.getMessage("debug.novo.documento.enviado"));
+			logger.debug(messages.getMessage(MessagesKeys.DEBUG_NOVO_DOCUMENTO_ENVIADO));
+			
 			retorno = seiNativeService.incluirDocumento(Constantes.SEI_BROKER, Operacao.INCLUIR_DOCUMENTO,  unidadeResource.consultarCodigo(unidade), documento);
-			logger.debug(messages.getMessage("debug.novo.documento.processado"));
+			
+			logger.debug(messages.getMessage(MessagesKeys.DEBUG_NOVO_DOCUMENTO_PROCESSADO));
 		}catch(Exception ex){
 			registrarProblemaInclusao(inclusaoDocumento);
 			
@@ -710,9 +712,10 @@ public class DocumentoResource {
 	}
 	
 	public String transformarConteudoDocumentoInterno(String conteudo, String template) throws RemoteException, Exception{
+		StringWriter writer = new StringWriter();
+
 		try{
 			Mustache mustache = mustacheUtils.compile(removeExtensaoLegado(template));	
-			StringWriter writer = new StringWriter();
 			
 			Map<String, Object> model = decodeConteudoMustache(conteudo);
 			
@@ -723,6 +726,8 @@ public class DocumentoResource {
 		}catch(JsonParseException ex){
 			logger.debug(conteudo);
 			throw new BusinessException(messages.getMessage("erro.processar.conteudo.json"));
+		}finally{
+			writer.close();
 		}
 	}	
 	

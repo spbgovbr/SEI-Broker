@@ -13,6 +13,7 @@ import br.gov.ans.exceptions.BusinessException;
 import br.gov.ans.exceptions.ErrorMessage;
 import br.gov.ans.factories.qualifiers.Autenticado;
 import br.gov.ans.factories.qualifiers.SeiQualifiers.TemplatesBrokerParameter;
+import br.gov.ans.integracao.sei.utils.Constantes;
 
 public class ClientTemplatesBroker {
 	
@@ -44,13 +45,14 @@ public class ClientTemplatesBroker {
 			
 			return corpoTemplate;
 		}catch(ProcessingException ex){
-			logger.error(ex, ex);
+			logger.error(ex);
+			logger.debug(ex, ex);
 			throw new Exception("Erro ao carregar o template, contacte a equipe responsável.");
 		}
 	}
 	
 	public void errorHandling(Response response) throws Exception{
-		if(!response.getHeaderString("Content-Type").equals(MediaType.APPLICATION_JSON)){
+		if(!response.getHeaderString(Constantes.CONTENT_TYPE_HEADER_KEY).equals(MediaType.APPLICATION_JSON)){
 			logger.error(response.readEntity(String.class));
 			
 			response.close();

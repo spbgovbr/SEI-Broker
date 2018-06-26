@@ -110,9 +110,9 @@ public class ContatoHelper {
     
     private void preencherDadosAssociado(Pessoa pessoa, Contato contato) throws RemoteException, BusinessException, Exception{
 		if(pessoa.getAssociado() == null){
-			contato.setSinEnderecoAssociado("N");
+			contato.setSinEnderecoAssociado(Constantes.NAO);
 		}else{
-			contato.setSinEnderecoAssociado("S");
+			contato.setSinEnderecoAssociado(Constantes.SIM);
 			
 			contato.setIdContatoAssociado(getIdContato(pessoa.getAssociado().getSigla())+"");
 			contato.setNomeContatoAssociado(pessoa.getAssociado().getNome());

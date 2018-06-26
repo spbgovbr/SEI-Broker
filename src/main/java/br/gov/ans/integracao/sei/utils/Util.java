@@ -21,7 +21,9 @@ import br.gov.ans.exceptions.BusinessException;
 
 public class Util {
 	private static final FastDateFormat dateFormater = FastDateFormat.getInstance(Constantes.DATE_PATTERN);
-				
+
+	private static final ObjectMapper mapper = new ObjectMapper();
+	
 	public static String getSOuN(String valor){			
 		if("S".equals(valor) || "s".equals(valor)){
 			return "S";
@@ -109,8 +111,6 @@ public class Util {
 	
 	public static Map<String, Object> jsonToMap(String json) throws JsonParseException,JsonMappingException, IOException {
 		Map<String,Object> out = new HashMap<String,Object>();
-		
-		ObjectMapper mapper = new ObjectMapper();
 		
 		out = mapper.readValue(json, new TypeReference<Map<String, Object>>(){});
 		
