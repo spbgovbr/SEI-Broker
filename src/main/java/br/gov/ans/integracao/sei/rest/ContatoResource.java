@@ -39,6 +39,7 @@ import br.gov.ans.integracao.sei.modelo.enums.Acao;
 import br.gov.ans.integracao.sei.modelo.enums.TipoContato;
 import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.integracao.sei.utils.ContatoHelper;
+import br.gov.ans.integracao.sei.utils.MessagesKeys;
 import br.gov.ans.integracao.sei.utils.PessoaHelper;
 import br.gov.ans.utils.MessageUtils;
 
@@ -288,7 +289,7 @@ public class ContatoResource {
 				null, null, sigla, null, null, null, null, null);
     	
     	if(ArrayUtils.isEmpty(contatos)){
-    		throw new ResourceNotFoundException(messages.getMessage("erro.contato.nao.encontrado",sigla));
+    		throw new ResourceNotFoundException(messages.getMessage(MessagesKeys.ERRO_CONTATO_NAO_ENCONTRADO, sigla));
     	}
     	
     	return pessoaHelper.buildPessoa(contatos[0]);

@@ -62,6 +62,7 @@ import br.gov.ans.integracao.sei.modelo.ExclusaoDocumento;
 import br.gov.ans.integracao.sei.modelo.InclusaoDocumento;
 import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
+import br.gov.ans.integracao.sei.utils.MessagesKeys;
 import br.gov.ans.utils.MessageUtils;
 import br.gov.ans.utils.MustacheUtils;
 
@@ -74,11 +75,9 @@ public class DocumentoResource {
     @Inject
     private UnidadeResource unidadeResource;
 	
-    @SuppressWarnings("cdi-ambiguous-dependency")
     @Inject 
     private DAO<InclusaoDocumento> daoInclusaoDocumento;
     
-    @SuppressWarnings("cdi-ambiguous-dependency")
     @Inject 
     private DAO<ExclusaoDocumento> daoExclusaoDocumento;
     
@@ -517,7 +516,7 @@ public class DocumentoResource {
 		URL url = new URL(linkAcesso);
 		URLConnection con = url.openConnection();
 		
-		String contentType = con.getHeaderField("Content-Type");
+		String contentType = con.getHeaderField(Constantes.CONTENT_TYPE_HEADER_KEY);
 		
 		InputStream in = con.getInputStream();
 		
@@ -669,7 +668,8 @@ public class DocumentoResource {
 			logger.debug(messages.getMessage("hash.em.geracao"));
 			return HashUtils.toSHA256(input, null);
 		} catch (Exception ex) {
-			logger.error(messages.getMessage("erro.calculo.hash"), ex);
+			logger.error(messages.getMessage("erro.calculo.hash"));
+			logger.debug(ex, ex);
 			return messages.getMessage("erro.calculo.hash");
 		}finally{
 			logger.debug(messages.getMessage("hash.gerado"));
