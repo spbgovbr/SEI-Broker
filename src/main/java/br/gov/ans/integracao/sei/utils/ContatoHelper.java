@@ -1,5 +1,8 @@
 package br.gov.ans.integracao.sei.utils;
 
+import static br.gov.ans.integracao.sei.utils.Constantes.DATE_FORMATTER;
+import static br.gov.ans.integracao.sei.utils.Constantes.NAO;
+import static br.gov.ans.integracao.sei.utils.Constantes.SIM;
 import static br.gov.ans.integracao.sei.utils.Util.getSOuN;
 
 import java.rmi.RemoteException;
@@ -7,7 +10,6 @@ import java.rmi.RemoteException;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.FastDateFormat;
 
 import br.gov.ans.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.client.Contato;
@@ -21,9 +23,7 @@ import br.gov.ans.integracao.sei.modelo.PessoaJuridica;
 import br.gov.ans.integracao.sei.modelo.enums.TipoPessoa;
 
 public class ContatoHelper {
-	
-	private static final FastDateFormat formatter = FastDateFormat.getInstance(Constantes.DATE_PATTERN);
-	
+			
 	@Inject
 	private ContatoDAO contatoDAO;
 	
@@ -54,7 +54,7 @@ public class ContatoHelper {
 		contato.setOrgaoExpedidor(pessoa.getOrgaoEmissor());
 		
 		if(pessoa.getDataNascimento() !=  null){
-			contato.setDataNascimento(formatter.format(pessoa.getDataNascimento()));			
+			contato.setDataNascimento(DATE_FORMATTER.format(pessoa.getDataNascimento()));			
 		}
 		
 		contato.setMatricula(pessoa.getMatricula());
@@ -110,9 +110,9 @@ public class ContatoHelper {
     
     private void preencherDadosAssociado(Pessoa pessoa, Contato contato) throws RemoteException, BusinessException, Exception{
 		if(pessoa.getAssociado() == null){
-			contato.setSinEnderecoAssociado(Constantes.NAO);
+			contato.setSinEnderecoAssociado(NAO);
 		}else{
-			contato.setSinEnderecoAssociado(Constantes.SIM);
+			contato.setSinEnderecoAssociado(SIM);
 			
 			contato.setIdContatoAssociado(getIdContato(pessoa.getAssociado().getSigla())+"");
 			contato.setNomeContatoAssociado(pessoa.getAssociado().getNome());

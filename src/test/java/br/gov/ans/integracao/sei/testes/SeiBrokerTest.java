@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.IOUtils;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -47,8 +48,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void AA_incluirProcessoTest(){
 		Response response = given()
-				.auth()
-				.basic(USUARIO, SENHA)
+				.header("Authorization",BASIC)
 				.contentType("application/json")
 				.accept("application/json")
 				.body(buildNovoProcesso())
@@ -61,14 +61,13 @@ public class SeiBrokerTest extends FunctionalTest{
 	
 	@Test
 	public void AB_consultarProcessoTest(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/cosap/processos/"+processoCriado).then().statusCode(200);
+		given().header("Authorization",BASIC).accept("application/json").when().get("/cosap/processos/"+processoCriado).then().statusCode(200);
 	}
 	
 	@Test
 	public void AC_incluirDocumentoTest() {
 		Response response = given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(buildDocumento())
@@ -82,8 +81,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void AD_incluirDocumentoInternoTest() {
 		Response response = given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(buildDocumentoInterno())
@@ -96,59 +94,58 @@ public class SeiBrokerTest extends FunctionalTest{
 
 	@Test
     public void AE_consultarDocumentoTest() {	
-        given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/cosap/documentos/"+documentoCriado).then().statusCode(200);
+        given().header("Authorization",BASIC).accept("application/json").when().get("/cosap/documentos/"+documentoCriado).then().statusCode(200);
     }
 	
 	@Test
 	public void AF_consultarDocumentosEnviadosBrokerTest(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/cosap/documentos/enviados-broker").then().statusCode(200);
+		given().header("Authorization",BASIC).accept("application/json").when().get("/cosap/documentos/enviados-broker").then().statusCode(200);
 	}
 	
 	@Test
 	public void AG_consultarDocumentosPorInteressadosTest(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/interessados/363022/documentos").then().statusCode(200);
+		given().header("Authorization",BASIC).accept("application/json").when().get("/interessados/363022/documentos").then().statusCode(200);
 	}
 	
 	@Test
 	public void AH_consultarProcessos(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/processos").then().statusCode(200);
+		given().header("Authorization",BASIC).accept("application/json").when().get("/processos").then().statusCode(200);
 	}
 	
 	@Test
 	public void AI_exportarDocumentoTest(){
-		given().auth().basic(USUARIO, SENHA).when().get("/cosap/documentos/"+documentoCriado+"/pdf").then().statusCode(200);
+		given().header("Authorization",BASIC).when().get("/cosap/documentos/"+documentoCriado+"/pdf").then().statusCode(200);
 	}
 	
 	@Test
 	public void AJ_listarUnidadesTest(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/unidades").then().statusCode(200);
+		given().header("Authorization",BASIC).accept("application/json").when().get("/unidades").then().statusCode(200);
 	}
 	
 	@Test
 	public void AL_listarSeriesTest(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/cosit/series").then().statusCode(200);
+		given().header("Authorization",BASIC).accept("application/json").when().get("/cosit/series").then().statusCode(200);
 	}
 	
 	@Test
 	public void AM_listarTiposDeProcessoTest(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/cosit/processos/tipos").then().statusCode(200);
+		given().header("Authorization",BASIC).accept("application/json").when().get("/cosit/processos/tipos").then().statusCode(200);
 	}
 	
 	@Test
 	public void AN_listarExtensoesTest(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/cosit/extensoes").then().statusCode(200);
+		given().header("Authorization",BASIC).accept("application/json").when().get("/cosit/extensoes").then().statusCode(200);
 	}
 	
 	@Test
 	public void AO_consultarCodigoUnidadeTest(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().get("/unidades/cotec/codigo").then().statusCode(200);
+		given().header("Authorization",BASIC).accept("application/json").when().get("/unidades/cotec/codigo").then().statusCode(200);
 	}
 	
 //	@Test
 	public void AP_cancelarDocumentoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(buildCancelamentoDocumento())
@@ -158,8 +155,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void AQ_concluirProcessoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(processoCriado)
@@ -168,14 +164,13 @@ public class SeiBrokerTest extends FunctionalTest{
 	
 	@Test
 	public void AR_reabrirProcessoTest(){
-		given().auth().basic(USUARIO, SENHA).accept("application/json").when().delete("/cosap/processos/concluidos/"+processoCriado).then().statusCode(200);
+		given().header("Authorization",BASIC).accept("application/json").when().delete("/cosap/processos/concluidos/"+processoCriado).then().statusCode(200);
 	}	
 	
 	@Test
 	public void AS_gerarBlocoReuniaoTest(){
 		Response response = given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(buildNovoBloco(TipoBloco.REUNIAO))
@@ -189,8 +184,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void AT_incluirProcessoNoBlocoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.body(processoCriado)
 		.when().post("/cosap/blocos/"+blocoCriado+"/processos").then().statusCode(200);
 		
@@ -199,8 +193,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void AU_removerProcessoBlocoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.body(processoCriado)
 		.when().delete("/cosap/blocos/"+blocoCriado+"/processos/"+processoCriado).then().statusCode(200);		
 	}
@@ -208,8 +201,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void AV_gerarBlocoAssinaturaTest(){
 		Response response = given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.body(buildNovoBloco(TipoBloco.ASSINATURA))
 		.when().post("/cosap/blocos");
@@ -222,8 +214,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void AX_incluirDocumentoNoBlocoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.body(documentoInternoCriado)
 		.when().post("/cosap/blocos/"+blocoCriado+"/documentos").then().statusCode(200);
 		
@@ -232,8 +223,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void AZ_disponibilizarBlocoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.body(blocoCriado)
 		.when().post("/cosap/blocos/disponibilizados").then().statusCode(200);
 		
@@ -242,8 +232,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void BA_indisponibilizarBlocoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.when().delete("/cosap/blocos/disponibilizados/"+blocoCriado).then().statusCode(200);
 
 	}
@@ -251,8 +240,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void BB_consultarBlocoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.accept("application/json")
 		.when().get("/cosap/blocos/"+blocoCriado).then().statusCode(200);
 
@@ -261,24 +249,21 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void BC_removerDocumentoBlocoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.when().delete("/cosap/blocos/"+blocoCriado+"/documentos/"+documentoInternoCriado).then().statusCode(200);
 	}
 	
 	@Test
 	public void BD_excluirBlocoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.when().delete("/cosap/blocos/"+blocoCriado).then().statusCode(200);
 	}
 	
 	@Test
 	public void BE_enviarProcessoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(buildEnvioDeProcesso())
@@ -294,8 +279,7 @@ public class SeiBrokerTest extends FunctionalTest{
 //		String nomeArquivo = "OF-599-2016-DIDES-33902438169201608-16513178000176-ABI.pdf";
 		
 		Response response = given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(buildArquivo(nomeArquivo))
@@ -309,8 +293,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void BG_incluirDocumentoPorArquivoTest() {
 		Response response = given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(buildDocumentoPorArquivo())
@@ -326,8 +309,7 @@ public class SeiBrokerTest extends FunctionalTest{
 		String template = "gear-reajuste";
 		
 		Response response = given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(buildDocumentoComTemplate())
@@ -347,8 +329,7 @@ public class SeiBrokerTest extends FunctionalTest{
 		arquivo.setConteudo(partesArquivo.get(0));
 		
 		Response response = given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(arquivo)
@@ -371,8 +352,7 @@ public class SeiBrokerTest extends FunctionalTest{
 			parte.setConteudo(partesArquivo.get(i));
 			
 			response = given()
-				.auth()
-				.basic(USUARIO, SENHA)
+				.header("Authorization",BASIC)
 				.contentType("application/json")
 				.accept("application/json")
 				.body(parte)
@@ -385,8 +365,7 @@ public class SeiBrokerTest extends FunctionalTest{
 ////	@Test
 	public void BK_incluirDocumentoPorArquivoTest() {
 		Response response = given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(buildDocumentoPorArquivo())
@@ -400,8 +379,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void BL_abrirProcessoTest(){
 		Response response = given()
-				.auth()
-				.basic(USUARIO, SENHA)
+				.header("Authorization",BASIC)
 				.contentType("application/json")
 				.accept("application/json")
 				.body(buildNovoProcessoUmaUnidade())
@@ -419,8 +397,7 @@ public class SeiBrokerTest extends FunctionalTest{
 		s.setMotivo("Teste automatizado de sobrestamento.");
 		
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.body(s)
@@ -430,8 +407,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void BN_removerSobrestamentoProcessoTest(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.when().delete("/cosap/processos/sobrestados/"+processoCriado).then().statusCode(200);
@@ -440,8 +416,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	@Test
 	public void BO_listarContatos(){
 		given()
-		.auth()
-		.basic(USUARIO, SENHA)
+		.header("Authorization",BASIC)
 		.contentType("application/json")
 		.accept("application/json")
 		.when().get("cosap/contatos/operadoras?qtdRegistros=20").then().statusCode(200);
@@ -619,7 +594,10 @@ public class SeiBrokerTest extends FunctionalTest{
 		d.setSigla("alexander.mesquita");		
 		documento.setDestinatarios(new Destinatario[]{d});
 
-		documento.setConteudo(Base64.encodeBase64String("{\"regAns\":\"363022\",\"razaoSocial\":\"BRADESCO SAUDE E ASSISTENCIA S.A\",\"emailCadop\":\"teste@teste.com\",\"nuCnpj\":\"0000000000\",\"noCargoRepr\":\"Diretor\",\"noRepresentante\":\"André Guimarães\",\"anoInicio\":\"2016\",\"anoFinal\":\"2017\",\"numeroDocumento\":\"00000000\"}".getBytes()));
+		documento.setConteudo(
+				new String(Base64.encodeBase64(
+						"{\"regAns\":\"363022\",\"razaoSocial\":\"BRADESCO SAUDE E ASSISTENCIA S.A\",\"emailCadop\":\"teste@teste.com\",\"nuCnpj\":\"0000000000\",\"noCargoRepr\":\"Diretor\",\"noRepresentante\":\"André Guimarães\",\"anoInicio\":\"2016\",\"anoFinal\":\"2017\",\"numeroDocumento\":\"00000000\"}"
+						.getBytes())));
 				
 		return documento;
 	}
@@ -658,7 +636,7 @@ public class SeiBrokerTest extends FunctionalTest{
 	public String getMD5(String arquivo) throws IOException{
 		ClassLoader classLoader = getClass().getClassLoader();
 		FileInputStream fis = new FileInputStream(new File(classLoader.getResource(arquivo).getFile()));
-		String md5 = org.apache.commons.codec.digest.DigestUtils.md5Hex(fis);
+		String md5 = org.apache.commons.codec.digest.DigestUtils.md5Hex(IOUtils.toByteArray(fis));
 		fis.close();
 		
 		return md5;
@@ -679,7 +657,7 @@ public class SeiBrokerTest extends FunctionalTest{
 			e.printStackTrace();
 		}
 	    
-	    return Base64.encodeBase64String(bytes);
+	    return new String(Base64.encodeBase64(bytes));
 	}
 	
 	public String getProcessoCriado(){

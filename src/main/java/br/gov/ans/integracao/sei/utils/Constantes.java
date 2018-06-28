@@ -3,6 +3,9 @@ package br.gov.ans.integracao.sei.utils;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
+import org.apache.commons.lang3.time.FastDateFormat;
+import org.codehaus.jackson.map.ObjectMapper;
+
 @Named
 @ApplicationScoped
 public class Constantes {
@@ -28,10 +31,15 @@ public class Constantes {
 	public static final String SEI_BROKER = "SEI-Broker";
 	public static final String SEI_RESPONDEU_COM_SUCESSO = "SEI respondeu com sucesso.";
 	public static String SIM = "S";
+	public static final String SQL_AND = "AND ";
+	public static final String SQL_WHERE = "WHERE ";
 	public static final int TAMANHO_MAXIMO_ARQUIVO = 16777216;
 	public static final int TAMANHO_MAXIMO_DOCUMENTO = 22020096;
 	public static final Integer TAMANHO_PAGINA_PADRAO = 50; 
 	public static final String TEMPLATE_DIR = "sei";
 	public static final String TEMPLATES_HOME = JBOSS_HOME + "/ans/templates/";
 	public static final String UTF8 = "UTF-8";
+	
+	public static final FastDateFormat DATE_FORMATTER = FastDateFormat.getInstance(DATE_PATTERN);
+	public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 }

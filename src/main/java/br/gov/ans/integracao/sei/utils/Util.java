@@ -1,5 +1,14 @@
 package br.gov.ans.integracao.sei.utils;
 
+import static br.gov.ans.integracao.sei.utils.Constantes.DATE_FORMATTER;
+import static br.gov.ans.integracao.sei.utils.Constantes.MASCARA_PROCESSO_17;
+import static br.gov.ans.integracao.sei.utils.Constantes.MASCARA_PROCESSO_21;
+import static br.gov.ans.integracao.sei.utils.Constantes.OBJECT_MAPPER;
+import static br.gov.ans.integracao.sei.utils.Constantes.REGEX_SOMENTE_NUMEROS;
+import static br.gov.ans.integracao.sei.utils.Constantes.SQL_AND;
+import static br.gov.ans.integracao.sei.utils.Constantes.SQL_WHERE;
+import static br.gov.ans.integracao.sei.utils.Constantes.TAMANHO_PAGINA_PADRAO;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
@@ -11,18 +20,13 @@ import javax.swing.text.MaskFormatter;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.FastDateFormat;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
 import br.gov.ans.exceptions.BusinessException;
 
 public class Util {
-	private static final FastDateFormat dateFormater = FastDateFormat.getInstance(Constantes.DATE_PATTERN);
-
-	private static final ObjectMapper mapper = new ObjectMapper();
 	
 	public static String getSOuN(String valor){			
 		if("S".equals(valor) || "s".equals(valor)){
@@ -42,7 +46,7 @@ public class Util {
 	
 	public static String formatarData(Date data){
 		if(data != null){
-			return dateFormater.format(data);			
+			return DATE_FORMATTER.format(data);			
 		}
 		
 		return null;		
@@ -66,9 +70,9 @@ public class Util {
     	try {
     		switch (numero.length()){
     			case 17:
-    				return formatarString(numero, Constantes.MASCARA_PROCESSO_17);
+    				return formatarString(numero, MASCARA_PROCESSO_17);
     			case 21:
-    				return formatarString(numero, Constantes.MASCARA_PROCESSO_21);
+    				return formatarString(numero, MASCARA_PROCESSO_21);
     			default:
     				throw new BusinessException("Número de processo inválido.");
     		}    		
@@ -112,14 +116,14 @@ public class Util {
 	public static Map<String, Object> jsonToMap(String json) throws JsonParseException,JsonMappingException, IOException {
 		Map<String,Object> out = new HashMap<String,Object>();
 		
-		out = mapper.readValue(json, new TypeReference<Map<String, Object>>(){});
+		out = OBJECT_MAPPER.readValue(json, new TypeReference<Map<String, Object>>(){});
 		
 		return  out;
 	}
 	
 	
 	public static String decodeBase64(String base64){
-		return new String(Base64.decodeBase64(base64));
+		return new String(Base64.decodeBase64(base64.getBytes()));
 	}
 	
 	public static String encodeBase64(String texto){
@@ -143,7 +147,7 @@ public class Util {
 	
 	public static void setPaginacaoQuery(Query query, Integer pagina, Integer qtdRegistros){
 		if(qtdRegistros == null){
-			qtdRegistros = Constantes.TAMANHO_PAGINA_PADRAO;
+			qtdRegistros = TAMANHO_PAGINA_PADRAO;
 		}
 		
 		if(pagina == null){
@@ -156,14 +160,14 @@ public class Util {
 	}
 	
 	public static String andOrWhere(StringBuilder sql){
-		if(sql.toString().contains("WHERE ")){
-			return "AND ";
+		if(sql.toString().contains(SQL_WHERE)){
+			return SQL_AND;
 		}
 		
-		return "WHERE ";
+		return SQL_WHERE;
 	}
 	
 	public static String getOnlyNumbers(String string) throws Exception{
-       return string.replaceAll(Constantes.REGEX_SOMENTE_NUMEROS,"");
+       return string.replaceAll(REGEX_SOMENTE_NUMEROS,"");
 	}
 }

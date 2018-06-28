@@ -171,10 +171,11 @@
 
 		<!-- AXIS -->
 		<dependency>
-			<groupId>org.apache.axis</groupId>
-			<artifactId>axis</artifactId>
-			<version>1.4</version>
+		    <groupId>org.apache.axis</groupId>
+		    <artifactId>com.springsource.org.apache.axis</artifactId>
+		    <version>1.4.0</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>wsdl4j</groupId>
