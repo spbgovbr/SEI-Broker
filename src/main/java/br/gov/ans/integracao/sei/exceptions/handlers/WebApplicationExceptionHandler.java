@@ -1,9 +1,9 @@
-package br.gov.ans.exceptions.handlers;
+package br.gov.ans.integracao.sei.exceptions.handlers;
 
 import static br.gov.ans.utils.HttpHeadersUtil.getAcceptType;
 
-import javax.ejb.EJBException;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
@@ -13,30 +13,26 @@ import javax.ws.rs.ext.Provider;
 
 import org.jboss.logging.Logger;
 
-import br.gov.ans.exceptions.ErrorMessage;
-import br.gov.ans.utils.MessageUtils;
+import br.gov.ans.integracao.sei.exceptions.ErrorMessage;
 
 @Provider
-public class EJBExceptionHandler implements ExceptionMapper<EJBException>{
-	
+public class WebApplicationExceptionHandler implements ExceptionMapper<WebApplicationException>{
+
 	@Inject
 	private Logger logger;
 
 	@Context
 	private HttpHeaders headers;
-		
-    @Inject
-    private MessageUtils messages;
 	
-	public Response toResponse(EJBException ex) {
+	@Override
+	public Response toResponse(WebApplicationException ex) {
 		logger.error(ex);
 		
-		logger.debug(ex, ex);
-		
+		logger.debug(ex, ex);		
+		 		
 		return Response.status(Status.INTERNAL_SERVER_ERROR)
-				.entity(new ErrorMessage(messages.getMessage("erro.inesperado"),String.valueOf(Status.INTERNAL_SERVER_ERROR.getStatusCode())))
+				.entity(new ErrorMessage(ex.getMessage(),String.valueOf(Status.INTERNAL_SERVER_ERROR.getStatusCode())))
 				.type(getAcceptType(headers))
 				.build();
 	}
-
 }

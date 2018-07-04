@@ -47,15 +47,15 @@ import com.github.mustachejava.Mustache;
 
 import br.gov.ans.commons.security.crypt.HashUtils;
 import br.gov.ans.dao.DAO;
-import br.gov.ans.exceptions.BusinessException;
-import br.gov.ans.exceptions.ResourceNotFoundException;
-import br.gov.ans.exceptions.WrappedException;
 import br.gov.ans.integracao.sei.client.Documento;
 import br.gov.ans.integracao.sei.client.RetornoConsultaDocumento;
 import br.gov.ans.integracao.sei.client.RetornoInclusaoDocumento;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.dao.DocumentoDAO;
 import br.gov.ans.integracao.sei.dao.InclusaoDocumentoDAO;
+import br.gov.ans.integracao.sei.exceptions.BusinessException;
+import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
+import br.gov.ans.integracao.sei.exceptions.WrappedException;
 import br.gov.ans.integracao.sei.modelo.CancelamentoDocumento;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
 import br.gov.ans.integracao.sei.modelo.ExclusaoDocumento;

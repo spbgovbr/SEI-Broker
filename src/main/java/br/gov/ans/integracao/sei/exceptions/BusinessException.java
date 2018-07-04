@@ -1,4 +1,4 @@
-package br.gov.ans.exceptions;
+package br.gov.ans.integracao.sei.exceptions;
 
 import javax.ejb.ApplicationException;
 

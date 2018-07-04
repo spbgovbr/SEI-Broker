@@ -17,9 +17,9 @@ import javax.ws.rs.core.MediaType;
 
 import org.jboss.logging.Logger;
 
-import br.gov.ans.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.dao.LogIntegracaoSistemicaDAO;
+import br.gov.ans.integracao.sei.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.modelo.LogIntegracaoSistemica;

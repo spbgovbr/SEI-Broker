@@ -37,8 +37,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.providers.jaxb.Wrapped;
 
-import br.gov.ans.exceptions.BusinessException;
-import br.gov.ans.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sei.client.Andamento;
 import br.gov.ans.integracao.sei.client.AtributoAndamento;
 import br.gov.ans.integracao.sei.client.RetornoConsultaProcedimento;
@@ -50,6 +48,8 @@ import br.gov.ans.integracao.sei.dao.DocumentoDAO;
 import br.gov.ans.integracao.sei.dao.ProcessoDAO;
 import br.gov.ans.integracao.sei.dao.SiparDAO;
 import br.gov.ans.integracao.sei.dao.UnidadeDAO;
+import br.gov.ans.integracao.sei.exceptions.BusinessException;
+import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
 import br.gov.ans.integracao.sei.modelo.EnvioDeProcesso;
 import br.gov.ans.integracao.sei.modelo.Motivo;

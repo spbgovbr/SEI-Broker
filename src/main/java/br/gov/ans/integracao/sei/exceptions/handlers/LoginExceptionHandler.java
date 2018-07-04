@@ -1,4 +1,4 @@
-package br.gov.ans.exceptions.handlers;
+package br.gov.ans.integracao.sei.exceptions.handlers;
 
 import static br.gov.ans.utils.HttpHeadersUtil.getAcceptType;
 
@@ -19,7 +19,7 @@ import org.jboss.logging.Logger;
 
 import com.google.gson.Gson;
 
-import br.gov.ans.exceptions.ErrorMessage;
+import br.gov.ans.integracao.sei.exceptions.ErrorMessage;
 
 //@WebServlet("/loginExceptionHandler")
 public class LoginExceptionHandler extends HttpServlet{

@@ -1,9 +1,8 @@
-package br.gov.ans.exceptions.handlers;
+package br.gov.ans.integracao.sei.exceptions.handlers;
 
 import static br.gov.ans.utils.HttpHeadersUtil.getAcceptType;
 
 import javax.inject.Inject;
-import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
@@ -13,25 +12,25 @@ import javax.ws.rs.ext.Provider;
 
 import org.jboss.logging.Logger;
 
-import br.gov.ans.exceptions.ErrorMessage;
+import br.gov.ans.integracao.sei.exceptions.ErrorMessage;
+import br.gov.ans.integracao.sei.exceptions.ResourceConflictException;
 
 @Provider
-public class ForbiddenExceptionHandler implements ExceptionMapper<ForbiddenException>{
+public class ResourceConflictExceptionHandler implements ExceptionMapper<ResourceConflictException>{
 
 	@Inject
 	private Logger logger;
 	
 	@Context
 	private HttpHeaders headers;
-
-	@Override
-	public Response toResponse(ForbiddenException ex) {
+	
+	public Response toResponse(ResourceConflictException ex) {
 		logger.error(ex);
 		
-		logger.debug(ex, ex);		
-		 		
-		return Response.status(Status.FORBIDDEN)
-				.entity(new ErrorMessage(ex.getMessage(),String.valueOf(Status.FORBIDDEN.getStatusCode())))
+		logger.debug(ex, ex);
+
+		return Response.status(Status.CONFLICT)
+				.entity(new ErrorMessage(ex.getMessage(),String.valueOf(Status.CONFLICT.getStatusCode())))
 				.type(getAcceptType(headers))
 				.build();
 	}

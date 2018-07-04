@@ -24,7 +24,7 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.type.TypeReference;
 
-import br.gov.ans.exceptions.BusinessException;
+import br.gov.ans.integracao.sei.exceptions.BusinessException;
 
 public class Util {
 	

@@ -28,11 +28,11 @@ import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import br.gov.ans.exceptions.BusinessException;
-import br.gov.ans.exceptions.ResourceNotFoundException;
-import br.gov.ans.exceptions.WrappedException;
 import br.gov.ans.integracao.sei.client.Contato;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
+import br.gov.ans.integracao.sei.exceptions.BusinessException;
+import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
+import br.gov.ans.integracao.sei.exceptions.WrappedException;
 import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.modelo.Pessoa;
 import br.gov.ans.integracao.sei.modelo.enums.Acao;

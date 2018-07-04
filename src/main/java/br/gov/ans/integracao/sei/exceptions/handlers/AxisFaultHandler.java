@@ -1,4 +1,4 @@
-package br.gov.ans.exceptions.handlers;
+package br.gov.ans.integracao.sei.exceptions.handlers;
 
 import static br.gov.ans.utils.HttpHeadersUtil.getAcceptType;
 
@@ -16,7 +16,7 @@ import org.apache.axis.AxisFault;
 import org.jboss.logging.Logger;
 import org.xml.sax.SAXException;
 
-import br.gov.ans.exceptions.ErrorMessage;
+import br.gov.ans.integracao.sei.exceptions.ErrorMessage;
 
 @Provider
 public class AxisFaultHandler implements ExceptionMapper<AxisFault>{

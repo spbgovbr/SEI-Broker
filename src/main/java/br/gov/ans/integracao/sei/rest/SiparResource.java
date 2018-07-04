@@ -18,10 +18,10 @@ import javax.ws.rs.core.UriInfo;
 
 import org.jboss.logging.Logger;
 
-import br.gov.ans.exceptions.BusinessException;
-import br.gov.ans.exceptions.ResourceConflictException;
-import br.gov.ans.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sei.dao.SiparDAO;
+import br.gov.ans.integracao.sei.exceptions.BusinessException;
+import br.gov.ans.integracao.sei.exceptions.ResourceConflictException;
+import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sipar.dao.ControleMigracao;
 import br.gov.ans.integracao.sipar.dao.ControleMigracaoId;
 import br.gov.ans.utils.MessageUtils;

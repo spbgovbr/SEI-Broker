@@ -11,10 +11,10 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
-import br.gov.ans.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.client.Contato;
 import br.gov.ans.integracao.sei.dao.CidadeDAO;
 import br.gov.ans.integracao.sei.dao.ContatoDAO;
+import br.gov.ans.integracao.sei.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.modelo.Cidade;
 import br.gov.ans.integracao.sei.modelo.Endereco;
 import br.gov.ans.integracao.sei.modelo.Pessoa;

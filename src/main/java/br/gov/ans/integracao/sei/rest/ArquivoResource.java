@@ -16,8 +16,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
-import br.gov.ans.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
+import br.gov.ans.integracao.sei.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.modelo.Arquivo;
 import br.gov.ans.integracao.sei.modelo.ArquivoCriado;
 import br.gov.ans.integracao.sei.modelo.Operacao;

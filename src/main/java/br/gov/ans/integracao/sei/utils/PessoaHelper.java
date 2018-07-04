@@ -14,11 +14,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.jboss.logging.Logger;
 
-import br.gov.ans.exceptions.BusinessException;
-import br.gov.ans.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sei.client.Contato;
 import br.gov.ans.integracao.sei.dao.CidadeDAO;
 import br.gov.ans.integracao.sei.dao.ContatoDAO;
+import br.gov.ans.integracao.sei.exceptions.BusinessException;
+import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sei.modelo.Endereco;
 import br.gov.ans.integracao.sei.modelo.Pessoa;
 import br.gov.ans.integracao.sei.modelo.PessoaFisica;

@@ -9,10 +9,10 @@ import javax.ws.rs.core.Response.Status.Family;
 
 import org.jboss.logging.Logger;
 
-import br.gov.ans.exceptions.BusinessException;
-import br.gov.ans.exceptions.ErrorMessage;
 import br.gov.ans.factories.qualifiers.Autenticado;
 import br.gov.ans.factories.qualifiers.SeiQualifiers.TemplatesBrokerParameter;
+import br.gov.ans.integracao.sei.exceptions.BusinessException;
+import br.gov.ans.integracao.sei.exceptions.ErrorMessage;
 import br.gov.ans.integracao.sei.utils.Constantes;
 
 public class ClientTemplatesBroker {

@@ -1,4 +1,4 @@
-package br.gov.ans.filters;
+package br.gov.ans.integracao.sei.filters;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package br.gov.ans.exceptions.handlers;
+package br.gov.ans.integracao.sei.exceptions.handlers;
 
 import static br.gov.ans.utils.HttpHeadersUtil.getAcceptType;
 
@@ -12,8 +12,8 @@ import javax.ws.rs.ext.Provider;
 
 import org.jboss.logging.Logger;
 
-import br.gov.ans.exceptions.ErrorMessage;
-import br.gov.ans.exceptions.ResourceNotFoundException;
+import br.gov.ans.integracao.sei.exceptions.ErrorMessage;
+import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
 
 @Provider
 public class ResourceNotFoundExceptionHandler implements ExceptionMapper<ResourceNotFoundException>{

@@ -1,4 +1,4 @@
-package br.gov.ans.exceptions.handlers;
+package br.gov.ans.integracao.sei.exceptions.handlers;
 
 import static br.gov.ans.utils.HttpHeadersUtil.getAcceptType;
 
@@ -12,9 +12,9 @@ import javax.ws.rs.ext.Provider;
 
 import org.jboss.logging.Logger;
 
-import br.gov.ans.exceptions.BusinessException;
-import br.gov.ans.exceptions.ErrorMessage;
-import br.gov.ans.exceptions.WrappedException;
+import br.gov.ans.integracao.sei.exceptions.BusinessException;
+import br.gov.ans.integracao.sei.exceptions.ErrorMessage;
+import br.gov.ans.integracao.sei.exceptions.WrappedException;
 
 @Provider
 public class WrappedExceptionHandler implements ExceptionMapper<WrappedException>{
