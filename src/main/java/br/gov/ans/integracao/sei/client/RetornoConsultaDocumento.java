@@ -29,6 +29,8 @@ public class RetornoConsultaDocumento implements java.io.Serializable {
 	private br.gov.ans.integracao.sei.client.Serie serie;
 
 	private java.lang.String numero;
+	
+	private java.lang.String descricao;
 
 	private java.lang.String data;
 
@@ -47,8 +49,8 @@ public class RetornoConsultaDocumento implements java.io.Serializable {
 
 	public RetornoConsultaDocumento(java.lang.String idProcedimento, java.lang.String procedimentoFormatado,
 			java.lang.String idDocumento, java.lang.String documentoFormatado, java.lang.String linkAcesso,
-			br.gov.ans.integracao.sei.client.Serie serie, java.lang.String numero, java.lang.String data,
-			br.gov.ans.integracao.sei.client.Unidade unidadeElaboradora,
+			br.gov.ans.integracao.sei.client.Serie serie, java.lang.String numero, java.lang.String descricao,
+			java.lang.String data, br.gov.ans.integracao.sei.client.Unidade unidadeElaboradora,
 			br.gov.ans.integracao.sei.client.Andamento andamentoGeracao,
 			br.gov.ans.integracao.sei.client.Assinatura[] assinaturas,
 			br.gov.ans.integracao.sei.client.Publicacao publicacao, br.gov.ans.integracao.sei.client.Campo[] campos) {
@@ -59,6 +61,7 @@ public class RetornoConsultaDocumento implements java.io.Serializable {
 		this.linkAcesso = linkAcesso;
 		this.serie = serie;
 		this.numero = numero;
+		this.descricao = descricao;
 		this.data = data;
 		this.unidadeElaboradora = unidadeElaboradora;
 		this.andamentoGeracao = andamentoGeracao;
@@ -121,6 +124,14 @@ public class RetornoConsultaDocumento implements java.io.Serializable {
 
 	public void setNumero(java.lang.String numero) {
 		this.numero = numero;
+	}
+
+	public java.lang.String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(java.lang.String descricao) {
+		this.descricao = descricao;
 	}
 
 	public java.lang.String getData() {
@@ -328,6 +339,12 @@ public class RetornoConsultaDocumento implements java.io.Serializable {
 		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
 		elemField.setNillable(false);
 		typeDesc.addFieldDesc(elemField);
+		elemField = new org.apache.axis.description.ElementDesc();
+		elemField.setFieldName("descricao");
+		elemField.setXmlName(new javax.xml.namespace.QName("", "Descricao"));
+		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+		elemField.setNillable(true);
+		typeDesc.addFieldDesc(elemField);		
 		elemField = new org.apache.axis.description.ElementDesc();
 		elemField.setFieldName("data");
 		elemField.setXmlName(new javax.xml.namespace.QName("", "Data"));
