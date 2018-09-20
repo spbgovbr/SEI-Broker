@@ -6,6 +6,7 @@ import static br.gov.ans.integracao.sei.utils.Constantes.SIM;
 import static br.gov.ans.integracao.sei.utils.Util.getSOuN;
 
 import java.rmi.RemoteException;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -122,9 +123,21 @@ public class ContatoHelper {
 			}
 		}
     }
-	
+    
+    public br.gov.ans.integracao.sei.modelo.Contato getContatoNaoTemporarioMaisAntigo(String sigla){
+    	List<br.gov.ans.integracao.sei.modelo.Contato> contatosNaoTemporariosPelaSigla = contatoDAO.getContatosNaoTemporariosPelaSigla(sigla);
+    	
+    	return contatosNaoTemporariosPelaSigla.get(0);
+    }
+    
     public void preencherIdContato(Contato contato, String sigla){
     	contato.setIdContato(getIdContato(sigla)+"");
+    }
+    
+    public Boolean isContatoCadastradoComoNaoTemporario(String sigla){
+    	List<br.gov.ans.integracao.sei.modelo.Contato> contatosNaoTemporariosPelaSigla = contatoDAO.getContatosNaoTemporariosPelaSigla(sigla);
+    	
+    	return !contatosNaoTemporariosPelaSigla.isEmpty();
     }
     
 	private Integer getIdContato(String sigla){

@@ -1,5 +1,7 @@
 package br.gov.ans.integracao.sei.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
@@ -25,5 +27,13 @@ public class ContatoDAO {
 		query.setParameter("sigla", sigla);
 		
 		return (Contato) query.getSingleResult();				
+	}
+	
+	public List<Contato> getContatosNaoTemporariosPelaSigla(String sigla){
+		Query query = em.createNamedQuery("Contato.pesquisarPorSigla",Contato.class);
+		
+		query.setParameter("sigla", sigla);
+		
+		return query.getResultList();
 	}
 }

@@ -63,6 +63,7 @@ import br.gov.ans.integracao.sei.modelo.ProcessoResumido;
 import br.gov.ans.integracao.sei.modelo.ResultadoConsultaProcesso;
 import br.gov.ans.integracao.sei.modelo.SobrestamentoProcesso;
 import br.gov.ans.integracao.sei.utils.Constantes;
+import br.gov.ans.integracao.sei.utils.ProcessoHelper;
 import br.gov.ans.integracao.sipar.dao.DocumentoSipar;
 import br.gov.ans.utils.MessageUtils;
 
@@ -90,6 +91,9 @@ public class ProcessoResource {
       
     @Inject
     private MessageUtils messages;
+    
+    @Inject
+    private ProcessoHelper processoHelper;
     
     @Inject
     private Logger logger;
@@ -555,11 +559,13 @@ public class ProcessoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response abrirProcesso(@PathParam("unidade") String unidade, @QueryParam("auto-formatacao") String autoFormatar, NovoProcesso processo) throws RemoteException, Exception{
+		processoHelper.validarNovoProcesso(processo);
+
 		if(StringUtils.isNotBlank(processo.getDadosProcesso().getNumeroProtocolo()) && isAutoFormatar(autoFormatar)){
 			String numeroFormatado = formatarNumeroProcesso(processo.getDadosProcesso().getNumeroProtocolo());
 			processo.getDadosProcesso().setNumeroProtocolo(numeroFormatado);
 		}
-		
+				
 		RetornoGeracaoProcedimento retorno = seiNativeService.gerarProcedimento(Constantes.SEI_BROKER, Operacao.ABRIR_PROCESSO, unidadeResource.consultarCodigo(unidade), processo.getDadosProcesso(), processo.getDocumentos(), 
 				 processo.getProcessosRelacionados(), unidadeResource.buscarCodigoUnidades(processo.getUnidadesDestino()), getSOuN(processo.isManterAbertoOrigem()), 
 				 getSOuN(processo.isEnviarEmailNotificacao()), formatarData(processo.getDataRetornoProgramado()), (processo.getQtdDiasAteRetorno() != null ? processo.getQtdDiasAteRetorno().toString() : null), getSOuN(processo.isSomenteDiasUteis()),

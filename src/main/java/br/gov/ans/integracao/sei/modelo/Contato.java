@@ -17,7 +17,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @Entity
 @Table(name="contato")
 @NamedQueries({@NamedQuery(name="Contato.pesquisarPorID", query="select c from Contato c where c.id = :id"),
-	@NamedQuery(name="Contato.pesquisarPorSigla", query="select c from Contato c where c.sigla = :sigla")})
+	@NamedQuery(name="Contato.pesquisarPorSigla", query="select c from Contato c where c.sigla = :sigla"),
+	@NamedQuery(name="Contato.pesquisarNaoTemporariosPorSigla", query="select c from Contato c where c.sigla = :sigla and tipo != 4 order by id desc")})
 public class Contato{
 
 	@Id
