@@ -1,4 +1,4 @@
-package br.gov.ans.integracao.sei.utils;
+package br.gov.ans.integracao.sei.helper;
 
 import javax.inject.Inject;
 

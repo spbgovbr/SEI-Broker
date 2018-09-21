@@ -8,7 +8,7 @@ public class FunctionalTest {
 
 	protected final String USUARIO = "desenv_integracao_sei";
 	protected final String SENHA = "integra_sei_2016";
-	protected static final Boolean DESENVOLVIMENTO = false;
+	protected static final Boolean DESENVOLVIMENTO = true;
 	
 	protected static final String BASIC = "Basic ZGVzZW52X2ludGVncmFjYW9fc2VpOmludGVncmFfc2VpXzIwMTY=";
 	

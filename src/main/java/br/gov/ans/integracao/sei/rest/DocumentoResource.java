@@ -56,6 +56,7 @@ import br.gov.ans.integracao.sei.dao.InclusaoDocumentoDAO;
 import br.gov.ans.integracao.sei.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sei.exceptions.WrappedException;
+import br.gov.ans.integracao.sei.helper.DocumentoHelper;
 import br.gov.ans.integracao.sei.modelo.CancelamentoDocumento;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
 import br.gov.ans.integracao.sei.modelo.ExclusaoDocumento;
@@ -90,11 +91,11 @@ public class DocumentoResource {
 	@Inject
 	private Logger logger;
 	
-	@Inject
-	private MustacheUtils mustacheUtils;
-	
     @Inject
     private MessageUtils messages;
+    
+    @Inject
+    private DocumentoHelper documentoHelper;
     
 	@Context
 	private SecurityContext securityContext;
@@ -316,18 +317,11 @@ public class DocumentoResource {
 	public Response incluirDocumento(@PathParam("unidade") String unidade, @QueryParam("template") String template, Documento documento) throws RemoteException, Exception{
 		RetornoInclusaoDocumento retorno = null;
 		
-		validarTamanhoConteudo(documento);
-		
+		documentoHelper.validarDocumento(documento, template);
+
 		InclusaoDocumento inclusaoDocumento = registrarInclusao(documento, unidade);
 		
 		try{
-			if(StringUtils.isNotEmpty(template)){
-				validarInclusaoComTemplate(documento);				
-				String conteudoHTML = transformarConteudoDocumentoInterno(documento.getConteudo(), template);
-
-				documento.setConteudo(conteudoHTML);
-			}
-
 			logger.debug(messages.getMessage(MessagesKeys.DEBUG_NOVO_DOCUMENTO_ENVIADO));
 			
 			retorno = seiNativeService.incluirDocumento(Constantes.SEI_BROKER, Operacao.INCLUIR_DOCUMENTO,  unidadeResource.consultarCodigo(unidade), documento);
@@ -625,8 +619,6 @@ public class DocumentoResource {
 	public InclusaoDocumento registrarInclusao(Documento documento, String unidade) throws Exception{
 		InclusaoDocumento registro = new InclusaoDocumento(documento, unidade, getSistemaResponsavel(),	calcularHashDocumento(documento.getConteudo()));
 
-		validarInclusaoDocumento(registro);
-		
 		try{
 			userTransaction.begin();
 			
@@ -704,61 +696,13 @@ public class DocumentoResource {
 		contentType = StringUtils.remove(contentType, ";");		
 		return !contentType.toLowerCase().equals("application/pdf");
 	}
-	
-	public void validarInclusaoComTemplate(Documento documento) throws BusinessException{
-		if(documento.getTipo().equals(Constantes.DOCUMENTO_RECEBIDO)){
-			throw new BusinessException(messages.getMessage("erro.template.documento.recebido"));
-		}
-	}
-	
-	public String transformarConteudoDocumentoInterno(String conteudo, String template) throws RemoteException, Exception{
-		StringWriter writer = new StringWriter();
 
-		try{
-			Mustache mustache = mustacheUtils.compile(removeExtensaoLegado(template));	
-			
-			Map<String, Object> model = decodeConteudoMustache(conteudo);
-			
-			mustache.execute(writer, model);
-			String html = writer.toString();
-			
-			return encodeBase64(html);
-		}catch(JsonParseException ex){
-			logger.debug(conteudo);
-			throw new BusinessException(messages.getMessage("erro.processar.conteudo.json"));
-		}finally{
-			writer.close();
-		}
-	}	
-	
-	public void validarInclusaoDocumento(InclusaoDocumento inclusao) throws BusinessException{
-		if(StringUtils.isBlank(inclusao.getProcesso())){
-			throw new BusinessException(messages.getMessage("erro.documento.sem.processo"));
-		}
-			
-		if(StringUtils.length(inclusao.getNome()) > 200){
-			throw new BusinessException(messages.getMessage("erro.tamanho.nome.documento"));
-		}
-		
-		if(StringUtils.length(inclusao.getNumeroInformado()) > 50){
-			throw new BusinessException(messages.getMessage("erro.tamanho.numero.informado"));
-		}
-	}
-	
 	public URI getResourcePath(String resourceId){
 		UriBuilder builder = uriInfo.getAbsolutePathBuilder();
 		
 		builder.path(resourceId);
 		
 		return builder.build();		
-	}
-	
-	public String removeExtensaoLegado(String template){
-		if(template.contains(".mustache")){
-			return StringUtils.remove(template, ".mustache");
-		}
-		
-		return template;
 	}
 	
 	public void registrarExclusao(String numero, String unidade, String motivo) throws BusinessException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
@@ -781,18 +725,5 @@ public class DocumentoResource {
 			throw new BusinessException(messages.getMessage("erro.tamanho.motivo.cancelamento"));
 		}
 	}
-	
-	public void validarTamanhoConteudo(Documento documento) throws BusinessException{
-		if(documento == null || documento.getConteudo() == null){
-			return;
-		}
-			
-		if(calcularBytes(documento.getConteudo().length()) > Constantes.TAMANHO_MAXIMO_DOCUMENTO){
-			throw new BusinessException(messages.getMessage("erro.tamanho.documento"));
-		}
-	}
-	
-	private double calcularBytes(int sizeBase64){		
-		return sizeBase64 * 3.0 / 4;
-	}
+
 }

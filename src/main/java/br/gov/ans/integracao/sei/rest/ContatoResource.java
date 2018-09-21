@@ -33,14 +33,14 @@ import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
 import br.gov.ans.integracao.sei.exceptions.WrappedException;
+import br.gov.ans.integracao.sei.helper.ContatoHelper;
+import br.gov.ans.integracao.sei.helper.PessoaHelper;
 import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.modelo.Pessoa;
 import br.gov.ans.integracao.sei.modelo.enums.Acao;
 import br.gov.ans.integracao.sei.modelo.enums.TipoContato;
 import br.gov.ans.integracao.sei.utils.Constantes;
-import br.gov.ans.integracao.sei.utils.ContatoHelper;
 import br.gov.ans.integracao.sei.utils.MessagesKeys;
-import br.gov.ans.integracao.sei.utils.PessoaHelper;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("/")

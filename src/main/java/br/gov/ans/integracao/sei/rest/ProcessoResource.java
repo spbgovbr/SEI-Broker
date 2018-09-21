@@ -50,6 +50,7 @@ import br.gov.ans.integracao.sei.dao.SiparDAO;
 import br.gov.ans.integracao.sei.dao.UnidadeDAO;
 import br.gov.ans.integracao.sei.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
+import br.gov.ans.integracao.sei.helper.ProcessoHelper;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
 import br.gov.ans.integracao.sei.modelo.EnvioDeProcesso;
 import br.gov.ans.integracao.sei.modelo.Motivo;
@@ -63,7 +64,6 @@ import br.gov.ans.integracao.sei.modelo.ProcessoResumido;
 import br.gov.ans.integracao.sei.modelo.ResultadoConsultaProcesso;
 import br.gov.ans.integracao.sei.modelo.SobrestamentoProcesso;
 import br.gov.ans.integracao.sei.utils.Constantes;
-import br.gov.ans.integracao.sei.utils.ProcessoHelper;
 import br.gov.ans.integracao.sipar.dao.DocumentoSipar;
 import br.gov.ans.utils.MessageUtils;
 

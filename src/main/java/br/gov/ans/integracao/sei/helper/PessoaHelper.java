@@ -1,4 +1,4 @@
-package br.gov.ans.integracao.sei.utils;
+package br.gov.ans.integracao.sei.helper;
 
 import static br.gov.ans.integracao.sei.utils.Constantes.DATE_FORMATTER;
 
