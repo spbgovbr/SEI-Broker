@@ -54,8 +54,8 @@ public class DocumentoDAO {
 		return query.getResultList();
 	}
 	
-	public List<DocumentoResumido> getDocumentos(String interessado, String codigoTipo, Integer pagina, Integer qtdRegistros, boolean somenteAssinados, boolean ordemCrescente, 
-			boolean orderByProcesso){
+	public List<DocumentoResumido> getDocumentos(String interessado, String codigoTipo, Integer pagina, Integer qtdRegistros, boolean somenteAssinados, 
+			boolean ordemCrescente,	boolean orderByProcesso){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 
 		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, d.numero numeroInformado, ");
@@ -154,7 +154,7 @@ public class DocumentoDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<DocumentoResumido> getDocumentosProcesso(String idProcedimento, String codigoTipo, String origem, boolean somenteAssinados, 
-			Integer pagina, Integer qtdRegistros){
+			String numeroInformado, Integer pagina, Integer qtdRegistros){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 		
 		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, d.numero numeroInformado, ");
@@ -185,6 +185,11 @@ public class DocumentoDAO {
 			parametros.put("origem", origem);
 		}
 		
+		if(StringUtils.isNotBlank(numeroInformado)){
+			builder.append("AND d.numero like :numeroInformado ");
+			parametros.put("numeroInformado", "%"+numeroInformado+"%");
+		}
+		
 		builder.append("GROUP BY pr.protocolo_formatado_pesquisa ORDER BY pr.dta_geracao, pr.protocolo_formatado_pesquisa ASC");
 				
 		Query query = em.createNativeQuery(builder.toString(), "DocumentoResumidoMapping");
@@ -209,7 +214,7 @@ public class DocumentoDAO {
 		return documentos;
 	}
 	
-	public Long countDocumentosProcesso(String idProcedimento, String codigoTipo, String origem, boolean somenteAssinados){
+	public Long countDocumentosProcesso(String idProcedimento, String codigoTipo, String origem, boolean somenteAssinados, String numeroInformado){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 		
 		StringBuilder builder = new StringBuilder("SELECT count(pr.protocolo_formatado_pesquisa) ");
@@ -235,6 +240,11 @@ public class DocumentoDAO {
 		if(StringUtils.isNotBlank(origem)){
 			builder.append("AND pr.sta_protocolo = :origem ");
 			parametros.put("origem", origem);
+		}
+		
+		if(StringUtils.isNotBlank(numeroInformado)){
+			builder.append("AND d.numero like :numeroInformado ");
+			parametros.put("numeroInformado", "%"+numeroInformado+"%");
 		}
 				
 		Query query = em.createNativeQuery(builder.toString());

@@ -1176,6 +1176,7 @@ public class ProcessoResource {
 	 * @apiParam (Query Parameters) {String} [tipo=null] Identificador do tipo do documento, caso seja necessário filtrar pelo tipo
 	 * @apiParam (Query Parameters) {String = "G (gerado/interno), R (recebido/externo)"} [origem=null] Filtra os documentos por gerados ou recebidos
 	 * @apiParam (Query Parameters) {boolean} [somenteAssinados=false] Exibir somente documentos assinados
+	 * @apiParam (Query Parameters) {String} [numeroInformado] Filtrar pelo número informado
 	 * @apiParam (Query Parameters) {String} [pagina=1] Número da página
 	 * @apiParam (Query Parameters) {String} [qtdRegistros = 50] Quantidade de registros que serão exibidos por página
 	 * 
@@ -1222,20 +1223,20 @@ public class ProcessoResource {
 	@Path("/processos/{processo:\\d+}/documentos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response listarDocumentosPorProcesso(@PathParam("processo") String processo, @QueryParam("tipo")String tipo,
-			@QueryParam("origem") String origem, @QueryParam("somenteAssinados") boolean somenteAssinados, @QueryParam("pagina") String pagina, 
-			@QueryParam("qtdRegistros") String qtdRegistros)throws RemoteException, Exception{
+			@QueryParam("origem") String origem, @QueryParam("somenteAssinados") boolean somenteAssinados, @QueryParam("numeroInformado") String numeroInformado,
+			@QueryParam("pagina") String pagina, @QueryParam("qtdRegistros") String qtdRegistros)throws RemoteException, Exception{
 		
 		Integer tamanhoPagina = (qtdRegistros == null ? null : parseInt(qtdRegistros));
 		
 		String idProcedimento = consultarIdProcedimento(processo);
 			
-		Long totalDocumentosProcesso = documentoDAO.countDocumentosProcesso(idProcedimento, tipo, origem, somenteAssinados);
+		Long totalDocumentosProcesso = documentoDAO.countDocumentosProcesso(idProcedimento, tipo, origem, somenteAssinados, numeroInformado);
 
 		if(totalDocumentosProcesso < 1L){
 			throw new ResourceNotFoundException(messages.getMessage("erro.processo.sem.documentos", formatarNumeroProcesso(processo)));
 		}
 		
-		List<DocumentoResumido> documentosProcesso = documentoDAO.getDocumentosProcesso(idProcedimento, tipo, origem, somenteAssinados, 
+		List<DocumentoResumido> documentosProcesso = documentoDAO.getDocumentosProcesso(idProcedimento, tipo, origem, somenteAssinados, numeroInformado,
 				pagina == null ? null : parseInt(pagina), tamanhoPagina);
 
 		return Response.status(getStatus(totalDocumentosProcesso.intValue(), tamanhoPagina)).header("total_registros", totalDocumentosProcesso)
