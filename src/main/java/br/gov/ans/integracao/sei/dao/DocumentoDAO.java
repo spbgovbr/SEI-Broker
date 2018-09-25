@@ -60,7 +60,7 @@ public class DocumentoDAO {
 
 		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, d.numero numeroInformado, ");
 		builder.append("CASE pr.sta_protocolo WHEN 'G' THEN 'GERADO' ELSE 'RECEBIDO' END origem, d.id_tipo_conferencia tipoConferencia, ");
-		builder.append("pr.dta_geracao dataGeracao, pr2.protocolo_formatado as processo, u.sigla as unidade, ");
+		builder.append("pr.dta_geracao dataGeracao, pr.protocolo_formatado as processo, u.sigla as unidade, ");
 		builder.append("CASE WHEN a.id_assinatura is null THEN false ELSE true END assinado ");
 		builder.append("FROM documento AS d ");
 
@@ -71,9 +71,8 @@ public class DocumentoDAO {
 			builder.append("LEFT JOIN assinatura AS a ON d.id_documento = a.id_documento ");			
 		}
 
-		builder.append("JOIN participante p	ON p.id_protocolo = d.id_documento ");
+		builder.append("JOIN participante As p ON p.id_protocolo = d.id_documento ");
 		builder.append("JOIN protocolo AS pr ON pr.id_protocolo = d.id_documento "); 
-		builder.append("JOIN protocolo AS pr2 ON pr2.id_protocolo = d.id_procedimento "); 
 		builder.append("JOIN serie AS s ON d.id_serie = s.id_serie ");
 		builder.append("JOIN unidade AS u ON u.id_unidade = d.id_unidade_responsavel ");
 		builder.append("WHERE p.id_contato in (select c.id_contato from contato c where c.sigla = :interessado) ");
@@ -130,7 +129,6 @@ public class DocumentoDAO {
 
 		builder.append("JOIN participante p	ON p.id_protocolo = d.id_documento ");
 		builder.append("JOIN protocolo AS pr ON pr.id_protocolo = d.id_documento "); 
-		builder.append("JOIN protocolo AS pr2 ON pr2.id_protocolo = d.id_procedimento "); 
 		builder.append("JOIN serie AS s ON d.id_serie = s.id_serie ");
 		builder.append("JOIN unidade AS u ON u.id_unidade = d.id_unidade_responsavel ");
 		builder.append("WHERE p.id_contato in (select c.id_contato from contato c where c.sigla = :interessado) ");

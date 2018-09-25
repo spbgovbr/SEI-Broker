@@ -78,11 +78,7 @@ public class DocumentoHelper {
 	}
 	
 	private void validarInteressados(Documento documento) throws BusinessException{
-		if(isSemInteressados(documento)){
-			throw new BusinessException(messages.getMessage("erro.interessado.nao.informado"));
-		}else{
-			interessadoHelper.tratarInteressados(documento.getInteressados());			
-		}
+		interessadoHelper.tratarInteressados(documento.getInteressados());
 	}
 	
 	private void validarInclusaoComTemplate(Documento documento) throws BusinessException{
