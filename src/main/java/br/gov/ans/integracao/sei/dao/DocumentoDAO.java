@@ -59,6 +59,7 @@ public class DocumentoDAO {
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 
 		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, d.numero numeroInformado, ");
+		builder.append("null as nome, ");
 		builder.append("CASE pr.sta_protocolo WHEN 'G' THEN 'GERADO' ELSE 'RECEBIDO' END origem, d.id_tipo_conferencia tipoConferencia, ");
 		builder.append("pr.dta_geracao dataGeracao, pr.protocolo_formatado as processo, u.sigla as unidade, ");
 		builder.append("CASE WHEN a.id_assinatura is null THEN false ELSE true END assinado ");
@@ -155,7 +156,8 @@ public class DocumentoDAO {
 			String numeroInformado, Integer pagina, Integer qtdRegistros){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 		
-		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, d.numero numeroInformado, ");
+		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, ");
+		builder.append("d.numero numeroInformado, an.nome nome, ");
 		builder.append("CASE pr.sta_protocolo WHEN 'G' THEN 'GERADO' ELSE 'RECEBIDO' END origem, d.id_tipo_conferencia tipoConferencia, ");
 		builder.append("pr.dta_geracao dataGeracao, null as processo, null as unidade, ");
 		builder.append("CASE WHEN a.id_assinatura is null THEN false ELSE true END assinado ");
@@ -169,6 +171,7 @@ public class DocumentoDAO {
 		
 		builder.append("JOIN protocolo AS pr ON pr.id_protocolo = d.id_documento "); 
 		builder.append("JOIN serie AS s ON d.id_serie = s.id_serie ");
+		builder.append("LEFT JOIN anexo AS an ON d.id_documento = an.id_protocolo ");
 		builder.append("WHERE d.id_procedimento = :idProcedimento ");
 
 		parametros.put("idProcedimento", idProcedimento);

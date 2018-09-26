@@ -1187,6 +1187,7 @@ public class ProcessoResource {
 	 * @apiSuccess (Sucesso Response Body - 200) {DocumentoResumido} documentos.documentoResumido Resumo do documento encontrado no SEI.
 	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numero Número do documento.
 	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numeroInformado Número informado na inclusão do documento, também conhecido como número de árvore.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.nome Nome do arquivo que foi enviado para o SEI. (Somente para documentos cujo a origem é "RECEBIDO", também conhecidos como documentos externos)
 	 * @apiSuccess (Sucesso Response Body - 200) {String="GERADO","RECEBIDO"} documentos.documentoResumido.origem Origem do documento, se o mesmo é um documento "GERADO" internamente ou "RECEBIDO" de uma fonte externa.
 	 * @apiSuccess (Sucesso Response Body - 200) {Data} documentos.documentoResumido.dataGeracao Data de geração do documento.
 	 * @apiSuccess (Sucesso Response Body - 200) {Tipo} documentos.documentoResumido.tipo Objeto representando o tipo do documento.

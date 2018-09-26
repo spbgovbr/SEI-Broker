@@ -593,7 +593,7 @@ public class DocumentoResource {
 	@GET
 	@Path("interessados/{interessado}/documentos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})	
-	public Response consultarDocumentos(@PathParam("interessado") String interessado, @QueryParam("tipo") String tipo, @QueryParam("pagina") String pagina, 
+	public Response consultarDocumentosDoInteressado(@PathParam("interessado") String interessado, @QueryParam("tipo") String tipo, @QueryParam("pagina") String pagina, 
 			@QueryParam("qtdRegistros") String qtdRegistros, @QueryParam("somenteAssinados") boolean somenteAssinados, @QueryParam("crescente") boolean ordemCrescente, 
 			@QueryParam("orderByProcesso") boolean orderByProcesso) throws BusinessException, ResourceNotFoundException{
 		

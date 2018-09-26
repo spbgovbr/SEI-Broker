@@ -18,6 +18,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @SqlResultSetMapping(name = "DocumentoResumidoMapping", entities = { @EntityResult(entityClass = DocumentoResumido.class, fields = {
 		@FieldResult(name = "numero", column = "numero"),
 		@FieldResult(name = "numeroInformado", column = "numeroInformado"),
+		@FieldResult(name = "nome", column = "nome"),
 		@FieldResult(name = "unidade", column = "unidade"),
 		@FieldResult(name = "origem", column = "origem"),
 		@FieldResult(name = "processo", column = "processo"),
@@ -38,6 +39,7 @@ public class DocumentoResumido {
 	@Id
 	private String numero;
 	private String numeroInformado;
+	private String nome;
 	private String unidade;
 	private String origem;
 	private Date dataGeracao;
@@ -54,6 +56,14 @@ public class DocumentoResumido {
 
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Tipo getTipo() {
