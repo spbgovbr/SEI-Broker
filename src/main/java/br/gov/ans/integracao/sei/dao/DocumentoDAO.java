@@ -61,7 +61,9 @@ public class DocumentoDAO {
 		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, d.numero numeroInformado, ");
 		builder.append("null as nome, ");
 		builder.append("CASE pr.sta_protocolo WHEN 'G' THEN 'GERADO' ELSE 'RECEBIDO' END origem, d.id_tipo_conferencia tipoConferencia, ");
-		builder.append("pr.dta_geracao dataGeracao, pr.protocolo_formatado as processo, u.sigla as unidade, ");
+		builder.append("pr.dta_geracao dataGeracao, ");
+		builder.append("(select pr2.protocolo_formatado from protocolo pr2 where pr2.id_protocolo = d.id_procedimento) as processo, ");
+		builder.append("u.sigla as unidade, ");
 		builder.append("CASE WHEN a.id_assinatura is null THEN false ELSE true END assinado ");
 		builder.append("FROM documento AS d ");
 
