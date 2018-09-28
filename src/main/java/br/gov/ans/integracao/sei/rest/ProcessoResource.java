@@ -654,6 +654,16 @@ public class ProcessoResource {
 		.header("total_registros", totalRegistros).build();			
 	}
 	
+	@GET
+	@Path("/interessados/{interessado}/processos")
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Wrapped(element = "processos")
+	public Response consultarProcessosPorInteressado(@PathParam("interessado") String interessado, @QueryParam("unidade") String unidade, @QueryParam("tipo") String tipoProcesso, 
+			@QueryParam("crescente") boolean crescente, @QueryParam("pagina") String pagina, @QueryParam("qtdRegistros") String qtdRegistros) throws Exception{
+		
+		return consultarProcessos(interessado, unidade, tipoProcesso, crescente, pagina, qtdRegistros);
+	}
+	
 	/**
 	 * @api {get} /:unidade/processos/:processo/andamentos Listar andamentos
 	 * @apiName listarAndamentos

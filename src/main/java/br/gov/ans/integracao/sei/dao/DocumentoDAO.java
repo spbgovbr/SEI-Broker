@@ -21,39 +21,6 @@ public class DocumentoDAO {
 	@PersistenceContext(unitName = "sei_pu", type = PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	
-	@SuppressWarnings("unchecked")
-	public List<DocumentoResumido> getDocumentosV1(String interessado, String unidade, Integer pagina, Integer qtdRegistros){
-		HashMap<String, Object> parametros = new HashMap<String, Object>();
-		
-		StringBuilder builder = new StringBuilder("SELECT ");
-		builder.append("pr.protocolo_formatado_pesquisa numero, s.nome tipo, d.numero numeroInformado, ");
-		builder.append("(select protocolo_formatado from protocolo where id_protocolo = d.id_procedimento) processo, ");
-		builder.append("u.sigla unidade, CASE pr.sta_protocolo WHEN 'G' THEN 'GERADO' ELSE 'RECEBIDO' END origem, pr.dta_geracao dataGeracao ");
-		builder.append("FROM participante p, protocolo pr, documento d, contato c, serie s, unidade u ");
-		builder.append("WHERE p.id_contato = c.id_contato AND p.id_protocolo = pr.id_protocolo AND p.id_protocolo = d.id_documento ");
-		builder.append("AND p.id_unidade = u.id_unidade AND d.id_serie = s.id_serie ");
-		
-		if(StringUtils.isNotBlank(interessado)){
-			builder.append("AND c.sigla = :interessado ");
-			parametros.put("interessado", interessado);
-		}
-		
-		if(StringUtils.isNotBlank(unidade)){
-			builder.append("AND u.sigla = :unidade ");
-			parametros.put("unidade", unidade);
-		}
-		
-		builder.append("order by pr.dta_geracao asc");
-
-		Query query = em.createNativeQuery(builder.toString(), "DocumentoResumidoMapping");
-		
-		setQueryParameters(query, parametros);
-		
-		setPaginacaoQuery(query, pagina, qtdRegistros);
-		
-		return query.getResultList();
-	}
-	
 	public List<DocumentoResumido> getDocumentos(String interessado, String codigoTipo, Integer pagina, Integer qtdRegistros, boolean somenteAssinados, 
 			boolean ordemCrescente,	boolean orderByProcesso){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
@@ -161,7 +128,7 @@ public class DocumentoDAO {
 		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, ");
 		builder.append("d.numero numeroInformado, an.nome nome, ");
 		builder.append("CASE pr.sta_protocolo WHEN 'G' THEN 'GERADO' ELSE 'RECEBIDO' END origem, d.id_tipo_conferencia tipoConferencia, ");
-		builder.append("pr.dta_geracao dataGeracao, null as processo, null as unidade, ");
+		builder.append("pr.dta_geracao dataGeracao, null as processo, u.sigla as unidade, ");
 		builder.append("CASE WHEN a.id_assinatura is null THEN false ELSE true END assinado ");
 		builder.append("FROM documento AS d ");		
 
@@ -173,6 +140,7 @@ public class DocumentoDAO {
 		
 		builder.append("JOIN protocolo AS pr ON pr.id_protocolo = d.id_documento "); 
 		builder.append("JOIN serie AS s ON d.id_serie = s.id_serie ");
+		builder.append("JOIN unidade AS u ON u.id_unidade = d.id_unidade_responsavel ");
 		builder.append("LEFT JOIN anexo AS an ON d.id_documento = an.id_protocolo ");
 		builder.append("WHERE d.id_procedimento = :idProcedimento ");
 
