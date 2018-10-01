@@ -36,72 +36,14 @@ public class MarcadorResource {
 	
 	@Inject
 	private MessageUtils messages;
-	
-	/**
-	 * @api {get} /:unidade/marcadores Listar marcadores
-	 * @apiName listarMarcadores
-	 * @apiGroup Marcador
-	 * @apiVersion 2.0.0
-	 * 
-	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
-	 * 
-	 * @apiDescription Lista os marcadores de uma unidade.
-	 *
-	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
-	 *
-	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i https://<host>/sei-broker/service/cosap/marcadores
-	 * 
-	 * @apiSuccess (Sucesso - 200) {Marcador[]} marcadores Lista de marcadores
-	 * @apiSuccess (Sucesso - 200) {String} marcadores.id Identificador do marcador.
-	 * @apiSuccess (Sucesso - 200) {String} marcadores.nome Nome do marcador.
-	 * @apiSuccess (Sucesso - 200) {String} marcadores.icone Ícone do marcador em formato PNG codificado em Base64.
-	 * @apiSuccess (Sucesso - 200) {String} marcadores.sinAtivo S/N - Sinalizador indica se o marcador está ativo.
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
+
 	@GET
 	@Path("{unidade}/marcadores")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Marcador[] listarMarcadores(@PathParam("unidade") String unidade) throws RemoteException, Exception{
 		return seiNativeService.listarMarcadoresUnidade(Constantes.SEI_BROKER, Operacao.LISTAR_MARCADORES_UNIDADE, unidadeResource.consultarCodigo(unidade));
 	}
-	
-	/**
-	 * @api {post} /:unidade/marcadores/:identificador/processos Adicionar Processo
-	 * @apiName marcarProcesso
-	 * @apiGroup Marcador
-	 * @apiVersion 2.0.0
-	 * 
-	 * @apiPermission RO_SEI_BROKER
-	 * 
-	 * @apiDescription Adiciona um processo ao marcador.
-	 *
-	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
-	 * @apiParam (Path Parameters) {String} identificador Identificador do marcador no SEI.
-	 *
-	 * @apiParam (Request Body) {MarcacaoProcesso} marcacaoProcesso Objeto de com as definições da marcação.
-	 * @apiParam (Request Body) {String} marcacaoProcesso.processo Número do processo no SEI.
-	 * @apiParam (Request Body) {String} marcacaoProcesso.texto Texto para associação.
-	 *
-	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i https://<host>/sei-broker/service/cosap/marcadores/3/processos
-	 * 
-	 * @apiSuccessExample {json} Success-Response:
-	 *     HTTP/1.1 201 Created
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */	
+
 	@POST
 	@Path("{unidade}/marcadores/{marcador}/processos")
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

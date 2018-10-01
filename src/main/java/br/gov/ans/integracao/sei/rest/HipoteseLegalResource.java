@@ -25,36 +25,6 @@ public class HipoteseLegalResource {
     @Inject
     private UnidadeResource unidadeResource;
 
-	/**
-	 * @api {get} /:unidade/hipoteses-legais Listar hipóteses legais
-	 * @apiName listarHipoteses
-	 * @apiGroup Hipotese Legal
-	 * @apiVersion 2.0.0
-	 * 
-	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
-	 * 
-	 * @apiDescription Lista as hipóteses legais.
-	 * 
-	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
-	 * 
-	 * @apiParam (Query Parameters) {String} [nivelAcesso] Filtra hipóteses pelo nível de acesso associado (1 - restrito, 2 - sigiloso)
-	 * 
-	 * @apiExample Exemplo de requisição:
-	 *	curl -i https://<host>/sei-broker/service/COSAP/hipoteses-legais
-	 *
-	 * @apiSuccess (Sucesso - 200) {HipoteseLegal[]} resultado Lista com as hipóteses legais encontrados
-	 * @apiSuccess (Sucesso - 200) {String} resultado.idHipoteseLegal Identificador da hipótese legal no SEI
-	 * @apiSuccess (Sucesso - 200) {String} resultado.nome Nome da hipótese legal
-	 * @apiSuccess (Sucesso - 200) {String} resultado.baseLegal Descrição da base legal
-	 * @apiSuccess (Sucesso - 200) {String} resultado.nivelAcesso Nivel de acesso associado a hipótese legal
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
     @GET
     @Path("{unidade}/hipoteses-legais")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

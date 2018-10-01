@@ -47,54 +47,14 @@ public class InfoResource {
 	
 	@Inject	
 	private LogIntegracaoSistemicaDAO dao;
-	
-	/**
-	 * @api {get} /info/versao Consultar versão
-	 * @apiName getNumeroVersao
-	 * @apiGroup Info
-	 * @apiVersion 2.0.0
-	 *
-	 * @apiDescription Este método realiza uma consulta para saber a versão do sei-broker que está disponível.
-	 * 	
-	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i http://<host>/sei-broker/service/info/versao
-	 *
-	 * @apiSuccess {String} versao Número da versão.
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
+
 	@GET
 	@Path("/versao")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getNumeroVersao(){
 		return messages.getMessage("sei.broker.versao");
 	}	
-	
-	/**
-	 * @api {get} /info/conexoes/mysql Testar conexão MySQL
-	 * @apiName testMySQLConnection
-	 * @apiGroup Info
-	 * @apiVersion 2.0.0
-	 *
-	 * @apiDescription Testa a conexão com o MySQL e retorna o número de versão do banco.
-	 * 	
-	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i http://<host>/sei-broker/service/info/conexoes/mysql
-	 *
-	 * @apiSuccess {String} versao Número de versão do MySQL.
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
+
 	@GET
 	@Path("/conexoes/mysql")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -108,27 +68,7 @@ public class InfoResource {
 			throw new Exception(messages.getMessage("erro.testar.mysql"));
 		}
 	}
-	
-	/**
-	 * @api {get} /info/conexoes/oracle Testar conexão Oracle
-	 * @apiName testOracleConnection
-	 * @apiGroup Info
-	 * @apiVersion 2.0.0
-	 *
-	 * @apiDescription Testa a conexão com o Oracle e retorna o número de versão do banco.
-	 * 	
-	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i http://<host>/sei-broker/service/info/conexoes/oracle
-	 *
-	 * @apiSuccess {String} versao Número de versão do Oracle.
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
+
 	@GET
 	@Path("/conexoes/oracle")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -143,26 +83,6 @@ public class InfoResource {
 		}
 	}
 
-	/**
-	 * @api {get} /info/conexoes/sei Testar conexão SEI
-	 * @apiName testSEIConnection
-	 * @apiGroup Info
-	 * @apiVersion 2.0.0
-	 *
-	 * @apiDescription Testa a conexão com o SEI fazendo uma consulta ao serviço listar unidades.
-	 * 	
-	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i http://<host>/sei-broker/service/info/conexoes/sei
-	 *
-	 * @apiSuccess {String} mensagem Mensagem de sucesso.
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
 	@GET
 	@Path("/conexoes/sei")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -176,33 +96,7 @@ public class InfoResource {
 			throw new Exception(messages.getMessage("erro.testar.sei"));
 		}
 	}
-	
-	/**
-	 * @api {get} /info/requests Listar Requests
-	 * @apiName getUltimosRequests
-	 * @apiGroup Info
-	 * @apiVersion 2.0.0
-	 *
-	 * @apiDescription Lista os requests recebidos pelo broker.
-	 * 
-	 * 
-	 * @apiParam (Query Parameters) {String} [operacao] nome do método acessado
-	 * @apiParam (Query Parameters) {String} [origem] usuário que originou a requisição
-	 * @apiParam (Query Parameters) {int} [pag=1] número da página
-	 * @apiParam (Query Parameters) {int} [itens=50] quantidade de itens listados por página
-	 * 
-	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i http://<host>/sei-broker/service/info/requests
-	 *
-	 * @apiSuccess {String} mensagem Mensagem de sucesso.
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
+
 	@GET
 	@Path("/requests")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })

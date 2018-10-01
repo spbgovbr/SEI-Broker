@@ -12,7 +12,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
@@ -43,50 +42,7 @@ public class SiparResource {
 	
 	private static int TRUE = 1;
 	private static int FALSE = 0;
-    
-	/**
-     * @api {post} /sipar/importados Importar Processo
-     * @apiName importarProcesso
-     * @apiGroup SIPAR
-     * @apiVersion 2.0.0
-     *
-     * @apiDescription Marca um processo físico (SIPAR) como importado para um processo eletrônico (SEI).
-     *    
-	 * @apiParam (Header Parameters) {String} content-type Informar text/plain
-	 * @apiParam (Request Body) {String} processo Número do processo a ser importado
-     * 
-	 * @apiExample Exemplo de requisição:	
-	 *	endpoint: [POST] http://<host>/sei-broker/service/sipar/importados
-	 *
-	 *	body:
-	 *	33902112492200241
-     * 
-     * @apiSuccessExample {json} Success-Response:
-     *  HTTP/1.1 201 Created
-     *
-     * @apiErrorExample {json} Error-Response:
-     * HTTP/1.1 500 Internal Server Error
-     * {
-     * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
-     * }
-     * 
-     *
-     * @apiErrorExample {json} Error-Response:
-     * HTTP/1.1 400 Bad Request
-     * {
-     * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
-     * }
-     * 
-     *
-     * @apiErrorExample {json} Error-Response:
-     * HTTP/1.1 409 Conflict
-     * {
-     * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
-     * }
-     */
+
 	@POST
 	@Path("/importados")
 	@Consumes({MediaType.TEXT_PLAIN})
@@ -119,46 +75,7 @@ public class SiparResource {
 		return Response.created(getResourcePath(processo)).build();
 		
 	}
-	
-	/**
-     * @api {delete} /sipar/importados/:processo Cancelar Importação Processo
-     * @apiName cancelarImportacaoProcesso
-     * @apiGroup SIPAR
-     * @apiVersion 2.0.0
-     *
-     * @apiDescription Desmarca um processo físico (SIPAR) como importado para um processo eletrônico (SEI).
-     *        
-     * @apiParam (Path Parameter) {String} processo Número do processo físico existente no SIPAR contendo 17 dígitos e iniciado com 33902. Ex. 33902111111111111
-     * 
-     * @apiExample {curl} Exemplo de requisição:
-     *        curl -X DELETE http://<host>/sei-broker/service/sipar/importados/33902112492200241
-     * 
-     * @apiSuccessExample {json} Success-Response:
-     *  HTTP/1.1 204 No Content
-     *
-     * @apiErrorExample {json} Error-Response:
-     * HTTP/1.1 500 Internal Server Error
-     * {
-     * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
-     * }
-     * 
-     *
-     * @apiErrorExample {json} Error-Response:
-     * HTTP/1.1 400 Bad Request
-     * {
-     * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
-     * }
-     * 
-     *
-     * @apiErrorExample {json} Error-Response:
-     * HTTP/1.1 404 Not Found
-     * {
-     * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
-     * }
-     */
+
 	@DELETE
 	@Path("/importados/{processo:\\d+}")
 	public Response cancelarImportacaoProcesso(@PathParam("processo") String processo) throws Exception{

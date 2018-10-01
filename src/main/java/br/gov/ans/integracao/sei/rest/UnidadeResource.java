@@ -38,31 +38,6 @@ public class UnidadeResource {
 	
 	private static Date dataCarregamentoUnidades = new Date();
 	
-	/**
-	 * @api {get} /unidades Listar unidades
-	 * @apiName listarUnidades
-	 * @apiGroup Unidade
-	 * @apiVersion 2.0.0
-	 * 
-	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
-	 * 
-	 * @apiDescription Retorna as Unidades cadastradas no SEI.
-	 *
-	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i https://<host>/sei-broker/service/unidades/
-	 * 
-	 * @apiSuccess (Sucesso - 200) {Unidade[]} unidades Lista de unidades
-	 * @apiSuccess (Sucesso - 200) {String} unidades.idUnidade Identificador da unidade
-	 * @apiSuccess (Sucesso - 200) {String} unidades.sigla Sigla da unidade
-	 * @apiSuccess (Sucesso - 200) {String} unidades.descricao Descrição da unidade
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public br.gov.ans.integracao.sei.client.Unidade[] listarUnidades() throws Exception{
@@ -74,31 +49,7 @@ public class UnidadeResource {
 		
 		return lista;
 	}
-	
-	/**
-	 * @api {get} /unidades/{unidade}/codigo Consultar código
-	 * @apiName consultarCodigo
-	 * @apiGroup Unidade
-	 * @apiVersion 2.0.0
-	 * 
-	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
-	 * 
-	 * @apiDescription Retorna o código da Unidade pesquisada.
-	 *
-	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade que deseja consultar o código
-	 *
-	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i https://<host>/sei-broker/service/unidades/COSAP/codigo
-	 *
-	 * @apiSuccess (Sucesso - 200) {String} codigo Código da unidade.
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
+
 	@GET
 	@Path("/{chave}/codigo")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

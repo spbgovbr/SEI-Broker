@@ -23,32 +23,6 @@ public class TipoConferenciaResource {
 	@Inject
 	private UnidadeResource unidadeResource;
 
-	/**
-	 * @api {get} /:unidade/tipos-conferencia Listar tipos de conferência
-	 * @apiName listarTiposConferencia
-	 * @apiGroup Tipos Conferência
-	 * @apiVersion 2.0.0
-	 * 
-	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
-	 * 
-	 * @apiDescription Lista os tipos de conferência.
-	 *
-	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
-	 *
-	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i https://<host>/sei-broker/service/cosap/tipos-conferencia
-	 * 
-	 * @apiSuccess (Sucesso - 200) {TipoConferencia[]} tipos Lista de tipos de conferência.
-	 * @apiSuccess (Sucesso - 200) {String} tipos.idTipoConferencia Identificador do tipo de conferência.
-	 * @apiSuccess (Sucesso - 200) {String} tipos.descricao Descrição do tipo de conferência.
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */	
     @GET
     @Path("{unidade}/tipos-conferencia")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
