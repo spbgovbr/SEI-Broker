@@ -232,14 +232,17 @@ public class DocumentoDAO {
 	public DocumentoResumido getDocumentoProcesso(String idProcedimento, String documento){
 		HashMap<String, Object> parametros = new HashMap<String, Object>();
 		
-		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, d.numero numeroInformado, ");
+		StringBuilder builder = new StringBuilder("SELECT pr.protocolo_formatado_pesquisa numero, s.nome tipoNome, s.id_serie tipoCodigo, ");
+		builder.append("d.numero numeroInformado, an.nome nome, ");
 		builder.append("CASE pr.sta_protocolo WHEN 'G' THEN 'GERADO' ELSE 'RECEBIDO' END origem, d.id_tipo_conferencia tipoConferencia, ");
-		builder.append("pr.dta_geracao dataGeracao, null as processo, null as unidade, ");
+		builder.append("pr.dta_geracao dataGeracao, null as processo, u.sigla as unidade, ");
 		builder.append("CASE WHEN a.id_assinatura is null THEN false ELSE true END assinado ");
-		builder.append("FROM documento AS d ");
+		builder.append("FROM documento AS d ");	
 		builder.append("LEFT JOIN assinatura AS a ON d.id_documento = a.id_documento ");
 		builder.append("JOIN protocolo AS pr ON pr.id_protocolo = d.id_documento "); 
 		builder.append("JOIN serie AS s ON d.id_serie = s.id_serie ");
+		builder.append("JOIN unidade AS u ON u.id_unidade = d.id_unidade_responsavel ");
+		builder.append("LEFT JOIN anexo AS an ON d.id_documento = an.id_protocolo ");
 		builder.append("WHERE d.id_procedimento = :idProcedimento ");
 		builder.append("AND pr.protocolo_formatado_pesquisa = :documento ");
 		
