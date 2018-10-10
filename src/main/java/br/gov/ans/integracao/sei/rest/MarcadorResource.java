@@ -21,7 +21,6 @@ import br.gov.ans.integracao.sei.client.DefinicaoMarcador;
 import br.gov.ans.integracao.sei.client.Marcador;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.modelo.MarcacaoProcesso;
-import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
@@ -41,7 +40,7 @@ public class MarcadorResource {
 	@Path("{unidade}/marcadores")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Marcador[] listarMarcadores(@PathParam("unidade") String unidade) throws RemoteException, Exception{
-		return seiNativeService.listarMarcadoresUnidade(Constantes.SEI_BROKER, Operacao.LISTAR_MARCADORES_UNIDADE, unidadeResource.consultarCodigo(unidade));
+		return seiNativeService.listarMarcadoresUnidade(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade));
 	}
 
 	@POST
@@ -58,7 +57,7 @@ public class MarcadorResource {
 		definicaoMarcador.setTexto(marcacao.getTexto());
 		definicaoMarcador.setIdMarcador(marcador);
 		
-		String retorno = seiNativeService.definirMarcador(Constantes.SEI_BROKER, Operacao.DEFINIR_MARCADOR, unidadeResource.consultarCodigo(unidade), new DefinicaoMarcador[]{definicaoMarcador});
+		String retorno = seiNativeService.definirMarcador(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), new DefinicaoMarcador[]{definicaoMarcador});
 		
 		if(trueOrFalse(retorno)){
 			return Response.status(Status.CREATED).build();

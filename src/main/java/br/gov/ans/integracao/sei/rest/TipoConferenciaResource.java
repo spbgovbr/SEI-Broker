@@ -11,7 +11,6 @@ import javax.ws.rs.core.MediaType;
 
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.client.TipoConferencia;
-import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 
 @Path("/")
@@ -27,7 +26,7 @@ public class TipoConferenciaResource {
     @Path("{unidade}/tipos-conferencia")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public TipoConferencia[] listarTiposConferencia(@PathParam("unidade") String unidade) throws RemoteException, Exception{
-		return seiNativeService.listarTiposConferencia(Constantes.SEI_BROKER, Operacao.LISTAR_MARCADORES_UNIDADE, 
+		return seiNativeService.listarTiposConferencia(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, 
 				unidadeResource.consultarCodigo(unidade));
 	}
 }

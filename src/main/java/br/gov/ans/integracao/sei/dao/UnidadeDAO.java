@@ -1,8 +1,6 @@
 package br.gov.ans.integracao.sei.dao;
 
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
@@ -24,6 +22,7 @@ public class UnidadeDAO {
 	private static final int CONCLUSAO_AUTOMATICA = 41;
 	private static final int RECEBIMENTO_PROCESSO = 48;
 
+	@SuppressWarnings("unchecked")
 	public List<Unidade> listarUnidadesProcesso(String idProcedimento){
 		StringBuilder sql = new StringBuilder("SELECT u.id_unidade idUnidade, u.sigla, u.descricao, u.sin_protocolo sinProtocolo, ");
 		sql.append("u.sin_arquivamento sinArquivamento, u.sin_ouvidoria sinOuvidoria, t.id_tarefa tarefa, a.dth_abertura data ");
@@ -59,7 +58,7 @@ public class UnidadeDAO {
 				.filter(c -> (c.getTarefa() == CONCLUSAO_PROCESSO || c.getTarefa() == CONCLUSAO_AUTOMATICA))
 				.anyMatch(r -> 
 					(
-						r.getIdUnidade() == u.getIdUnidade() && 
+						r.getIdUnidade().equals(u.getIdUnidade()) && 
 						r.getData().after(u.getData())
 					)
 			));

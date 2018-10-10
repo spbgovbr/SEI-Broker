@@ -21,7 +21,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.client.Serie;
-import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.modelo.TipoDocumento;
 import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
@@ -42,7 +41,7 @@ public class SeriesResource {
 	@Path("{unidade}/series")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Serie[] listarSeries(@PathParam("unidade") String unidade, @QueryParam("tipo-processo") String tipoProcesso, @QueryParam("filtro") String filtro) throws Exception{
-		Serie[] series = seiNativeService.listarSeries(Constantes.SEI_BROKER, Operacao.LISTAR_SERIES, isBlank(unidade)? null : unidadeResource.consultarCodigo(unidade), tipoProcesso);	
+		Serie[] series = seiNativeService.listarSeries(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, isBlank(unidade)? null : unidadeResource.consultarCodigo(unidade), tipoProcesso);	
 		
 		if(StringUtils.isNotBlank(filtro)){
 			List<Serie> list = new ArrayList<Serie>(Arrays.asList(series));

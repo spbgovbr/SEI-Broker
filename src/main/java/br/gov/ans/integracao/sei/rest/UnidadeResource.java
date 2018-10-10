@@ -18,7 +18,6 @@ import org.jboss.logging.Logger;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.client.Unidade;
 import br.gov.ans.integracao.sei.exceptions.BusinessException;
-import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
@@ -41,7 +40,7 @@ public class UnidadeResource {
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public br.gov.ans.integracao.sei.client.Unidade[] listarUnidades() throws Exception{
-		Unidade[] lista = seiNativeService.listarUnidades(Constantes.SEI_BROKER, Operacao.LISTAR_UNIDADES, null, null);
+		Unidade[] lista = seiNativeService.listarUnidades(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, null, null);
 
 		if(isMapUnidadesExpirado()){
 			carregarMapUnidades(lista);

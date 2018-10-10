@@ -10,7 +10,6 @@ import javax.ws.rs.core.MediaType;
 
 import br.gov.ans.integracao.sei.client.ArquivoExtensao;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
-import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 
 @Path("/")
@@ -26,6 +25,6 @@ public class ExtensoesResource {
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})	
 	public ArquivoExtensao[] listarExtensoesPermitidas(@PathParam("unidade") String unidade, @QueryParam("extensao") String extensao) throws Exception{
-		return seiNativeService.listarExtensoesPermitidas(Constantes.SEI_BROKER, Operacao.LISTAR_EXTENSOES, unidadeResource.consultarCodigo(unidade), extensao);		
+		return seiNativeService.listarExtensoesPermitidas(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), extensao);		
 	}
 }

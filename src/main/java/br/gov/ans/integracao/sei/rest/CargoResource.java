@@ -12,7 +12,6 @@ import javax.ws.rs.core.MediaType;
 
 import br.gov.ans.integracao.sei.client.Cargo;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
-import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 
 @Path("/")
@@ -28,6 +27,6 @@ public class CargoResource {
     @Path("{unidade}/cargos")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Cargo[] listarCargos(@PathParam("unidade") String unidade, @QueryParam("idCargo") String idCargo) throws RemoteException, Exception {
-		return seiNativeService.listarCargos(Constantes.SEI_BROKER, Operacao.LISTAR_HIPOTESES_LEGAIS, unidadeResource.consultarCodigo(unidade), idCargo);
+		return seiNativeService.listarCargos(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), idCargo);
 	}
 }

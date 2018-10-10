@@ -54,7 +54,6 @@ import br.gov.ans.integracao.sei.modelo.CancelamentoDocumento;
 import br.gov.ans.integracao.sei.modelo.DocumentoResumido;
 import br.gov.ans.integracao.sei.modelo.ExclusaoDocumento;
 import br.gov.ans.integracao.sei.modelo.InclusaoDocumento;
-import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.integracao.sei.utils.MessagesKeys;
 import br.gov.ans.utils.MessageUtils;
@@ -103,7 +102,7 @@ public class DocumentoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})	
 	public RetornoConsultaDocumento consultarDocumento(@PathParam("unidade") String unidade, @PathParam("documento") String documento, @QueryParam("andamento") String andamento,
 			@QueryParam("assinaturas") String assinaturas, @QueryParam("publicacao") String publicacao, @QueryParam("campos") String campos) throws Exception{
-		return seiNativeService.consultarDocumento(Constantes.SEI_BROKER, Operacao.CONSULTAR_DOCUMENTO, unidadeResource.consultarCodigo(unidade), documento, 
+		return seiNativeService.consultarDocumento(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), documento, 
 				getSOuN(andamento), getSOuN(assinaturas), getSOuN(publicacao), getSOuN(campos));	
 	}
 
@@ -121,7 +120,7 @@ public class DocumentoResource {
 		try{
 			logger.debug(messages.getMessage(MessagesKeys.DEBUG_NOVO_DOCUMENTO_ENVIADO));
 			
-			retorno = seiNativeService.incluirDocumento(Constantes.SEI_BROKER, Operacao.INCLUIR_DOCUMENTO,  unidadeResource.consultarCodigo(unidade), documento);
+			retorno = seiNativeService.incluirDocumento(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO,  unidadeResource.consultarCodigo(unidade), documento);
 			
 			logger.debug(messages.getMessage(MessagesKeys.DEBUG_NOVO_DOCUMENTO_PROCESSADO));
 		}catch(Exception ex){
@@ -145,7 +144,7 @@ public class DocumentoResource {
 	public String cancelarDocumento(@PathParam("unidade") String unidade, CancelamentoDocumento cancelamento) throws Exception{
 		validarMotivoCancelamento(cancelamento.getMotivo());
 		
-		String resultado = seiNativeService.cancelarDocumento(Constantes.SEI_BROKER, Operacao.CANCELAR_DOCUMENTO, unidadeResource.consultarCodigo(unidade), 
+		String resultado = seiNativeService.cancelarDocumento(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
 				cancelamento.getDocumento(), cancelamento.getMotivo());
 		
 		if(trueOrFalse(resultado)){
@@ -183,7 +182,7 @@ public class DocumentoResource {
 	@Path("{unidade}/documentos/{documento}/pdf")
 	@Produces(MediaType.APPLICATION_OCTET_STREAM)
 	public Response exportarDocumento(@PathParam("unidade") String unidade, @PathParam("documento") String documento) throws Exception{
-		RetornoConsultaDocumento retorno = seiNativeService.consultarDocumento(Constantes.SEI_BROKER, Operacao.CONSULTAR_DOCUMENTO, unidadeResource.consultarCodigo(unidade), documento, 
+		RetornoConsultaDocumento retorno = seiNativeService.consultarDocumento(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), documento, 
 				Constantes.NAO, Constantes.NAO, Constantes.NAO, Constantes.NAO);
 				
 		String linkAcesso = retorno.getLinkAcesso();

@@ -20,7 +20,6 @@ import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.modelo.Arquivo;
 import br.gov.ans.integracao.sei.modelo.ArquivoCriado;
-import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.modelo.ParteArquivo;
 import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
@@ -47,7 +46,7 @@ public class ArquivoResource {
 	public Response adicionarArquivo(@PathParam("unidade") String unidade, Arquivo arquivo) throws RemoteException, Exception{
 		validarTamanhoArquivo(arquivo);
 		
-		String identificador = seiNativeService.adicionarArquivo(Constantes.SEI_BROKER, Operacao.ADICIONAR_ARQUIVO, 
+		String identificador = seiNativeService.adicionarArquivo(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, 
 				unidadeResource.consultarCodigo(unidade), arquivo.getNome(), arquivo.getTamanho(), arquivo.getHash(), arquivo.getConteudo());
 		
 		return Response.created(getResourcePath(identificador)).entity(new ArquivoCriado(identificador)).build();
@@ -60,7 +59,7 @@ public class ArquivoResource {
 	public Response adicionarConteudoArquivo(@PathParam("unidade") String unidade, @PathParam("arquivo") String arquivo, ParteArquivo parte) throws RemoteException, Exception{
 		validarTamanhoParteArquivo(parte);
 		
-		String indice = seiNativeService.adicionarConteudoArquivo(Constantes.SEI_BROKER, Operacao.ADICIONAR_CONTEUDO_ARQUIVO, unidadeResource.consultarCodigo(unidade), parte.getArquivo(), 
+		String indice = seiNativeService.adicionarConteudoArquivo(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), parte.getArquivo(), 
 				parte.getConteudo());
 		
 		return Response.ok(getResourcePath(indice)).entity(new ArquivoCriado(indice)).build();

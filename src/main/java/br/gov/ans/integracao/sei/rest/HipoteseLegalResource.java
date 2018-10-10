@@ -13,7 +13,6 @@ import javax.ws.rs.core.MediaType;
 import br.gov.ans.integracao.sei.client.HipoteseLegal;
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.modelo.NivelAcesso;
-import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 
 @Path("/")
@@ -29,7 +28,7 @@ public class HipoteseLegalResource {
     @Path("{unidade}/hipoteses-legais")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public HipoteseLegal[] listarHipoteses(@PathParam("unidade") String unidade, @QueryParam("nivelAcesso") NivelAcesso nivelAcesso) throws RemoteException, Exception {
-		return seiNativeService.listarHipotesesLegais(Constantes.SEI_BROKER, Operacao.LISTAR_HIPOTESES_LEGAIS, unidadeResource.consultarCodigo(unidade), 
+		return seiNativeService.listarHipotesesLegais(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
 				nivelAcesso != null? nivelAcesso.ordinal()+"" : null);
 	}
     

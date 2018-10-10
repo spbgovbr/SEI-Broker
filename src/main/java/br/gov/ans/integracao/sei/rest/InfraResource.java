@@ -21,7 +21,6 @@ import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.dao.CidadeDAO;
 import br.gov.ans.integracao.sei.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
-import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.utils.Constantes;
 import br.gov.ans.utils.MessageUtils;
 
@@ -44,7 +43,7 @@ public class InfraResource {
     @Path("{unidade}/paises")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Pais[] getPaises(@PathParam("unidade") String unidade) throws RemoteException, Exception{
-    	return seiNativeService.listarPaises(Constantes.SEI_BROKER, Operacao.LISTAR_ESTADOS, unidadeResource.consultarCodigo(unidade));
+    	return seiNativeService.listarPaises(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade));
     }
 
     @GET
@@ -55,7 +54,7 @@ public class InfraResource {
 			pais = Constantes.CODIGO_BRASIL;
 		}
 		
-		return seiNativeService.listarEstados(Constantes.SEI_BROKER, Operacao.LISTAR_ESTADOS, unidadeResource.consultarCodigo(unidade), pais);
+		return seiNativeService.listarEstados(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), pais);
 	}
 
     @GET
@@ -66,7 +65,7 @@ public class InfraResource {
 			pais = Constantes.CODIGO_BRASIL;
 		}
 		
-		Estado[] estados = seiNativeService.listarEstados(Constantes.SEI_BROKER, Operacao.LISTAR_ESTADOS, unidadeResource.consultarCodigo(unidade), pais);
+		Estado[] estados = seiNativeService.listarEstados(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), pais);
 		int indexOf = ArrayUtils.indexOf(estados, new Estado(uf.toUpperCase()));
 				
 		if(indexOf < 0){

@@ -22,7 +22,6 @@ import javax.ws.rs.core.MediaType;
 
 import br.gov.ans.integracao.sei.client.SeiPortTypeProxy;
 import br.gov.ans.integracao.sei.modelo.AtribuicaoProcesso;
-import br.gov.ans.integracao.sei.modelo.Operacao;
 import br.gov.ans.integracao.sei.modelo.Usuario;
 import br.gov.ans.integracao.sei.modelo.enums.Acao;
 import br.gov.ans.integracao.sei.utils.Constantes;
@@ -48,7 +47,7 @@ public class UsuarioResource {
 	@Path("/{unidade}/usuarios")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public br.gov.ans.integracao.sei.client.Usuario[] listarUsuarios(@PathParam("unidade") String unidade, @QueryParam("usuario") String usuario) throws RemoteException, Exception{
-		return seiNativeService.listarUsuarios(Constantes.SEI_BROKER, Operacao.LISTAR_USUARIOS, unidadeResource.consultarCodigo(unidade), usuario);
+		return seiNativeService.listarUsuarios(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), usuario);
 	}
 
 	@GET	
@@ -64,7 +63,7 @@ public class UsuarioResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String atribuirProcesso(@PathParam("unidade") String unidade, 
 			@PathParam("usuario") String usuario, AtribuicaoProcesso processo) throws Exception{
-		String resultado = seiNativeService.atribuirProcesso(Constantes.SEI_BROKER, Operacao.ATRIBUIR_PROCESSO, unidadeResource.consultarCodigo(unidade), 
+		String resultado = seiNativeService.atribuirProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
 				formatarNumeroProcesso(processo.getProcesso()), getUsuario(usuario, unidade).getIdUsuario(), getSOuN(processo.isReabrir()));
 	
 		return trueOrFalse(resultado) + "";

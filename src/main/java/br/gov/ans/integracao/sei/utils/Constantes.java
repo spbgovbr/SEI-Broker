@@ -12,6 +12,7 @@ public class Constantes {
 	public static final String ACCEPT_HEADER_KEY = "Accept";
 	private static final int AXIS_TIMEOUT_IN_MINUTES = 10;
 	public static final int AXIS_TIMEOUT = 1000 * (60 * AXIS_TIMEOUT_IN_MINUTES);
+	public static final String CHAVE_IDENTIFICACAO = "REALIZAR_INTEGRACAO";
 	public static final String CODIGO_BRASIL = "76";
 	public static final String CODIGO_ORGAO_ANS = "0";
 	public static final String  CONTENT_TYPE_HEADER_KEY= "Content-Type";
