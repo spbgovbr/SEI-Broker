@@ -81,4 +81,4 @@ O SEI-Broker faz uso de dois arquivos de propriedades que ficam na pasta `<JBOSS
 [^2]: https://en.wikipedia.org/wiki/Role-based_access_control
 
 ## Diagrama de implantação
-[Diagrama de implantação](uploads/SEI-Broker-Diagrama-Implantacao.png)
+<img src="/uploads/SEI-Broker-Diagrama-Implantacao.png"  width="800" height="452">
