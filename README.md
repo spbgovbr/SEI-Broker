@@ -42,10 +42,32 @@ Abaixo um exemplo de declaração de propriedades feita no arquivo `standalone.x
 ### 2 - Arquivos de propriedades
 O SEI-Broker faz uso de dois arquivos de propriedades que ficam na pasta `<JBOSS_HOME>\ans\properties`, os arquivos necessários são `services.properties` e `ws-users.properties`.
 
-| Arquivo					| Chave					| Valor 							|
-| -------------------------	| --------------------- | --------------------------------- |
-| /3 services.properties	| sei.ws.uri			| URL do SEI 						|
-|							| sip.ws.uri			| URL do SIP 						|
-|							| templates.broker.uri	| URL do templates-broker 			|
-| /2 ws-users.properties	| sei.broker.user		| Usuário de integração do broker 	|
-|							| sei.broker.password	| Senha do usuário de integração 	|
+<table>
+  <tr>
+    <th>Arquivo</th>
+    <th>Propriedade</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td rowspan="3">services.properties</td>
+    <td>sei.ws.uri</td>
+    <td>URL do SEI</td>
+  </tr>
+  <tr>
+    <td>sip.ws.uri</td>
+    <td>URL do SIP</td>
+  </tr>
+  <tr>
+    <td>templates.broker.uri</td>
+    <td>URL do templates-broker</td>
+  </tr>
+  <tr>
+    <td rowspan="2">ws-users-properties</td>
+    <td>sei.broker.user</td>
+    <td>Usuário de integração do broker</td>
+  </tr>
+  <tr>
+    <td>sei.broker.password</td>
+    <td>Senha do usuário de integração</td>
+  </tr>
+</table>
