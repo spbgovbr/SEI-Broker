@@ -14,7 +14,7 @@ Alguns serviços adicionais foram desenvolvidos extrair dados que não são ofer
 - Conexão com a internet para que o Maven acesse os repositórios hospedeiros das dependências.
 
 ## Procedimentos para instalação
-1. Configure as propriedades dos datasources no JBoss, elas são declaradas como System Properties.
+### 1 - Configure as propriedades dos datasources no JBoss, elas são declaradas como System Properties.
 
 O broker possui dois datasources e ambos estão declarados no arquivo `sei-broker-ds.xml`, eles são identificados como `jdbc/sei-broker` e `jdbc/sei-mysql`. O `jdbc/sei-broker` foi definido para acessar as tabelas que foram projetadas para o broker, o `jdbc/sei-mysql` se conecta ao banco de dados do SEI.
 
@@ -31,10 +31,21 @@ Abaixo um exemplo de declaração de propriedades feita no arquivo `standalone.x
 <!-- Geralmente no início do arquivo, após as extensions -->
 <system-properties>
 	<!-- Outras propriedades ... -->
-	<property name="br.gov.ans.seiBroker.db.oracle.connectionUrl" value="jdbc:oracle:thin:@exans01db04.ans.gov.br:1523:anshm2"/>
-	<property name="br.gov.ans.seiBroker.db.oracle.password" value="******"/>
-	<property name="br.gov.ans.seiBroker.db.mysql.user" value="usuario_sei_brok"/>
-	<property name="br.gov.ans.seiBroker.db.mysql.connectionUrl" value="jdbc:mysql://anshmmysql01:3306/sei-ds"/>
-	<property name="br.gov.ans.seiBroker.db.mysql.password" value="******"/>
+	<property name="br.gov.ans.seiBroker.db.oracle.connectionUrl" value="STRING_CONEXAO_BD_BROKER"/>
+	<property name="br.gov.ans.seiBroker.db.oracle.password" value="SENHA_USUARIO_SEI_BROKER"/>
+	<property name="br.gov.ans.seiBroker.db.mysql.user" value="USUARIO_MYSQL"/>
+	<property name="br.gov.ans.seiBroker.db.mysql.connectionUrl" value="STRING_CONEXAO_BD_SEI"/>
+	<property name="br.gov.ans.seiBroker.db.mysql.password" value="SENHA_USUARIO_BD_SEI"/>
 </system-properties>
 ```
+
+### 2 - Arquivos de propriedades
+O SEI-Broker faz uso de dois arquivos de propriedades que ficam na pasta `<JBOSS_HOME>\ans\properties`, os arquivos necessários são `services.properties` e `ws-users.properties`.
+
+| Arquivo					| Chave					| Valor 							|
+| -------------------------	| --------------------- | --------------------------------- |
+| /3 services.properties	| sei.ws.uri			| URL do SEI 						|
+|							| sip.ws.uri			| URL do SIP 						|
+|							| templates.broker.uri	| URL do templates-broker 			|
+| /2 ws-users.properties	| sei.broker.user		| Usuário de integração do broker 	|
+|							| sei.broker.password	| Senha do usuário de integração 	|
