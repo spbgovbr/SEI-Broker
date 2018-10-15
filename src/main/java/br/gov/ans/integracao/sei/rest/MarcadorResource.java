@@ -40,7 +40,7 @@ public class MarcadorResource {
 	@Path("{unidade}/marcadores")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Marcador[] listarMarcadores(@PathParam("unidade") String unidade) throws RemoteException, Exception{
-		return seiNativeService.listarMarcadoresUnidade(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade));
+		return seiNativeService.listarMarcadoresUnidade(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade));
 	}
 
 	@POST
@@ -57,7 +57,7 @@ public class MarcadorResource {
 		definicaoMarcador.setTexto(marcacao.getTexto());
 		definicaoMarcador.setIdMarcador(marcador);
 		
-		String retorno = seiNativeService.definirMarcador(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), new DefinicaoMarcador[]{definicaoMarcador});
+		String retorno = seiNativeService.definirMarcador(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), new DefinicaoMarcador[]{definicaoMarcador});
 		
 		if(trueOrFalse(retorno)){
 			return Response.status(Status.CREATED).build();

@@ -27,6 +27,6 @@ public class CargoResource {
     @Path("{unidade}/cargos")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Cargo[] listarCargos(@PathParam("unidade") String unidade, @QueryParam("idCargo") String idCargo) throws RemoteException, Exception {
-		return seiNativeService.listarCargos(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), idCargo);
+		return seiNativeService.listarCargos(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), idCargo);
 	}
 }

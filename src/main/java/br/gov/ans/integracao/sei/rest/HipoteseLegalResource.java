@@ -28,7 +28,7 @@ public class HipoteseLegalResource {
     @Path("{unidade}/hipoteses-legais")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public HipoteseLegal[] listarHipoteses(@PathParam("unidade") String unidade, @QueryParam("nivelAcesso") NivelAcesso nivelAcesso) throws RemoteException, Exception {
-		return seiNativeService.listarHipotesesLegais(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
+		return seiNativeService.listarHipotesesLegais(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
 				nivelAcesso != null? nivelAcesso.ordinal()+"" : null);
 	}
     

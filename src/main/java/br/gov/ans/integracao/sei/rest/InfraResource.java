@@ -43,7 +43,7 @@ public class InfraResource {
     @Path("{unidade}/paises")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Pais[] getPaises(@PathParam("unidade") String unidade) throws RemoteException, Exception{
-    	return seiNativeService.listarPaises(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade));
+    	return seiNativeService.listarPaises(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade));
     }
 
     @GET
@@ -54,7 +54,7 @@ public class InfraResource {
 			pais = Constantes.CODIGO_BRASIL;
 		}
 		
-		return seiNativeService.listarEstados(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), pais);
+		return seiNativeService.listarEstados(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), pais);
 	}
 
     @GET
@@ -65,7 +65,7 @@ public class InfraResource {
 			pais = Constantes.CODIGO_BRASIL;
 		}
 		
-		Estado[] estados = seiNativeService.listarEstados(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), pais);
+		Estado[] estados = seiNativeService.listarEstados(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), pais);
 		int indexOf = ArrayUtils.indexOf(estados, new Estado(uf.toUpperCase()));
 				
 		if(indexOf < 0){

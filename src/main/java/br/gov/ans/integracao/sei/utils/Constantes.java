@@ -23,22 +23,20 @@ public class Constantes {
 	public static final String MASCARA_PROCESSO_17 = "#####.######/####-##";
 	public static final String MASCARA_PROCESSO_21 = "#######.########/####-##";
 	public static final String MYSQL_SQL_TEST_CONECTION = "SELECT version()";
-	public static String NAO = "N";
+	public static final String NAO = "N";
 	public static final String NOME_SISTEMA = "sei-broker";
 	public static final String ORACLE_SQL_TEST_CONECTION = "SELECT BANNER FROM V$VERSION WHERE ROWNUM = 1";
 	public static final String REGEX_MASCARA_PROCESSO = "(\\d)(\\d)(\\d)(\\d)(\\d)(\\.)(\\d)(\\d)(\\d)(\\d)(\\d)(\\d)(\\/)(\\d)(\\d)(\\d)(\\d)(-)(\\d)(\\d)";
 	public static final String REGEX_SOMENTE_NUMEROS = "\\D+";
 	public static final String RESOURCE_METHOD_INVOKER = "org.jboss.resteasy.core.ResourceMethodInvoker";
-	public static final String SEI_BROKER = "SEI-Broker";
 	public static final String SEI_RESPONDEU_COM_SUCESSO = "SEI respondeu com sucesso.";
-	public static String SIM = "S";
+	public static final String SIGLA_SEI_BROKER = "SEI-Broker";
+	public static final String SIM = "S";
 	public static final String SQL_AND = "AND ";
 	public static final String SQL_WHERE = "WHERE ";
 	public static final int TAMANHO_MAXIMO_ARQUIVO = 16777216;
 	public static final int TAMANHO_MAXIMO_DOCUMENTO = 22020096;
 	public static final Integer TAMANHO_PAGINA_PADRAO = 50; 
-	public static final String TEMPLATE_DIR = "sei";
-	public static final String TEMPLATES_HOME = JBOSS_HOME + "/ans/templates/";
 	public static final String UTF8 = "UTF-8";
 	
 	public static final FastDateFormat DATE_FORMATTER = FastDateFormat.getInstance(DATE_PATTERN);

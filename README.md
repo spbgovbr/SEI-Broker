@@ -15,7 +15,7 @@ Alguns serviços adicionais foram desenvolvidos para extrair dados que não são
 - [Templates-broker](https://softwarepublico.gov.br/gitlab/ans/templates-broker) implantado e configurado. Este requisito é **opcional**, ele é necessário caso haja interesse em utilizar o [Gerenciador de Templates](https://softwarepublico.gov.br/gitlab/ans/templates-web).
 
 ## Procedimentos para instalação
-### 1 - Configure as propriedades dos datasources no JBoss, elas são declaradas como System Properties.
+### Configure as propriedades dos datasources no JBoss, elas são declaradas como System Properties.
 
 O broker possui dois datasources e ambos estão declarados no arquivo `sei-broker-ds.xml`, eles são identificados como `jdbc/sei-broker` e `jdbc/sei-mysql`. O `jdbc/sei-broker` foi definido para acessar as tabelas que foram projetadas para o broker, o `jdbc/sei-mysql` se conecta ao banco de dados do SEI.
 
@@ -40,7 +40,7 @@ Abaixo um exemplo de declaração de propriedades feita no arquivo `standalone.x
 </system-properties>
 ```
 
-### 2 - Criar e configurar os arquivos de propriedades no JBoss
+### Criar e configurar os arquivos de propriedades no JBoss
 
 O SEI-Broker faz uso de dois arquivos de propriedades que ficam na pasta `<JBOSS_HOME>\ans\properties`, os arquivos necessários são `services.properties` e `ws-users.properties`.
 
@@ -74,11 +74,22 @@ O SEI-Broker faz uso de dois arquivos de propriedades que ficam na pasta `<JBOSS
   </tr>
 </table>
 
-### 3 - Criar security-domain no JBoss
+### Criar security-domain no JBoss
 
 É necessário que haja um security-domain registrado com o nome `ans-ws-auth`, o mesmo pode utilizar um banco de dados[^1] ou o LDAP. É importante destacar que o Broker trabalha com autorização baseada em papéis(RBAC[^2]) e que os usuários precisam ter seus papéis atribuídos.
 [^1]: https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/how_to_configure_identity_management/configuring_a_security_domain_to_use_a_database
 [^2]: https://en.wikipedia.org/wiki/Role-based_access_control
 
-## Diagrama de implantação
-<img src="/uploads/SEI-Broker-Diagrama-Implantacao.png"  width="800" height="452">
+### Implantar pacote gerado pelo Maven
+
+Após a realização de todos os passos anteriores, teremos o JBoss pronto para receber o pacote do SEI-Broker. O deploy pode ser feito de diversas maneiras e não é o foco desse manual. 
+
+Para essa etapa é necessário ter o Maven instalado e configurado. Ao realizar o primeiro build devemos desabilitar os testes automatizados, os testes dependem de uma instância ativa e impedirão a geração do pacote.
+
+### Configurar Sistema no SEI
+
+É preciso cadastrar o SEI-Broker como um sistema que se integrará ao SEI, conforme [manual de webservices do SEI](https://softwarepublico.gov.br/social/sei/manuais/manual-de-webservices). É importante ter atenção para a **sigla** quer será definida, por padrão o broker está configurado para utilizar a sigla `SEI-Broker`.
+
+Após o cadastro do Sistema precisaremos atribuir os serviços que serão utilizados pelo Broker, nesta etapa é preciso ter atenção para o valor que será definido no campo **identificação** e aos **servidores**. A identificação do serviço precisa ser enviada a cada requisição feita aos serviços do SEI, por padrão o Broker utiliza o valor `REALIZAR_INTEGRACAO`. No campo servidores informaremos os IPs dos servidores onde o SEI-Broker estará implantado.
+
+Os valores utilizados pelo Broker podem ser configurados na classe `Constantes`, **sigla** e **identificação** são respectivamente `SIGLA_SEI_BROKER` e `CHAVE_IDENTIFICACAO`.

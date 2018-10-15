@@ -87,7 +87,7 @@ public class InfoResource {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String testSEIConnection() throws Exception{
 		try{
-			seiNativeService.listarUnidades(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, null, null);
+			seiNativeService.listarUnidades(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, null, null);
 			
 			return Constantes.SEI_RESPONDEU_COM_SUCESSO;
 		}catch(Exception ex){

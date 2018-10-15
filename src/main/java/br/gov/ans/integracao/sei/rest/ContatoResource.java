@@ -79,7 +79,7 @@ public class ContatoResource {
 			@QueryParam("cnpj") String cnpj, @QueryParam("sigla") String sigla, @QueryParam("matricula") String matricula, @QueryParam("qtdRegistros") String qtdRegistros, 
 			@QueryParam("pagina") String pagina) throws RemoteException, BusinessException, Exception{
 		
-    	Contato[] contatos = seiNativeService.listarContatos(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), tipo.getCodigo(), 
+    	Contato[] contatos = seiNativeService.listarContatos(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), tipo.getCodigo(), 
 				qtdRegistros == null? null : parseInt(qtdRegistros)+"", pagina == null? null:parseInt(pagina)+"", sigla, nome, cpf, cnpj, matricula, null);
     	
     	List<Pessoa> pessoas = pessoaHelper.buildPessoa(contatos);
@@ -91,7 +91,7 @@ public class ContatoResource {
     @Path("{unidade}/contatos/{tipo}/{sigla}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Pessoa getContato(@PathParam("unidade") String unidade, @PathParam("tipo") TipoContato tipo, @PathParam("sigla") String sigla) throws RemoteException, Exception{
-    	Contato[] contatos = seiNativeService.listarContatos(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), tipo.getCodigo(), 
+    	Contato[] contatos = seiNativeService.listarContatos(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), tipo.getCodigo(), 
 				null, null, sigla, null, null, null, null, null);
     	
     	if(ArrayUtils.isEmpty(contatos)){
@@ -144,7 +144,7 @@ public class ContatoResource {
     	Contato[] contatos = {contato};
     	
     	try{
-    		resultado = seiNativeService.atualizarContatos(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), contatos);    		
+    		resultado = seiNativeService.atualizarContatos(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), contatos);    		
     	}catch(Exception ex){
     		throw new WrappedException(ex);
     	}

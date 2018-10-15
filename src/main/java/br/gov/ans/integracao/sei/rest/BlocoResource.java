@@ -51,14 +51,14 @@ public class BlocoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public RetornoConsultaBloco consultarBloco(@PathParam("unidade") String unidade, @PathParam("bloco") String bloco, 
 			@QueryParam("protocolos") String exibirProtocolos) throws Exception{
-		return seiNativeService.consultarBloco(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, getSOuN(exibirProtocolos));
+		return seiNativeService.consultarBloco(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, getSOuN(exibirProtocolos));
 	}
 	
 	@POST
 	@Path("{unidade}/blocos/disponibilizados")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String disponibilizarBloco(@PathParam("unidade") String unidade, String bloco) throws Exception{
-		String resultado = seiNativeService.disponibilizarBloco(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco);
+		String resultado = seiNativeService.disponibilizarBloco(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco);
 		
 		return trueOrFalse(resultado) + "";
 	}
@@ -67,7 +67,7 @@ public class BlocoResource {
 	@Path("{unidade}/blocos/disponibilizados/{bloco}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String cancelarDisponibilizacaoBloco(@PathParam("unidade") String unidade, @PathParam("bloco") String bloco) throws Exception{
-		String resultado = seiNativeService.cancelarDisponibilizacaoBloco(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, 
+		String resultado = seiNativeService.cancelarDisponibilizacaoBloco(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, 
 				unidadeResource.consultarCodigo(unidade), bloco);
 				
 		return trueOrFalse(resultado) + "";
@@ -77,7 +77,7 @@ public class BlocoResource {
 	@Path("{unidade}/blocos/{bloco}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String excluirBloco(@PathParam("unidade") String unidade, @PathParam("bloco") String bloco) throws Exception{
-		String resultado = seiNativeService.excluirBloco(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco);
+		String resultado = seiNativeService.excluirBloco(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco);
 				
 		return trueOrFalse(resultado) + "";
 	}
@@ -87,7 +87,7 @@ public class BlocoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response gerarBloco(@PathParam("unidade") String unidade, NovoBloco bloco) throws Exception{		
-		String retorno = seiNativeService.gerarBloco(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco.getTipo().getCodigo(), 
+		String retorno = seiNativeService.gerarBloco(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco.getTipo().getCodigo(), 
 				bloco.getDescricao(), unidadeResource.buscarCodigoUnidades(bloco.getUnidades()), bloco.getDocumentos(), getSOuN(bloco.isDisponibilizar()));	
 		
 		return Response.created(getResourcePath(retorno)).entity(retorno).build();
@@ -99,7 +99,7 @@ public class BlocoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String incluirDocumentoNoBloco(@PathParam("unidade") String unidade, 
 			@PathParam("bloco") String bloco, String documento) throws Exception{
-		String resultado = seiNativeService.incluirDocumentoBloco(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, documento,
+		String resultado = seiNativeService.incluirDocumentoBloco(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, documento,
 				null);
 
 		return trueOrFalse(resultado) + "";
@@ -111,7 +111,7 @@ public class BlocoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response incluirDocumentoComAnotacaoNoBloco(@PathParam("unidade") String unidade, 
 			@PathParam("bloco") String bloco, InclusaoDocumentoBloco inclusao) throws Exception{
-		String resultado = seiNativeService.incluirDocumentoBloco(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, 
+		String resultado = seiNativeService.incluirDocumentoBloco(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, 
 				inclusao.getDocumento(), inclusao.getAnotacao());
 
 		if(trueOrFalse(resultado)){
@@ -125,7 +125,7 @@ public class BlocoResource {
 	@Path("{unidade}/blocos/{bloco}/documentos/{documento}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String retirarDocumentoDoBloco(@PathParam("unidade") String unidade, @PathParam("bloco") String bloco, @PathParam("documento") String documento) throws Exception{
-		String resultado = seiNativeService.retirarDocumentoBloco(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, documento);
+		String resultado = seiNativeService.retirarDocumentoBloco(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, documento);
 						
 		return trueOrFalse(resultado) + "";
 	}
@@ -140,7 +140,7 @@ public class BlocoResource {
 			processo = formatarNumeroProcesso(processo);
 		}
 		
-		String resultado =  seiNativeService.incluirProcessoBloco(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, 
+		String resultado =  seiNativeService.incluirProcessoBloco(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, 
 				processo, null);
 		
 		return trueOrFalse(resultado) + "";
@@ -157,7 +157,7 @@ public class BlocoResource {
 			inclusao.setProcesso(numeroFormatado);
 		}
 		
-		String resultado =  seiNativeService.incluirProcessoBloco(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, 
+		String resultado =  seiNativeService.incluirProcessoBloco(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, 
 				inclusao.getProcesso(), inclusao.getAnotacao());
 		
 		if(trueOrFalse(resultado)){
@@ -176,7 +176,7 @@ public class BlocoResource {
 			processo = formatarNumeroProcesso(processo);
 		}
 		
-		String resultado = seiNativeService.retirarProcessoBloco(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, processo);
+		String resultado = seiNativeService.retirarProcessoBloco(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), bloco, processo);
 				
 		return trueOrFalse(resultado) + "";
 	}

@@ -26,7 +26,7 @@ public class TipoConferenciaResource {
     @Path("{unidade}/tipos-conferencia")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public TipoConferencia[] listarTiposConferencia(@PathParam("unidade") String unidade) throws RemoteException, Exception{
-		return seiNativeService.listarTiposConferencia(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, 
+		return seiNativeService.listarTiposConferencia(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, 
 				unidadeResource.consultarCodigo(unidade));
 	}
 }

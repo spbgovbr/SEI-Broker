@@ -135,7 +135,7 @@ public class ProcessoResource {
 		}
 		
 		try{
-			return seiNativeService.consultarProcedimento(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo, getSOuN(exibirAssuntos), 
+			return seiNativeService.consultarProcedimento(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo, getSOuN(exibirAssuntos), 
 					getSOuN(exibirInteressados), getSOuN(exibirObservacoes), getSOuN(exibirAndamento), getSOuN(exibirAndamentoConclusao), getSOuN(exibirUltimoAndamento), getSOuN(exibirUnidadesAberto), 
 					getSOuN(exibirProcessosRelacionados), getSOuN(exibirProcessosAnexados));
 		}catch(AxisFault ex){
@@ -168,7 +168,7 @@ public class ProcessoResource {
 			processo = formatarNumeroProcesso(processo);
 		}
 		
-		String resultado = seiNativeService.concluirProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo);
+		String resultado = seiNativeService.concluirProcesso(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo);
 
 		return trueOrFalse(resultado) + "";
 	}
@@ -185,7 +185,7 @@ public class ProcessoResource {
 			processo = dadosEnvio.getNumeroDoProcesso();
 		}
 		
-		String resultado = seiNativeService.enviarProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo,
+		String resultado = seiNativeService.enviarProcesso(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo,
 					unidadeResource.buscarCodigoUnidades(dadosEnvio.getUnidadesDestino()), getSOuN(dadosEnvio.getManterAbertoOrigem()), getSOuN(dadosEnvio.getRemoverAnotacoes()), 
 					getSOuN(dadosEnvio.getEnviarEmailNotificacao()), formatarData(dadosEnvio.getDataRetornoProgramado()), 
 					(dadosEnvio.getQtdDiasAteRetorno() != null ? dadosEnvio.getQtdDiasAteRetorno().toString() : null), getSOuN(dadosEnvio.getSomenteDiasUteis()),
@@ -202,7 +202,7 @@ public class ProcessoResource {
 			processo = formatarNumeroProcesso(processo);
 		}
 		
-		String resultado = seiNativeService.reabrirProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo);
+		String resultado = seiNativeService.reabrirProcesso(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo);
 
 		return trueOrFalse(resultado) + "";
 	}
@@ -211,7 +211,7 @@ public class ProcessoResource {
 	@Path("{unidade}/processos/tipos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public TipoProcedimento[] listarTiposProcesso(@PathParam("unidade") String unidade, @QueryParam("serie") String serie) throws Exception{
-		return seiNativeService.listarTiposProcedimento(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), serie);		
+		return seiNativeService.listarTiposProcedimento(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), serie);		
 	}
 	
 	@POST
@@ -226,7 +226,7 @@ public class ProcessoResource {
 			processo.getDadosProcesso().setNumeroProtocolo(numeroFormatado);
 		}
 				
-		RetornoGeracaoProcedimento retorno = seiNativeService.gerarProcedimento(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo.getDadosProcesso(), processo.getDocumentos(), 
+		RetornoGeracaoProcedimento retorno = seiNativeService.gerarProcedimento(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo.getDadosProcesso(), processo.getDocumentos(), 
 				 processo.getProcessosRelacionados(), unidadeResource.buscarCodigoUnidades(processo.getUnidadesDestino()), getSOuN(processo.isManterAbertoOrigem()), 
 				 getSOuN(processo.isEnviarEmailNotificacao()), formatarData(processo.getDataRetornoProgramado()), (processo.getQtdDiasAteRetorno() != null ? processo.getQtdDiasAteRetorno().toString() : null), getSOuN(processo.isSomenteDiasUteis()),
 				 processo.getIdMarcadador(), processo.getTextoMarcador());
@@ -280,7 +280,7 @@ public class ProcessoResource {
 			tarefas = new String[]{"1","48","65"};
 		}
 		
-		return seiNativeService.listarAndamentos(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo), 
+		return seiNativeService.listarAndamentos(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo), 
 				getSOuN(retornarAtributos), andamentos, tarefas, tarefasModulos);		
 	}
 
@@ -289,7 +289,7 @@ public class ProcessoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response lancarAndamento(@PathParam("unidade") String unidade, @PathParam("processo") String processo, NovoAndamento andamento) throws RemoteException, Exception{
 		
-		Andamento andamentoLancado = seiNativeService.lancarAndamento(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo)
+		Andamento andamentoLancado = seiNativeService.lancarAndamento(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo)
 				, andamento.getTarefa(), andamento.getTarefaModulo(), buildAtributosAndamento(andamento.getAtributos()));		
 		
 		return Response.status(Status.CREATED).entity(andamentoLancado).build();
@@ -303,7 +303,7 @@ public class ProcessoResource {
 			throw new BusinessException(messages.getMessage("erro.processo.anexado.nao.infomado"));
 		}
 		
-		String retorno = seiNativeService.anexarProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo), 
+		String retorno = seiNativeService.anexarProcesso(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo), 
 				formatarNumeroProcesso(processoAnexado.getNumero()));
 		
 		if(trueOrFalse(retorno)){
@@ -322,7 +322,7 @@ public class ProcessoResource {
 			throw new BusinessException(messages.getMessage("erro.motivo.nao.infomado"));
 		}		
 		
-		String retorno = seiNativeService.desanexarProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo), 
+		String retorno = seiNativeService.desanexarProcesso(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo), 
 				formatarNumeroProcesso(processoAnexado), motivo.getMotivo());
 		
 		if(trueOrFalse(retorno)){
@@ -341,7 +341,7 @@ public class ProcessoResource {
 			throw new BusinessException(messages.getMessage("erro.informe.processo"));
 		}
 		
-		String retorno = seiNativeService.bloquearProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
+		String retorno = seiNativeService.bloquearProcesso(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
 				formatarNumeroProcesso(processo.getNumero()));
 		
 		if(trueOrFalse(retorno)){
@@ -356,7 +356,7 @@ public class ProcessoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response desbloquearProcesso(@PathParam("unidade") String unidade, @PathParam("processo") String processo) throws RemoteException, Exception{
 
-		String retorno = seiNativeService.desbloquearProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo));
+		String retorno = seiNativeService.desbloquearProcesso(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo));
 		
 		if(trueOrFalse(retorno)){
 			return Response.ok().build();
@@ -373,7 +373,7 @@ public class ProcessoResource {
 			throw new BusinessException(messages.getMessage("erro.processo.relacionado.nao.infomado"));
 		}
 		
-		String retorno = seiNativeService.relacionarProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo), 
+		String retorno = seiNativeService.relacionarProcesso(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), formatarNumeroProcesso(processo), 
 				formatarNumeroProcesso(processoRelacionado.getNumero()));
 		
 		if(trueOrFalse(retorno)){
@@ -389,7 +389,7 @@ public class ProcessoResource {
 	public Response desrelacionarProcesso(@PathParam("unidade") String unidade, @PathParam("processo") String processo, @PathParam("processoRelacionado") String processoRelacionado) 
 			throws RemoteException, Exception{
 
-		String retorno = seiNativeService.removerRelacionamentoProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
+		String retorno = seiNativeService.removerRelacionamentoProcesso(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
 				formatarNumeroProcesso(processo), formatarNumeroProcesso(processoRelacionado));
 		
 		if(trueOrFalse(retorno)){
@@ -408,7 +408,7 @@ public class ProcessoResource {
 			throw new BusinessException(messages.getMessage("erro.campos.obrigatorios.sobrestamento.processo"));
 		}
 		
-		String retorno = seiNativeService.sobrestarProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
+		String retorno = seiNativeService.sobrestarProcesso(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
 				formatarNumeroProcesso(sobrestamento.getProcesso()), formatarNumeroProcesso(sobrestamento.getProcessoVinculado()), sobrestamento.getMotivo());
 		
 		if(trueOrFalse(retorno)){
@@ -423,7 +423,7 @@ public class ProcessoResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response removerSobrestamentoProcesso(@PathParam("unidade") String unidade, @PathParam("processo") String processo) throws RemoteException, Exception{
 				
-		String retorno = seiNativeService.removerSobrestamentoProcesso(Constantes.SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
+		String retorno = seiNativeService.removerSobrestamentoProcesso(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), 
 				formatarNumeroProcesso(processo));
 		
 		if(trueOrFalse(retorno)){
