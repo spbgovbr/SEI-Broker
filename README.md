@@ -18,7 +18,7 @@ Alguns serviços adicionais foram desenvolvidos para extrair dados que não são
 ## Procedimentos para instalação
 ### Configurar as propriedades dos datasources no JBoss.
 
-O broker possui dois datasources e ambos estão declarados no arquivo `sei-broker-ds.xml`, eles são identificados como `jdbc/sei-broker` e `jdbc/sei-mysql`. O `jdbc/sei-broker` foi definido para acessar as tabelas que foram projetadas para o broker, o `jdbc/sei-mysql` se conecta ao banco de dados do SEI. O funcionamento dos datasources depende da declaração de algumas **Systrem Properties** no JBoss.
+O broker possui dois datasources e ambos estão declarados no arquivo `sei-broker-ds.xml`, eles são identificados como `jdbc/sei-broker` e `jdbc/sei-mysql`. O `jdbc/sei-broker` foi definido para acessar as tabelas que foram projetadas para o broker, o `jdbc/sei-mysql` se conecta ao banco de dados do SEI. O funcionamento dos datasources depende da declaração de algumas **System Properties** no JBoss.
 
 | Chave											| Valor 										|
 | --------------------------------------------- | --------------------------------------------- |
@@ -75,7 +75,7 @@ O SEI-Broker faz uso de dois arquivos de propriedades que ficam na pasta `<JBOSS
   </tr>
 </table>
 
-### Criar security-domain no JBoss
+### Criar security-domain no JBoss {: #config-security-domain} 
 
 É necessário que haja um security-domain registrado com o nome `ans-ws-auth`, o mesmo pode utilizar um banco de dados[^1] ou o LDAP. É importante destacar que o Broker trabalha com autorização baseada em papéis(RBAC[^2]) e que os usuários precisam ter seus papéis atribuídos.
 [^1]: https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/how_to_configure_identity_management/configuring_a_security_domain_to_use_a_database
@@ -97,7 +97,7 @@ Os valores utilizados pelo Broker podem ser configurados na classe `Constantes`,
 
 ### Gerar documentação da API
 
-Após a implantação é fundamental que a documentação da API seja disponibilizada para os clientes do Broker. A documentação do Broker foi escrita utilizando a ferramenta [apiDoc](http://apidocjs.com/) e os fontes estão no diretório `/src/main/resources/apidoc/`. Será preciso fazer a instalação do apiDoc[^3] e executar o comando abaixo na raiz do projeto.
+Após a implantação é **fundamental** que a documentação da API seja disponibilizada para os clientes do Broker. A documentação do Broker foi escrita utilizando a ferramenta [apiDoc](http://apidocjs.com/) e os fontes estão no diretório `/src/main/resources/apidoc/`. Será preciso fazer a instalação do apiDoc[^3] e executar o comando abaixo na raiz do projeto.
 [^3]: http://apidocjs.com/#install
  
 ```console
@@ -105,6 +105,24 @@ apidoc -f ".*\\.apidoc$" -i src/main/resources/apidoc/ -o <CAMINHO_ONDE_DOCUMENT
 ```
 
 A documentação gerada deve ser disponibilizada em um local onde possa ser facilmente acessada pelos clientes.
+
+## Autenticação e Autorização
+A autenticação no SEI-Broker é feita através do HTTP Basic e a autorização é baseada em roles/papéis que são atribuídas ao usuário. Os sistemas que utilizarão o broker precisarão de um usuário, esse usuário deve ser previamente cadastrados em uma fonte de dados e receber a role correspondente às suas necessidades. Esses dados serão verificados pelo security-domain `ans-ws-auth` que foi configurado no JBoss.
+
+### Roles/Papéis ###
+Existem duas roles de acesso ao Broker, uma com acesso a todas funcionalidades e outra somente para consulta. As roles precisam ter o nome idêntico ao definido no Broker, caso haja divergência o acesso será negado pelo [JAAS](https://en.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service).
+
+| Role						| Descrição	 													|
+| ------------------------- | ------------------------------------------------------------- |
+| RO_SEI_BROKER				| Perfil com acesso a todas as funcionalidades do SEI-Broker	|
+| RO_SEI_BROKER_CONSULTA	| Perfil com acesso a todas as consultas.						|
+
+## Templates documentos internos
+Através do Broker é possível preencher templates em HTML e incluí-los como documentos internos no SEI. O Objetivo é facilitar o desenvolvimento, aumentar a manutenibilidade e tornar os documentos mais ricos e dinâmicos.
+
+Os templates usados no Broker são criados utilizando a ferramenta [Mustache](http://mustache.github.io/) e devem ser cadastrados no [Gerenciador de Templates](https://softwarepublico.gov.br/gitlab/ans/templates-web), durante a inclusão do documento o [templates-broker](https://softwarepublico.gov.br/gitlab/ans/templates-broker) será consultado. O código em HTML gerado pelo SEI-Broker será inserido dentro do campo **conteúdo** do modelo de documento feito no SEI. Os detalhes da utilização estão na documentação da API.
+
+É preciso deixar claro que os templates do broker não substituem o modelo de documento do SEI.
 
 ## Monitoramento do SEI-Broker
 
