@@ -12,12 +12,13 @@ Alguns serviços adicionais foram desenvolvidos para extrair dados que não são
 - Servidor [JBoss EAP 7.0.4](https://developers.redhat.com/products/eap/download/) ou [Wildfly 10](http://wildfly.org/downloads/).
 - Banco relacional, o Broker foi desenvolvido usando Oracle 12g, mas com pouco esforço pode utilizar o MySQL.
 - Conexão com a internet para que o Maven acesse os repositórios hospedeiros das dependências.
+- Ferramenta [apiDoc](http://apidocjs.com/) para gerar a documentação da API.
 - [Templates-broker](https://softwarepublico.gov.br/gitlab/ans/templates-broker) implantado e configurado. Este requisito é **opcional**, ele é necessário caso haja interesse em utilizar o [Gerenciador de Templates](https://softwarepublico.gov.br/gitlab/ans/templates-web).
 
 ## Procedimentos para instalação
-### Configure as propriedades dos datasources no JBoss, elas são declaradas como System Properties.
+### Configurar as propriedades dos datasources no JBoss.
 
-O broker possui dois datasources e ambos estão declarados no arquivo `sei-broker-ds.xml`, eles são identificados como `jdbc/sei-broker` e `jdbc/sei-mysql`. O `jdbc/sei-broker` foi definido para acessar as tabelas que foram projetadas para o broker, o `jdbc/sei-mysql` se conecta ao banco de dados do SEI.
+O broker possui dois datasources e ambos estão declarados no arquivo `sei-broker-ds.xml`, eles são identificados como `jdbc/sei-broker` e `jdbc/sei-mysql`. O `jdbc/sei-broker` foi definido para acessar as tabelas que foram projetadas para o broker, o `jdbc/sei-mysql` se conecta ao banco de dados do SEI. O funcionamento dos datasources depende da declaração de algumas **Systrem Properties** no JBoss.
 
 | Chave											| Valor 										|
 | --------------------------------------------- | --------------------------------------------- |
@@ -93,3 +94,26 @@ Para essa etapa é necessário ter o Maven instalado e configurado. Ao realizar 
 Após o cadastro do Sistema precisaremos atribuir os serviços que serão utilizados pelo Broker, nesta etapa é preciso ter atenção para o valor que será definido no campo **identificação** e aos **servidores**. A identificação do serviço precisa ser enviada a cada requisição feita aos serviços do SEI, por padrão o Broker utiliza o valor `REALIZAR_INTEGRACAO`. No campo servidores informaremos os IPs dos servidores onde o SEI-Broker estará implantado.
 
 Os valores utilizados pelo Broker podem ser configurados na classe `Constantes`, **sigla** e **identificação** são respectivamente `SIGLA_SEI_BROKER` e `CHAVE_IDENTIFICACAO`.
+
+### Gerar documentação da API
+
+Após a implantação é fundamental que a documentação da API seja disponibilizada para os clientes do Broker. A documentação do Broker foi escrita utilizando a ferramenta [apiDoc](http://apidocjs.com/) e os fontes estão no diretório `/src/main/resources/apidoc/`. Será preciso fazer a instalação do apiDoc[^3] e executar o comando abaixo na raiz do projeto.
+[^3]: http://apidocjs.com/#install
+ 
+```console
+apidoc -f ".*\\.apidoc$" -i src/main/resources/apidoc/ -o <CAMINHO_ONDE_DOCUMENTACAO_SERA_GERADA>
+```
+
+A documentação gerada deve ser disponibilizada em um local onde possa ser facilmente acessada pelos clientes.
+
+## Monitoramento do SEI-Broker
+
+O SEI-Broker oferece três serviços de monitoramento, esses serviços verificam as principais conexões do broker.
+
+| Monitoramento					| URL	 												|
+| ----------------------------- | ----------------------------------------------------- |
+| Conexão SEI-Broker X MySQL	| http://<HOST>/sei-broker/service/info/conexoes/mysql	|
+| Conexão SEI-Broker X Oracle	| http://<HOST>/sei-broker/service/info/conexoes/oracle	|
+| Conexão SEI-Broker X SEI		| http://<HOST>/sei-broker/service/info/conexoes/sei	|
+
+Os serviços respondem com HTTP status **200** caso as conexões estejam ativas, qualquer outro status é considerado como erro de conexão.
