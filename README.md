@@ -17,7 +17,6 @@ Alguns serviços adicionais foram desenvolvidos para extrair dados que não são
 
 ## Procedimentos para instalação
 ### Configurar as propriedades dos datasources no JBoss.
-
 O broker possui dois datasources e ambos estão declarados no arquivo `sei-broker-ds.xml`, eles são identificados como `jdbc/sei-broker` e `jdbc/sei-mysql`. O `jdbc/sei-broker` foi definido para acessar as tabelas que foram projetadas para o broker, o `jdbc/sei-mysql` se conecta ao banco de dados do SEI. O funcionamento dos datasources depende da declaração de algumas **System Properties** no JBoss.
 
 | Chave											| Valor 										|
@@ -42,7 +41,6 @@ Abaixo um exemplo de declaração de propriedades feita no arquivo `standalone.x
 ```
 
 ### Criar e configurar os arquivos de propriedades no JBoss
-
 O SEI-Broker faz uso de dois arquivos de propriedades que ficam na pasta `<JBOSS_HOME>\ans\properties`, os arquivos necessários são `services.properties` e `ws-users.properties`.
 
 <table>
@@ -75,20 +73,17 @@ O SEI-Broker faz uso de dois arquivos de propriedades que ficam na pasta `<JBOSS
   </tr>
 </table>
 
-### Criar security-domain no JBoss {: #config-security-domain} 
-
+### Criar security-domain no JBoss 
 É necessário que haja um security-domain registrado com o nome `ans-ws-auth`, o mesmo pode utilizar um banco de dados[^1] ou o LDAP. É importante destacar que o Broker trabalha com autorização baseada em papéis(RBAC[^2]) e que os usuários precisam ter seus papéis atribuídos.
 [^1]: https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/how_to_configure_identity_management/configuring_a_security_domain_to_use_a_database
 [^2]: https://en.wikipedia.org/wiki/Role-based_access_control
 
 ### Implantar pacote gerado pelo Maven
-
 Após a realização de todos os passos anteriores, teremos o JBoss pronto para receber o pacote do SEI-Broker. O deploy pode ser feito de diversas maneiras e não é o foco desse manual. 
 
 Para essa etapa é necessário ter o Maven instalado e configurado. Ao realizar o primeiro build devemos desabilitar os testes automatizados, os testes dependem de uma instância ativa e impedirão a geração do pacote.
 
 ### Configurar Sistema no SEI
-
 É preciso cadastrar o SEI-Broker como um sistema que se integrará ao SEI, conforme [manual de webservices do SEI](https://softwarepublico.gov.br/social/sei/manuais/manual-de-webservices). É importante ter atenção para a **sigla** quer será definida, por padrão o broker está configurado para utilizar a sigla `SEI-Broker`.
 
 Após o cadastro do Sistema precisaremos atribuir os serviços que serão utilizados pelo Broker, nesta etapa é preciso ter atenção para o valor que será definido no campo **identificação** e aos **servidores**. A identificação do serviço precisa ser enviada a cada requisição feita aos serviços do SEI, por padrão o Broker utiliza o valor `REALIZAR_INTEGRACAO`. No campo servidores informaremos os IPs dos servidores onde o SEI-Broker estará implantado.
@@ -96,7 +91,6 @@ Após o cadastro do Sistema precisaremos atribuir os serviços que serão utiliz
 Os valores utilizados pelo Broker podem ser configurados na classe `Constantes`, **sigla** e **identificação** são respectivamente `SIGLA_SEI_BROKER` e `CHAVE_IDENTIFICACAO`.
 
 ### Gerar documentação da API
-
 Após a implantação é **fundamental** que a documentação da API seja disponibilizada para os clientes do Broker. A documentação do Broker foi escrita utilizando a ferramenta [apiDoc](http://apidocjs.com/) e os fontes estão no diretório `/src/main/resources/apidoc/`. Será preciso fazer a instalação do apiDoc[^3] e executar o comando abaixo na raiz do projeto.
 [^3]: http://apidocjs.com/#install
  
@@ -105,6 +99,22 @@ apidoc -f ".*\\.apidoc$" -i src/main/resources/apidoc/ -o <CAMINHO_ONDE_DOCUMENT
 ```
 
 A documentação gerada deve ser disponibilizada em um local onde possa ser facilmente acessada pelos clientes.
+
+## Serviços complementares
+Além dos serviços disponibilizados pelo SEI, o Broker possui alguns serviços adicionais que foram desenvolvidos para atender às necessidades que surgiram com o avanço das integrações.
+
+| Serviço							| Descrição																			|
+| --------------------------------- | --------------------------------------------------------------------------------- |
+|Consultar Documento do Processo 	| Consulta o documento de um dado processo.											|
+|Exportar Documento em PDF 			| Exporta documento como PDF, documentos HTML que estejam assinados.				|
+|Listar Documentos do Processo 		| Lista os documentos de um dado processo.											|
+|Listar Documentos Incluídos 		| Lista os documentos que foram incluídos pelo Broker.								|
+|Listar Documentos por Interessado 	| Lista os documentos de um determinado interessado.								|
+|Listar Processos 					| Lista e filtra processos.															|
+|Listar Processos por Interessado 	| Lista os processo de um determinado interessado.									|
+|Listar Tarefas 					| Lista as tarefas do SEI, necessário para lançar e listar andamentos do processo.	|
+|Listar Tipos de Contato 			| Lista os tipos de contatos existentes.											|
+|Listar Unidades do Processo 		| Lista as unidades onde o processo está aberto.									|
 
 ## Autenticação e Autorização
 A autenticação no SEI-Broker é feita através do HTTP Basic e a autorização é baseada em roles/papéis que são atribuídas ao usuário. Os sistemas que utilizarão o broker precisarão de um usuário, esse usuário deve ser previamente cadastrados em uma fonte de dados e receber a role correspondente às suas necessidades. Esses dados serão verificados pelo security-domain `ans-ws-auth` que foi configurado no JBoss.
