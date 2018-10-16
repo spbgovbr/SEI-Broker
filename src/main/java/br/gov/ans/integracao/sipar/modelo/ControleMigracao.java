@@ -1,4 +1,4 @@
-package br.gov.ans.integracao.sipar.dao;
+package br.gov.ans.integracao.sipar.modelo;
 
 import java.io.Serializable;
 import java.util.Date;

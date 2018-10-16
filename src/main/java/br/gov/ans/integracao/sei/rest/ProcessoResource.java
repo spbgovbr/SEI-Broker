@@ -46,7 +46,6 @@ import br.gov.ans.integracao.sei.client.TipoProcedimento;
 import br.gov.ans.integracao.sei.client.Unidade;
 import br.gov.ans.integracao.sei.dao.DocumentoDAO;
 import br.gov.ans.integracao.sei.dao.ProcessoDAO;
-import br.gov.ans.integracao.sei.dao.SiparDAO;
 import br.gov.ans.integracao.sei.dao.UnidadeDAO;
 import br.gov.ans.integracao.sei.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
@@ -63,15 +62,12 @@ import br.gov.ans.integracao.sei.modelo.ProcessoResumido;
 import br.gov.ans.integracao.sei.modelo.ResultadoConsultaProcesso;
 import br.gov.ans.integracao.sei.modelo.SobrestamentoProcesso;
 import br.gov.ans.integracao.sei.utils.Constantes;
-import br.gov.ans.integracao.sipar.dao.DocumentoSipar;
+import br.gov.ans.integracao.sipar.modelo.DocumentoSipar;
 import br.gov.ans.utils.MessageUtils;
 
 
 @Path("")
 public class ProcessoResource {
-	
-    @Inject
-    private SiparDAO documentoSiparDAO;
     
     @Inject
     private ProcessoDAO processoDAO;
@@ -87,7 +83,10 @@ public class ProcessoResource {
 	
     @Inject
     private UnidadeResource unidadeResource;
-      
+
+    @Inject
+    private SiparResource siparResource;
+    
     @Inject
     private MessageUtils messages;
     
@@ -103,61 +102,74 @@ public class ProcessoResource {
 	@GET
 	@Path("{unidade}/processos/{processo:\\d+}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public ResultadoConsultaProcesso consultarProcesso(@PathParam("unidade") String unidade, @PathParam("processo") String processo,
-			@QueryParam("assuntos") String exibirAssuntos, @QueryParam("interessados") String exibirInteressados, @QueryParam("observacoes") String exibirObservacoes,
-			@QueryParam("andamento") String exibirAndamento, @QueryParam("andamento-conclusao") String exibirAndamentoConclusao, @QueryParam("ultimo-andamento") String exibirUltimoAndamento,
-			@QueryParam("unidades") String exibirUnidadesAberto, @QueryParam("relacionados") String exibirProcessosRelacionados, @QueryParam("anexados") String exibirProcessosAnexados,
-			@QueryParam("auto-formatacao") String autoFormatar) throws Exception{
+	public Response ConsultarProcessoV2(@PathParam("unidade") String unidade, @PathParam("processo") String processo,
+			@QueryParam("assuntos") String exibirAssuntos, @QueryParam("interessados") String exibirInteressados,
+			@QueryParam("observacoes") String exibirObservacoes, @QueryParam("andamento") String exibirAndamento,
+			@QueryParam("andamento-conclusao") String exibirAndamentoConclusao,
+			@QueryParam("ultimo-andamento") String exibirUltimoAndamento,
+			@QueryParam("unidades") String exibirUnidadesAberto,
+			@QueryParam("relacionados") String exibirProcessosRelacionados,
+			@QueryParam("anexados") String exibirProcessosAnexados,
+			@QueryParam("auto-formatacao") String autoFormatar) throws RemoteException, Exception {
 		
-		ResultadoConsultaProcesso resultado = null;
-				
-		RetornoConsultaProcedimento processoSEI = consultarProcessoSEI(unidade, processo, exibirAssuntos, exibirInteressados, exibirObservacoes, exibirAndamento, exibirAndamentoConclusao, 
-			exibirUltimoAndamento, exibirUnidadesAberto, exibirProcessosRelacionados, exibirProcessosAnexados, autoFormatar);
-				
-		DocumentoSipar processoSIPAR = consultarProcessoSIPAR(processo);
+		if (Constantes.IS_CONSULTA_SIPAR_HABILITADA) {
+			return Response.ok(consultarProcessoANS(unidade, processo, exibirAssuntos, exibirInteressados,
+					exibirObservacoes, exibirAndamento, exibirAndamentoConclusao, exibirUltimoAndamento,
+					exibirUnidadesAberto, exibirProcessosRelacionados, exibirProcessosAnexados, autoFormatar)).build();
+		}
 		
-		if(processoSEI != null || processoSIPAR != null){
-			resultado = new ResultadoConsultaProcesso();
-			resultado.setSei(processoSEI);
-			resultado.setSipar(processoSIPAR);
-		}else{
+		return Response.ok(consultarProcessoSEI(unidade, processo, exibirAssuntos, exibirInteressados,
+				exibirObservacoes, exibirAndamento, exibirAndamentoConclusao, exibirUltimoAndamento,
+				exibirUnidadesAberto, exibirProcessosRelacionados, exibirProcessosAnexados)).build();
+	}
+
+	public ResultadoConsultaProcesso consultarProcessoANS(String unidade, String processo, String exibirAssuntos,
+			String exibirInteressados, String exibirObservacoes, String exibirAndamento,
+			String exibirAndamentoConclusao, String exibirUltimoAndamento, String exibirUnidadesAberto,
+			String exibirProcessosRelacionados, String exibirProcessosAnexados, String autoFormatar) throws Exception {
+		
+		ResultadoConsultaProcesso resultado = new ResultadoConsultaProcesso();
+		
+		try{
+			resultado.setSei(consultarProcessoSEI(unidade,
+					isAutoFormatar(autoFormatar) ? formatarNumeroProcesso(processo) : processo, exibirAssuntos,
+					exibirInteressados, exibirObservacoes, exibirAndamento, exibirAndamentoConclusao,
+					exibirUltimoAndamento, exibirUnidadesAberto, exibirProcessosRelacionados, exibirProcessosAnexados));
+			
+			return resultado;			
+		}catch (AxisFault ex) {
+			logger.error(ex);
+			logger.debug(ex, ex);
+		}
+						
+		resultado.setSipar(consultarProcessoSIPAR(processo));
+		
+		if(resultado.getSei() == null && resultado.getSipar() == null){
 			throw new ResourceNotFoundException(messages.getMessage("erro.processo.nao.encontrado", processo));
 		}
 		
 		return resultado;
 	}
-	
+		
 	public RetornoConsultaProcedimento consultarProcessoSEI(String unidade, String processo, String exibirAssuntos, String exibirInteressados, 
 			String exibirObservacoes, String exibirAndamento, String exibirAndamentoConclusao, String exibirUltimoAndamento, String exibirUnidadesAberto, 
-			String exibirProcessosRelacionados, String exibirProcessosAnexados, String autoFormatar) throws RemoteException, Exception{
-		if(isAutoFormatar(autoFormatar)){			
-			processo = formatarNumeroProcesso(processo);
-		}
-		
-		try{
-			return seiNativeService.consultarProcedimento(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo, getSOuN(exibirAssuntos), 
-					getSOuN(exibirInteressados), getSOuN(exibirObservacoes), getSOuN(exibirAndamento), getSOuN(exibirAndamentoConclusao), getSOuN(exibirUltimoAndamento), getSOuN(exibirUnidadesAberto), 
-					getSOuN(exibirProcessosRelacionados), getSOuN(exibirProcessosAnexados));
-		}catch(AxisFault ex){
-			logger.error(ex);
-			logger.debug(ex, ex);
-			return null;
-		}
-	}
-	
-	public DocumentoSipar consultarProcessoSIPAR(String processo){
-		String documento, ano, digito;
+			String exibirProcessosRelacionados, String exibirProcessosAnexados) throws RemoteException, Exception{
 
-		try{
-			documento = processo.substring(0,(processo.length() - 6));
-			ano = processo.substring((processo.length() - 6), (processo.length() - 2));
-			digito = processo.substring((processo.length() - 2), processo.length());
-		}catch(Exception e){
-			logger.error(messages.getMessage("erro.numero.sipar"));
-			return null;
+		return seiNativeService.consultarProcedimento(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, unidadeResource.consultarCodigo(unidade), processo, getSOuN(exibirAssuntos), 
+				getSOuN(exibirInteressados), getSOuN(exibirObservacoes), getSOuN(exibirAndamento), getSOuN(exibirAndamentoConclusao), getSOuN(exibirUltimoAndamento), getSOuN(exibirUnidadesAberto), 
+				getSOuN(exibirProcessosRelacionados), getSOuN(exibirProcessosAnexados));
+	}
+		
+	public DocumentoSipar consultarProcessoSIPAR(String processo){
+		DocumentoSipar documentoSipar = null;
+		
+		try {
+			documentoSipar = siparResource.consultarProcesso(processo);
+		} catch (BusinessException ex) {
+			logger.error(ex);
 		}
 		
-		return documentoSiparDAO.getDocumento(documento, ano, digito);
+		return documentoSipar;
 	}
 
 	@POST

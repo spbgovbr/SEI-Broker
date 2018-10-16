@@ -6,7 +6,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import br.gov.ans.integracao.sei.client.RetornoConsultaProcedimento;
-import br.gov.ans.integracao.sipar.dao.DocumentoSipar;
+import br.gov.ans.integracao.sipar.modelo.DocumentoSipar;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

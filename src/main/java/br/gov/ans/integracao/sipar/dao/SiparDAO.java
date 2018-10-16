@@ -1,4 +1,4 @@
-package br.gov.ans.integracao.sei.dao;
+package br.gov.ans.integracao.sipar.dao;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -13,9 +13,9 @@ import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import br.gov.ans.dao.DAO;
-import br.gov.ans.integracao.sipar.dao.ControleMigracao;
-import br.gov.ans.integracao.sipar.dao.ControleMigracaoId;
-import br.gov.ans.integracao.sipar.dao.DocumentoSipar;
+import br.gov.ans.integracao.sipar.modelo.ControleMigracao;
+import br.gov.ans.integracao.sipar.modelo.ControleMigracaoId;
+import br.gov.ans.integracao.sipar.modelo.DocumentoSipar;
 
 @Stateful
 public class SiparDAO {

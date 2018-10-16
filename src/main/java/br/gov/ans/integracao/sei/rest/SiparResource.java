@@ -6,9 +6,11 @@ import java.util.Date;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -17,12 +19,13 @@ import javax.ws.rs.core.UriInfo;
 
 import org.jboss.logging.Logger;
 
-import br.gov.ans.integracao.sei.dao.SiparDAO;
 import br.gov.ans.integracao.sei.exceptions.BusinessException;
 import br.gov.ans.integracao.sei.exceptions.ResourceConflictException;
 import br.gov.ans.integracao.sei.exceptions.ResourceNotFoundException;
-import br.gov.ans.integracao.sipar.dao.ControleMigracao;
-import br.gov.ans.integracao.sipar.dao.ControleMigracaoId;
+import br.gov.ans.integracao.sipar.dao.SiparDAO;
+import br.gov.ans.integracao.sipar.modelo.ControleMigracao;
+import br.gov.ans.integracao.sipar.modelo.ControleMigracaoId;
+import br.gov.ans.integracao.sipar.modelo.DocumentoSipar;
 import br.gov.ans.utils.MessageUtils;
 
 @Path("/sipar")
@@ -98,6 +101,35 @@ public class SiparResource {
 		
 		return Response.noContent().build();
 		
+	}
+	
+	@GET
+	@Path("{processo:\\d+}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public DocumentoSipar consultarProcessoSIPAR(@PathParam("processo") String processo) throws BusinessException, ResourceNotFoundException{
+		DocumentoSipar documento = consultarProcesso(processo);
+		
+		if(documento == null){
+			throw new ResourceNotFoundException(messages.getMessage("erro.processo.nao.encontrado", processo));
+		}
+		
+		return documento;
+	}
+	
+	public DocumentoSipar consultarProcesso(String processo) throws BusinessException{
+		String numero, ano, digito;
+
+		try{
+			numero = extraiNumero(processo);
+			ano = extraiAno(processo);
+			digito = extraiDigitoVerificador(processo);
+		}catch(Exception ex){
+			logger.error(ex);
+			
+			throw new BusinessException(messages.getMessage("erro.numero.sipar",processo));			
+		}
+		
+		return dao.getDocumento(numero, ano, digito);
 	}
 	
 	private void importarProcesso(String numeroDocumento, String anoDocumento){

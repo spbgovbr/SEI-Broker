@@ -15,10 +15,11 @@ public class Constantes {
 	public static final String CHAVE_IDENTIFICACAO = "REALIZAR_INTEGRACAO";
 	public static final String CODIGO_BRASIL = "76";
 	public static final String CODIGO_ORGAO_ANS = "0";
-	public static final String  CONTENT_TYPE_HEADER_KEY= "Content-Type";
+	public static final String CONTENT_TYPE_HEADER_KEY= "Content-Type";
 	public static final String DATE_PATTERN = "dd/MM/yyyy";
 	public static final String DOCUMENTO_GERAL = "G";
 	public static final String DOCUMENTO_RECEBIDO = "R";
+	public static final boolean IS_CONSULTA_SIPAR_HABILITADA = true;
 	public static final String JBOSS_HOME = System.getProperty("jboss.home.dir");
 	public static final String MASCARA_PROCESSO_17 = "#####.######/####-##";
 	public static final String MASCARA_PROCESSO_21 = "#######.########/####-##";

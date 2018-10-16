@@ -7,7 +7,7 @@
 
 		<jta-data-source>jdbc/sei-broker</jta-data-source>
 
-		<class>br.gov.ans.integracao.sipar.dao.DocumentoSipar</class>
+		<class>br.gov.ans.integracao.sipar.modelo.DocumentoSipar</class>
 		<class>br.gov.ans.integracao.sei.modelo.InclusaoDocumento</class>
 		<class>br.gov.ans.modelo.LogIntegracaoSistemica</class>
 
