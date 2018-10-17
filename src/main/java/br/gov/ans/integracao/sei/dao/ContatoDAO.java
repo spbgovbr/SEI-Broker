@@ -29,6 +29,7 @@ public class ContatoDAO {
 		return (Contato) query.getSingleResult();				
 	}
 	
+	@SuppressWarnings({ "unchecked" })
 	public List<Contato> getContatosNaoTemporariosPelaSigla(String sigla){
 		Query query = em.createNamedQuery("Contato.pesquisarPorSigla",Contato.class);
 		

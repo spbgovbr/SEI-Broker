@@ -8,6 +8,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 import br.gov.ans.integracao.sei.client.Unidade;
 
+@SuppressWarnings("serial")
 @Entity
 public class UnidadeTarefa extends Unidade{
 	

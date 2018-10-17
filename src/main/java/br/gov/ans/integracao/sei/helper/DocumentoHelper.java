@@ -12,7 +12,6 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.JsonParseException;
-import org.hibernate.engine.transaction.jta.platform.internal.TransactionManagerBasedSynchronizationStrategy;
 import org.jboss.logging.Logger;
 
 import com.github.mustachejava.Mustache;
@@ -96,11 +95,7 @@ public class DocumentoHelper {
 			throw new BusinessException(messages.getMessage("erro.tamanho.documento"));
 		}
 	}
-	
-	private boolean isSemInteressados(Documento documento){
-		return ArrayUtils.isEmpty(documento.getInteressados());
-	}
-	
+
 	private double calcularBytes(int sizeBase64){		
 		return sizeBase64 * 3.0 / 4;
 	}
