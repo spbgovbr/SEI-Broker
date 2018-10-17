@@ -84,7 +84,7 @@ Após a realização de todos os passos anteriores, teremos o JBoss pronto para 
 Para essa etapa é necessário ter o Maven instalado e configurado. Ao realizar o primeiro build devemos desabilitar os testes automatizados, os testes dependem de uma instância ativa e impedirão a geração do pacote.
 
 ### Configurar Sistema no SEI
-É preciso cadastrar o SEI-Broker como um sistema que se integrará ao SEI, conforme [manual de webservices do SEI](https://softwarepublico.gov.br/social/sei/manuais/manual-de-webservices). É importante ter atenção para a **sigla** quer será definida, por padrão o broker está configurado para utilizar a sigla `SEI-Broker`.
+É preciso cadastrar o SEI-Broker como um sistema que se integrará ao SEI, conforme [manual de webservices do SEI](https://softwarepublico.gov.br/social/sei/manuais/manual-de-webservices). É importante ter atenção para a **sigla** que será definida, por padrão o broker está configurado para utilizar a sigla `SEI-Broker`.
 
 Após o cadastro do Sistema precisaremos atribuir os serviços que serão utilizados pelo Broker, nesta etapa é preciso ter atenção para o valor que será definido no campo **identificação** e aos **servidores**. A identificação do serviço precisa ser enviada a cada requisição feita aos serviços do SEI, por padrão o Broker utiliza o valor `REALIZAR_INTEGRACAO`. No campo servidores informaremos os IPs dos servidores onde o SEI-Broker estará implantado.
 

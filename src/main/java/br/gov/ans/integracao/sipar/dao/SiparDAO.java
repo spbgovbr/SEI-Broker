@@ -23,7 +23,6 @@ public class SiparDAO {
 	@PersistenceContext(unitName = "sei_broker_pu", type = PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	
-	@SuppressWarnings("cdi-ambiguous-dependency")
 	@Inject
 	private DAO<DocumentoSipar> daoDocumento;
 	
