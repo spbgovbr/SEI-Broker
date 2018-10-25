@@ -145,3 +145,7 @@ O SEI-Broker oferece três serviços de monitoramento, esses serviços verificam
 | Conexão SEI-Broker X SEI		| http://<HOST>/sei-broker/service/info/conexoes/sei	|
 
 Os serviços respondem com HTTP status **200** caso as conexões estejam ativas, qualquer outro status é considerado como erro de conexão.
+
+## Projetos Relacionados
+* [Templates-Broker](https://softwarepublico.gov.br/gitlab/ans/templates-broker/wikis/home)
+* [Gerenciador de Templates](https://softwarepublico.gov.br/gitlab/ans/gerenciador-de-templates/wikis/home)
