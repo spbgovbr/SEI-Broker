@@ -102,7 +102,7 @@ public class ProcessoResource {
 	@GET
 	@Path("{unidade}/processos/{processo:\\d+}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public Response ConsultarProcessoV2(@PathParam("unidade") String unidade, @PathParam("processo") String processo,
+	public Response consultarProcesso(@PathParam("unidade") String unidade, @PathParam("processo") String processo,
 			@QueryParam("assuntos") String exibirAssuntos, @QueryParam("interessados") String exibirInteressados,
 			@QueryParam("observacoes") String exibirObservacoes, @QueryParam("andamento") String exibirAndamento,
 			@QueryParam("andamento-conclusao") String exibirAndamentoConclusao,

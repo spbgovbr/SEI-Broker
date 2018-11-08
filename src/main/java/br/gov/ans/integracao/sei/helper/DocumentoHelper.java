@@ -9,7 +9,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.JsonParseException;
 import org.jboss.logging.Logger;
@@ -45,7 +44,10 @@ public class DocumentoHelper {
 		validarNomeArquivo(documento);
 		validarNumeroInformado(documento);
 		validarTamanhoConteudo(documento);
-		validarInteressados(documento);
+		
+		if(documento.getInteressados() != null){
+			validarInteressados(documento);			
+		}
 		
 		if(StringUtils.isNotEmpty(template)){
 			processarPreenchimentoTemplate(documento, template);
@@ -59,7 +61,7 @@ public class DocumentoHelper {
 	}
 	
 	private void validarNumeroProcesso(Documento documento) throws BusinessException{
-		if(StringUtils.isBlank(documento.getIdProcedimento())){
+		if(StringUtils.isBlank(documento.getIdProcedimento()) && StringUtils.isBlank(documento.getProtocoloProcedimento())){
 			throw new BusinessException(messages.getMessage("erro.documento.sem.processo"));
 		}
 	}

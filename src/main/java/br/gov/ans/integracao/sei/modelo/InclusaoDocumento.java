@@ -74,7 +74,7 @@ public class InclusaoDocumento {
 		this.numeroInformado = documento.getNumero();
 		
 		this.nome = documento.getNomeArquivo();
-		this.processo = documento.getIdProcedimento();
+		this.processo = documento.getIdProcedimento() != null? documento.getIdProcedimento() : documento.getProtocoloProcedimento();
 		
 		this.data = new Date();
 	}

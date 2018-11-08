@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+@SuppressWarnings("serial")
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
@@ -244,8 +245,6 @@ public class Documento implements java.io.Serializable {
 		if (!(obj instanceof Documento))
 			return false;
 		Documento other = (Documento) obj;
-		if (obj == null)
-			return false;
 		if (this == obj)
 			return true;
 		if (__equalsCalc != null) {
@@ -397,7 +396,7 @@ public class Documento implements java.io.Serializable {
 		elemField.setFieldName("idProcedimento");
 		elemField.setXmlName(new javax.xml.namespace.QName("", "IdProcedimento"));
 		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-		elemField.setNillable(false);
+		elemField.setNillable(true);
 		typeDesc.addFieldDesc(elemField);
 		elemField = new org.apache.axis.description.ElementDesc();
 		elemField.setFieldName("protocoloProcedimento");
@@ -445,7 +444,7 @@ public class Documento implements java.io.Serializable {
 		elemField.setFieldName("interessados");
 		elemField.setXmlName(new javax.xml.namespace.QName("", "Interessados"));
 		elemField.setXmlType(new javax.xml.namespace.QName("Sei", "Interessado"));
-		elemField.setNillable(false);
+		elemField.setNillable(true);
 		typeDesc.addFieldDesc(elemField);
 		elemField = new org.apache.axis.description.ElementDesc();
 		elemField.setFieldName("destinatarios");
@@ -513,11 +512,13 @@ public class Documento implements java.io.Serializable {
 		return typeDesc;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static org.apache.axis.encoding.Serializer getSerializer(java.lang.String mechType,
 			java.lang.Class _javaType, javax.xml.namespace.QName _xmlType) {
 		return new org.apache.axis.encoding.ser.BeanSerializer(_javaType, _xmlType, typeDesc);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static org.apache.axis.encoding.Deserializer getDeserializer(java.lang.String mechType,
 			java.lang.Class _javaType, javax.xml.namespace.QName _xmlType) {
 		return new org.apache.axis.encoding.ser.BeanDeserializer(_javaType, _xmlType, typeDesc);
