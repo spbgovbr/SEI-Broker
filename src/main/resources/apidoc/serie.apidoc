@@ -11,6 +11,7 @@
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
 	 * 
 	 * @apiParam (Query Parameters) {String} [filtro] Para filtrar por series que contenham o trecho no nome.
+	 * @apiParam (Query Parameters) {String} [nome] Para selecionar a série que possua nome igual.
 	 * @apiParam (Query Parameters) {String} [tipo-processo=null] Para filtrar por determinado tipo de processo.
 	 *
 	 * @apiExample {curl} Exemplo de requisição:
@@ -42,6 +43,7 @@
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
 	 * 
 	 * @apiParam (Query Parameters) {String} [filtro] Para filtrar por documentos que contenham o trecho no nome.
+	 * @apiParam (Query Parameters) {String} [nome] Para selecionar a série que possua nome igual.
 	 *
 	 * @apiExample {curl} Exemplo de requisição:
 	 * 	curl -i https://<host>/sei-broker/service/COSAP/tipos-documentos

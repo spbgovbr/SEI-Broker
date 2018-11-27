@@ -40,13 +40,18 @@ public class SeriesResource {
 	@GET
 	@Path("{unidade}/series")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public Serie[] listarSeries(@PathParam("unidade") String unidade, @QueryParam("tipo-processo") String tipoProcesso, @QueryParam("filtro") String filtro) throws Exception{
+	public Serie[] listarSeries(@PathParam("unidade") String unidade, @QueryParam("tipo-processo") String tipoProcesso, @QueryParam("filtro") String filtro, 
+			@QueryParam("nome") String nome) throws Exception{
 		Serie[] series = seiNativeService.listarSeries(Constantes.SIGLA_SEI_BROKER, Constantes.CHAVE_IDENTIFICACAO, isBlank(unidade)? null : unidadeResource.consultarCodigo(unidade), tipoProcesso);	
 		
-		if(StringUtils.isNotBlank(filtro)){
+		if(StringUtils.isNotBlank(filtro) || StringUtils.isNotBlank(nome)){
 			List<Serie> list = new ArrayList<Serie>(Arrays.asList(series));
 			
-			list.removeIf(serie -> !serie.getNome().toLowerCase().contains(filtro.toLowerCase()));
+			if(StringUtils.isNotBlank(nome)){
+				list.removeIf(serie -> !serie.getNome().toLowerCase().equals(nome.toLowerCase()));				
+			}else{
+				list.removeIf(serie -> !serie.getNome().toLowerCase().contains(filtro.toLowerCase()));				
+			}		
 			
 			if(list.isEmpty()){
 				throw new NotFoundException(messages.getMessage("erro.series.nao.encontradas"));
@@ -61,8 +66,9 @@ public class SeriesResource {
 	@GET
 	@Path("{unidade}/tipos-documentos")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public Response listarTiposDocumentos(@PathParam("unidade") String unidade, @QueryParam("filtro") String filtro) throws Exception{
-		Serie[] series = listarSeries(unidade, null, filtro);
+	public Response listarTiposDocumentos(@PathParam("unidade") String unidade, @QueryParam("filtro") String filtro, 
+			@QueryParam("nome") String nome) throws Exception{
+		Serie[] series = listarSeries(unidade, null, filtro, nome);
 		
 		if(series == null || series.length < 1){
 			throw new NotFoundException(messages.getMessage("erro.tipo.documento.nao.encontrado"));
