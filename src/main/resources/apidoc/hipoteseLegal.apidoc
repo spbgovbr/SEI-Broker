@@ -1,30 +1,30 @@
 	/**
-	 * @api {get} /:unidade/hipoteses-legais Listar hip髏eses legais
+	 * @api {get} /:unidade/hipoteses-legais Listar hip贸teses legais
 	 * @apiName listarHipoteses
 	 * @apiGroup Hipotese Legal
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
-	 * @apiDescription Lista as hip髏eses legais.
+	 * @apiDescription Lista as hip贸teses legais.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * 
-	 * @apiParam (Query Parameters) {String} [nivelAcesso] Filtra hip髏eses pelo n韛el de acesso associado (1 - restrito, 2 - sigiloso)
+	 * @apiParam (Query Parameters) {String} [nivelAcesso] Filtra hip贸teses pelo n铆vel de acesso associado (1 - restrito, 2 - sigiloso)
 	 * 
-	 * @apiExample Exemplo de requisi玢o:
+	 * @apiExample Exemplo de requisi莽茫o:
 	 *	curl -i https://<host>/sei-broker/service/COSAP/hipoteses-legais
 	 *
-	 * @apiSuccess (Sucesso - 200) {HipoteseLegal[]} resultado Lista com as hip髏eses legais encontrados
-	 * @apiSuccess (Sucesso - 200) {String} resultado.idHipoteseLegal Identificador da hip髏ese legal no SEI
-	 * @apiSuccess (Sucesso - 200) {String} resultado.nome Nome da hip髏ese legal
-	 * @apiSuccess (Sucesso - 200) {String} resultado.baseLegal Descri玢o da base legal
-	 * @apiSuccess (Sucesso - 200) {String} resultado.nivelAcesso Nivel de acesso associado a hip髏ese legal
+	 * @apiSuccess (Sucesso - 200) {HipoteseLegal[]} resultado Lista com as hip贸teses legais encontrados
+	 * @apiSuccess (Sucesso - 200) {String} resultado.idHipoteseLegal Identificador da hip贸tese legal no SEI
+	 * @apiSuccess (Sucesso - 200) {String} resultado.nome Nome da hip贸tese legal
+	 * @apiSuccess (Sucesso - 200) {String} resultado.baseLegal Descri莽茫o da base legal
+	 * @apiSuccess (Sucesso - 200) {String} resultado.nivelAcesso Nivel de acesso associado a hip贸tese legal
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"c骴igo do erro"
+	 *		"code":"c贸digo do erro"
 	 *	}
 	 */

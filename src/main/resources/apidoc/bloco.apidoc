@@ -6,50 +6,50 @@
 	 * 
 	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
-	 * @apiDescription Recupera as informaÁıes do bloco informado.
+	 * @apiDescription Recupera as informa√ß√µes do bloco informado.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * @apiParam (Path Parameters) {String} bloco Numero do bloco que deseja consultar
 	 * 
 	 * @apiParam (Query Parameters) {String} [protocolos=N] S ou N para exibir os protocolos do bloco
 	 *
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i http://<host>/sei-broker/service/COSAP/blocos/12
 	 *
 	 * @apiSuccess (Sucesso - 200) {RetornoConsultaBloco} bloco Objeto representando o bloco encontrado
-	 * @apiSuccess (Sucesso - 200) {String} bloco.idBloco N˙mero do bloco
+	 * @apiSuccess (Sucesso - 200) {String} bloco.idBloco N√∫mero do bloco
 	 * @apiSuccess (Sucesso - 200) {Unidade} bloco.unidade Dados das unidade que gerou o bloco
 	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.idUnidade Identificador da Unidade
 	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.sigla Sigla da unidade
-	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.descricao DescriÁ„o do unidade
+	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.descricao Descri√ß√£o do unidade
 	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.sinProtocolo :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.sinArquivamento :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} bloco.unidade.sinOuvidoria :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {Usuario} bloco.usuario Dados das unidade que gerou o bloco
-	 * @apiSuccess (Sucesso - 200) {String} bloco.usuario.idUsuario Identificador do su·rio
-	 * @apiSuccess (Sucesso - 200) {String} bloco.usuario.sigla Sigla do usu·rio
-	 * @apiSuccess (Sucesso - 200) {String} bloco.usuario.nome Nome do usu·rio
-	 * @apiSuccess (Sucesso - 200) {String} bloco.descricao DescriÁ„o do bloco
-	 * @apiSuccess (Sucesso - 200) {String} bloco.tipo Tipo do bloco (A=Assinatura, R=Reuni„o ou I=Interno)
-	 * @apiSuccess (Sucesso - 200) {String} bloco.estado Estado do bloco (A=Aberto, D=Disponibilizado, R=Retornado ou C=ConcluÌdo)
-	 * @apiSuccess (Sucesso - 200) {Unidade[]} bloco.unidadesDisponibilizacao Dados das unidades configuradas para disponibilizaÁ„o (ver estrutura Unidade)
+	 * @apiSuccess (Sucesso - 200) {String} bloco.usuario.idUsuario Identificador do su√°rio
+	 * @apiSuccess (Sucesso - 200) {String} bloco.usuario.sigla Sigla do usu√°rio
+	 * @apiSuccess (Sucesso - 200) {String} bloco.usuario.nome Nome do usu√°rio
+	 * @apiSuccess (Sucesso - 200) {String} bloco.descricao Descri√ß√£o do bloco
+	 * @apiSuccess (Sucesso - 200) {String} bloco.tipo Tipo do bloco (A=Assinatura, R=Reuni√£o ou I=Interno)
+	 * @apiSuccess (Sucesso - 200) {String} bloco.estado Estado do bloco (A=Aberto, D=Disponibilizado, R=Retornado ou C=Conclu√≠do)
+	 * @apiSuccess (Sucesso - 200) {Unidade[]} bloco.unidadesDisponibilizacao Dados das unidades configuradas para disponibiliza√ß√£o (ver estrutura Unidade)
 	 * @apiSuccess (Sucesso - 200) {ProtocoloBloco[]} bloco.protocolos Processos ou documentos do bloco
-	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.protocoloFormatado N˙mero de protocolo formatado
+	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.protocoloFormatado N√∫mero de protocolo formatado
 	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.identificacao :TODO pendente
-	 * @apiSuccess (Sucesso - 200) {Assinatura[]} bloco.protocolos.assinaturas Conjunto de assinaturas dos documentos. Ser· um conjunto vazio caso n„o existam informaÁıes ou se o protocolo representa um processo
+	 * @apiSuccess (Sucesso - 200) {Assinatura[]} bloco.protocolos.assinaturas Conjunto de assinaturas dos documentos. Ser√° um conjunto vazio caso n√£o existam informa√ß√µes ou se o protocolo representa um processo
 	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.nome Nome do assinante
-	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.cargoFuncao Cargo ou funÁ„o utilizado no momento da assinatura
+	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.cargoFuncao Cargo ou fun√ß√£o utilizado no momento da assinatura
 	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.dataHora Data/hora em que ocorreu a assinatura
-	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.idUsuario Identificador do usu·rio
+	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.idUsuario Identificador do usu√°rio
 	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.idOrigem :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.idOrgao :TODO pendente
-	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.sigla Login do usu·rio respons·vel pela assinatura
+	 * @apiSuccess (Sucesso - 200) {String} bloco.protocolos.assinaturas.sigla Login do usu√°rio respons√°vel pela assinatura
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */    
 
@@ -67,19 +67,19 @@
 	 * 
 	 * @apiParam (Request Body) {String} bloco Numero do bloco que deseja disponibilizar
 	 *
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: [POST] http://<host>/sei-broker/service/COSAP/blocos/disponibilizados
 	 *
 	 *	body:
 	 *	12
 	 *
-	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -91,21 +91,21 @@
 	 * 
 	 * @apiPermission RO_SEI_BROKER
 	 * 
-	 * @apiDescription Cancela a disponibilizaÁ„o de blocos.
+	 * @apiDescription Cancela a disponibiliza√ß√£o de blocos.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * @apiParam (Path Parameters) {String} bloco Numero do bloco que deseja indisponibilizar
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -X DELETE http://<host>/sei-broker/service/COSAP/blocos/disponibilizados/12
 	 *
-	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -122,16 +122,16 @@
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * @apiParam (Path Parameters) {String} bloco Numero do bloco que deseja excluir
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -X DELETE http://<host>/sei-broker/service/COSAP/blocos/12
 	 *
-	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */	
 
@@ -147,14 +147,14 @@
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI 
 	 * 
-	 * @apiParam (Request Body) {NovoBloco} novoBloco Objeto de criaÁ„o de bloco
+	 * @apiParam (Request Body) {NovoBloco} novoBloco Objeto de cria√ß√£o de bloco
 	 * @apiParam (Request Body) {String="ASSINATURA","INTERNO","REUNIAO"} novoBloco.tipo Tipo do bloco a ser criado
-	 * @apiParam (Request Body) {String} novoBloco.descricao DescriÁ„o do bloco
-	 * @apiParam (Request Body) {String[]} novoBloco.unidades CÛdigos das unidades onde o bloco deve ser disponibilizado, ou vazio para n„o disponibilizar
-	 * @apiParam (Request Body) {String[]} novoBloco.documentos CÛdigo dos documentos que ser„o incluÌdos no bloco
+	 * @apiParam (Request Body) {String} novoBloco.descricao Descri√ß√£o do bloco
+	 * @apiParam (Request Body) {String[]} novoBloco.unidades C√≥digos das unidades onde o bloco deve ser disponibilizado, ou vazio para n√£o disponibilizar
+	 * @apiParam (Request Body) {String[]} novoBloco.documentos C√≥digo dos documentos que ser√£o inclu√≠dos no bloco
 	 * @apiParam (Request Body) {Boolean} novoBloco.disponibilizar=false Informa se o bloco criado deve ser disponibilizado automaticamente
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: http://<host>/sei-broker/service/COSAP/blocos
 	 *
 	 *	body:
@@ -166,7 +166,7 @@
 	 *		"disponibilizar":true
 	 *	}
 	 *
-	 * @apiSuccess (Sucesso Response Body - 201) {String} resultado CÛdigo do bloco criado
+	 * @apiSuccess (Sucesso Response Body - 201) {String} resultado C√≥digo do bloco criado
 	 * 
 	 * @apiSuccess (Sucesso Response Header - 201) {header} Location URL de acesso ao recurso criado
 	 *
@@ -174,7 +174,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -191,23 +191,23 @@
 	 * @apiParam (Header Parameters) {String} Content-Type Informar text/plain
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
-	 * @apiParam (Path Parameters) {String} bloco N˙mero do bloco onde o documento ser· incluÌdo
+	 * @apiParam (Path Parameters) {String} bloco N√∫mero do bloco onde o documento ser√° inclu√≠do
 	 * 
-	 * @apiParam (Request Body) {String} documento N˙mero do documento que ser· incluÌdo do bloco
+	 * @apiParam (Request Body) {String} documento N√∫mero do documento que ser√° inclu√≠do do bloco
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: [POST] http://<host>/sei-broker/service/COSAP/blocos/12/documentos
 	 *
 	 *	body:
 	 *	0000050
 	 *
-	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -224,21 +224,21 @@
 	 * @apiParam (Header Parameters) {String} Content-Type Informar application/json
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
-	 * @apiParam (Path Parameters) {String} bloco N˙mero do bloco onde o documento ser· incluÌdo
+	 * @apiParam (Path Parameters) {String} bloco N√∫mero do bloco onde o documento ser√° inclu√≠do
 	 * 
-	 * @apiParam (Request Body) {InclusaoDocumentoBloco} inclusao Objeto com os dados do documento a ser incluÌdo
-	 * @apiParam (Request Body) {String} bloco N˙mero do bloco onde o documento ser· inserido
-	 * @apiParam (Request Body) {String} documento N˙mero do documento
-	 * @apiParam (Request Body) {String} [anotacao] Texto de anotaÁ„o associado com o documento no bloco
+	 * @apiParam (Request Body) {InclusaoDocumentoBloco} inclusao Objeto com os dados do documento a ser inclu√≠do
+	 * @apiParam (Request Body) {String} bloco N√∫mero do bloco onde o documento ser√° inserido
+	 * @apiParam (Request Body) {String} documento N√∫mero do documento
+	 * @apiParam (Request Body) {String} [anotacao] Texto de anota√ß√£o associado com o documento no bloco
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: [POST] http://<host>/sei-broker/service/COSAP/blocos/12/documentos
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -253,19 +253,19 @@
 	 * @apiDescription Remove o documento do bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI	
-	 * @apiParam (Path Parameters) {String} bloco Numero do bloco de onde o documento ser· retirado
-	 * @apiParam (Path Parameters) {String} documento Numero do documento que ser· retirado do bloco
+	 * @apiParam (Path Parameters) {String} bloco Numero do bloco de onde o documento ser√° retirado
+	 * @apiParam (Path Parameters) {String} documento Numero do documento que ser√° retirado do bloco
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -X DELETE http://<host>/sei-broker/service/COSAP/blocos/12/documentos/0000050
 	 *
-	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -280,22 +280,22 @@
 	 * @apiDescription Inclui um processo no bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
-	 * @apiParam (Path Parameters) {String} bloco Numero do bloco onde o processo ser· incluÌdo
+	 * @apiParam (Path Parameters) {String} bloco Numero do bloco onde o processo ser√° inclu√≠do
 	 * 
-	 * @apiParam (Query Parameters) {String = "S (sim), N (n„o)"} [auto-formatacao=S] O broker utilizar· a mascara padr„o para formatar o n˙mero do processo
+	 * @apiParam (Query Parameters) {String = "S (sim), N (n√£o)"} [auto-formatacao=S] O broker utilizar√° a mascara padr√£o para formatar o n√∫mero do processo
 	 * 
-	 * @apiParam (Request Body) {String} processo Numero do processo que ser· incluÌdo no bloco
+	 * @apiParam (Request Body) {String} processo Numero do processo que ser√° inclu√≠do no bloco
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -X PUT http://<host>/sei-broker/service/COSAP/blocos/12/processos
 	 *
-	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -307,26 +307,26 @@
 	 * 
 	 * @apiPermission RO_SEI_BROKER
 	 * 
-	 * @apiDescription Inclui um processo no bloco, junto com uma anotaÁ„o.
+	 * @apiDescription Inclui um processo no bloco, junto com uma anota√ß√£o.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
-	 * @apiParam (Path Parameters) {String} bloco Numero do bloco onde o processo ser· incluÌdo
+	 * @apiParam (Path Parameters) {String} bloco Numero do bloco onde o processo ser√° inclu√≠do
 	 * 
-	 * @apiParam (Query Parameters) {String = "S (sim), N (n„o)"} [auto-formatacao=S] O broker utilizar· a mascara padr„o para formatar o n˙mero do processo
+	 * @apiParam (Query Parameters) {String = "S (sim), N (n√£o)"} [auto-formatacao=S] O broker utilizar√° a mascara padr√£o para formatar o n√∫mero do processo
 	 * 
-	 * @apiParam (Request Body) {InclusaoProcessoBloco} inclusao Objeto com os dados do processo a ser incluÌdo
-	 * @apiParam (Request Body) {String} bloco N˙mero do bloco onde o processo ser· inserido
-	 * @apiParam (Request Body) {String} processo N˙mero do processo
-	 * @apiParam (Request Body) {String} [anotacao] Texto de anotaÁ„o associado com o processo no bloco
+	 * @apiParam (Request Body) {InclusaoProcessoBloco} inclusao Objeto com os dados do processo a ser inclu√≠do
+	 * @apiParam (Request Body) {String} bloco N√∫mero do bloco onde o processo ser√° inserido
+	 * @apiParam (Request Body) {String} processo N√∫mero do processo
+	 * @apiParam (Request Body) {String} [anotacao] Texto de anota√ß√£o associado com o processo no bloco
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -X PUT http://<host>/sei-broker/service/COSAP/blocos/12/processos
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -338,23 +338,23 @@
 	 * 
 	 * @apiPermission RO_SEI_BROKER
 	 * 
-	 * @apiDescription Este mÈtodo remove o processo do bloco.
+	 * @apiDescription Este m√©todo remove o processo do bloco.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
-	 * @apiParam (Path Parameters) {String} bloco Numero do bloco de onde o processo ser· retirado
-	 * @apiParam (Path Parameters) {String} processo Numero do processo que ser· retirado do bloco
+	 * @apiParam (Path Parameters) {String} bloco Numero do bloco de onde o processo ser√° retirado
+	 * @apiParam (Path Parameters) {String} processo Numero do processo que ser√° retirado do bloco
 	 * 
-	 * @apiParam (Query Parameters) {String = "S (sim), N (n„o)"} [auto-formatacao=S] O broker utilizar· a mascara padr„o para formatar o n˙mero do processo
+	 * @apiParam (Query Parameters) {String = "S (sim), N (n√£o)"} [auto-formatacao=S] O broker utilizar√° a mascara padr√£o para formatar o n√∫mero do processo
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -X DELETE http://<host>/sei-broker/service/COSAP/blocos/12/processos/33910000029201653
 	 *
-	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess (Sucesso - 200) {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */

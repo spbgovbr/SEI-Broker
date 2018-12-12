@@ -6,19 +6,19 @@
 	 * 
 	 * @apiPermission RO_SEI_BROKER
 	 * 
-	 * @apiDescription O serviÁo criar· um arquivo no repositÛrio de documentos e retornar· seu identificador. O envio do arquivo poder· ser particionado com chamadas 
-	 * posteriores ao serviÁo de Adicionar Conte˙do Arquivo. ApÛs todo o conte˙do ser transferido o arquivo ser· ativado e poder· ser associado com um documento externo 
-	 * no serviÁo de inclus„o de documento. Ser„o excluÌdos em 24 horas os arquivos n„o completados e n„o associados a um documento.
+	 * @apiDescription O servi√ßo criar√° um arquivo no reposit√≥rio de documentos e retornar√° seu identificador. O envio do arquivo poder√° ser particionado com chamadas 
+	 * posteriores ao servi√ßo de Adicionar Conte√∫do Arquivo. Ap√≥s todo o conte√∫do ser transferido o arquivo ser√° ativado e poder√° ser associado com um documento externo 
+	 * no servi√ßo de inclus√£o de documento. Ser√£o exclu√≠dos em 24 horas os arquivos n√£o completados e n√£o associados a um documento.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 *  
 	 * @apiParam (Request Body) {Arquivo} arquivo Objeto representando um arquivo.
 	 * @apiParam (Request Body) {String} arquivo.nome Nome do arquivo.
 	 * @apiParam (Request Body) {String} arquivo.tamanho Tamanho total do arquivo em bytes.
-	 * @apiParam (Request Body) {String} arquivo.hash MD5 do conte˙do total do arquivo.
-	 * @apiParam (Request Body) {String} arquivo.conteudo Conte˙do total ou parcial codificado em Base64, m·ximo de 15MB.
+	 * @apiParam (Request Body) {String} arquivo.hash MD5 do conte√∫do total do arquivo.
+	 * @apiParam (Request Body) {String} arquivo.conteudo Conte√∫do total ou parcial codificado em Base64, m√°ximo de 15MB.
 	 *
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: https://<host>/sei-broker/service/COSAP/arquivos
 	 *
 	 *	body:
@@ -26,10 +26,10 @@
 	 *		"nome":"documentos-sei-broker.pdf",
 	 *		"tamanho":"2048",
 	 *		"hash":"45F1DEFFB45A5F6C2380A4CEE9B3E452",
-	 *		"conteudo":"Conte˙do total ou parcial do arquivo"
+	 *		"conteudo":"Conte√∫do total ou parcial do arquivo"
 	 *	}
 	 *
-	 * @apiSuccess (Sucesso - 201) {ArquivoCriado} arquivo Objeto de retorno da criaÁ„o do arquivo
+	 * @apiSuccess (Sucesso - 201) {ArquivoCriado} arquivo Objeto de retorno da cria√ß√£o do arquivo
 	 * @apiSuccess (Sucesso - 201) {String} arquivo.identificador Identificador do arquivo criado.
 	 * 
 	 * @apiSuccess (Sucesso Response Header - 201) {header} Location URL de acesso ao recurso criado.
@@ -44,38 +44,38 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
 	/** 
-	 * @api {put} /:unidade/arquivos/:arquivo Adicionar conte˙do arquivo
+	 * @api {put} /:unidade/arquivos/:arquivo Adicionar conte√∫do arquivo
 	 * @apiName adicionarConteudoArquivo
 	 * @apiGroup Arquivo
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER
 	 * 
-	 * @apiDescription Adiciona conte˙do a um arquivo criado, o sistema identificar· automaticamente quando o conte˙do foi completado validando o tamanho em bytes
-	 * e o hash do conte˙do. Quando as condiÁıes forem satisfeitas o arquivo ser· ativado e poder· ser utilizado nas chamadas de inclus„o de documento.
+	 * @apiDescription Adiciona conte√∫do a um arquivo criado, o sistema identificar√° automaticamente quando o conte√∫do foi completado validando o tamanho em bytes
+	 * e o hash do conte√∫do. Quando as condi√ß√µes forem satisfeitas o arquivo ser√° ativado e poder√° ser utilizado nas chamadas de inclus√£o de documento.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
-	 * @apiParam (Path Parameters) {String} arquivo Identificador do arquivo que receber· o conte˙do.
+	 * @apiParam (Path Parameters) {String} arquivo Identificador do arquivo que receber√° o conte√∫do.
 	 *  
 	 * @apiParam (Request Body) {ParteArquivo} parte Objeto representando uma parte do arquivo.
-	 * @apiParam (Request Body) {String} parte.arquivo Identificador do arquivo que receber· o conte˙do.
-	 * @apiParam (Request Body) {String} parte.conteudo Conte˙do parcial codificado em Base64, m·ximo de 15MB.
+	 * @apiParam (Request Body) {String} parte.arquivo Identificador do arquivo que receber√° o conte√∫do.
+	 * @apiParam (Request Body) {String} parte.conteudo Conte√∫do parcial codificado em Base64, m√°ximo de 15MB.
 	 *
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: https://<host>/sei-broker/service/COSAP/arquivos/123456
 	 *
 	 *	body:
 	 *	{
 	 *		"arquivo":"123456",
-	 *		"conteudo":"Conte˙do parcial do arquivo"
+	 *		"conteudo":"Conte√∫do parcial do arquivo"
 	 *	}
 	 *
-	 * @apiSuccess (Sucesso - 200) {ArquivoCriado} arquivo Objeto de retorno da criaÁ„o do arquivo
+	 * @apiSuccess (Sucesso - 200) {ArquivoCriado} arquivo Objeto de retorno da cria√ß√£o do arquivo
 	 * @apiSuccess (Sucesso - 200) {String} arquivo.identificador Identificador do arquivo criado.
 	 * 
 	 * @apiSuccess (Sucesso Response Header - 200) {header} Location URL de acesso ao recurso alterado.
@@ -90,7 +90,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 

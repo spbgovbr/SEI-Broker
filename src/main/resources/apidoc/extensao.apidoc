@@ -1,29 +1,29 @@
 	/**
-	 * @api {get} /:unidade/extensoes Listar extensıes
+	 * @api {get} /:unidade/extensoes Listar extens√µes
 	 * @apiName listarExtensoesPermitidas
 	 * @apiGroup Extensao
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
-	 * @apiDescription Este mÈtodo realiza uma busca pelas extensıes de arquivos permitidas.
+	 * @apiDescription Este m√©todo realiza uma busca pelas extens√µes de arquivos permitidas.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
 	 * 
-	 * @apiParam (Query Parameters) {String} [extensao=null] Para filtrar por uma determinada extens„o.
+	 * @apiParam (Query Parameters) {String} [extensao=null] Para filtrar por uma determinada extens√£o.
 	 *
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i http://<host>/sei-broker/service/COSAP/extensoes/
 	 *
-	 * @apiSuccess (Sucesso - 200) {ArquivoExtensao[]} extensoes Lista de extensıes permitidas.
-	 * @apiSuccess (Sucesso - 200) {String} extensoes.idArquivoExtensao Identificador interno do SEI relativo a extens„o
-	 * @apiSuccess (Sucesso - 200) {String} extensoes.extensao Texto da extens„o (ex.: pdf, ods, doc, ppt,...)
-	 * @apiSuccess (Sucesso - 200) {String} extensoes.descricao DescriÁ„o da extens„o
+	 * @apiSuccess (Sucesso - 200) {ArquivoExtensao[]} extensoes Lista de extens√µes permitidas.
+	 * @apiSuccess (Sucesso - 200) {String} extensoes.idArquivoExtensao Identificador interno do SEI relativo a extens√£o
+	 * @apiSuccess (Sucesso - 200) {String} extensoes.extensao Texto da extens√£o (ex.: pdf, ods, doc, ppt,...)
+	 * @apiSuccess (Sucesso - 200) {String} extensoes.descricao Descri√ß√£o da extens√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */

@@ -1,53 +1,53 @@
 	/**
-	 * @api {get} /:unidade/usuarios Listar usu·rios
+	 * @api {get} /:unidade/usuarios Listar usu√°rios
 	 * @apiName listarUsuarios
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
-	 * @apiDescription Este mÈtodo realiza uma consulta aos usu·rios cadastrados que possuem o perfil "B·sico".
+	 * @apiDescription Este m√©todo realiza uma consulta aos usu√°rios cadastrados que possuem o perfil "B√°sico".
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
 	 *	
-	 * @apiParam (Query Parameters) {String} [usuario=null] Id do usu·rio que deseja recuperar as informaÁıes
+	 * @apiParam (Query Parameters) {String} [usuario=null] Id do usu√°rio que deseja recuperar as informa√ß√µes
 	 *
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i http://<host>/sei-broker/service/usuarios/COSAP
 	 *
-	 * @apiSuccess {Usuario[]} usuarios Lista de usu·rios
+	 * @apiSuccess {Usuario[]} usuarios Lista de usu√°rios
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
 	/**
-	 * @api {get} :unidade/usuarios/:usuario Buscar usu·rio
+	 * @api {get} :unidade/usuarios/:usuario Buscar usu√°rio
 	 * @apiName buscarUsuario
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
-	 * @apiDescription Este mÈtodo realiza a uma busca pelo login do usu·rio.
+	 * @apiDescription Este m√©todo realiza a uma busca pelo login do usu√°rio.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
-	 * @apiParam (Path Parameters) {String} usuario Login do usu·rio
+	 * @apiParam (Path Parameters) {String} usuario Login do usu√°rio
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -i http://<host>/sei-broker/service/cosap/usuarios/andre.guimaraes
 	 *
-	 * @apiSuccess {Usuario} usuario InformaÁıes do usu·rio encontrado.
+	 * @apiSuccess {Usuario} usuario Informa√ß√µes do usu√°rio encontrado.
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -59,15 +59,15 @@
 	 * 
 	 * @apiPermission RO_SEI_BROKER
 	 * 
-	 * @apiDescription Este mÈtodo atribui o processo a um usu·rio.
+	 * @apiDescription Este m√©todo atribui o processo a um usu√°rio.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
-	 * @apiParam (Path Parameters) {String} usuario Login do usu·rio a quem deseja atribuir o processo
+	 * @apiParam (Path Parameters) {String} usuario Login do usu√°rio a quem deseja atribuir o processo
 	 * 
-	 * @apiParam (Request Body) {String} processo Numero do processo a ser atribuÌdo
+	 * @apiParam (Request Body) {String} processo Numero do processo a ser atribu√≠do
 	 * @apiParam (Request Body) {String} [reabrir-processo=N] S ou N para reabrir o processo
 	 *
- 	 * @apiExample Exemplo de requisiÁ„o:	
+ 	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: [POST] http://<host>/sei-broker/service/COSAP/usuarios/andre.guimaraes/processos
 	 *
 	 *	body:
@@ -76,149 +76,149 @@
 	 *		"reabrir":false
 	 *	}
 	 *
-	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
 	/**
-	 * @api {post} /usuarios Incluir usu·rio
+	 * @api {post} /usuarios Incluir usu√°rio
 	 * @apiName incluirUsuario
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER_ADM
 	 * 
-	 * @apiDescription Este mÈtodo realiza a inclus„o de novos usu·rios ou alteraraÁıes nos usu·rios existentes.
+	 * @apiDescription Este m√©todo realiza a inclus√£o de novos usu√°rios ou alterara√ß√µes nos usu√°rios existentes.
 	 *
-	 * @apiParam (Request Body) {String} codigo CÛdigo que deseja atribuir ao usu·rio
-	 * @apiParam (Request Body) {String} nome Nome do usu·rio
-	 * @apiParam (Request Body) {String} login Login que ser· atribuÌdo ao usu·rio
+	 * @apiParam (Request Body) {String} codigo C√≥digo que deseja atribuir ao usu√°rio
+	 * @apiParam (Request Body) {String} nome Nome do usu√°rio
+	 * @apiParam (Request Body) {String} login Login que ser√° atribu√≠do ao usu√°rio
 	 *
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: http://<host>/sei-broker/service/usuarios
 	 *
 	 *	body:
 	 *	{
 	 *		"codigo":"1234",
-	 *		"nome":"AndrÈ LuÌs Fernandes Guimar„es",
+	 *		"nome":"Andr√© Lu√≠s Fernandes Guimar√£es",
 	 *		"login":"andre.guimaraes"
 	 *	}
 	 *
-	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
 	/**
-	 * @api {delete} /usuarios/:login Excluir usu·rio
+	 * @api {delete} /usuarios/:login Excluir usu√°rio
 	 * @apiName excluirUsuario
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER_ADM
 	 * 
-	 * @apiDescription Este mÈtodo realiza a exclus„o de usu·rios.
+	 * @apiDescription Este m√©todo realiza a exclus√£o de usu√°rios.
 	 * 
-	 * @apiParam {String} codigo CÛdigo que deseja atribuir ao usu·rio
-	 * @apiParam {String} nome Nome do usu·rio
-	 * @apiParam {String} login Login que ser· atribuÌdo ao usu·rio
+	 * @apiParam {String} codigo C√≥digo que deseja atribuir ao usu√°rio
+	 * @apiParam {String} nome Nome do usu√°rio
+	 * @apiParam {String} login Login que ser√° atribu√≠do ao usu√°rio
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: [DELETE] http://<host>/sei-broker/service/usuarios/andre.guimaraes
 	 *
 	 *	body:
 	 *	{
 	 *		"codigo":"1234",
-	 *		"nome":"AndrÈ LuÌs Fernandes Guimar„es",
+	 *		"nome":"Andr√© Lu√≠s Fernandes Guimar√£es",
 	 *		"login":"andre.guimaraes"
 	 *	}
 	 *
-	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
 	/**
-	 * @api {delete} /usuarios/ativos Desativar usu·rio
+	 * @api {delete} /usuarios/ativos Desativar usu√°rio
 	 * @apiName desativarUsuario
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER_ADM
 	 * 
-	 * @apiDescription Este mÈtodo desativa usu·rios.
+	 * @apiDescription Este m√©todo desativa usu√°rios.
 	 *
-	 * @apiParam {String} codigo CÛdigo que deseja atribuir ao usu·rio
-	 * @apiParam {String} nome Nome do usu·rio
-	 * @apiParam {String} login Login que ser· atribuÌdo ao usu·rio
+	 * @apiParam {String} codigo C√≥digo que deseja atribuir ao usu√°rio
+	 * @apiParam {String} nome Nome do usu√°rio
+	 * @apiParam {String} login Login que ser√° atribu√≠do ao usu√°rio
 	 *
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: [DELETE] http://<host>/sei-broker/service/usuarios/ativos/andre.guimaraes
 	 *
 	 *	body:
 	 *	{
 	 *		"codigo":"1234",
-	 *		"nome":"AndrÈ LuÌs Fernandes Guimar„es",
+	 *		"nome":"Andr√© Lu√≠s Fernandes Guimar√£es",
 	 *		"login":"andre.guimaraes"
 	 *	}
 	 *
-	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
 	/**
-	 * @api {post} /usuarios/ativos Ativar usu·rio
+	 * @api {post} /usuarios/ativos Ativar usu√°rio
 	 * @apiName ativarUsuario
 	 * @apiGroup Usuario
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER_ADM
 	 * 
-	 * @apiDescription Este mÈtodo reativa usu·rios.
+	 * @apiDescription Este m√©todo reativa usu√°rios.
 	 *
-	 * @apiParam {String} codigo CÛdigo que deseja atribuir ao usu·rio
-	 * @apiParam {String} nome Nome do usu·rio
-	 * @apiParam {String} login Login que ser· atribuÌdo ao usu·rio
+	 * @apiParam {String} codigo C√≥digo que deseja atribuir ao usu√°rio
+	 * @apiParam {String} nome Nome do usu√°rio
+	 * @apiParam {String} login Login que ser√° atribu√≠do ao usu√°rio
 	 *
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: http://<host>/sei-broker/service/usuarios/ativos
 	 *
 	 *	body:
 	 *	{
 	 *		"codigo":"1234",
-	 *		"nome":"AndrÈ LuÌs Fernandes Guimar„es",
+	 *		"nome":"Andr√© Lu√≠s Fernandes Guimar√£es",
 	 *		"login":"andre.guimaraes"
 	 *	}
 	 *
-	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 

@@ -1,35 +1,35 @@
 	/**
-	 * @api {get} /:unidade/paises Listar países
+	 * @api {get} /:unidade/paises Listar paÃ­ses
 	 * @apiName getPaises
 	 * @apiGroup Endereco
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
-	 * @apiDescription Consulta países cadastrados.
+	 * @apiDescription Consulta paÃ­ses cadastrados.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * 	
-	 * @apiExample Exemplo de requisição:	
+	 * @apiExample Exemplo de requisiÃ§Ã£o:	
 	 *	curl -i http://<host>/sei-broker/service/cosap/paises
 	 *
-	 * @apiSuccess (Sucesso - 200) {List} resultado Lista com os países.
-	 * @apiSuccess (Sucesso - 200) {Pais} resultado.pais Objeto representando o país.
-	 * @apiSuccess (Sucesso - 200) {String} resultado.pais.idPais Identificador do país no SEI.
-	 * @apiSuccess (Sucesso - 200) {String} resultado.pais.nome Nome do país.
+	 * @apiSuccess (Sucesso - 200) {List} resultado Lista com os paÃ­ses.
+	 * @apiSuccess (Sucesso - 200) {Pais} resultado.pais Objeto representando o paÃ­s.
+	 * @apiSuccess (Sucesso - 200) {String} resultado.pais.idPais Identificador do paÃ­s no SEI.
+	 * @apiSuccess (Sucesso - 200) {String} resultado.pais.nome Nome do paÃ­s.
 	 * 
 	 * @apiSuccessExample {json} Success-Response:
 	 *     HTTP/1.1 200 OK
 	 *     {
 	 *       "idPais": "4",
-	 *       "nome": "Afeganistão"
+	 *       "nome": "AfeganistÃ£o"
 	 *     }
 	 * 
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
+	 *		"code":"cÃ³digo do erro"
 	 *	}
 	 */
 
@@ -45,16 +45,16 @@
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * 	
-	 * @apiExample Exemplo de requisição:	
+	 * @apiExample Exemplo de requisiÃ§Ã£o:	
 	 *	curl -i http://<host>/sei-broker/service/cosap/estados
 	 *
 	 * @apiSuccess (Sucesso - 200) {List} resultado Lista com os estados.
 	 * @apiSuccess (Sucesso - 200) {Estado} resultado.estado Objeto representando um estado.
 	 * @apiSuccess (Sucesso - 200) {String} resultado.estado.idEstado Identificador do estado no SEI.
-	 * @apiSuccess (Sucesso - 200) {String} resultado.estado.idPais Identificador do país no SEI.
+	 * @apiSuccess (Sucesso - 200) {String} resultado.estado.idPais Identificador do paÃ­s no SEI.
 	 * @apiSuccess (Sucesso - 200) {String} resultado.estado.sigla Sigla do estado.
 	 * @apiSuccess (Sucesso - 200) {String} resultado.estado.nome Nome do estado.
-	 * @apiSuccess (Sucesso - 200) {String} resultado.estado.codigoIbge Código do IBGE.
+	 * @apiSuccess (Sucesso - 200) {String} resultado.estado.codigoIbge CÃ³digo do IBGE.
 	 * 
 	 * @apiSuccessExample {json} Success-Response:
 	 *     HTTP/1.1 200 OK
@@ -70,7 +70,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
+	 *		"code":"cÃ³digo do erro"
 	 *	}
 	 */
 
@@ -89,15 +89,15 @@
 	 *
 	 * @apiParam (Query Parameters) {String} [pais="76 (Brasil)"] Identificador do pais que deseja listar os estados.
 	 * 	
-	 * @apiExample Exemplo de requisição:	
+	 * @apiExample Exemplo de requisiÃ§Ã£o:	
 	 *	curl -i http://<host>/sei-broker/service/cosap/estados/AC
 	 * 
 	 * @apiSuccess (Sucesso - 200) {Estado} estado Objeto representando um estado.
 	 * @apiSuccess (Sucesso - 200) {String} estado.idEstado Identificador do estado no SEI.
-	 * @apiSuccess (Sucesso - 200) {String} estado.idPais Identificador do país no SEI.
+	 * @apiSuccess (Sucesso - 200) {String} estado.idPais Identificador do paÃ­s no SEI.
 	 * @apiSuccess (Sucesso - 200) {String} estado.sigla Sigla do estado.
 	 * @apiSuccess (Sucesso - 200) {String} estado.nome Nome do estado.
-	 * @apiSuccess (Sucesso - 200) {String} estado.codigoIbge Código do IBGE.
+	 * @apiSuccess (Sucesso - 200) {String} estado.codigoIbge CÃ³digo do IBGE.
 	 * 
 	 * @apiSuccessExample {json} Success-Response:
 	 *     HTTP/1.1 200 OK
@@ -113,7 +113,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
+	 *		"code":"cÃ³digo do erro"
 	 *	}
 	 */
 
@@ -132,13 +132,13 @@
 	 *
 	 * @apiParam (Query Parameters) {String} [filtro] String utilizada para filtrar as cidades.
 	 * 	
-	 * @apiExample Exemplo de requisição:	
+	 * @apiExample Exemplo de requisiÃ§Ã£o:	
 	 *	curl -i http://<host>/sei-broker/service/cosap/estados/rj/cidades?filtro=paraiba
 	 * 
 	 * @apiSuccess (Sucesso - 200) {List} resultado Lista com os cidades encontradas.
 	 * @apiSuccess (Sucesso - 200) {Cidade} resultado.cidade Objeto representando uma cidade.
 	 * @apiSuccess (Sucesso - 200) {String} resultado.cidade.nome Nome da cidade.
-	 * @apiSuccess (Sucesso - 200) {String} resultado.cidade.codigoIbge Código do IBGE.
+	 * @apiSuccess (Sucesso - 200) {String} resultado.cidade.codigoIbge CÃ³digo do IBGE.
 	 * @apiSuccess (Sucesso - 200) {Estado} resultado.cidade.estado Objeto representando um estado.
 	 * @apiSuccess (Sucesso - 200) {String} resultado.cidade.estado.nome Nome do estado.
 	 * @apiSuccess (Sucesso - 200) {String} resultado.cidade.estado.sigla Sigla do estado.
@@ -150,7 +150,7 @@
 	 *       	"sigla": "RJ",
 	 *       	"nome": "Rio de Janeiro"
 	 *       },
-	 *       "nome": "Paraíba do Sul",
+	 *       "nome": "ParaÃ­ba do Sul",
 	 *       "codigoIbge": "3303708"
 	 *     }
 	 * 
@@ -158,7 +158,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
+	 *		"code":"cÃ³digo do erro"
 	 *	}
 	 */
 
@@ -170,18 +170,18 @@
 	 * 
 	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
-	 * @apiDescription Consulta a cidade pelo código do IBGE.
+	 * @apiDescription Consulta a cidade pelo cÃ³digo do IBGE.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * @apiParam (Path Parameters) {String} estado Sigla do estado.
-	 * @apiParam (Path Parameters) {String} cidade Código do IBGE.
+	 * @apiParam (Path Parameters) {String} cidade CÃ³digo do IBGE.
 	 * 	
-	 * @apiExample Exemplo de requisição:	
+	 * @apiExample Exemplo de requisiÃ§Ã£o:	
 	 *	curl -i http://<host>/sei-broker/service/cosap/estados/rj/cidades/3303708
 	 * 
 	 * @apiSuccess (Sucesso - 200) {Cidade} cidade Objeto representando uma cidade.
 	 * @apiSuccess (Sucesso - 200) {String} cidade.nome Nome da cidade.
-	 * @apiSuccess (Sucesso - 200) {String} cidade.codigoIbge Código do IBGE.
+	 * @apiSuccess (Sucesso - 200) {String} cidade.codigoIbge CÃ³digo do IBGE.
 	 * @apiSuccess (Sucesso - 200) {Estado} cidade.estado Objeto representando um estado.
 	 * @apiSuccess (Sucesso - 200) {String} cidade.estado.nome Nome do estado.
 	 * @apiSuccess (Sucesso - 200) {String} cidade.estado.sigla Sigla do estado.
@@ -193,7 +193,7 @@
 	 *       	"sigla": "RJ",
 	 *       	"nome": "Rio de Janeiro"
 	 *       },
-	 *       "nome": "Paraíba do Sul",
+	 *       "nome": "ParaÃ­ba do Sul",
 	 *       "codigoIbge": "3303708"
 	 *     }
 	 * 
@@ -201,6 +201,6 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
+	 *		"code":"cÃ³digo do erro"
 	 *	}
 	 */

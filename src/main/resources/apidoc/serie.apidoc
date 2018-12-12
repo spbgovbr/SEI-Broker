@@ -1,63 +1,31 @@
 	/**
-	 * @api {get} /:unidade/series Listar séries
+	 * @api {get} /:unidade/series Listar sÃ©ries
 	 * @apiName listarSeries
 	 * @apiGroup Serie
-	 * @apiVersion 2.0.0
+	 * @apiVersion 2.9.1
 	 * 
 	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
-	 * @apiDescription Este método realiza uma consulta às séries.
+	 * @apiDescription Este mÃ©todo realiza uma consulta Ã s sÃ©ries.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
 	 * 
 	 * @apiParam (Query Parameters) {String} [filtro] Para filtrar por series que contenham o trecho no nome.
-	 * @apiParam (Query Parameters) {String} [nome] Para selecionar a série que possua nome igual.
+	 * @apiParam (Query Parameters) {String} [nome] Para selecionar a sÃ©rie que possua nome igual.
 	 * @apiParam (Query Parameters) {String} [tipo-processo=null] Para filtrar por determinado tipo de processo.
 	 *
-	 * @apiExample {curl} Exemplo de requisição:
+	 * @apiExample {curl} Exemplo de requisiÃ§Ã£o:
 	 * 	curl -i https://<host>/sei-broker/service/COSAP/series
 	 *
-	 * @apiSuccess (Sucesso - 200) {Serie[]} series Lista de séries.
+	 * @apiSuccess (Sucesso - 200) {Serie[]} series Lista de sÃ©ries.
 	 * @apiSuccess (Sucesso - 200) {String} series.idSerie Identificador do tipo de documento
 	 * @apiSuccess (Sucesso - 200) {String} series.nome Nome do tipo de documento
-	 * @apiSuccess (Sucesso - 200) {String} series.aplicabilidade T = Documentos internos e externos, I = documentos internos, E = documentos externos e F = formulários
+	 * @apiSuccess (Sucesso - 200) {String} series.aplicabilidade T = Documentos internos e externos, I = documentos internos, E = documentos externos e F = formulÃ¡rios
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
+	 *		"code":"cÃ³digo do erro"
 	 *	}
 	 */
-
-	/**
-	 * @api {get} /:unidade/tipos-documentos Listar tipos documentos
-	 * @apiName listarTiposDocumentos
-	 * @apiGroup Documento
-	 * @apiVersion 2.0.0
-	 * 
-	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
-	 * 
-	 * @apiDescription Lista os tipos de documentos do SEI.
-	 * 
-	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
-	 * 
-	 * @apiParam (Query Parameters) {String} [filtro] Para filtrar por documentos que contenham o trecho no nome.
-	 * @apiParam (Query Parameters) {String} [nome] Para selecionar a série que possua nome igual.
-	 *
-	 * @apiExample {curl} Exemplo de requisição:
-	 * 	curl -i https://<host>/sei-broker/service/COSAP/tipos-documentos
-	 *
-	 * @apiSuccess (Sucesso - 200) {List} tipos Lista com os tipos de documentos
-	 * @apiSuccess (Sucesso - 200) {String} tipos.identificador Identificador do tipo de documento
-	 * @apiSuccess (Sucesso - 200) {String} tipos.nome Nome do tipo de documento
-	 * @apiSuccess (Sucesso - 200) {String} series.aplicabilidade T = Documentos internos e externos, I = documentos internos, E = documentos externos e F = formulários
-	 *
-	 * @apiErrorExample {json} Error-Response:
-	 * 	HTTP/1.1 500 Internal Server Error
-	 * 	{
-	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
-	 *	}
-	 */
-

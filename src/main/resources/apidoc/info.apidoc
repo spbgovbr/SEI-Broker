@@ -1,75 +1,75 @@
 	/**
-	 * @api {get} /info/versao Consultar vers„o
+	 * @api {get} /info/versao Consultar vers√£o
 	 * @apiName getNumeroVersao
 	 * @apiGroup Info
 	 * @apiVersion 2.0.0
 	 *
-	 * @apiDescription Este mÈtodo realiza uma consulta para saber a vers„o do sei-broker que est· disponÌvel.
+	 * @apiDescription Este m√©todo realiza uma consulta para saber a vers√£o do sei-broker que est√° dispon√≠vel.
 	 * 	
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i http://<host>/sei-broker/service/info/versao
 	 *
-	 * @apiSuccess {String} versao N˙mero da vers„o.
+	 * @apiSuccess {String} versao N√∫mero da vers√£o.
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
 	/**
-	 * @api {get} /info/conexoes/mysql Testar conex„o MySQL
+	 * @api {get} /info/conexoes/mysql Testar conex√£o MySQL
 	 * @apiName testMySQLConnection
 	 * @apiGroup Info
 	 * @apiVersion 2.0.0
 	 *
-	 * @apiDescription Testa a conex„o com o MySQL e retorna o n˙mero de vers„o do banco.
+	 * @apiDescription Testa a conex√£o com o MySQL e retorna o n√∫mero de vers√£o do banco.
 	 * 	
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i http://<host>/sei-broker/service/info/conexoes/mysql
 	 *
-	 * @apiSuccess {String} versao N˙mero de vers„o do MySQL.
+	 * @apiSuccess {String} versao N√∫mero de vers√£o do MySQL.
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
 	/**
-	 * @api {get} /info/conexoes/oracle Testar conex„o Oracle
+	 * @api {get} /info/conexoes/oracle Testar conex√£o Oracle
 	 * @apiName testOracleConnection
 	 * @apiGroup Info
 	 * @apiVersion 2.0.0
 	 *
-	 * @apiDescription Testa a conex„o com o Oracle e retorna o n˙mero de vers„o do banco.
+	 * @apiDescription Testa a conex√£o com o Oracle e retorna o n√∫mero de vers√£o do banco.
 	 * 	
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i http://<host>/sei-broker/service/info/conexoes/oracle
 	 *
-	 * @apiSuccess {String} versao N˙mero de vers„o do Oracle.
+	 * @apiSuccess {String} versao N√∫mero de vers√£o do Oracle.
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
 	/**
-	 * @api {get} /info/conexoes/sei Testar conex„o SEI
+	 * @api {get} /info/conexoes/sei Testar conex√£o SEI
 	 * @apiName testSEIConnection
 	 * @apiGroup Info
 	 * @apiVersion 2.0.0
 	 *
-	 * @apiDescription Testa a conex„o com o SEI fazendo uma consulta ao serviÁo listar unidades.
+	 * @apiDescription Testa a conex√£o com o SEI fazendo uma consulta ao servi√ßo listar unidades.
 	 * 	
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i http://<host>/sei-broker/service/info/conexoes/sei
 	 *
 	 * @apiSuccess {String} mensagem Mensagem de sucesso.
@@ -78,7 +78,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -91,12 +91,12 @@
 	 * @apiDescription Lista os requests recebidos pelo broker.
 	 * 
 	 * 
-	 * @apiParam (Query Parameters) {String} [operacao] nome do mÈtodo acessado
-	 * @apiParam (Query Parameters) {String} [origem] usu·rio que originou a requisiÁ„o
-	 * @apiParam (Query Parameters) {int} [pag=1] n˙mero da p·gina
-	 * @apiParam (Query Parameters) {int} [itens=50] quantidade de itens listados por p·gina
+	 * @apiParam (Query Parameters) {String} [operacao] nome do m√©todo acessado
+	 * @apiParam (Query Parameters) {String} [origem] usu√°rio que originou a requisi√ß√£o
+	 * @apiParam (Query Parameters) {int} [pag=1] n√∫mero da p√°gina
+	 * @apiParam (Query Parameters) {int} [itens=50] quantidade de itens listados por p√°gina
 	 * 
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i http://<host>/sei-broker/service/info/requests
 	 *
 	 * @apiSuccess {String} mensagem Mensagem de sucesso.
@@ -105,6 +105,6 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
