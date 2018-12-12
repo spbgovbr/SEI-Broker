@@ -8,43 +8,43 @@
 	 * 
 	 * @apiDescription Retorna as Unidades cadastradas no SEI.
 	 *
-	 * @apiExample {curl} Exemplo de requisição:
+	 * @apiExample {curl} Exemplo de requisiÃ§Ã£o:
 	 * 	curl -i https://<host>/sei-broker/service/unidades/
 	 * 
 	 * @apiSuccess (Sucesso - 200) {Unidade[]} unidades Lista de unidades
 	 * @apiSuccess (Sucesso - 200) {String} unidades.idUnidade Identificador da unidade
 	 * @apiSuccess (Sucesso - 200) {String} unidades.sigla Sigla da unidade
-	 * @apiSuccess (Sucesso - 200) {String} unidades.descricao Descrição da unidade
+	 * @apiSuccess (Sucesso - 200) {String} unidades.descricao DescriÃ§Ã£o da unidade
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
+	 *		"code":"cÃ³digo do erro"
 	 *	}
 	 */
 
 	/**
-	 * @api {get} /unidades/{unidade}/codigo Consultar código
+	 * @api {get} /unidades/{unidade}/codigo Consultar cÃ³digo
 	 * @apiName consultarCodigo
 	 * @apiGroup Unidade
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
-	 * @apiDescription Retorna o código da Unidade pesquisada.
+	 * @apiDescription Retorna o cÃ³digo da Unidade pesquisada.
 	 *
-	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade que deseja consultar o código
+	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade que deseja consultar o cÃ³digo
 	 *
-	 * @apiExample {curl} Exemplo de requisição:
+	 * @apiExample {curl} Exemplo de requisiÃ§Ã£o:
 	 * 	curl -i https://<host>/sei-broker/service/unidades/COSAP/codigo
 	 *
-	 * @apiSuccess (Sucesso - 200) {String} codigo Código da unidade.
+	 * @apiSuccess (Sucesso - 200) {String} codigo CÃ³digo da unidade.
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
+	 *		"code":"cÃ³digo do erro"
 	 *	}
 	 */

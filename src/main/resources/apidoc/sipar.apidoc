@@ -4,12 +4,12 @@
      * @apiGroup SIPAR
      * @apiVersion 2.0.0
      *
-     * @apiDescription Marca um processo físico (SIPAR) como importado para um processo eletrônico (SEI).
+     * @apiDescription Marca um processo fÃ­sico (SIPAR) como importado para um processo eletrÃ´nico (SEI).
      *    
 	 * @apiParam (Header Parameters) {String} content-type Informar text/plain
-	 * @apiParam (Request Body) {String} processo Número do processo a ser importado
+	 * @apiParam (Request Body) {String} processo NÃºmero do processo a ser importado
      * 
-	 * @apiExample Exemplo de requisição:	
+	 * @apiExample Exemplo de requisiÃ§Ã£o:	
 	 *	endpoint: [POST] http://<host>/sei-broker/service/sipar/importados
 	 *
 	 *	body:
@@ -22,7 +22,7 @@
      * HTTP/1.1 500 Internal Server Error
      * {
      * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
+     *		"code":"cÃ³digo do erro"
      * }
      * 
      *
@@ -30,7 +30,7 @@
      * HTTP/1.1 400 Bad Request
      * {
      * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
+     *		"code":"cÃ³digo do erro"
      * }
      * 
      *
@@ -38,21 +38,21 @@
      * HTTP/1.1 409 Conflict
      * {
      * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
+     *		"code":"cÃ³digo do erro"
      * }
      */
 
 	/**
-     * @api {delete} /sipar/importados/:processo Cancelar Importação Processo
+     * @api {delete} /sipar/importados/:processo Cancelar ImportaÃ§Ã£o Processo
      * @apiName cancelarImportacaoProcesso
      * @apiGroup SIPAR
      * @apiVersion 2.0.0
      *
-     * @apiDescription Desmarca um processo físico (SIPAR) como importado para um processo eletrônico (SEI).
+     * @apiDescription Desmarca um processo fÃ­sico (SIPAR) como importado para um processo eletrÃ´nico (SEI).
      *        
-     * @apiParam (Path Parameter) {String} processo Número do processo físico existente no SIPAR contendo 17 dígitos e iniciado com 33902. Ex. 33902111111111111
+     * @apiParam (Path Parameter) {String} processo NÃºmero do processo fÃ­sico existente no SIPAR contendo 17 dÃ­gitos e iniciado com 33902. Ex. 33902111111111111
      * 
-     * @apiExample {curl} Exemplo de requisição:
+     * @apiExample {curl} Exemplo de requisiÃ§Ã£o:
      *        curl -X DELETE http://<host>/sei-broker/service/sipar/importados/33902112492200241
      * 
      * @apiSuccessExample {json} Success-Response:
@@ -62,7 +62,7 @@
      * HTTP/1.1 500 Internal Server Error
      * {
      * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
+     *		"code":"cÃ³digo do erro"
      * }
      * 
      *
@@ -70,7 +70,7 @@
      * HTTP/1.1 400 Bad Request
      * {
      * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
+     *		"code":"cÃ³digo do erro"
      * }
      * 
      *
@@ -78,6 +78,6 @@
      * HTTP/1.1 404 Not Found
      * {
      * 		"error":"Mensagem de erro."
-     *		"code":"código do erro"
+     *		"code":"cÃ³digo do erro"
      * }
      */

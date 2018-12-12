@@ -1,26 +1,26 @@
 	/**
-	 * @api {get} /:unidade/tipos-conferencia Listar tipos de conferência
+	 * @api {get} /:unidade/tipos-conferencia Listar tipos de conferÃªncia
 	 * @apiName listarTiposConferencia
-	 * @apiGroup Tipos Conferência
+	 * @apiGroup Tipos ConferÃªncia
 	 * @apiVersion 2.0.0
 	 * 
 	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
-	 * @apiDescription Lista os tipos de conferência.
+	 * @apiDescription Lista os tipos de conferÃªncia.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 *
-	 * @apiExample {curl} Exemplo de requisição:
+	 * @apiExample {curl} Exemplo de requisiÃ§Ã£o:
 	 * 	curl -i https://<host>/sei-broker/service/cosap/tipos-conferencia
 	 * 
-	 * @apiSuccess (Sucesso - 200) {TipoConferencia[]} tipos Lista de tipos de conferência.
-	 * @apiSuccess (Sucesso - 200) {String} tipos.idTipoConferencia Identificador do tipo de conferência.
-	 * @apiSuccess (Sucesso - 200) {String} tipos.descricao Descrição do tipo de conferência.
+	 * @apiSuccess (Sucesso - 200) {TipoConferencia[]} tipos Lista de tipos de conferÃªncia.
+	 * @apiSuccess (Sucesso - 200) {String} tipos.idTipoConferencia Identificador do tipo de conferÃªncia.
+	 * @apiSuccess (Sucesso - 200) {String} tipos.descricao DescriÃ§Ã£o do tipo de conferÃªncia.
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"código do erro"
+	 *		"code":"cÃ³digo do erro"
 	 *	}
 	 */	

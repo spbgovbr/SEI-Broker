@@ -9,58 +9,58 @@
 	 * @apiDescription Consulta documento cadastrado no SEI.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
-	 * @apiParam (Path Parameters) {String} documento Id do documento que deseja recuperar as informaÁıes
+	 * @apiParam (Path Parameters) {String} documento Id do documento que deseja recuperar as informa√ß√µes
 	 * 
-	 * @apiParam (Query Parameters) {String = "S (sim), N (n„o)"} [andamento = N] exibir o andamento do processo
-	 * @apiParam (Query Parameters) {String = "S (sim), N (n„o)"} [assinaturas = N] exibir as assinaturas presentes no documento
-	 * @apiParam (Query Parameters) {String = "S (sim), N (n„o)"} [publicacao = N] exibir detalhes da publicaÁ„o
-	 * @apiParam (Query Parameters) {String = "S (sim), N (n„o)"} [campos = N] exibir campos do formul·rio
+	 * @apiParam (Query Parameters) {String = "S (sim), N (n√£o)"} [andamento = N] exibir o andamento do processo
+	 * @apiParam (Query Parameters) {String = "S (sim), N (n√£o)"} [assinaturas = N] exibir as assinaturas presentes no documento
+	 * @apiParam (Query Parameters) {String = "S (sim), N (n√£o)"} [publicacao = N] exibir detalhes da publica√ß√£o
+	 * @apiParam (Query Parameters) {String = "S (sim), N (n√£o)"} [campos = N] exibir campos do formul√°rio
 	 *
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i https://<host>/sei-broker/service/COSAP/documentos/0000050?assinaturas=S&andamento=S
 	 *
-	 * @apiSuccess (Sucesso - 200) {RetornoConsultaDocumento} retornoConsultaDocumento InformaÁıes do documento encontrado no SEI
+	 * @apiSuccess (Sucesso - 200) {RetornoConsultaDocumento} retornoConsultaDocumento Informa√ß√µes do documento encontrado no SEI
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.idProcedimento Id interno do processo no SEI
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.procedimentoFormatado N˙mero do processo visÌvel para o usu·rio
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.procedimentoFormatado N√∫mero do processo vis√≠vel para o usu√°rio
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.idDocumento Id interno do documento no SEI
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.documentoFormatado N˙mero do documento visÌvel para o usu·rio
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.documentoFormatado N√∫mero do documento vis√≠vel para o usu√°rio
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.linkAcesso Link para acesso ao documento
 	 * @apiSuccess (Sucesso - 200) {Serie} retornoConsultaDocumento.serie Dados do tipo do documento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.serie.idSerie Identificador do tipo de documento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.serie.nome Nome do tipo de documento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.serie.aplicabilidade :TODO pendente
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.numero N˙mero do documento
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.data Data de geraÁ„o para documentos internos e para documentos externos È a data informada na tela de cadastro
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.numero N√∫mero do documento
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.data Data de gera√ß√£o para documentos internos e para documentos externos √© a data informada na tela de cadastro
 	 * @apiSuccess (Sucesso - 200) {Unidade} retornoConsultaDocumento.unidadeElaboradora Dados da unidade que gerou o documento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.descricao Nome da unidade
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.idUnidade CÛdigo da unidade
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.idUnidade C√≥digo da unidade
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.sigla Sigla da unidade
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.sinProtocolo :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.sinArquivamento :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.unidadeElaboradora.sinOuvidoria :TODO pendente
-	 * @apiSuccess (Sucesso - 200) {Andamento} retornoConsultaDocumento.andamentoGeracao InformaÁıes do andamento de geraÁ„o (opcional)
+	 * @apiSuccess (Sucesso - 200) {Andamento} retornoConsultaDocumento.andamentoGeracao Informa√ß√µes do andamento de gera√ß√£o (opcional)
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.idAndamento Identificador do andamento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.idTarefa :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.idTarefaModulo :TODO pendente
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.descricao DescriÁ„o do andamento
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.descricao Descri√ß√£o do andamento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.dataHora Data e hora do registro de andamento
-	 * @apiSuccess (Sucesso - 200) {Unidade} retornoConsultaDocumento.andamentoGeracao.unidade Unidade respons·vel pelo andamento (ver estrutura Unidade)
-	 * @apiSuccess (Sucesso - 200) {Usuario} retornoConsultaDocumento.andamentoGeracao.usuario Usu·rio respons·vel pela aÁ„o
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.usuario.idUsuario CÛdigo do usu·rio
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.usuario.nome Nome do usu·rio
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.usuario.sigla Login do usu·rio
+	 * @apiSuccess (Sucesso - 200) {Unidade} retornoConsultaDocumento.andamentoGeracao.unidade Unidade respons√°vel pelo andamento (ver estrutura Unidade)
+	 * @apiSuccess (Sucesso - 200) {Usuario} retornoConsultaDocumento.andamentoGeracao.usuario Usu√°rio respons√°vel pela a√ß√£o
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.usuario.idUsuario C√≥digo do usu√°rio
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.usuario.nome Nome do usu√°rio
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.usuario.sigla Login do usu√°rio
 	 * @apiSuccess (Sucesso - 200) {AtributoAndamento[]} retornoConsultaDocumento.andamentoGeracao.atributos Lista com os atributos relacionados ao andamento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.atributos.nome Nome do atributo
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.atributos.valor Valor do atributo
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.andamentoGeracao.atributos.idOrigem :TODO pendente 
 	 * @apiSuccess (Sucesso - 200) {Assinatura[]} retornoConsultaDocumento.assinaturas Conjunto de assinaturas do documento
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.nome Nome do assinante
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.cargoFuncao Cargo ou funÁ„o utilizado no momento da assinatura
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.cargoFuncao Cargo ou fun√ß√£o utilizado no momento da assinatura
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.dataHora Data/hora em que ocorreu a assinatura
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.idUsuario Identificador do usu·rio
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.idUsuario Identificador do usu√°rio
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.idOrigem :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.idOrgao :TODO pendente
-	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.sigla Login do usu·rio respons·vel pela assinatura
+	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.assinaturas.sigla Login do usu√°rio respons√°vel pela assinatura
 	 * @apiSuccess (Sucesso - 200) {Publicacao} retornoConsultaDocumento.publicacao :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.nomeVeiculo :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.numero :TODO pendente
@@ -73,7 +73,7 @@
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.imprensaNacional.pagina :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.imprensaNacional.secao :TODO pendente
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.publicacao.imprensaNacional.data :TODO pendente
-	 * @apiSuccess (Sucesso - 200) {Campo[]} retornoConsultaDocumento.campos Conjunto de campos do formul·rio
+	 * @apiSuccess (Sucesso - 200) {Campo[]} retornoConsultaDocumento.campos Conjunto de campos do formul√°rio
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.campos.nome Nome do campo
 	 * @apiSuccess (Sucesso - 200) {String} retornoConsultaDocumento.campos.valor Valor do campo
 	 * 
@@ -106,7 +106,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -118,41 +118,41 @@
 	 * 
 	 * @apiPermission RO_SEI_BROKER
 	 * 
-	 * @apiDescription Inclui um documento no SEI, podem ser incluÌdos documentos internos e externos, para documentos externo o tamanho m·ximo È 20MB.
+	 * @apiDescription Inclui um documento no SEI, podem ser inclu√≠dos documentos internos e externos, para documentos externo o tamanho m√°ximo √© 20MB.
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * 
-	 * @apiParam (Query Parameters) {String} [template] Identificador do template que ser· utilizado na transformaÁ„o do conteudo para HTML, o template precisa ser previamente cadastrado no templates-broker. (Este atributo exige que o atributo conteudo seja enviado em formato JSon e codificado em Base64)
+	 * @apiParam (Query Parameters) {String} [template] Identificador do template que ser√° utilizado na transforma√ß√£o do conteudo para HTML, o template precisa ser previamente cadastrado no templates-broker. (Este atributo exige que o atributo conteudo seja enviado em formato JSon e codificado em Base64)
 	 * 
 	 * @apiParam (Request Body) {String = "G (Gerado)","R (Recebido)"} tipo Tipo de documento
-	 * @apiParam (Request Body) {String} idSerie Identificador do tipo de documento no SEI (Consultar serviÁo Listar SÈries)
+	 * @apiParam (Request Body) {String} idSerie Identificador do tipo de documento no SEI (Consultar servi√ßo Listar S√©ries)
 	 * @apiParam (Request Body) {String} idProcedimento Identificador do processo onde o documento deve ser inserido. Opcional se protocoloProcedimento informado
-	 * @apiParam (Request Body) {String} [protocoloProcedimento] N˙mero do processo onde o documento deve ser inserido, visÌvel para o usu·rio. Opcional se IdProcedimento informado.
-	 * @apiParam (Request Body) {String} [idTipoConferencia] Identificador do tipo de conferÍncia associada com o documento externo
-	 * @apiParam (Request Body) {String{50}} [numero] N˙mero do documento, passar null para documentos gerados com numeraÁ„o controlada pelo SEI.Para documentos externos informar o n˙mero ou nome complementar a ser exibido na ·rvore de documentos do processo (o SEI n„o controla numeraÁ„o de documentos externos). 
-	 * @apiParam (Request Body) {String} [data] Data do documento (dd/MM/yyyy), obrigatÛrio para documentos externos. Passar null para documentos gerados.
-	 * @apiParam (Request Body) {String} [descricao] DescriÁ„o do documento para documentos gerados. Passar null para documentos externos
-	 * @apiParam (Request Body) {Remetente} [remetente] ObrigatÛrio para documentos externos, passar null para documentos gerados.
+	 * @apiParam (Request Body) {String} [protocoloProcedimento] N√∫mero do processo onde o documento deve ser inserido, vis√≠vel para o usu√°rio. Opcional se IdProcedimento informado.
+	 * @apiParam (Request Body) {String} [idTipoConferencia] Identificador do tipo de confer√™ncia associada com o documento externo
+	 * @apiParam (Request Body) {String{50}} [numero] N√∫mero do documento, passar null para documentos gerados com numera√ß√£o controlada pelo SEI.Para documentos externos informar o n√∫mero ou nome complementar a ser exibido na √°rvore de documentos do processo (o SEI n√£o controla numera√ß√£o de documentos externos). 
+	 * @apiParam (Request Body) {String} [data] Data do documento (dd/MM/yyyy), obrigat√≥rio para documentos externos. Passar null para documentos gerados.
+	 * @apiParam (Request Body) {String} [descricao] Descri√ß√£o do documento para documentos gerados. Passar null para documentos externos
+	 * @apiParam (Request Body) {Remetente} [remetente] Obrigat√≥rio para documentos externos, passar null para documentos gerados.
 	 * @apiParam (Request Body) {String} [remetente.nome] Nome do remetente
 	 * @apiParam (Request Body) {String} [remetente.sigla] Login do remetente
-	 * @apiParam (Request Body) {Interessado[]} [interessados] Informar um conjunto com os dados de interessados. Se n„o existirem interessados deve ser informado um conjunto vazio
+	 * @apiParam (Request Body) {Interessado[]} [interessados] Informar um conjunto com os dados de interessados. Se n√£o existirem interessados deve ser informado um conjunto vazio
 	 * @apiParam (Request Body) {String} [interessados.nome] Nome do interessado
 	 * @apiParam (Request Body) {String} [interessados.sigla] Login do interessado
-	 * @apiParam (Request Body) {Destinatario[]} [destinatarios] Informar um conjunto com os dados de destinat·rios. Se n„o existirem destinat·rios deve ser informado um conjunto vazio
-	 * @apiParam (Request Body) {String} [destinatarios.nome] Nome do destinat·rio
-	 * @apiParam (Request Body) {String} [destinatarios.sigla] Login do destinat·rio
-	 * @apiParam (Request Body) {String} [observacao] Texto da observaÁ„o da unidade, passar null se n„o existir
-	 * @apiParam (Request Body) {String{200}} [nomeArquivo] Nome do arquivo, obrigatÛrio para documentos externos. Passar null para documentos gerados.
-	 * @apiParam (Request Body) {String} conteudo Conte˙do do arquivo codificado em Base64. Para documentos gerados ser· o conte˙do da seÁ„o principal do editor HTML e para documentos externos ser· o conte˙do do anexo. Para documentos com template cadastrado, enviar Base64 do JSon referente ao conte˙do a ser preenchido no template.
-	 * @apiParam (Request Body) {String = "0 (p˙blico)","1 (restrito)", "2 (sigiloso)", "null (herda do tipo de processo)"} [nivelAcesso] NÌvel de acesso do documento
-	 * @apiParam (Request Body) {String} [idHipoteseLegal] Identificador da hipÛtese legal associada
-	 * @apiParam (Request Body) {String} [idArquivo] Identificador do arquivo enviado pelo serviÁo de Incluir Arquivo
-	 * @apiParam (Request Body) {String = "S (Sim)","N (N„o)"} [sinBloqueado] Bloquear o documento, n„o permite excluÌ-lo ou alterar seu conte˙do
-	 * @apiParam (Request Body) {Campo} [campos] Conjunto de campos associados com o formul·rio
+	 * @apiParam (Request Body) {Destinatario[]} [destinatarios] Informar um conjunto com os dados de destinat√°rios. Se n√£o existirem destinat√°rios deve ser informado um conjunto vazio
+	 * @apiParam (Request Body) {String} [destinatarios.nome] Nome do destinat√°rio
+	 * @apiParam (Request Body) {String} [destinatarios.sigla] Login do destinat√°rio
+	 * @apiParam (Request Body) {String} [observacao] Texto da observa√ß√£o da unidade, passar null se n√£o existir
+	 * @apiParam (Request Body) {String{200}} [nomeArquivo] Nome do arquivo, obrigat√≥rio para documentos externos. Passar null para documentos gerados.
+	 * @apiParam (Request Body) {String} conteudo Conte√∫do do arquivo codificado em Base64. Para documentos gerados ser√° o conte√∫do da se√ß√£o principal do editor HTML e para documentos externos ser√° o conte√∫do do anexo. Para documentos com template cadastrado, enviar Base64 do JSon referente ao conte√∫do a ser preenchido no template.
+	 * @apiParam (Request Body) {String = "0 (p√∫blico)","1 (restrito)", "2 (sigiloso)", "null (herda do tipo de processo)"} [nivelAcesso] N√≠vel de acesso do documento
+	 * @apiParam (Request Body) {String} [idHipoteseLegal] Identificador da hip√≥tese legal associada
+	 * @apiParam (Request Body) {String} [idArquivo] Identificador do arquivo enviado pelo servi√ßo de Incluir Arquivo
+	 * @apiParam (Request Body) {String = "S (Sim)","N (N√£o)"} [sinBloqueado] Bloquear o documento, n√£o permite exclu√≠-lo ou alterar seu conte√∫do
+	 * @apiParam (Request Body) {Campo} [campos] Conjunto de campos associados com o formul√°rio
 	 * @apiParam (Request Body) {String} [campos.nome] Nome do campo
 	 * @apiParam (Request Body) {String} [campos.valor] Valor do campo
 	 *
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: https://<host>/sei-broker/service/COSAP/documentos
 	 *
 	 *	body:
@@ -165,16 +165,16 @@
 	 *		"data":null,
 	 *		"descricao":"Documento demonstrativo",
 	 *		"remetente":null,
-	 *		"interessados":[{"sigla":"andre.guimaraes","nome":"AndrÈ LuÌs Fernandes Guimar„es"}],
+	 *		"interessados":[{"sigla":"andre.guimaraes","nome":"Andr√© Lu√≠s Fernandes Guimar√£es"}],
 	 *		"destinatarios":[],
 	 *		"observacao":null,
 	 *		"nomeArquivo":null,
-	 *		"conteudo":"Conte˙do Base64",
+	 *		"conteudo":"Conte√∫do Base64",
 	 *		"nivelAcesso":"0"
 	 *	}
 	 *
-	 * @apiSuccess (Sucesso Response Body - 201) {String} idDocumento n˙mero interno do documento
-	 * @apiSuccess (Sucesso Response Body - 201) {String} documentoFormatado n˙mero do documento visÌvel para o usu·rio
+	 * @apiSuccess (Sucesso Response Body - 201) {String} idDocumento n√∫mero interno do documento
+	 * @apiSuccess (Sucesso Response Body - 201) {String} documentoFormatado n√∫mero do documento vis√≠vel para o usu√°rio
 	 * @apiSuccess (Sucesso Response Body - 201) {String} linkAcesso link para acesso ao documento
 	 * 
 	 * @apiSuccess (Sucesso Response Header - 201) {header} Location URL de acesso ao recurso criado.
@@ -191,7 +191,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -207,10 +207,10 @@
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * 
-	 * @apiParam (Request Body) {String} documento Numero do documento que ser· cancelado
+	 * @apiParam (Request Body) {String} documento Numero do documento que ser√° cancelado
 	 * @apiParam (Request Body) {String} motivo Motivo do cancelamento
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: https://<host>/sei-broker/service/COSAP/documentos/cancelados
 	 *
 	 *	body:
@@ -220,13 +220,13 @@
 	 *	}
 	 *	
 	 *
-	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisiÁ„o
+	 * @apiSuccess {Boolean} resultado Booleano informando sucesso da requisi√ß√£o
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -242,25 +242,25 @@
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * 
-	 * @apiParam (Query Parameters) {String} [hash] Hash SHA-256 gerado a partir do conte˙do enviado ao Broker
-	 * @apiParam (Query Parameters) {String} [processo] N˙mero do processo onde o documento foi inserido
-	 * @apiParam (Query Parameters) {String} [numeroInformado] N˙mero informado na inclus„o do documento, exibido na ·rvore do processo.
-	 * @apiParam (Query Parameters) {String} [pagina=1] N˙mero da p·gina
-	 * @apiParam (Query Parameters) {String} [qtdRegistros = 50] Quantidade de registros que ser„o exibidos por p·gina
+	 * @apiParam (Query Parameters) {String} [hash] Hash SHA-256 gerado a partir do conte√∫do enviado ao Broker
+	 * @apiParam (Query Parameters) {String} [processo] N√∫mero do processo onde o documento foi inserido
+	 * @apiParam (Query Parameters) {String} [numeroInformado] N√∫mero informado na inclus√£o do documento, exibido na √°rvore do processo.
+	 * @apiParam (Query Parameters) {String} [pagina=1] N√∫mero da p√°gina
+	 * @apiParam (Query Parameters) {String} [qtdRegistros = 50] Quantidade de registros que ser√£o exibidos por p√°gina
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -i https://<host>/sei-broker/service/COSAP/documentos/enviados-broker?pagina=1&qtdRegsitros=30
 	 *
 	 * @apiSuccess (Sucesso Response Body - 200) {InclusaoDocumento} resultado Objeto com dados sobre o documento
-	 * @apiSuccess (Sucesso Response Body - 200) {Date} resultado.data Data do envio (padr„o ISO-8601)
-	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.hash Hash SHA-256 gerado a partir do conte˙do enviado ao Broker
-	 * @apiSuccess (Sucesso Response Body - 200) {Integer} resultado.id IdentificaÁ„o da inclus„o de documento
-	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.nome Nome do documento incluÌdo
-	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.numero N˙mero retonado pelo SEI, NULL caso tenha ocorrido algum problema.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.processo N˙mero do processo
-	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.sistema Sistema respons·vel pela inclus„o
-	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.unidade Unidade onde foi incluÌdo o documento
-	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.numeroInformado Valor opcional informado na inclus„o do documento
+	 * @apiSuccess (Sucesso Response Body - 200) {Date} resultado.data Data do envio (padr√£o ISO-8601)
+	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.hash Hash SHA-256 gerado a partir do conte√∫do enviado ao Broker
+	 * @apiSuccess (Sucesso Response Body - 200) {Integer} resultado.id Identifica√ß√£o da inclus√£o de documento
+	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.nome Nome do documento inclu√≠do
+	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.numero N√∫mero retonado pelo SEI, NULL caso tenha ocorrido algum problema.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.processo N√∫mero do processo
+	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.sistema Sistema respons√°vel pela inclus√£o
+	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.unidade Unidade onde foi inclu√≠do o documento
+	 * @apiSuccess (Sucesso Response Body - 200) {String} resultado.numeroInformado Valor opcional informado na inclus√£o do documento
 	 * 
 	 * @apiSuccess (Sucesso Response Header- 200) {header} total_registros Quantidade de registros que existem para essa consulta
 	 *
@@ -269,7 +269,7 @@
 	 *     {
 	 *       "id": 1717,
 	 *       "data": "2016-10-31T11:59:56.016+0000",
-	 *       "nome": "Doc HomologaÁ„o.pdf",
+	 *       "nome": "Doc Homologa√ß√£o.pdf",
 	 *       "numero": "0003312",
 	 *       "hash": "ca7ebe0c37419db14ffd4f09485a1ebed8e8deeed594e15720da185ee32e9d19",
 	 *       "sistema": "desenv_integracao_sei",
@@ -282,7 +282,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -299,9 +299,9 @@
 	 * @apiParam (Header Parameters) {String} Accept Utilize application/pdf
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
-	 * @apiParam (Path Parameters) {String} documento Id do documento que deseja recuperar as informaÁıes
+	 * @apiParam (Path Parameters) {String} documento Id do documento que deseja recuperar as informa√ß√µes
 	 *
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i https://<host>/sei-broker/service/COSIT/documentos/0003322
 	 *
 	 * @apiSuccess (Sucesso - 200) {PDF} binario Arquivo no formato PDF.
@@ -310,7 +310,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -326,28 +326,28 @@
 	 * 
 	 * @apiParam (Path Parameters) {String} interessado Identificador do interessado
 	 * 
-	 * @apiParam (Query Parameters) {String} [tipo] Tipo/SÈrie do documento
+	 * @apiParam (Query Parameters) {String} [tipo] Tipo/S√©rie do documento
 	 * @apiParam (Query Parameters) {boolean} [somenteAssinados=false] Exibir somente documentos assinados
-	 * @apiParam (Query Parameters) {boolean} [orderByProcesso=false] Ordenar pelo n˙mero do processo, por padr„o o retorno È ordenado pela dataGeracao
+	 * @apiParam (Query Parameters) {boolean} [orderByProcesso=false] Ordenar pelo n√∫mero do processo, por padr√£o o retorno √© ordenado pela dataGeracao
 	 * @apiParam (Query Parameters) {boolean} [crescente=false] Ordenar em ordem crescente
-	 * @apiParam (Query Parameters) {String} [pagina=1] N˙mero da p·gina
-	 * @apiParam (Query Parameters) {String} [qtdRegistros=50] Quantidade de registros retornados por p·gina
+	 * @apiParam (Query Parameters) {String} [pagina=1] N√∫mero da p√°gina
+	 * @apiParam (Query Parameters) {String} [qtdRegistros=50] Quantidade de registros retornados por p√°gina
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -i https://<host>/sei-broker/service/interessados/005711/documentos
 	 *
 	 * @apiSuccess (Sucesso Response Body - 200) {List} documentos Lista com os documentos encontrados.
 	 * @apiSuccess (Sucesso Response Body - 200) {DocumentoResumido} documentos.documentoResumido Resumo do documento encontrado no SEI.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numero N˙mero do documento.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numeroInformado N˙mero informado na inclus„o do documento, tambÈm conhecido como n˙mero de ·rvore.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.unidade Unidade respons·vel pelo documento.
-	 * @apiSuccess (Sucesso Response Body - 200) {String="GERADO","RECEBIDO"} documentos.documentoResumido.origem Origem do documento, se o mesmo È um documento "GERADO" internamente ou "RECEBIDO" de uma fonte externa.
-	 * @apiSuccess (Sucesso Response Body - 200) {Data} documentos.documentoResumido.dataGeracao Data de geraÁ„o do documento.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.processo Processo onde o documento est· incluÌdo.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numero N√∫mero do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.numeroInformado N√∫mero informado na inclus√£o do documento, tamb√©m conhecido como n√∫mero de √°rvore.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.unidade Unidade respons√°vel pelo documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String="GERADO","RECEBIDO"} documentos.documentoResumido.origem Origem do documento, se o mesmo √© um documento "GERADO" internamente ou "RECEBIDO" de uma fonte externa.
+	 * @apiSuccess (Sucesso Response Body - 200) {Data} documentos.documentoResumido.dataGeracao Data de gera√ß√£o do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.processo Processo onde o documento est√° inclu√≠do.
 	 * @apiSuccess (Sucesso Response Body - 200) {Tipo} documentos.documentoResumido.tipo Objeto representando o tipo do documento.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo.codigo Identificados do tipo do documento, tambÈm conhecido como sÈrie.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo.codigo Identificados do tipo do documento, tamb√©m conhecido como s√©rie.
 	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipo.nome Nome do tipo do documento.
-	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipoConferencia Tipo de conferÍncia do documento.
+	 * @apiSuccess (Sucesso Response Body - 200) {String} documentos.documentoResumido.tipoConferencia Tipo de confer√™ncia do documento.
 	 * @apiSuccess (Sucesso Response Body - 200) {boolean} documentos.documentoResumido.assinado Boolean indicando se o documento foi assinado.
 	 * 
 	 * @apiSuccess (Sucesso Response Header - 200) {header} total_registros Quantidade de registros que existem para essa consulta
@@ -363,7 +363,7 @@
 	 *       "processo": "33910.000002/2017-41",
 	 *       "tipo": {
 	 *       	"codigo": "629",
-	 *       	"nome": "RelatÛrio de Arquivamento-SIF"
+	 *       	"nome": "Relat√≥rio de Arquivamento-SIF"
 	 *       }
 	 *       "tipoConferencia": "4",
 	 *       "assinado": true
@@ -373,7 +373,37 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
+	/**
+	 * @api {get} /:unidade/tipos-documentos Listar tipos documentos
+	 * @apiName listarTiposDocumentos
+	 * @apiGroup Documento
+	 * @apiVersion 2.0.0
+	 * 
+	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
+	 * 
+	 * @apiDescription Lista os tipos de documentos do SEI.
+	 * 
+	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
+	 * 
+	 * @apiParam (Query Parameters) {String} [filtro] Para filtrar por documentos que contenham o trecho no nome.
+	 * @apiParam (Query Parameters) {String} [nome] Para selecionar a s√©rie que possua nome igual.
+	 *
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
+	 * 	curl -i https://<host>/sei-broker/service/COSAP/tipos-documentos
+	 *
+	 * @apiSuccess (Sucesso - 200) {List} tipos Lista com os tipos de documentos
+	 * @apiSuccess (Sucesso - 200) {String} tipos.identificador Identificador do tipo de documento
+	 * @apiSuccess (Sucesso - 200) {String} tipos.nome Nome do tipo de documento
+	 * @apiSuccess (Sucesso - 200) {String} series.aplicabilidade T = Documentos internos e externos, I = documentos internos, E = documentos externos e F = formul√°rios
+	 *
+	 * @apiErrorExample {json} Error-Response:
+	 * 	HTTP/1.1 500 Internal Server Error
+	 * 	{
+	 *		"error":"Mensagem de erro."
+	 *		"code":"c√≥digo do erro"
+	 *	}
+	 */

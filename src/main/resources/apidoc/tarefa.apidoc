@@ -10,23 +10,23 @@
 	 *
 	 * @apiParam (Query Parameters) {String} [nome] Filtro para o nome da tarefa.
 	 *
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i https://<host>/sei-broker/service/tarefas
 	 * 
 	 * @apiSuccess (Sucesso - 200) {List} tarefas Lista com as tarefas
 	 * @apiSuccess (Sucesso - 200) {String} tarefas.identificados Identificador da tarefa.
 	 * @apiSuccess (Sucesso - 200) {String} tarefas.nome Nome da tarefa.
-	 * @apiSuccess (Sucesso - 200) {String} tarefas.historicoResumido S/N - Sinalizador indica se a tarefa aparecer· no histÛrico resumido.
-	 * @apiSuccess (Sucesso - 200) {String} tarefas.historicoCompleto S/N - Sinalizador indica se a tarefa aparecer· no histÛrico completo.
+	 * @apiSuccess (Sucesso - 200) {String} tarefas.historicoResumido S/N - Sinalizador indica se a tarefa aparecer√° no hist√≥rico resumido.
+	 * @apiSuccess (Sucesso - 200) {String} tarefas.historicoCompleto S/N - Sinalizador indica se a tarefa aparecer√° no hist√≥rico completo.
 	 * @apiSuccess (Sucesso - 200) {String} tarefas.fecharAndamentosAbertos S/N - Sinalizador indica se a tarefa fecha andamentos abertos.
 	 * @apiSuccess (Sucesso - 200) {String} tarefas.lancarAndamentoFechado S/N - Sinalizador indica que a tarefa encerra o andamento.
-	 * @apiSuccess (Sucesso - 200) {String} tarefas.permiteProcessoFechado S/N - Sinalizador indica se È permitida essa tarefa em processo fechado.
-	 * @apiSuccess (Sucesso - 200) {String} tarefas.identicadorTarefaModulo Identificador de tarefa mÛdulo.
+	 * @apiSuccess (Sucesso - 200) {String} tarefas.permiteProcessoFechado S/N - Sinalizador indica se √© permitida essa tarefa em processo fechado.
+	 * @apiSuccess (Sucesso - 200) {String} tarefas.identicadorTarefaModulo Identificador de tarefa m√≥dulo.
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */

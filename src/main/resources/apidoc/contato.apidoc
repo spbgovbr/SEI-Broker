@@ -10,7 +10,7 @@
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -i http://<host>/sei-broker/service/cosap/contatos/tipos
 	 *
 	 * @apiSuccess (Sucesso - 200) {TipoContato[]} resultado Lista com os tipos de contato, representados por uma Enum TipoContato.
@@ -19,7 +19,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -31,7 +31,7 @@
 	 * 
 	 * @apiPermission RO_SEI_BROKER ou RO_SEI_BROKER_CONSULTA
 	 * 
-	 * @apiDescription Consulta os contatos de determinado tipo, o retorno pode ser PessoaFisica ou PessoaJuridica È recomendado utilizar a ans-commons-sei.
+	 * @apiDescription Consulta os contatos de determinado tipo, o retorno pode ser PessoaFisica ou PessoaJuridica √© recomendado utilizar a ans-commons-sei.
 	 * 
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 * @apiParam (Path Parameters) {String} tipo Tipo do contato
@@ -41,10 +41,10 @@
 	 * @apiParam (Query Parameters) {String} [cnpj] CNPJ do contato
 	 * @apiParam (Query Parameters) {String} [sigla] Sigla(login) do contato
 	 * @apiParam (Query Parameters) {String} [matricula] Matricula do contato
-	 * @apiParam (Query Parameters) {String} [qtdRegistros = 1] Quantidade de contatos que ser„o exibidos
-	 * @apiParam (Query Parameters) {String} [pagina = 1] N˙mero da p·gina
+	 * @apiParam (Query Parameters) {String} [qtdRegistros = 1] Quantidade de contatos que ser√£o exibidos
+	 * @apiParam (Query Parameters) {String} [pagina = 1] N√∫mero da p√°gina
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -i http://<host>/sei-broker/service/cosap/contatos/operadoras?qtdRegistros=20
 	 *
 	 * @apiSuccess (Sucesso - 200) {List} resultado Lista com os contatos encontrados.
@@ -55,27 +55,27 @@
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.email] Email do contato.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.telefone] Telefone fixo do contato.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.celular] Celular do contato.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.observacao] ObservaÁıes sobre o contato.
-	 * @apiSuccess (Sucesso - 200) {Boolean} [resultado.pessoa.ativo = false] SituaÁ„o do contato.
-	 * @apiSuccess (Sucesso - 200) {Endereco} [resultado.pessoa.endereco] EndereÁo do contato.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.logradouro] Logradouro do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.complemento] Complento do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.numero] N˙mero do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.cep] CEP do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.bairro] Bairro do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.cidade] CÛdigo do IBGE da cidade.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.observacao] Observa√ß√µes sobre o contato.
+	 * @apiSuccess (Sucesso - 200) {Boolean} [resultado.pessoa.ativo = false] Situa√ß√£o do contato.
+	 * @apiSuccess (Sucesso - 200) {Endereco} [resultado.pessoa.endereco] Endere√ßo do contato.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.logradouro] Logradouro do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.complemento] Complento do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.numero] N√∫mero do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.cep] CEP do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.bairro] Bairro do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.cidade] C√≥digo do IBGE da cidade.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.uf] Sigla do estado.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.pais] PaÌs do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {PessoaJuridica} [resultado.pessoa.associado] Pessoa JurÌdica a qual o contato est· associado.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.pais] Pa√≠s do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {PessoaJuridica} [resultado.pessoa.associado] Pessoa Jur√≠dica a qual o contato est√° associado.
 	 * @apiSuccess (Sucesso - 200) {String="Juridica"} resultado.pessoa.associado.type Tipo de pessoa, neste caso o tipo deve ser Juridica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.associado.sigla] Sigla(login) do contato associado.
 	 * @apiSuccess (Sucesso - 200) {String="MASCULINO","FEMININO"} [resultado.pessoa.sexo] Sexo do contato, presente em contatos do tipo PessoaFisica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.cpf] CPF do contato, presente em contatos do tipo PessoaFisica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.rg] RG do contato, presente em contatos do tipo PessoaFisica.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.orgaoEmissor] Org„o emissor do RG, presente em contatos do tipo PessoaFisica.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.orgaoEmissor] Org√£o emissor do RG, presente em contatos do tipo PessoaFisica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.dataNascimento] Data de nascimento, presente em contatos do tipo PessoaFisica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.matricula] Matricula do contato, presente em contatos do tipo PessoaFisica.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.matriculaOab] N˙mero de registro do OAB, presente em contatos do tipo PessoaFisica.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.matriculaOab] N√∫mero de registro do OAB, presente em contatos do tipo PessoaFisica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.cnpj] CNPJ do contato, presente em contatos do tipo PessoaJuridica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.website] Site do contato, presente em contatos do tipo PessoaJuridica.
 	 * 
@@ -83,15 +83,15 @@
 	 *     HTTP/1.1 200 OK
 	 *     {
 	 *       "@type": "Juridica",
-	 *       "nome": "18 DE JULHO ADMINISTRADORA DE BENEFÕCIOS LTDA",
+	 *       "nome": "18 DE JULHO ADMINISTRADORA DE BENEF√çCIOS LTDA",
 	 *       "endereco": {
-	 *       	"logradouro": "RUA CAPIT√O MEDEIROS DE REZENDE 274",
+	 *       	"logradouro": "RUA CAPIT√ÉO MEDEIROS DE REZENDE 274",
 	 *       	"complemento": "Teste de complemento",
 	 *       	"numero": null,
 	 *       	"uf": "MG",
 	 *       	"pais": "Brasil",
 	 *       	"cidade": "3101508",
-	 *       	"bairro": "PRA«A DA BANDEIRA",
+	 *       	"bairro": "PRA√áA DA BANDEIRA",
 	 *       	"cep": "36660000"
 	 *       },
 	 *       "email": "teste@email.com",
@@ -108,7 +108,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -126,7 +126,7 @@
 	 * @apiParam (Path Parameters) {String} tipo Tipo do contato
 	 * @apiParam (Path Parameters) {String} sigla Sigla(login) do contato
 	 * 
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	curl -i http://<host>/sei-broker/service/cosap/contatos/operadoras/419761
 	 *
 	 * @apiSuccess (Sucesso - 200) {Pessoa} resultado.pessoa Pessoa que representa o contato.
@@ -136,27 +136,27 @@
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.email] Email do contato.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.telefone] Telefone fixo do contato.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.celular] Celular do contato.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.observacao] ObservaÁıes sobre o contato.
-	 * @apiSuccess (Sucesso - 200) {Boolean} [resultado.pessoa.ativo = false] SituaÁ„o do contato.
-	 * @apiSuccess (Sucesso - 200) {Endereco} [resultado.pessoa.endereco] EndereÁo do contato.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.logradouro] Logradouro do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.complemento] Complento do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.numero] N˙mero do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.cep] CEP do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.bairro] Bairro do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.cidade] CÛdigo do IBGE da cidade.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.observacao] Observa√ß√µes sobre o contato.
+	 * @apiSuccess (Sucesso - 200) {Boolean} [resultado.pessoa.ativo = false] Situa√ß√£o do contato.
+	 * @apiSuccess (Sucesso - 200) {Endereco} [resultado.pessoa.endereco] Endere√ßo do contato.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.logradouro] Logradouro do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.complemento] Complento do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.numero] N√∫mero do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.cep] CEP do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.bairro] Bairro do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.cidade] C√≥digo do IBGE da cidade.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.uf] Sigla do estado.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.pais] PaÌs do endereÁo.
-	 * @apiSuccess (Sucesso - 200) {PessoaJuridica} [resultado.pessoa.associado] Pessoa JurÌdica a qual o contato est· associado.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.endereco.pais] Pa√≠s do endere√ßo.
+	 * @apiSuccess (Sucesso - 200) {PessoaJuridica} [resultado.pessoa.associado] Pessoa Jur√≠dica a qual o contato est√° associado.
 	 * @apiSuccess (Sucesso - 200) {String="Juridica"} resultado.pessoa.associado.type Tipo de pessoa, neste caso o tipo deve ser Juridica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.associado.sigla] Sigla(login) do contato associado.
 	 * @apiSuccess (Sucesso - 200) {String="MASCULINO","FEMININO"} [resultado.pessoa.sexo] Sexo do contato, presente em contatos do tipo PessoaFisica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.cpf] CPF do contato, presente em contatos do tipo PessoaFisica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.rg] RG do contato, presente em contatos do tipo PessoaFisica.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.orgaoEmissor] Org„o emissor do RG, presente em contatos do tipo PessoaFisica.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.orgaoEmissor] Org√£o emissor do RG, presente em contatos do tipo PessoaFisica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.dataNascimento] Data de nascimento, presente em contatos do tipo PessoaFisica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.matricula] Matricula do contato, presente em contatos do tipo PessoaFisica.
-	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.matriculaOab] N˙mero de registro do OAB, presente em contatos do tipo PessoaFisica.
+	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.matriculaOab] N√∫mero de registro do OAB, presente em contatos do tipo PessoaFisica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.cnpj] CNPJ do contato, presente em contatos do tipo PessoaJuridica.
 	 * @apiSuccess (Sucesso - 200) {String} [resultado.pessoa.website] Site do contato, presente em contatos do tipo PessoaJuridica.
 	 * 
@@ -164,16 +164,16 @@
 	 *     HTTP/1.1 200 OK
 	 *     {
 	 *       "@type": "Juridica",
-	 *       "nome": "18 DE JULHO ADMINISTRADORA DE BENEFÕCIOS LTDA",
+	 *       "nome": "18 DE JULHO ADMINISTRADORA DE BENEF√çCIOS LTDA",
 	 *       "sigla": "419761",
 	 *       "endereco": {
-	 *       	"logradouro": "RUA CAPIT√O MEDEIROS DE REZENDE 274",
+	 *       	"logradouro": "RUA CAPIT√ÉO MEDEIROS DE REZENDE 274",
 	 *       	"complemento": "Teste de complemento",
 	 *       	"numero": null,
 	 *       	"uf": "MG",
 	 *       	"pais": "Brasil",
 	 *       	"cidade": "3101508",
-	 *       	"bairro": "PRA«A DA BANDEIRA",
+	 *       	"bairro": "PRA√áA DA BANDEIRA",
 	 *       	"cep": "36660000"
 	 *       },
 	 *       "email": "teste@email.com",
@@ -190,7 +190,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -214,46 +214,46 @@
 	 * @apiParam (Request Body) {String} [resultado.pessoa.email] Email do contato.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.telefone] Telefone fixo do contato.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.celular] Celular do contato.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.observacao] ObservaÁıes sobre o contato.
-	 * @apiParam (Request Body) {Boolean} [resultado.pessoa.ativo = false] SituaÁ„o do contato.
-	 * @apiParam (Request Body) {Endereco} [resultado.pessoa.endereco] EndereÁo do contato.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.logradouro] Logradouro do endereÁo.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.complemento] Complento do endereÁo.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.numero] N˙mero do endereÁo.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.cep] CEP do endereÁo.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.bairro] Bairro do endereÁo.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.cidade] CÛdigo do IBGE da cidade.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.observacao] Observa√ß√µes sobre o contato.
+	 * @apiParam (Request Body) {Boolean} [resultado.pessoa.ativo = false] Situa√ß√£o do contato.
+	 * @apiParam (Request Body) {Endereco} [resultado.pessoa.endereco] Endere√ßo do contato.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.logradouro] Logradouro do endere√ßo.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.complemento] Complento do endere√ßo.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.numero] N√∫mero do endere√ßo.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.cep] CEP do endere√ßo.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.bairro] Bairro do endere√ßo.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.cidade] C√≥digo do IBGE da cidade.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.uf] Sigla do estado.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.pais] PaÌs do endereÁo.
-	 * @apiParam (Request Body) {PessoaJuridica} [resultado.pessoa.associado] Pessoa JurÌdica a qual o contato est· associado.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.pais] Pa√≠s do endere√ßo.
+	 * @apiParam (Request Body) {PessoaJuridica} [resultado.pessoa.associado] Pessoa Jur√≠dica a qual o contato est√° associado.
 	 * @apiParam (Request Body) {String="Juridica"} resultado.pessoa.associado.type Tipo de pessoa, neste caso o tipo deve ser Juridica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.associado.sigla] Sigla(login) do contato associado.
 	 * @apiParam (Request Body) {String="MASCULINO","FEMININO"} [resultado.pessoa.sexo] Sexo do contato, presente em contatos do tipo PessoaFisica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.cpf] CPF do contato, presente em contatos do tipo PessoaFisica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.rg] RG do contato, presente em contatos do tipo PessoaFisica.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.orgaoEmissor] Org„o emissor do RG, presente em contatos do tipo PessoaFisica.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.orgaoEmissor] Org√£o emissor do RG, presente em contatos do tipo PessoaFisica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.dataNascimento] Data de nascimento, presente em contatos do tipo PessoaFisica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.matricula] Matricula do contato, presente em contatos do tipo PessoaFisica.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.matriculaOab] N˙mero de registro do OAB, presente em contatos do tipo PessoaFisica.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.matriculaOab] N√∫mero de registro do OAB, presente em contatos do tipo PessoaFisica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.cnpj] CNPJ do contato, presente em contatos do tipo PessoaJuridica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.website] Site do contato, presente em contatos do tipo PessoaJuridica.
 	 *
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: http://<host>/sei-broker/service/cosap/contatos/operadoras
 	 *
 	 *	body:
 	 *     {
 	 *       "@type": "Juridica",
-	 *       "nome": "18 DE JULHO ADMINISTRADORA DE BENEFÕCIOS LTDA",
+	 *       "nome": "18 DE JULHO ADMINISTRADORA DE BENEF√çCIOS LTDA",
 	 *       "sigla": "419761",
 	 *       "endereco": {
-	 *       	"logradouro": "RUA CAPIT√O MEDEIROS DE REZENDE 274",
+	 *       	"logradouro": "RUA CAPIT√ÉO MEDEIROS DE REZENDE 274",
 	 *       	"complemento": "Teste de complemento",
 	 *       	"numero": null,
 	 *       	"uf": "MG",
 	 *       	"pais": "Brasil",
 	 *       	"cidade": "3101508",
-	 *       	"bairro": "PRA«A DA BANDEIRA",
+	 *       	"bairro": "PRA√áA DA BANDEIRA",
 	 *       	"cep": "36660000"
 	 *       },
 	 *       "email": "teste@email.com",
@@ -272,7 +272,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -297,46 +297,46 @@
 	 * @apiParam (Request Body) {String} [resultado.pessoa.email] Email do contato.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.telefone] Telefone fixo do contato.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.celular] Celular do contato.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.observacao] ObservaÁıes sobre o contato.
-	 * @apiParam (Request Body) {Boolean} [resultado.pessoa.ativo = false] SituaÁ„o do contato.
-	 * @apiParam (Request Body) {Endereco} [resultado.pessoa.endereco] EndereÁo do contato.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.logradouro] Logradouro do endereÁo.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.complemento] Complento do endereÁo.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.numero] N˙mero do endereÁo.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.cep] CEP do endereÁo.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.bairro] Bairro do endereÁo.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.cidade] CÛdigo do IBGE da cidade.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.observacao] Observa√ß√µes sobre o contato.
+	 * @apiParam (Request Body) {Boolean} [resultado.pessoa.ativo = false] Situa√ß√£o do contato.
+	 * @apiParam (Request Body) {Endereco} [resultado.pessoa.endereco] Endere√ßo do contato.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.logradouro] Logradouro do endere√ßo.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.complemento] Complento do endere√ßo.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.numero] N√∫mero do endere√ßo.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.cep] CEP do endere√ßo.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.bairro] Bairro do endere√ßo.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.cidade] C√≥digo do IBGE da cidade.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.uf] Sigla do estado.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.pais] PaÌs do endereÁo.
-	 * @apiParam (Request Body) {PessoaJuridica} [resultado.pessoa.associado] Pessoa JurÌdica a qual o contato est· associado.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.endereco.pais] Pa√≠s do endere√ßo.
+	 * @apiParam (Request Body) {PessoaJuridica} [resultado.pessoa.associado] Pessoa Jur√≠dica a qual o contato est√° associado.
 	 * @apiParam (Request Body) {String="Juridica"} resultado.pessoa.associado.type Tipo de pessoa, neste caso o tipo deve ser Juridica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.associado.sigla] Sigla(login) do contato associado.
 	 * @apiParam (Request Body) {String="MASCULINO","FEMININO"} [resultado.pessoa.sexo] Sexo do contato, presente em contatos do tipo PessoaFisica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.cpf] CPF do contato, presente em contatos do tipo PessoaFisica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.rg] RG do contato, presente em contatos do tipo PessoaFisica.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.orgaoEmissor] Org„o emissor do RG, presente em contatos do tipo PessoaFisica.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.orgaoEmissor] Org√£o emissor do RG, presente em contatos do tipo PessoaFisica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.dataNascimento] Data de nascimento, presente em contatos do tipo PessoaFisica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.matricula] Matricula do contato, presente em contatos do tipo PessoaFisica.
-	 * @apiParam (Request Body) {String} [resultado.pessoa.matriculaOab] N˙mero de registro do OAB, presente em contatos do tipo PessoaFisica.
+	 * @apiParam (Request Body) {String} [resultado.pessoa.matriculaOab] N√∫mero de registro do OAB, presente em contatos do tipo PessoaFisica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.cnpj] CNPJ do contato, presente em contatos do tipo PessoaJuridica.
 	 * @apiParam (Request Body) {String} [resultado.pessoa.website] Site do contato, presente em contatos do tipo PessoaJuridica.
 	 *
-	 * @apiExample Exemplo de requisiÁ„o:	
+	 * @apiExample Exemplo de requisi√ß√£o:	
 	 *	endpoint: http://<host>/sei-broker/service/cosap/contatos/operadoras
 	 *
 	 *	body:
 	 *     {
 	 *       "@type": "Juridica",
-	 *       "nome": "18 DE JULHO ADMINISTRADORA DE BENEFÕCIOS LTDA",
+	 *       "nome": "18 DE JULHO ADMINISTRADORA DE BENEF√çCIOS LTDA",
 	 *       "sigla": "419761",
 	 *       "endereco": {
-	 *       	"logradouro": "RUA CAPIT√O MEDEIROS DE REZENDE 274",
+	 *       	"logradouro": "RUA CAPIT√ÉO MEDEIROS DE REZENDE 274",
 	 *       	"complemento": "Teste de complemento",
 	 *       	"numero": null,
 	 *       	"uf": "MG",
 	 *       	"pais": "Brasil",
 	 *       	"cidade": "3101508",
-	 *       	"bairro": "PRA«A DA BANDEIRA",
+	 *       	"bairro": "PRA√áA DA BANDEIRA",
 	 *       	"cep": "36660000"
 	 *       },
 	 *       "email": "teste@email.com",
@@ -356,6 +356,6 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */   

@@ -10,20 +10,20 @@
 	 *
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI
 	 *
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i https://<host>/sei-broker/service/cosap/marcadores
 	 * 
 	 * @apiSuccess (Sucesso - 200) {Marcador[]} marcadores Lista de marcadores
 	 * @apiSuccess (Sucesso - 200) {String} marcadores.id Identificador do marcador.
 	 * @apiSuccess (Sucesso - 200) {String} marcadores.nome Nome do marcador.
-	 * @apiSuccess (Sucesso - 200) {String} marcadores.icone Õcone do marcador em formato PNG codificado em Base64.
-	 * @apiSuccess (Sucesso - 200) {String} marcadores.sinAtivo S/N - Sinalizador indica se o marcador est· ativo.
+	 * @apiSuccess (Sucesso - 200) {String} marcadores.icone √çcone do marcador em formato PNG codificado em Base64.
+	 * @apiSuccess (Sucesso - 200) {String} marcadores.sinAtivo S/N - Sinalizador indica se o marcador est√° ativo.
 	 *
 	 * @apiErrorExample {json} Error-Response:
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */
 
@@ -40,11 +40,11 @@
 	 * @apiParam (Path Parameters) {String} unidade Sigla da Unidade cadastrada no SEI.
 	 * @apiParam (Path Parameters) {String} identificador Identificador do marcador no SEI.
 	 *
-	 * @apiParam (Request Body) {MarcacaoProcesso} marcacaoProcesso Objeto de com as definiÁıes da marcaÁ„o.
-	 * @apiParam (Request Body) {String} marcacaoProcesso.processo N˙mero do processo no SEI.
-	 * @apiParam (Request Body) {String} marcacaoProcesso.texto Texto para associaÁ„o.
+	 * @apiParam (Request Body) {MarcacaoProcesso} marcacaoProcesso Objeto de com as defini√ß√µes da marca√ß√£o.
+	 * @apiParam (Request Body) {String} marcacaoProcesso.processo N√∫mero do processo no SEI.
+	 * @apiParam (Request Body) {String} marcacaoProcesso.texto Texto para associa√ß√£o.
 	 *
-	 * @apiExample {curl} Exemplo de requisiÁ„o:
+	 * @apiExample {curl} Exemplo de requisi√ß√£o:
 	 * 	curl -i https://<host>/sei-broker/service/cosap/marcadores/3/processos
 	 * 
 	 * @apiSuccessExample {json} Success-Response:
@@ -54,7 +54,7 @@
 	 * 	HTTP/1.1 500 Internal Server Error
 	 * 	{
 	 *		"error":"Mensagem de erro."
-	 *		"code":"cÛdigo do erro"
+	 *		"code":"c√≥digo do erro"
 	 *	}
 	 */	
 
