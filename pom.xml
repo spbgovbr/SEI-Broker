@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.gov.ans</groupId>
 	<artifactId>sei-broker</artifactId>
-	<version>2.9.1</version>
+	<version>2.9.2</version>
 	<packaging>war</packaging>
 	<name>sei-broker</name>
 	<description>Camada de integração REST para comunicação com o SEI</description>
@@ -207,13 +207,6 @@
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.6.2</version>
-		</dependency>
-
-		<!-- HASH -->
-		<dependency>
-			<groupId>br.gov.ans.commons</groupId>
-			<artifactId>ans-commons-security</artifactId>
-			<version>2.0</version>
 		</dependency>
 
 		<!-- PDF -->

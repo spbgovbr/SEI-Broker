@@ -38,7 +38,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jboss.logging.Logger;
 
-import br.gov.ans.commons.security.crypt.HashUtils;
+import br.gov.ans.integracao.sei.utils.HashUtils;
 import br.gov.ans.dao.DAO;
 import br.gov.ans.integracao.sei.client.Documento;
 import br.gov.ans.integracao.sei.client.RetornoConsultaDocumento;
@@ -276,7 +276,7 @@ public class DocumentoResource {
 	public String calcularHashDocumento(String input){
 		try {
 			logger.debug(messages.getMessage("hash.em.geracao"));
-			return HashUtils.toSHA256(input, null);
+			return HashUtils.SHA256.encrypt(input, null);
 		} catch (Exception ex) {
 			logger.error(messages.getMessage("erro.calculo.hash"));
 			logger.debug(ex, ex);
