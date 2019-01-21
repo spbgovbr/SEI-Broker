@@ -12,7 +12,15 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
+	
+	<repositories>
+		<repository>
+		    <id>spring</id>
+		    <url>http://repo.spring.io/plugins-release/</url>
+		    <name>spring</name>
+	 	</repository>				
+	</repositories>
+	
 	<build>
 		<resources>
 			<resource>
@@ -93,6 +101,8 @@
 	</build>
 
 	<dependencies>
+	
+	<!-- https://mvnrepository.com/artifact/org.jboss.ejb3/jboss-ejb3-embedded -->	
 		<!-- EJB -->
 		<dependency>
 			<groupId>org.jboss.ejb3</groupId>
@@ -100,7 +110,13 @@
 			<scope>provided</scope>
 			<version>3.1.0</version>
 		</dependency>
-
+		
+	<!-- logging -->
+		<dependency>
+		    <groupId>org.jboss.logging</groupId>
+		    <artifactId>jboss-logging</artifactId>
+		    <version>3.3.0.Final</version>
+		</dependency>
 
 		<!-- REST -->
 		<dependency>
